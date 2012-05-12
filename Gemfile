@@ -25,6 +25,10 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'pickler'
   gem 'rspec-rails'
+  gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'launchy'
+  gem "shoulda-matchers"
+  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

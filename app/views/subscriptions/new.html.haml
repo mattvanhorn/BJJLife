@@ -1,0 +1,9 @@
+#main
+  %h1= t('site_name')
+  %p= t('landing_page.explanation_html')
+
+= simple_form_for subscription do |form|
+  = form.input :email, :error => false
+  = form.submit :class => 'button'
+  %br/
+  = form.full_error :email

@@ -1,0 +1,12 @@
+en:
+  landing_page:
+    explanation_html: |
+      I'm currently working on building the best BJJ site ever. If you want
+      to be informed when it launches, please enter your email address below.
+      <br/>
+      Don't worry - I won't send you any other email, I hate spam, too.
+  subscriptions:
+    thanks:
+      message_html: |
+        Thanks for signing up.
+        As soon as there is something to see, I will let you know.

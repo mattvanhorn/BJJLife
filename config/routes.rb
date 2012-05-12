@@ -1,4 +1,9 @@
 Bjjlife::Application.routes.draw do
+  match '/landing' => 'subscriptions#new', :as => :landing
+  resources :subscriptions, :only => [:create] do
+    get 'thanks', :on => :collection
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

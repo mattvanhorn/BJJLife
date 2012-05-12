@@ -1,0 +1,67 @@
+@import 'colors';
+@import 'mixins';
+
+html > body {
+  background-color: $default-bg;
+  color: $default-fg;
+}
+
+#main {
+  width: 500px;
+  margin: 100px auto 0;
+  text-align: center;
+  p {
+    text-align: left;
+  }
+}
+
+form {
+  background-color: $mat-blue;
+  height: 80px;
+  border-top: 10px solid $brazil-yellow;
+  border-bottom: 10px solid $brazil-yellow;
+  padding-left: 50%;
+}
+
+.input.email {
+  float: left;
+  margin-left: -220px;
+  width: 340px;
+}
+
+input.string {
+  @include border-radius(5px);
+  height: 30px;
+  border-right: 2px solid #3E4095;
+  border-bottom: 2px solid #3E4095;
+  margin-top: 20px;
+  line-height: 24px;
+  font-size: 18px;
+  width: 280px;
+  margin-left: 5px;
+}
+
+input.button {
+  @include border-radius(5px);
+  @include box-shadow(#777 0 0 0 1px);
+  color: white;
+  border: 1px solid #96CBF8;
+  background: #448ED4;
+  background: -moz-linear-gradient(top, #70B6F2, #448ED4 50%, #1A62DB 51%, #3F8DE1);
+  background: -webkit-gradient(linear, left top, left bottom, from(#70B6F2), color-stop(50%, #448ED4), color-stop(51%, #1A62DB), to(#3F8DE1));
+  text-decoration: none;
+  text-shadow: rgba(0, 0, 0, .4) 0 -1px 0;
+  font: normal 18px sans-serif;
+  text-decoration: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: 20px 8px 0;
+}
+
+form .error {
+  margin: 2px 0 0 -100px;
+  display: block;
+}

@@ -1,0 +1,9 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin box-shadow($options) {
+      -moz-box-shadow: $options;
+   -webkit-box-shadow: $options;
+}
