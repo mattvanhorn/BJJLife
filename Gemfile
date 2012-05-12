@@ -1,12 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
-
+gem 'jquery-rails'
+gem 'haml-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -20,7 +17,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+
 
 group :development, :test do
   gem 'cucumber-rails', :require => false
