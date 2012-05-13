@@ -14,6 +14,9 @@ module NavigationHelpers
     when /the subscription thank you page/
       thanks_subscriptions_path
 
+    when /the landing page for option (a|b)/
+      landing_path(:message => $1)
+
     else
       begin
         page_name =~ /the (.*) page/

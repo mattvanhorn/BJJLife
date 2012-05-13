@@ -5,6 +5,12 @@ en:
       to be informed when it launches, please enter your email address below.
       <br/>
       Don't worry - I won't send you any other email, I hate spam, too.
+    new_explanation_html: |
+      I'm building a BJJ site with videos, diet & training tips, gear reviews,
+      academy information and more. If you want to be informed when it launches,
+      please enter your email address below.
+      <br/>
+      Don't worry - I won't send you any other email, I hate spam, too.
   subscriptions:
     thanks:
       message_html: |

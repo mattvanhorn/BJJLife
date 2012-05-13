@@ -34,4 +34,3 @@ Feature: Join announcement list
      When I sign up for the list as "alice@example.com"
      Then I should see "Email has already been taken"
       And I should see the "signup" form
-

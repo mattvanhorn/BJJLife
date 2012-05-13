@@ -6,6 +6,7 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new(params[:subscription])
     if @subscription.save
+      finished("message", :reset => false)
       analytical.event :signup, :email => @subscription.email
     end
     respond_with @subscription, :location => thanks_subscriptions_url

@@ -8,8 +8,3 @@ Feature: Home page
     Given the site is not launched
     When I visit the home page
     Then I should be on the landing page
-
-
-
-
-
