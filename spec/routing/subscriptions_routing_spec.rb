@@ -24,5 +24,13 @@ describe "subscriptions routing" do
         :action => "thanks"
       )
   end
+
+  it "routes the root to the landing page" do
+    { :get => "/" }.
+      should route_to(
+        :controller => "subscriptions",
+        :action => "new"
+      )
+  end
 end
 

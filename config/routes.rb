@@ -3,6 +3,7 @@ Bjjlife::Application.routes.draw do
   resources :subscriptions, :only => [:create] do
     get 'thanks', :on => :collection
   end
+  root :to => 'subscriptions#new'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
