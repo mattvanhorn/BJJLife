@@ -29,6 +29,7 @@ group :development, :test do
   gem 'launchy'
   gem "shoulda-matchers"
   gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb'
+  gem 'fabrication'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
