@@ -1,8 +1,6 @@
 class SubscriptionsController < ApplicationController
   respond_to :html
 
-  analytical :modules => [:console, :google], :use_session_store => true
-
   def create
     @subscription = Subscription.new(params[:subscription])
     if @subscription.save

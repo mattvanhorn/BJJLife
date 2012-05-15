@@ -6,6 +6,10 @@ Bjjlife::Application.routes.draw do
   root :to => 'subscriptions#new'
   mount Split::Dashboard, :at => 'split'
 
+  namespace :admin do
+    resources :subscriptions, :only => [:index]
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

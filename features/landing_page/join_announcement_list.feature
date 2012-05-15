@@ -5,7 +5,7 @@ Feature: Join announcement list
   I want to sign up for announcements
 
   Scenario: Reading about the site
-    When I am on the landing page
+    When I am on the landing page for option a
     Then I should see the name of the site
      And I should see an explanatory message
 

@@ -34,3 +34,12 @@ describe "subscriptions routing" do
   end
 end
 
+describe "subscriptions admin routing" do
+  it "routes the list of subscriptions" do
+    { :get => "/admin/subscriptions" }.
+      should route_to(
+        :controller => "admin/subscriptions",
+        :action => "index"
+      )
+  end
+end

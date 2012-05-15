@@ -10,16 +10,19 @@ describe SubscriptionsController do
   end
 
   describe "#create" do
-    let(:subscription){ double('subscription') }
+    let(:subscription){ double('subscription', :email => 'alice@example.com') }
     describe "with a valid email address" do
       it "creates a new subscription" do
-        Subscription.should_receive(:new).with(:email => 'alice@example.com').and_return(subscription)
+        Subscription.should_receive(:new).with('email' => 'alice@example.com').and_return(subscription)
         subscription.should_receive(:save).and_return(true)
         post :create, :subscription => {:email => 'alice@example.com'}
       end
 
       it "redirects to a thank you page" do
-        pending
+        Subscription.stub(:new).and_return(subscription)
+        subscription.stub(:save).and_return(true)
+        post :create, :subscription => {:email => 'alice@example.com'}
+        response.should redirect_to(thanks_subscriptions_url)
       end
     end
   end

@@ -12,7 +12,7 @@ GIT
 
 GIT
   remote: git://github.com/mattvanhorn/nulldb
-  revision: 34ac85ab9d85401e0033b581ae36e62a011e94f7
+  revision: e7e74e1538d869ab8391ba5dd4a87dc452176ce2
   specs:
     activerecord-nulldb-adapter (0.2.1)
       activerecord (>= 2.0.0)
@@ -75,6 +75,7 @@ GEM
     erubis (2.7.0)
     execjs (1.3.2)
       multi_json (~> 1.0)
+    fabrication (1.4.0)
     ffi (1.0.11)
     gherkin (2.10.0)
       json (>= 1.4.6)
@@ -200,6 +201,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner
+  fabrication
   haml-rails
   jquery-rails
   launchy
