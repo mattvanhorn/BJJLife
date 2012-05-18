@@ -6,17 +6,18 @@ Feature: Watch videos
 
   Background:
     Given the following videos:
-    | name | url |
-    | a    | b   |
-    | c    | d   |
-    | e    | f   |
+    | name             | url |
+    | Omoplata         | b   |
+    | Triangle Choke   | d   |
+    | Guillotine Choke | f   |
 
   Scenario: List Videos
     When I am on the videos page
-    Then I should see:
+    Then I should see a video item for "Omoplata"
+    Then I should see a video item for "Triangle Choke"
+    Then I should see a video item for "Guillotine Choke"
 
   Scenario: Watch a video
     Given I am on the videos page
      When I click on "something"
      Then I should see a video
-
