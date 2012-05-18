@@ -15,6 +15,15 @@
 
     = raw analytical.body_prepend_javascript
 
+    %header
+      %h1= t('site_name')
+
     = yield
+
+    %footer
+      #copyright
+        &copy;
+        = Time.now.year
+        = link_to "Matt Van Horn", 'http://www.mattvanhorn.com'
 
     = raw analytical.body_append_javascript

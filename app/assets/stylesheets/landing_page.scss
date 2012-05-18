@@ -10,21 +10,11 @@ html > body {
   width: 500px;
   margin: 0 auto 0;
   text-align: center;
-  h1 {
-    margin: 20px 0 0 0;
-  }
   p {
     text-align: left;
   }
 }
-#copyright {
-  margin-top: 10px;
-  margin-right: 10px;
-  text-align: right;
-  a:link{
-    color: $brazil-blue;
-  }
-}
+
 form {
   background-color: $mat-blue;
   height: 80px;

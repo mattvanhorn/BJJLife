@@ -10,6 +10,8 @@ Bjjlife::Application.routes.draw do
     resources :subscriptions, :only => [:index]
   end
 
+  resources :videos, :only => [:index]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

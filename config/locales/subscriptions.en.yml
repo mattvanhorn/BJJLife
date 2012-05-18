@@ -5,8 +5,10 @@ en:
       to be informed when it launches, please enter your email address below.
       <br/>
       Don't worry - I won't send you any other email, I hate spam, too.
+      <br/>
+      Meanwhile - I'm adding some <a href="/videos">videos</a>
     new_explanation_html: |
-      I'm building a BJJ site with videos, diet & training tips, gear reviews,
+      I'm building a BJJ site with <a href="/videos">videos</a>, diet & training tips, gear reviews,
       academy information and more. If you want to be informed when it launches,
       please enter your email address below.
       <br/>
@@ -15,4 +17,4 @@ en:
     thanks:
       message_html: |
         Thanks for signing up.
-        As soon as there is something to see, I will let you know.
+        As soon as there is something more to see, I will let you know.

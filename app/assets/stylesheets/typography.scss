@@ -1,7 +1,30 @@
+@import 'colors';
+@import 'mixins';
+
 html > body {
   font-size: 18px;
   font-family: sans-serif;
 }
 h1 {
   font-size: 48px;
+}
+h2 {
+  font-size: 36px;
+}
+
+header h1 {
+  margin: 20px auto 0;
+  text-align: center;
+}
+
+a:link{
+  color: $brazil-yellow;
+}
+
+a:visited{
+  color: $brazil-blue;
+}
+
+#copyright {
+  font-size: 12px;
 }

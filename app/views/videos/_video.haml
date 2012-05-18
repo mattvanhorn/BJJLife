@@ -1,0 +1,6 @@
+%li[video]
+  %a{:href => "http://www.youtube.com/watch?v=#{video.url}&feature=b-vrec"}
+    = image_tag "http://img.youtube.com/vi/#{video.url}/2.jpg", :size => '120x90', :alt => video.name, :title => video.name
+    .video-name= video.name
+
+
