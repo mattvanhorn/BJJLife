@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'nulldb_rspec'
 
 describe Subscription do
   include NullDB::RSpec::NullifiedDatabase

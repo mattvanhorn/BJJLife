@@ -16,3 +16,6 @@
 
 # Ignore the private stuff for Heroku
 /config/heroku.yml
+
+# Ignore Redis dump files
+/dump.rdb

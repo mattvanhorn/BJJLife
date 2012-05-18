@@ -1,11 +1,22 @@
 #main
+
   %h1= t('site_name')
-  - ab_test("message", "a", "b") do |version|
-    - msg_key = (version == 'a' ? 'landing_page.explanation_html' : 'landing_page.new_explanation_html')
-    %p= t(msg_key)
+
+  = image_tag "bjj-triangle.jpg", :size => '500x350'
+
+  #message
+    - ab_test("message", "a", "b") do |version|
+      - msg_key = (version == 'a' ? 'landing_page.explanation_html' : 'landing_page.new_explanation_html')
+      %p= t(msg_key)
 
 = simple_form_for subscription do |form|
   = form.input :email, :error => false
   = form.submit :class => 'button'
   %br/
   = form.full_error :email
+
+%footer
+  #copyright
+    &copy;
+    = Time.now.year
+    = link_to "Matt Van Horn", 'http://www.mattvanhorn.com'
