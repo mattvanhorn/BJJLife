@@ -1,3 +1,5 @@
 google:
   key: <%= ENV['GA_TRACKING_ID'] %>
   domain: livingbjj.com
+mixpanel:
+  key: <%= ENV['MIXPANEL_KEY'] %>
