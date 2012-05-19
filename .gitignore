@@ -19,3 +19,6 @@
 
 # Ignore Redis dump files
 /dump.rdb
+
+# Ignore stupid Mac OS files
+.DS_Store
