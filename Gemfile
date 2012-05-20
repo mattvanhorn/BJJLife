@@ -8,6 +8,7 @@ gem 'simple_form'
 gem 'analytical'
 gem 'split', :require => 'split/dashboard'
 gem 'decent_exposure'
+gem 'draper'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,14 +24,19 @@ end
 
 group :development, :test do
   gem 'cucumber-rails', :require => false
-  gem 'database_cleaner'
+  gem 'launchy'
   gem 'pickler'
   gem 'rspec-rails'
+end
+
+group :test do
+  gem 'database_cleaner'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
-  gem 'launchy'
   gem "shoulda-matchers"
   gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb'
   gem 'fabrication'
+  gem 'vcr'
+  gem 'webmock'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

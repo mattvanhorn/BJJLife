@@ -1,0 +1,57 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://vimeo.com/api/v2/video/19850565.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 20 May 2012 15:20:37 GMT
+      Server:
+      - Apache
+      X-Ratelimit-Limit:
+      - '3600'
+      X-Ratelimit-Remaining:
+      - '3590'
+      X-Ratelimit-Reset:
+      - '1337528819'
+      Cache-Control:
+      - max-age=60
+      Expires:
+      - Sun, 20 May 2012 15:21:37 GMT
+      Last-Modified:
+      - Sun, 20 May 2012 00:00:44 GMT
+      Etag:
+      - ! '"d3d8e5868ee02822513c8117a637f820"'
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '1258'
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+    body:
+      encoding: US-ASCII
+      string: ! '[{"id":19850565,"title":"BJJ European Championships 2011","description":"A
+        few highlights from my time in Lisbon with my team Gracie Barra Birmingham
+        for the European Championships.","url":"http:\/\/vimeo.com\/19850565","upload_date":"2011-02-11
+        19:10:45","mobile_url":"http:\/\/vimeo.com\/m\/19850565","thumbnail_small":"http:\/\/b.vimeocdn.com\/ts\/126\/328\/126328224_100.jpg","thumbnail_medium":"http:\/\/b.vimeocdn.com\/ts\/126\/328\/126328224_200.jpg","thumbnail_large":"http:\/\/b.vimeocdn.com\/ts\/126\/328\/126328224_640.jpg","user_name":"Steven
+        Legere","user_url":"http:\/\/vimeo.com\/user3403917","user_portrait_small":"http:\/\/b.vimeocdn.com\/ps\/309\/087\/3090877_30.jpg","user_portrait_medium":"http:\/\/b.vimeocdn.com\/ps\/309\/087\/3090877_75.jpg","user_portrait_large":"http:\/\/b.vimeocdn.com\/ps\/309\/087\/3090877_100.jpg","user_portrait_huge":"http:\/\/b.vimeocdn.com\/ps\/309\/087\/3090877_300.jpg","stats_number_of_likes":12,"stats_number_of_plays":7604,"stats_number_of_comments":2,"duration":1174,"width":1280,"height":720,"tags":"BJJ,
+        Brazilian Jiu Jitsu, Steve Legere, Braulio Estima, Victor Estima, Estima,
+        Gracie Barra, Bruno Alves, Bradley Hill, Dave Iverson, Gracie Barra Birmingham,
+        Lloyd Irvine","embed_privacy":"anywhere"}]'
+    http_version: 
+  recorded_at: Sun, 20 May 2012 15:20:36 GMT
+recorded_with: VCR 2.1.1

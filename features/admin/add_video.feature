@@ -1,4 +1,4 @@
-@https://www.pivotaltracker.com/story/show/29868951
+@http://www.pivotaltracker.com/story/show/29868951
 Feature: Add video
   In order to improve the user experience
   As an admin
