@@ -1,0 +1,5 @@
+.admin
+  = simple_form_for [:admin, video] do |form|
+    = form.input :name
+    = form.input :url
+    = form.submit :class => 'button'

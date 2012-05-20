@@ -10,11 +10,8 @@ Feature: View signups
     | alice@example.com |
     | bob@example.com   |
     | carol@example.com |
-
+    And I perform HTTP authentication as "admin/password"
     When I am on the admin subscriptions page
     Then I should see "alice@example.com"
      And I should see "bob@example.com"
      And I should see "carol@example.com"
-
-
-

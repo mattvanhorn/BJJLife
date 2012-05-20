@@ -7,6 +7,7 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'analytical'
 gem 'split', :require => 'split/dashboard'
+gem 'decent_exposure'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,5 +1,5 @@
-class Admin::SubscriptionsController < ApplicationController
-  before_filter :authenticate
+class Admin::SubscriptionsController < Admin::BaseController
+
   private
 
   def subscriptions

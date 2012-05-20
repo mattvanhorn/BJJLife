@@ -15,19 +15,19 @@ html > body {
   }
 }
 
-form {
+#new_subscription {
   background-color: $mat-blue;
   height: 80px;
   border-top: 10px solid $brazil-yellow;
   border-bottom: 10px solid $brazil-yellow;
   padding-left: 50%;
+  .input.email {
+    float: left;
+    margin-left: -220px;
+    width: 340px;
+  }
 }
 
-.input.email {
-  float: left;
-  margin-left: -220px;
-  width: 340px;
-}
 
 input.string {
   @include border-radius(5px);
