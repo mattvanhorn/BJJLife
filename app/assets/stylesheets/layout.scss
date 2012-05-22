@@ -22,6 +22,22 @@ header {
 .grid {
   @include clearfix;
 
+  .main {
+    @include clearfix;
+    float: left;
+    width: grid-width(6);
+    margin-top: $gw-gutter;
+    margin-left: 0;
+  }
+
+  .sidebar {
+    @include clearfix;
+    float: left;
+    width: grid-width(2);
+    margin-top: $gw-gutter;
+    margin-left: $gw-gutter;
+  }
+
   h3 {
     margin-left: $gw-gutter;
   }
@@ -61,3 +77,4 @@ footer {
 }
 
 @import "subscriptions_layout";
+@import "videos_layout";

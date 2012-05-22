@@ -1,7 +1,14 @@
-%h2 Videos
+#videos.grid
+  .row
+    %h2 Videos
 
-%ul#videos
-  = render videos
+  .main
+    .row
+      %ul
+        = render videos
+
+  .sidebar
+    Tags go here later
 
 :javascript
   $(document).ready(function(){

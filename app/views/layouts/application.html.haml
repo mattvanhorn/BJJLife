@@ -27,4 +27,8 @@
             = Time.now.year
             = link_to "Matt Van Horn", 'http://www.mattvanhorn.com'
 
+          #credits
+            %small
+              = yield :photo_credits
+
     = raw analytical.body_append_javascript

@@ -1,6 +1,17 @@
 .grid.new_subscription
   .row
-    = image_tag "http://placekitten.com/940/167"
+    - ab_test("image", "a", "b") do |version|
+      - case version
+      - when 'a'
+        = image_tag "bjjmatch.png", :size => "940x167"
+        - content_for :photo_credits do
+          main photo by:
+          = link_to "Emerson Ricardo Zamprogno", 'http://www.fotopedia.com/items/ezamprogno-yzhx6zlsz6I/slideshow'
+      - when 'b'
+        = image_tag "bjjmats.png", :size => "940x167"
+        - content_for :photo_credits do
+          main photo by:
+          = link_to "Cid Costa Neto", 'http://commons.wikimedia.org/wiki/File:Campeonato_Brasileiro_Interclubes_de_Jiu-Jitsu_2009.jpg'
 
   .main
     .row
@@ -11,16 +22,10 @@
 
     .row
       = render :partial => 'upcoming'
-      = render :partial => 'about'
+      = render :partial => 'contribute'
 
   .sidebar
-    - ab_test("message", "a", "b") do |version|
-      - msg_key = (version == 'a' ? 'landing_page.explanation_html' : 'landing_page.new_explanation_html')
-      = t(msg_key)
-
-
-
-
+    = t('landing_page.explanation_html')
 
 
 

@@ -1,20 +1,6 @@
 .grid.new_subscription {
 
-  .main {
-    @include clearfix;
-    float: left;
-    width: grid-width(6);
-    margin-top: $gw-gutter;
-    margin-left: 0;
-  }
-
   .sidebar {
-    @include clearfix;
-    float: left;
-    width: grid-width(2);
-    margin-top: $gw-gutter;
-    margin-left: $gw-gutter;
-
     p {
       margin-top: 0;
       margin-bottom: 20px;
@@ -35,13 +21,14 @@
       margin-left: 125px;
 
       label {
-        margin-top: 20px;
+        margin-top: 30px;
         float: left;
       }
 
       .error {
         display: block;
-        margin: 2px 0 0 -100px;
+        clear: both;
+        padding: 2px 0 0 0;
       }
     }
 
@@ -84,7 +71,7 @@
     }
   }
 
-  #upcoming, #about {
+  #upcoming, #contribute {
     @include clearfix;
     width: grid-width(3) - 2px; /* account for borders */
     border: 1px solid #333;
@@ -96,10 +83,23 @@
       margin-left: $gw-gutter;
       padding-left: $gw-gutter;
     }
+
+    ul {
+      margin: 10px;
+    }
+
+    li {
+      margin: 5px 0;
+      padding: 10px 5px 10px 25px;
+      border: 1px solid #333;
+    }
   }
 
-  #about {
+  #contribute {
     margin-left: $gw-gutter;
+    p {
+      padding: 0 10px;
+    }
   }
 }
 @import "subscriptions";
