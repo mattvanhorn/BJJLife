@@ -1,24 +1,46 @@
 @import 'colors';
-@import 'mixins';
+
+@font-face {
+    font-family: 'ChunkFiveRegular';
+    src: font-url('Chunkfive-webfont.eot');
+    src: font-url('Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+         font-url('Chunkfive-webfont.woff') format('woff'),
+         font-url('Chunkfive-webfont.ttf') format('truetype'),
+         font-url('Chunkfive-webfont.svg#ChunkFiveRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 
 html > body {
-  font-size: 18px;
+  font-size: 16px;
   font-family: sans-serif;
 }
-h1 {
-  font-size: 48px;
+
+h1, h2, h3 {
+  font-family: ChunkFiveRegular;
+  color: $brazil-yellow;
 }
+
+header {
+  h1 {
+    font-size: 64px;
+    margin: 20px auto 0;
+    text-align: center;
+  }
+}
+
 h2 {
   font-size: 36px;
 }
 
-header h1 {
-  margin: 20px auto 0;
-  text-align: center;
+h3 {
+  font-size: 24px;
+  text-transform: uppercase;
 }
 
-a:link{
+a:link, h3 a:visited {
   color: $brazil-yellow;
+  text-decoration: none;
 }
 
 a:visited{

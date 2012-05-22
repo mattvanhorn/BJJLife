@@ -1,16 +1,26 @@
-#main
+.grid.new_subscription
+  .row
+    = image_tag "http://placekitten.com/940/167"
 
-  = image_tag "bjj-triangle.jpg", :size => '500x350'
+  .main
+    .row
+      = render :partial => 'signup_form'
 
-  #message
+    .row
+      = render :partial => 'video_previews'
+
+    .row
+      = render :partial => 'upcoming'
+      = render :partial => 'about'
+
+  .sidebar
     - ab_test("message", "a", "b") do |version|
       - msg_key = (version == 'a' ? 'landing_page.explanation_html' : 'landing_page.new_explanation_html')
-      %p= t(msg_key)
+      = t(msg_key)
 
-= simple_form_for subscription do |form|
-  = form.input :email, :error => false
-  = form.submit :class => 'button'
-  %br/
-  = form.full_error :email
+
+
+
+
 
 

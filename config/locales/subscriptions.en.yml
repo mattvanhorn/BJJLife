@@ -1,12 +1,10 @@
 en:
   landing_page:
     explanation_html: |
-      I'm currently working on building the best BJJ site ever. If you want
-      to be informed when it launches, please enter your email address below.
-      <br/>
-      Don't worry - I won't send you any other email, I hate spam, too.
-      <br/>
-      Meanwhile - I'm adding some <a href="/videos">videos</a>
+      <p>I'm currently working on building the best BJJ site ever. If you want
+      to be informed when it launches, please enter your email address
+      below.</p> <p>Don't worry - I won't send you any other email, I hate
+      spam, too.</p> <p>Meanwhile - check out the <a href="/videos">videos</a></p>
     new_explanation_html: |
       I'm building a BJJ site with <a href="/videos">videos</a>, diet & training tips, gear reviews,
       academy information and more. If you want to be informed when it launches,

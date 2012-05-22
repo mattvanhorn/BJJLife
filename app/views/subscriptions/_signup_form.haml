@@ -1,0 +1,6 @@
+#signup_form
+  = simple_form_for subscription do |form|
+    = form.input :email, :error => false
+    = form.submit :class => 'button'
+    %br/
+    = form.full_error :email

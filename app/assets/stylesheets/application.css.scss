@@ -9,5 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
 */
+$gw-column: 100px;          // Column Width
+$gw-gutter: 20px;           // Gutter Width
+
+@import "bourbon";
+@import "colors";
+@import "typography";
+@import "layout";
