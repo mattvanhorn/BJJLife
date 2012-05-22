@@ -3,8 +3,12 @@ class Admin::VideosController < ApplicationController
   expose :video
 
   def create
-    video = Video.create(params[:video])
+    video.save
     respond_with video, :location => admin_videos_url
   end
 
+  def destroy
+    video.destroy
+    respond_with video, :location => admin_videos_url
+  end
 end

@@ -34,4 +34,13 @@ describe "videos admin routing" do
         :action => "create"
       )
   end
+
+  it "routes to the destroy method" do
+    { :delete => "/admin/videos/123" }.
+      should route_to(
+        :controller => "admin/videos",
+        :action => "destroy",
+        :id => "123"
+      )
+  end
 end

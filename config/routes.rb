@@ -8,7 +8,7 @@ Bjjlife::Application.routes.draw do
 
   namespace :admin do
     resources :subscriptions, :only => [:index]
-    resources :videos, :only => [:index, :new, :create]
+    resources :videos, :only => [:index, :new, :create, :destroy]
   end
 
   resources :videos, :only => [:index]
