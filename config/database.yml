@@ -43,7 +43,7 @@ test: &test
   encoding: unicode
   database: bjjlife_test
   pool: 5
-  username: bjjlife
+  username: postgres
   password:
 
 production:
