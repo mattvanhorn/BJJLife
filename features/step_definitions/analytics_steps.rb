@@ -7,8 +7,7 @@ Then /^I should((?: not)?) see a conversion$/ do |negate|
   page.body.send(should_or_not, match(/'_trackEvent', "Event", "signup"/))
 end
 
-Then /I should see the (original|new) landing page text/ do |version|
-  key = "landing_page.#{version == 'new' ? 'new_' : ''}explanation_html"
-  as_expected = strip_tags(I18n.t(key))
-  page.should have_content(as_expected)
+Then /I should see the (original|new) image/ do |version|
+  filename = "#{version == 'new' ? 'bjjmats.png' : 'bjjmatch.png'}"
+  page.should have_selector("img[src='/assets/#{filename}']")
 end

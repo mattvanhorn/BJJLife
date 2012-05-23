@@ -6,6 +6,6 @@ Feature: A/B Testing
 
   Scenario: Default
   When I go to the landing page for option a
-  Then I should see the original landing page text
+  Then I should see the original image
   When I go to the landing page for option b
-  Then I should see the new landing page text
+  Then I should see the new image

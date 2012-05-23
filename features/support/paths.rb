@@ -15,7 +15,7 @@ module NavigationHelpers
       thanks_subscriptions_path
 
     when /the landing page for option (a|b)/
-      landing_path(:message => $1)
+      landing_path(:image => $1)
 
     else
       begin
