@@ -1,5 +1,11 @@
 language: ruby
 rvm:
   - 1.9.3
+
 before_script:
   - psql -c 'create database bjjlife_test;' -U postgres
+
+script: "rake --trace"
+
+after_script:
+  - travis deploy heroku
