@@ -13,3 +13,6 @@ script:
   - "bundle exec rspec spec/"
   - "bundle exec cucumber features/"
 
+after_script:
+  - "git checkout master"
+  - "bundle exec travis deploy production"
