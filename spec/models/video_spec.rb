@@ -5,7 +5,7 @@ require 'nulldb/rails'
 require_relative '../support/vcr_setup'
 require_relative '../../app/models/video'
 
-class Rails
+module Rails
   def self.root; File.expand_path('../../..', __FILE__); end
 end
 

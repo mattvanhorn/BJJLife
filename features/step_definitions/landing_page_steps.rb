@@ -16,10 +16,6 @@ Then /^I should see the "([^"]*)" form$/ do |form_name|
   page.should have_selector(selector_for("the #{form_name} form"))
 end
 
-Then /^I should see "([^"]+)"$/ do |expected|
-  page.should have_content(expected)
-end
-
 When /^I sign up for the list as "([^"]*)"$/ do |email|
   fill_in I18n.t('simple_form.labels.defaults.email'), :with => email
   click_on I18n.t('helpers.submit.subscription.create')
