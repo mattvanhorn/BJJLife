@@ -1,0 +1,7 @@
+:tddium:
+  :environment:
+    'SECRET_TOKEN': 'this_is_not_so_secret_because_it_is_just_for_tddium'
+    'GA_TRACKING_ID': 'UA-DEVELOPMENT-1'
+    'MIXPANEL_KEY': 'bogus'
+    'ADMIN_USERNAME': 'admin'
+    'ADMIN_PASSWORD': 'password'
