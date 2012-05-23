@@ -9,5 +9,7 @@ before_script:
   - psql -c 'create database bjjlife_test;' -U postgres
   - "bundle exec rake db:schema:load"
 
-script: "rake --trace"
+script:
+  - "bundle exec rspec spec/"
+  - "bundle exec cucumber features/"
 
