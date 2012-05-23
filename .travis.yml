@@ -2,10 +2,12 @@ language: ruby
 rvm:
   - 1.9.3
 
+env:
+  - GA_TRACKING_ID=UA-DEVELOPMENT-1 REDISTOGO_URL=redis://localhost:6379 MIXPANEL_KEY=bogus ADMIN_USERNAME=admin ADMIN_PASSWORD=password
+
 before_script:
   - psql -c 'create database bjjlife_test;' -U postgres
+  - "bundle exec rake db:schema:load"
 
 script: "rake --trace"
 
-after_script:
-  - travis deploy heroku
