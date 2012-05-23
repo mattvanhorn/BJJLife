@@ -22,3 +22,6 @@
 
 # Ignore stupid Mac OS files
 .DS_Store
+
+# Ignore TDDium files
+.tddium*

@@ -28,6 +28,7 @@ group :development, :test do
   gem 'pickler'
   gem 'rspec-rails'
   gem 'travis-cli'
+  gem 'tddium'
 end
 
 group :test do
