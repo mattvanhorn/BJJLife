@@ -27,6 +27,7 @@ group :development, :test do
   gem 'launchy'
   gem 'pickler'
   gem 'rspec-rails'
+  gem 'travis-cli'
 end
 
 group :test do
