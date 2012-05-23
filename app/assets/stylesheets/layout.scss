@@ -1,13 +1,80 @@
-html > body {
-  padding-left: 40px;
+/* --- GENERAL LAYOUT --- */
+#page {
+  margin: 0;
+  padding: 0;
 }
 
-#copyright {
-  margin-top: 10px;
-  margin-right: 10px;
-  text-align: right;
+#content {
+  @include clearfix;
+  width: grid-width(8);
+  padding: 0 $gw-gutter;
+  margin: 0 auto;
+}
+
+header {
+  h1 {
+    @include clearfix;
+    text-align: left;
+    margin: 18px 0 7px;
+  }
+}
+
+.grid {
+  @include clearfix;
+
+  .main {
+    @include clearfix;
+    float: left;
+    width: grid-width(6);
+    margin-top: $gw-gutter;
+    margin-left: 0;
+  }
+
+  .sidebar {
+    @include clearfix;
+    float: left;
+    width: grid-width(2);
+    margin-top: $gw-gutter;
+    margin-left: $gw-gutter;
+  }
+
+  h3 {
+    margin-left: $gw-gutter;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  a.see-more {
+    @include clearfix;
+    display: block;
+    margin: 5px 20px 5px 0;
+    float: right;
+  }
+}
+
+.row {
+  @include clearfix;
+  clear: both;
 }
 
 footer {
+  @include clearfix;
   clear: both;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  border-top: 1px solid #333;
+
+  #copyright {
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: right;
+  }
 }
+
+@import "subscriptions_layout";
+@import "videos_layout";

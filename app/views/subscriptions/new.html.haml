@@ -1,16 +1,31 @@
-#main
+.grid.new_subscription
+  .row
+    - ab_test("image", "a", "b") do |version|
+      - case version
+      - when 'a'
+        = image_tag "bjjmatch.png", :size => "940x167"
+        - content_for :photo_credits do
+          main photo by:
+          = link_to "Emerson Ricardo Zamprogno", 'http://www.fotopedia.com/items/ezamprogno-yzhx6zlsz6I/slideshow'
+      - when 'b'
+        = image_tag "bjjmats.png", :size => "940x167"
+        - content_for :photo_credits do
+          main photo by:
+          = link_to "Cid Costa Neto", 'http://commons.wikimedia.org/wiki/File:Campeonato_Brasileiro_Interclubes_de_Jiu-Jitsu_2009.jpg'
 
-  = image_tag "bjj-triangle.jpg", :size => '500x350'
+  .main
+    .row
+      = render :partial => 'signup_form'
 
-  #message
-    - ab_test("message", "a", "b") do |version|
-      - msg_key = (version == 'a' ? 'landing_page.explanation_html' : 'landing_page.new_explanation_html')
-      %p= t(msg_key)
+    .row
+      = render :partial => 'video_previews'
 
-= simple_form_for subscription do |form|
-  = form.input :email, :error => false
-  = form.submit :class => 'button'
-  %br/
-  = form.full_error :email
+    .row
+      = render :partial => 'upcoming'
+      = render :partial => 'contribute'
+
+  .sidebar
+    = t('landing_page.explanation_html')
+
 
 

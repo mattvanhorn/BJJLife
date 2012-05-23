@@ -1,0 +1,14 @@
+.grid.new_subscription {
+
+  #signup_form {
+
+    input.email {
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    input.button {
+      @include button(shiny, #00A859);
+    }
+  }
+}

@@ -1,0 +1,106 @@
+.grid.new_subscription {
+
+  .sidebar {
+    p {
+      margin-top: 0;
+      margin-bottom: 20px;
+      line-height: 20px;
+    }
+  }
+
+  #signup_form {
+    @include clearfix;
+    margin-bottom: $gw-gutter;
+    text-align: center;
+    height: 80px;
+    border: 10px solid $brazil-yellow;
+
+    form {
+      width: 450px;
+      margin-bottom: 20px;
+      margin-left: 125px;
+
+      label {
+        margin-top: 30px;
+        float: left;
+      }
+
+      .error {
+        display: block;
+        clear: both;
+        padding: 2px 0 0 0;
+      }
+    }
+
+    input.email {
+      @include border-radius(5px);
+      width: 280px;
+      height: 30px;
+      border-right: 2px solid #3E4095;
+      border-bottom: 2px solid #3E4095;
+      margin-top: 20px;
+      margin-left: 5px;
+      float: left;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    input.button {
+      @include button(shiny, #00A859);
+      margin: 20px 5px 0;
+      float: left;
+    }
+  }
+
+  #video-previews {
+    @include clearfix;
+    border: 1px solid #333;
+
+    li.video {
+      @include clearfix;
+      width: 204px;
+      border: 1px solid #333;
+      margin-left: $gw-gutter;
+      float: left;
+      text-align: center;
+
+      a {
+        display: block;
+        margin: 10px 10px;
+      }
+    }
+  }
+
+  #upcoming, #contribute {
+    @include clearfix;
+    width: grid-width(3) - 2px; /* account for borders */
+    border: 1px solid #333;
+    margin-top: 20px;
+    padding-bottom: $gw-gutter;
+    float: left;
+
+    h3 {
+      margin-left: $gw-gutter;
+      padding-left: $gw-gutter;
+    }
+
+    ul {
+      margin: 10px;
+    }
+
+    li {
+      margin: 5px 0;
+      padding: 10px 5px 10px 25px;
+      border: 1px solid #333;
+    }
+  }
+
+  #contribute {
+    margin-left: $gw-gutter;
+    p {
+      padding: 0 10px;
+    }
+  }
+}
+@import "subscriptions";
+@import 'prettyPhoto';

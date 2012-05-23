@@ -1,22 +1,23 @@
 class SubscriptionsController < ApplicationController
   respond_to :html
 
+  expose(:subscription)
+  expose(:videos) { Video.scoped.sample(3) }
+
+  def new
+
+  end
+
   def create
-    @subscription = Subscription.new(params[:subscription])
-    if @subscription.save
+    if subscription.save
       finished("message", :reset => false)
-      analytical.event :signup, :email => @subscription.email
-      analytical.identify @subscription.email
+      analytical.event :signup, :email => subscription.email
+      analytical.identify subscription.email
     end
-    respond_with @subscription, :location => thanks_subscriptions_url
+    respond_with subscription, :location => thanks_subscriptions_url
   end
 
   private
-
-  def subscription
-    @subscription ||= Subscription.new
-  end
-  helper_method :subscription
 
   def email
     @email ||= (subscription.valid? && subscription.email.to_s)

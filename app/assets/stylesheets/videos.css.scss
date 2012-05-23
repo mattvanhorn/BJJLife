@@ -1,0 +1,5 @@
+@import 'colors';
+
+#videos .main ul li {
+  background: tint($default-bg, 10%);
+}
