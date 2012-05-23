@@ -1,22 +1,6 @@
 #video-previews
   %h3= link_to "Videos", videos_path
   %ul
-    %li.video
-      %a{:href => '#'}
-        .thumbnail
-          = image_tag "http://placekitten.com/120/90"
-        .title
-          title here
-    %li.video
-      %a{:href => '#'}
-        .thumbnail
-          = image_tag "http://placekitten.com/120/90"
-        .title
-          title here
-    %li.video
-      %a{:href => '#'}
-        .thumbnail
-          = image_tag "http://placekitten.com/120/90"
-        .title
-          title here
+    = render :partial => :videos, :collection => videos
+
   = link_to "more videos here...", videos_path, :class => 'see-more'

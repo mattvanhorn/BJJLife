@@ -7,6 +7,14 @@ describe SubscriptionsController do
       get :new
       response.should render_template(:new)
     end
+
+    it "exposes sample videos" do
+      videos = double('videos collection')
+      Video.stub(:scoped => double(:sample => videos))
+      actual = controller.send(:videos)
+      actual.should == videos
+    end
+
   end
 
   describe "#create" do

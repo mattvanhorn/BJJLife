@@ -1,0 +1,6 @@
+%li.video
+  %a{:href => video.url, :rel => "popupVideo"}
+    .thumbnail
+      = image_tag video.thumbnail_url, :size => '120x90', :alt => video.name, :title => video.name
+    .title
+      = video.name

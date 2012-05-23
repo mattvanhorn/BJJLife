@@ -31,4 +31,13 @@
             %small
               = yield :photo_credits
 
+    :javascript
+      $(document).ready(function(){
+        $("a[rel^='popupVideo']").prettyPhoto( {
+          show_title: false,
+          theme: 'dark_square',
+          social_tools: false
+        });
+      });
+
     = raw analytical.body_append_javascript
