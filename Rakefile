@@ -4,4 +4,7 @@
 
 require File.expand_path('../config/application', __FILE__)
 
+# Uncomment the following line to get detailed rake output on Heroku deploys
+# Rake.application.options.trace = true if %w(staging production).include?(Rails.env)
+
 Bjjlife::Application.load_tasks
