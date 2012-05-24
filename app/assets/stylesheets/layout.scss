@@ -1,3 +1,5 @@
+@import 'colors';
+
 /* --- GENERAL LAYOUT --- */
 #page {
   margin: 0;
@@ -16,6 +18,10 @@ header {
     @include clearfix;
     text-align: left;
     margin: 18px 0 7px;
+
+    a:visited {
+      color: $brazil-yellow;
+    }
   }
 }
 

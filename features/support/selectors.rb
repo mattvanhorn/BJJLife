@@ -9,6 +9,8 @@ module HtmlSelectorsHelper
       "#new_subscription.simple_form"
     when /the video (\d+) element/
       "#video_#{$1}"
+    when "the header logo"
+      "header h1"
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"
