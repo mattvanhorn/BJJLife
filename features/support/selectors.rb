@@ -13,6 +13,8 @@ module HtmlSelectorsHelper
       "header h1"
     when "the academy guide link"
       I18n.t('academy_guide_link')
+    when "the add academy link"
+      I18n.t('add_academy_link')
     when /([A-Z]{2})/
       ".us_state.#{$1.downcase}"
     else

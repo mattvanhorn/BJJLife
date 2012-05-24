@@ -4,8 +4,10 @@
 
   .main
     .row
-      = academies.each do |us_state, list|
-        .us_state{:class => us_state}
+      - academies_by_state.each do |us_state, list|
+        .us_state{:class => us_state.downcase}
+          %h4= us_state.upcase
           - list.each do |academy|
             %p= academy.name
   .sidebar
+    = link_to t('add_academy_link'), new_academy_path

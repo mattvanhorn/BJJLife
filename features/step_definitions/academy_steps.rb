@@ -3,3 +3,9 @@ Then /^I should see "(.*?)" under "(.*?)"$/ do |text, page_section|
     step("I should see \"#{text}\"")
   end
 end
+
+When /^I fill out the form with:$/ do |table|
+  table.rows_hash.each do |name, val|
+    fill_in name, :with => val
+  end
+end

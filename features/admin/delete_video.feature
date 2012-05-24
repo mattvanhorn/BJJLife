@@ -15,6 +15,3 @@ Feature: delete videos
      And I accept the confirmation dialog
     Then I should be on the admin videos page
      And I should not see "Kyra Gracie"
-
-
-
