@@ -6,7 +6,7 @@ class AcademiesController < ApplicationController
 
   def create
     academy.save
-    respond_with :academy, :location => academies_url
+    respond_with academy, :location => academies_url
   end
 
 end
