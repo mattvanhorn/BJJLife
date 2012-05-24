@@ -16,9 +16,9 @@ Feature: Add my academy
     | Unit         | 3rd floor                           |
     | City         | New York                            |
     | State        | NY                                  |
-    | Postal code  | 10036                               |
+    | ZIP Code     | 10036                               |
     | Email        | tkd@4blackbelt.com                  |
-    | Phone number | (212) 957-4045                      |
+    | Phone        | (212) 957-4045                      |
     | Website      | http://bjjnewyorkcity.com/          |
    And I click on "Create Academy"
   Then I should be on the academies page

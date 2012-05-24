@@ -1,5 +1,5 @@
 class Academy < ActiveRecord::Base
-  attr_accessible :name, :street, :unit, :city, :us_state, :postal_code, :email, :phone_number, :website
+  attr_accessible :name, :instructor, :street, :unit, :city, :us_state, :postal_code, :email, :phone_number, :website
 
   validates_with LocationValidator
   validates_with ContactMethodValidator
