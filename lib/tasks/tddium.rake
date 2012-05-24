@@ -28,6 +28,6 @@ namespace :tddium do
     cmd "git push #{push_target} #{current_branch}:master --force" or fail "could not push to #{push_target}"
 
     puts "Running Heroku Migrations..."
-    cmd "heroku run rake db:migrate --app #{app_name}" or fail "failed to run migrations"
+    cmd "heroku run rake db:migrate --trace --app #{app_name}" or fail "failed to run migrations"
   end
 end
