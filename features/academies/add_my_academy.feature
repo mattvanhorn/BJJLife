@@ -11,6 +11,7 @@ Feature: Add my academy
    Then I should be on the new academy page
    When I fill out the form with:
     | Name         | Vitor Shaolin's Brazilian Jiu Jitsu |
+    | Instructor   | Vitor Shaolin                       |
     | Street       | 780 8th Ave                         |
     | Unit         | 3rd floor                           |
     | City         | New York                            |
@@ -22,16 +23,3 @@ Feature: Add my academy
    And I click on "Create Academy"
   Then I should be on the academies page
    And I should see "Vitor Shaolin's Brazilian Jiu Jitsu"
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,6 +10,11 @@ describe Academy do
     subject.name.should == "Vitor Shaolin's Brazilian Jiu Jitsu"
   end
 
+  it "can get and set an instructor" do
+    subject.instructor = "Vitor Shaolin"
+    subject.instructor.should == "Vitor Shaolin"
+  end
+
   it "can get and set a city" do
     subject.city = 'New York'
     subject.city.should == 'New York'

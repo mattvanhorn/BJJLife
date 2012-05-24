@@ -1,13 +1,11 @@
 #academies.grid
-  .row
-    %h2 Academies
+  .row.header
+    %h2
+      Academies
+      = link_to t('add_academy_link'), new_academy_path
 
   .main
     .row
-      - academies_by_state.each do |us_state, list|
-        .us_state{:class => us_state.downcase}
-          %h4= us_state.upcase
-          - list.each do |academy|
-            %p= academy.name
+      = render :partial => 'state', :collection => academies_by_state.to_a
+
   .sidebar
-    = link_to t('add_academy_link'), new_academy_path

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(:version => 20120524034821) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                      :null => false
+    t.string   "instructor"
     t.string   "street"
     t.string   "unit"
     t.string   "city"

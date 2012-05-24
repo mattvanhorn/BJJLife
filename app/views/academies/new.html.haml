@@ -1,11 +1,21 @@
-= simple_form_for academy do |form|
-  = form.input :name
-  = form.input :street
-  = form.input :unit
-  = form.input :city
-  = form.input :us_state, :label => 'State'
-  = form.input :postal_code
-  = form.input :email
-  = form.input :phone_number
-  = form.input :website
-  = form.button :submit
+#academies.grid
+  .row
+    %h2 Add an Academy
+
+  .main
+    .row
+      = simple_form_for academy do |form|
+        = form.input :name
+        = form.input :instructor
+        = form.input :street
+        = form.input :unit
+        = form.input :city
+        = form.input :us_state, :label => 'State'
+        = form.input :postal_code, :label => 'ZIP Code'
+        = form.input :email
+        = form.input :phone_number, :label => 'Phone'
+        = form.input :website
+        = form.button :submit
+
+  .sidebar
+    = link_to "Back to the Academy Guide", academies_path
