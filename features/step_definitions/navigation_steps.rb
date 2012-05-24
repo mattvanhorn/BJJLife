@@ -23,3 +23,7 @@ When /^I perform HTTP authentication as "([^\"]*)\/([^\"]*)"$/ do |name, passwor
     raise "I don't know how to log in!"
   end
 end
+
+When /^I follow (the .+ link)$/ do |link|
+  click_on(selector_for(link))
+end

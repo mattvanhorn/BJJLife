@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120520075105) do
+ActiveRecord::Schema.define(:version => 20120524034821) do
+
+  create_table "academies", :force => true do |t|
+    t.string   "name",                      :null => false
+    t.string   "street"
+    t.string   "unit"
+    t.string   "city"
+    t.string   "us_state",     :limit => 2
+    t.string   "postal_code"
+    t.string   "website"
+    t.string   "email"
+    t.string   "phone_number"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
 
   create_table "subscriptions", :force => true do |t|
     t.string   "email"

@@ -1,0 +1,11 @@
+#academies.grid
+  .row
+    %h2 Academies
+
+  .main
+    .row
+      = academies.each do |us_state, list|
+        .us_state{:class => us_state}
+          - list.each do |academy|
+            %p= academy.name
+  .sidebar

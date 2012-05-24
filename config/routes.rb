@@ -12,6 +12,7 @@ Bjjlife::Application.routes.draw do
   end
 
   resources :videos, :only => [:index]
+  resources :academies, :only => [:index]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
