@@ -2,4 +2,7 @@
 
 #videos .main ul li {
   background: tint($default-bg, 10%);
+  a:link {
+    text-decoration: none;
+  }
 }

@@ -1,5 +1,6 @@
 - us_state, academies = state.first, state.last
-.us_state{:class => us_state.downcase}
-  %h4= us_state.upcase
+.us_state{ :class => us_state.downcase }
+  %a{ :name => us_state }
+  %h4= full_us_state_name(us_state).upcase
   %ul.academies
     = render academies

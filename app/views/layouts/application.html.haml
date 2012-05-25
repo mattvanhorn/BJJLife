@@ -18,7 +18,10 @@
       #content
         %header
           %h1= link_to t('site_name'), root_path
-
+          %ul.navigation
+            %li= link_to "Home", root_path
+            %li= link_to "Videos", videos_path
+            %li= link_to "Academies", academies_path
         = yield
 
         %footer
@@ -40,4 +43,7 @@
         });
       });
 
+      $('li.video a').click(function(){
+        Analytical.event('Clicked Video', {page: 'home', id: $(this).parent().attr('id'), url: this.href});
+      });
     = raw analytical.body_append_javascript

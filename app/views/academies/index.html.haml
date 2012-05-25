@@ -9,3 +9,7 @@
       = render :partial => 'state', :collection => academies_by_state.to_a
 
   .sidebar
+    Jump to state:
+    %ul
+      - academies_by_state.keys.each do |state|
+        %li= link_to full_us_state_name(state), "##{state}"

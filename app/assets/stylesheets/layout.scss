@@ -16,11 +16,24 @@
 header {
   h1 {
     @include clearfix;
+    float: left;
     text-align: left;
     margin: 18px 0 7px;
 
     a:visited {
       color: $brazil-yellow;
+    }
+  }
+  ul {
+    float: right;
+    list-style-type: none;
+    li {
+      display: block;
+      float: left;
+      margin-left: $gw-gutter;
+    }
+    a {
+      @include button(pill, $brazil-yellow);
     }
   }
 }
@@ -59,6 +72,7 @@ header {
     display: block;
     margin: 5px 20px 5px 0;
     float: right;
+    text-decoration: underline;
   }
 }
 

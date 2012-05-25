@@ -19,6 +19,9 @@ html > body {
 h1, h2, h3, h4 {
   font-family: ChunkFiveRegular;
   color: $brazil-yellow;
+  a:link {
+    text-decoration: none;
+  }
 }
 
 header {
@@ -40,7 +43,12 @@ h3 {
 
 a:link, h3 a:visited {
   color: $brazil-yellow;
+}
+h3 a {
   text-decoration: none;
+}
+a:link {
+  text-decoration: underline;
 }
 
 a:visited{
