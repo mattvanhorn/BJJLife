@@ -10,7 +10,7 @@ en:
   academy_guide_link: 'Academy Guide'
   add_academy_link: 'Add my academy'
 
-  activemodel:
+  activerecord:
     errors:
       messages:
         no_location: 'You must provide both city and state, or a postal code'

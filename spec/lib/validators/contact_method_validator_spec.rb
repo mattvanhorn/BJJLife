@@ -4,6 +4,9 @@ module ContactMethodValidatorSpec
   class Validatable
     include ActiveModel::Validations
     validates_with ContactMethodValidator
+    def self.i18n_scope
+      :activerecord
+    end
   end
 end
 

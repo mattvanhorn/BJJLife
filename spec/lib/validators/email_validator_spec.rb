@@ -4,6 +4,9 @@ module EmailValidatorSpec
   class Validatable
     include ActiveModel::Validations
     validates :email, :email => true
+    def self.i18n_scope
+      :activerecord
+    end
   end
 end
 

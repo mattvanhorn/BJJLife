@@ -4,6 +4,9 @@ module LocationValidatorSpec
   class Validatable
     include ActiveModel::Validations
     validates_with LocationValidator
+    def self.i18n_scope
+      :activerecord
+    end
   end
 end
 
