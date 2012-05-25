@@ -22,6 +22,11 @@ describe "A record validated with ContactMethodValidator" do
     subject.errors[:base].first.should == "You must provide at least one contact method (phone, email, or website)"
   end
 
+  it "is not valid with empty strings" do
+    subject.stub(:website => ' ', :phone_number => '', :email => '')
+    subject.should have(1).error_on(:base)
+  end
+
   it "is valid with just a website" do
     subject.stub(:website => 'http://www.example.com')
     subject.should be_valid

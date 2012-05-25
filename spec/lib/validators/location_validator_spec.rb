@@ -22,6 +22,11 @@ describe "A record validated with LocationValidator" do
     subject.errors[:base].first.should == "You must provide both city and state, or a postal code"
   end
 
+  it "is not valid with empty strings" do
+    subject.stub(:city => '', :us_state => ' ', :postal_code => '')
+    subject.should have(1).error_on(:base)
+  end
+
   it "is valid with just a postal code" do
     subject.stub(:postal_code => '12345')
     subject.should be_valid
