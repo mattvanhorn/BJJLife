@@ -10,4 +10,21 @@ class Academy < ActiveRecord::Base
   validates :us_state, :length => {:is => 2},
                        :allow_blank => true
 
+  state_machine :initial => :pending do
+    state :pending
+    state :published
+
+    event :publish do
+      transition :pending => :published
+    end
+  end
+
+  def self.published
+    with_state('published')
+  end
+
+  def self.pending
+    with_state('pending')
+  end
+
 end

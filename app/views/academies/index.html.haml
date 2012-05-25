@@ -6,6 +6,8 @@
 
   .main
     .row
+      - if flash[:notice]
+        .notice= flash[:notice]
       = render :partial => 'state', :collection => academies_by_state.to_a
 
   .sidebar

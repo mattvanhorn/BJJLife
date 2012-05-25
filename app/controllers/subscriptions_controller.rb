@@ -1,5 +1,4 @@
 class SubscriptionsController < ApplicationController
-  respond_to :html
 
   expose(:subscription)
   expose(:videos) { Video.scoped.sample(3) }

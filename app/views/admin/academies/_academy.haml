@@ -1,0 +1,6 @@
+- academy = AcademyDecorator.decorate(academy)
+%li
+  .name= academy.name
+  .address= academy.address.join('<br/>').html_safe
+  .contact= academy.contact.join('<br/>').html_safe
+  = link_to t('.publish'), publish_admin_academy_path(academy), :method => :put

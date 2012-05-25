@@ -1,4 +1,4 @@
-@http://www.pivotaltracker.com/story/show/30111079
+@http://www.pivotaltracker.com/story/show/30111079 @academies
 Feature: Academy List
   In order to find a BJJ academy
   As a prospective student

@@ -58,6 +58,7 @@ describe Academy do
   it { should validate_presence_of(:name) }
 
   it{ should ensure_length_of(:email).is_at_least(3).is_at_most(254) }
+
   it "validates the format of email" do
     subject.class.validators_on(:email).select{|v|v.is_a? (EmailValidator)}.should_not be_empty
   end
@@ -66,7 +67,29 @@ describe Academy do
 
   it { should validate_with ContactMethodValidator }
 
-  it{ should ensure_length_of(:us_state).is_equal_to(2) }
+  it { should ensure_length_of(:us_state).is_equal_to(2) }
+
+  it { should_not be_published }
+
+  it { should be_pending }
+
+  describe "being published" do
+    before(:each) do
+      subject.name = "Vitor Shaolin's Brazilian Jiu Jitsu"
+      subject.email = 'tkd@4blackbelt.com'
+      subject.postal_code = '10036'
+    end
+
+    it "is still pending after being saved" do
+      subject.save!
+      subject.should be_pending
+    end
+
+    it "can be published" do
+      subject.publish!
+      subject.should be_published
+    end
+  end
 
 end
 

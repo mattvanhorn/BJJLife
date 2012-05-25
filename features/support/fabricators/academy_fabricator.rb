@@ -1,1 +1,3 @@
-Fabricator(:academy)
+Fabricator(:academy) do
+  state { 'published' }
+end

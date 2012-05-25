@@ -22,4 +22,7 @@ Feature: Add my academy
     | Website      | http://bjjnewyorkcity.com/          |
    And I click on "Create Academy"
   Then I should be on the academies page
-   And I should see "Vitor Shaolin's Brazilian Jiu Jitsu"
+   And I should see "Your entry is awaiting moderation"
+  When the academy listing is published
+   And I go to the academies page
+  Then I should see "Vitor Shaolin's Brazilian Jiu Jitsu"

@@ -10,6 +10,8 @@ gem 'split', :require => 'split/dashboard'
 gem 'decent_exposure'
 gem 'draper'
 gem 'bourbon'
+gem 'state_machine'
+gem 'responders'
 
 # Gems used only for assets and not required
 # in production environments by default.

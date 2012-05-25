@@ -15,3 +15,19 @@ en:
       messages:
         no_location: 'You must provide both city and state, or a postal code'
         no_contact_method: 'You must provide at least one contact method (phone, email, or website)'
+
+  flash:
+    admin:
+      academies:
+        publish:
+          notice: "Published!"
+
+    academies:
+      create:
+        notice: Your entry is awaiting moderation. Please check back in a little while.
+        alert: There were some errors in that entry
+
+  admin:
+    academies:
+      index:
+        publish: Publish!

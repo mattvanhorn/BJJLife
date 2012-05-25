@@ -17,6 +17,8 @@ module HtmlSelectorsHelper
       I18n.t('add_academy_link')
     when /([A-Z]{2})/
       ".us_state.#{$1.downcase}"
+    when "academy listing"
+      "ul.academies li"
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"

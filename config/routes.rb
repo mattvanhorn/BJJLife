@@ -9,6 +9,11 @@ Bjjlife::Application.routes.draw do
   namespace :admin do
     resources :subscriptions, :only => [:index]
     resources :videos, :only => [:index, :new, :create, :destroy]
+    resources :academies, :only => [:index] do
+      member do
+        put 'publish'
+      end
+    end
   end
 
   resources :videos, :only => [:index]

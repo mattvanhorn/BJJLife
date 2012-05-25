@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120524034821) do
+ActiveRecord::Schema.define(:version => 20120525201028) do
 
   create_table "academies", :force => true do |t|
-    t.string   "name",                      :null => false
+    t.string   "name",                                             :null => false
     t.string   "instructor"
     t.string   "street"
     t.string   "unit"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(:version => 20120524034821) do
     t.string   "website"
     t.string   "email"
     t.string   "phone_number"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+    t.string   "state",                     :default => "pending"
   end
 
   create_table "subscriptions", :force => true do |t|
