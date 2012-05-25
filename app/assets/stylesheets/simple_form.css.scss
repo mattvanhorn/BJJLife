@@ -26,15 +26,17 @@ label.collection_radio_buttons {
   margin-left: 2px;
 }
 
-.field_with_errors {
+.field_with_errors,
+.errors_on_base {
   background-color: #ff3333;
 }
-
+.errors_on_base {
+  margin-bottom: 5px;
+  padding: 5px 20px;
+}
 .simple_form .error {
-  clear: left;
-  color: black;
-  display: block;
-  margin-left: 120px;
+  display: inline;
+  margin-left: 10px;
   font-size: 12px;
 }
 
@@ -62,4 +64,8 @@ label.collection_check_boxes {
   margin: 0;
   vertical-align: -2px;
   margin-left: 2px;
+}
+
+input.btn {
+  @include button(shiny, #00A859);
 }

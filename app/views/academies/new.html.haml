@@ -4,6 +4,9 @@
 
   .main
     .row
+      - academy.errors[:base].each do |msg|
+        .errors_on_base= msg
+
       = simple_form_for academy do |form|
         = form.input :name
         = form.input :instructor
