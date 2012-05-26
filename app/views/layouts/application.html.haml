@@ -34,6 +34,10 @@
             %small
               = yield :photo_credits
 
+          #colophon
+            = link_to image_tag("http://mixpanel.com/site_media/images/partner/badge_blue.png", :alt => "Real Time Web Analytics"), "http://mixpanel.com/f/partner"
+
+
     :javascript
       $(document).ready(function(){
         $("a[rel^='popupVideo']").prettyPhoto( {
