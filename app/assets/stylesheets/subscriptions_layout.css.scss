@@ -76,7 +76,7 @@
     }
   }
 
-  #upcoming, #contribute {
+  #upcoming, #new-stuff {
     @include clearfix;
     width: grid-width(3) - 2px; /* account for borders */
     border: 1px solid #333;
@@ -86,7 +86,6 @@
 
     h3 {
       margin-left: $gw-gutter;
-      padding-left: $gw-gutter;
     }
 
     ul {
@@ -100,8 +99,21 @@
     }
   }
 
-  #contribute {
+  #upcoming {
     margin-left: $gw-gutter;
+  }
+
+  #contribute {
+    @include clearfix;
+    width: grid-width(6) - 2px; /* account for borders */
+    border: 1px solid #333;
+    margin-top: 20px;
+    padding-bottom: $gw-gutter;
+    float: left;
+
+    h3 {
+      margin-left: $gw-gutter;
+    }
     p {
       padding: 0 10px;
     }

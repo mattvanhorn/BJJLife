@@ -7,7 +7,7 @@ en:
     submit:
       subscription:
         create: "Sign Up"
-  academy_guide_link: 'Academy Guide'
+
   add_academy_link: 'Add my academy'
 
   activerecord:
@@ -26,6 +26,15 @@ en:
       create:
         notice: Your entry is awaiting moderation. Please check back in a little while.
         alert: There were some errors in that entry
+
+  subscriptions:
+    new:
+      header:
+        new_stuff: Just Released
+        upcoming: Upcoming
+    new_stuff:
+      academy_guide_link: 'Academy Guide'
+      training_link: Training Info
 
   admin:
     academies:
