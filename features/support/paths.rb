@@ -18,7 +18,7 @@ module NavigationHelpers
       landing_path(:image => $1)
 
     when /the training tips page/
-      blog_path(Blog.find_by_title("Training Tips"))
+      Blog.any? ? blog_path(Blog.last) : "/blogs/1"
     else
       begin
         page_name =~ /the (.*) page/

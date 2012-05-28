@@ -17,7 +17,7 @@ en:
         url: URL
         description: Description
     hints:
-      defaults:
+      post:
         title: Keep it short and descriptive
         url: Web address of the site you're posting about
         description: |

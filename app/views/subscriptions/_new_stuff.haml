@@ -2,4 +2,5 @@
   %h3= t '.header.new_stuff'
   %ul
     %li= link_to t('.academy_guide_link'), academies_path
-    %li= link_to t('.training_link'), blog_path(Blog.first)
+    - if Blog.any?
+      %li= link_to t('.training_link'), blog_path(Blog.last)

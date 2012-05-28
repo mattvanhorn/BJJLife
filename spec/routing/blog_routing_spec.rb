@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe "blog routing" do
-  it "routes the main list page" do
-    { :get => "/blog" }.
+  it "routes a blog posts page" do
+    { :get => "/blogs/42" }.
       should route_to(
-        :controller => "blog",
-        :action => "index"
+        :controller => "blogs",
+        :action => "show",
+        :id => '42'
       )
   end
 end

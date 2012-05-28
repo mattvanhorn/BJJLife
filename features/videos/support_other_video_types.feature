@@ -8,7 +8,7 @@ Feature: support other video types
   Scenario: Vimeo videos
     Given I am on the new admin video page
     When I fill in "Name" with "BJJ European Championships 2011"
-    And I fill in "Url" with "http://vimeo.com/19850565"
+    And I fill in "URL" with "http://vimeo.com/19850565"
     And I click on "Create Video"
    Then I should be on the admin videos page
     And I should see "BJJ European Championships 2011"
@@ -16,7 +16,7 @@ Feature: support other video types
   Scenario: Youtube videos
     Given I am on the new admin video page
     When I fill in "Name" with "Mitsuyo Maeda: The Origin of BJJ"
-    And I fill in "Url" with "http://www.youtube.com/watch?v=m0fH_8kv7ac"
+    And I fill in "URL" with "http://www.youtube.com/watch?v=m0fH_8kv7ac"
     And I click on "Create Video"
    Then I should be on the admin videos page
     And I should see "Mitsuyo Maeda: The Origin of BJJ"
