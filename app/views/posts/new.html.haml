@@ -1,0 +1,15 @@
+#articles.grid
+  .row
+    %h3= blog.title
+
+  .main
+    .row
+      = simple_form_for post do |form|
+        = form.input :title
+        = form.input :url
+        = form.input :description
+        = form.button :submit
+
+  .sidebar
+    = t('.guidelines_html')
+

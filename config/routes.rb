@@ -18,6 +18,8 @@ Bjjlife::Application.routes.draw do
 
   resources :videos, :only => [:index]
   resources :academies, :only => [:index, :new, :create]
+  resources :blogs, :only => [:show]
+  resources :posts, :only => [:new, :create]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

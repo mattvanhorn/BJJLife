@@ -22,6 +22,7 @@
             %li= link_to "Home", root_path
             %li= link_to "Videos", videos_path
             %li= link_to "Academies", academies_path
+            %li= link_to "Training", blog_path(Blog.first)
         = yield
 
         %footer

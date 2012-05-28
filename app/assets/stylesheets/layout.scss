@@ -34,6 +34,9 @@ header {
     }
     a {
       @include button(pill, $brazil-yellow);
+      &:link{
+        color: $default-bg;
+      }
     }
   }
 }
@@ -74,6 +77,10 @@ header {
     float: right;
     text-decoration: underline;
   }
+
+  a.btn {
+    @include button(shiny, #00A859);
+  }
 }
 
 .row {
@@ -105,3 +112,4 @@ footer {
 @import "subscriptions_layout";
 @import "videos_layout";
 @import "academies_layout";
+@import "blog_layout";

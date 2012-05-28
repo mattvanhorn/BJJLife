@@ -1,0 +1,9 @@
+#articles.grid
+  .row
+    %h3= blog.title
+
+  .main
+    .row
+      = render partial: "entry", collection: blog.entries
+  .sidebar
+    = link_to t('.new_post'), new_post_path, :class => 'btn'

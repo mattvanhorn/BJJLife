@@ -210,3 +210,4 @@ end
 #   academy.instructor   = ""
 # end
 
+Blog.find_or_create_by_title('Training')

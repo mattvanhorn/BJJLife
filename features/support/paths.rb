@@ -17,6 +17,8 @@ module NavigationHelpers
     when /the landing page for option (a|b)/
       landing_path(:image => $1)
 
+    when /the training tips page/
+      blog_path(Blog.find_by_title("Training Tips"))
     else
       begin
         page_name =~ /the (.*) page/

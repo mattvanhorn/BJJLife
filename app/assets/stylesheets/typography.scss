@@ -24,6 +24,15 @@ h1, h2, h3, h4 {
   }
 }
 
+article header h3 {
+  font-family: Helvetica;
+  font-size: 20px;
+  text-transform: none;
+  a:link {
+    text-decoration: underline;
+  };
+}
+
 header {
   h1 {
     font-size: 64px;

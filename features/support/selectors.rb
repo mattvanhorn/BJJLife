@@ -19,6 +19,8 @@ module HtmlSelectorsHelper
       ".us_state.#{$1.downcase}"
     when "academy listing"
       "ul.academies li"
+    when /a blog entry/
+      "article header h3"
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"

@@ -13,6 +13,17 @@ en:
     labels:
       defaults:
         email: Email
+        title: Title
+        url: URL
+        description: Description
+    hints:
+      defaults:
+        title: Keep it short and descriptive
+        url: Web address of the site you're posting about
+        description: |
+          The body of your post. Feel free to add links within your
+          description, keep it one paragraph long if possible, line breaks
+          will be stripped
 
     # Labels and hints examples
     # labels:
