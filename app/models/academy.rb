@@ -4,11 +4,11 @@ class Academy < ActiveRecord::Base
   validates_with LocationValidator
   validates_with ContactMethodValidator
   validates_presence_of :name
-  validates :email, :length => (3..254),
-                    :email => true,
-                    :allow_blank => true
-  validates :us_state, :length => {:is => 2},
-                       :allow_blank => true
+  validates :email, :length => (3..254), :email => true, :allow_blank => true
+  validates :us_state, :length => {:is => 2}, :allow_blank => true
+
+  scope :pending,   where(:state => 'pending')
+  scope :published, where(:state => 'published')
 
   state_machine :initial => :pending do
     state :pending
@@ -17,14 +17,6 @@ class Academy < ActiveRecord::Base
     event :publish do
       transition :pending => :published
     end
-  end
-
-  def self.published
-    with_state('published')
-  end
-
-  def self.pending
-    with_state('pending')
   end
 
 end

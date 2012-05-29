@@ -26,4 +26,11 @@ describe Blog do
 
   end
 
+  describe "#add_entry" do
+    it "adds to the entries collection" do
+      entry = double('entry')
+      subject.entries.should_receive(:<<).with(entry)
+      subject.add_entry(entry)
+    end
+  end
 end

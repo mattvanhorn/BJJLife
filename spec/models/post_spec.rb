@@ -12,7 +12,7 @@ describe Post do
 
     it "adds the post to the blog" do
       blog.should_receive(:add_entry).and_return [subject]
-      subject.publish
+      subject.publish!
     end
   end
 end

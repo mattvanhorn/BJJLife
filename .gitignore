@@ -25,3 +25,7 @@
 
 # Ignore TDDium files
 .tddium*
+
+# Igrnore coverage reports from cover_me
+coverage.data
+/coverage

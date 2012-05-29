@@ -2,9 +2,9 @@ class AcademyDecorator < Draper::Base
   decorates :academy
 
   def address
-    line1 = [academy.street, academy.unit].join(', ').strip
-    line2 = [[academy.city, academy.us_state].join(', '), academy.postal_code].join(' ').strip
-    address = [line1, line2].reject{ |l| l.blank? }
+    line1 = [academy.street, academy.unit].collect(&:presence).compact.join(', ').strip
+    line2 = [[academy.city, academy.us_state].collect(&:presence).compact.join(', '), academy.postal_code].collect(&:presence).compact.join(' ').strip
+    address = [line1, line2].collect(&:presence).compact
   end
 
   def contact

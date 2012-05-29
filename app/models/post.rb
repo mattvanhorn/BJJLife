@@ -4,11 +4,8 @@ class Post < ActiveRecord::Base
 
   belongs_to :blog
 
-  def publish
+  def publish!
     blog.add_entry(self)
   end
 
-  def persisted?
-    false
-  end
 end

@@ -1,9 +1,4 @@
 class Admin::SubscriptionsController < Admin::BaseController
+  expose(:subscriptions){ Subscription.all }
 
-  private
-
-  def subscriptions
-    Subscription.all
-  end
-  helper_method :subscriptions
 end

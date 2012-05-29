@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   expose(:post){ blog.new_post(params[:post]) }
 
   def create
-    post.publish
+    post.publish!
     respond_with post, :location => blog_path(post.blog), notice: "Post added!"
   end
 

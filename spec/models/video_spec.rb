@@ -1,13 +1,4 @@
-require 'active_record'
-require 'nulldb_rspec'
-require 'nulldb/rails'
-
-require_relative '../support/vcr_setup'
-require_relative '../../app/models/video'
-
-module Rails
-  def self.root; File.expand_path('../../..', __FILE__); end
-end
+require 'spec_helper'
 
 describe Video do
   include NullDB::RSpec::NullifiedDatabase
