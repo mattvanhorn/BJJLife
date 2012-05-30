@@ -2,32 +2,32 @@ require 'spec_helper'
 
 describe AcademiesController do
 
+
   it "should not reek" do
     File.open(__FILE__).should_not reek
   end
 
+  describe "exposures" do
+    before(:each) do
+      Academy.stub(:by_state => [{'NY' => mock_model(Academy)}], :new => mock_model(Academy))
+    end
+    it { should expose(:academies_by_state).as(Academy.by_state) }
+    it { should expose(:academy).as(Academy.new) }
+  end
+
   describe "#index" do
-    it "exposes all published academies by state" do
-      academies = double('academies list').as_null_object
-      Academy.stub(:published => academies)
-      actual = controller.send(:academies_by_state)
-      actual.should == academies
+    it "renders the correct template" do
+      get :index
+      response.should render_template(:index)
     end
   end
+
 
   describe "#new" do
     it "renders the correct template" do
       get :new
       response.should render_template(:new)
     end
-
-    it "exposes a new academy" do
-      academy = mock_model(Academy)
-      Academy.stub(:new => academy)
-      actual = controller.send(:academy)
-      actual.should == academy
-    end
-
   end
 
   describe "#create" do

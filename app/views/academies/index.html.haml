@@ -8,10 +8,10 @@
     .row
       - if flash[:notice]
         .notice= flash[:notice]
-      = render :partial => 'state', :collection => academies_by_state.to_a
+      = render academies_by_state
 
   .sidebar
     Jump to state:
     %ul
-      - academies_by_state.keys.each do |state|
+      - academies_by_state.map(&:first).each do |state|
         %li= link_to full_us_state_name(state), "##{state}"

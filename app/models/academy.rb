@@ -9,6 +9,7 @@ class Academy < ActiveRecord::Base
 
   scope :pending,   where(:state => 'pending')
   scope :published, where(:state => 'published')
+  scope :ordered_by_state, published.order('us_state, name')
 
   state_machine :initial => :pending do
     state :pending
@@ -19,4 +20,9 @@ class Academy < ActiveRecord::Base
     end
   end
 
+  def self.by_state
+    Academy.ordered_by_state.group_by(&:us_state).to_a.each do |state_group|
+      state_group.define_singleton_method :to_partial_path, lambda{'state'}
+    end
+  end
 end
