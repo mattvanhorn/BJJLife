@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527193604) do
+ActiveRecord::Schema.define(:version => 20120530153628) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(:version => 20120527193604) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "posts", ["blog_id"], :name => "index_posts_on_blog_id"
 
   create_table "subscriptions", :force => true do |t|
     t.string   "email"
