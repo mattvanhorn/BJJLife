@@ -2,7 +2,7 @@ class Blog < ActiveRecord::Base
   attr_accessible :title
   attr_writer :post_source
 
-  has_many :entries, :class_name => 'Post'
+  has_many :entries, :class_name => 'Post', :order => 'created_at DESC'
 
   def new_post(*args)
     post_source.call(*args).tap do |post|

@@ -43,3 +43,7 @@ end
 Then /^I should see a blog entry titled "(.*?)" and linked to "(.*?)"$/ do |title, url|
   page.should have_selector("#{selector_for("a blog entry")} a[href='#{url}']", :text => title)
 end
+
+Then /"(.*)" should appear before "(.*)"/ do |first_example, second_example|
+   page.body.should =~ /#{first_example}.*#{second_example}/m
+ end
