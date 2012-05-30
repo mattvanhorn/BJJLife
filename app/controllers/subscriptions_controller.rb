@@ -8,7 +8,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     if subscription.save
-      finished("message", :reset => false)
+      finished("image", :reset => false)
       analytical.event :signup, :email => subscription.email
       analytical.identify subscription.email
     end
