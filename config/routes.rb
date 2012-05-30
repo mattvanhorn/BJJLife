@@ -7,6 +7,7 @@ Bjjlife::Application.routes.draw do
   mount Split::Dashboard, :at => 'split'
 
   namespace :admin do
+    match '/' => 'home#index'
     resources :subscriptions, :only => [:index]
     resources :videos, :only => [:index, :new, :create, :destroy]
     resources :academies, :only => [:index] do
