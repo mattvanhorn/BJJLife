@@ -32,18 +32,19 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'travis-cli'
   gem 'tddium'
+  gem 'reek'
+  gem 'flog'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem "shoulda-matchers"
-  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb'
+  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb.git'
   gem 'fabrication'
   gem 'vcr'
   gem 'webmock'
   gem 'cover_me', :require => false
-  gem 'reek'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
