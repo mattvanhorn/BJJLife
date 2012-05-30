@@ -3,6 +3,10 @@ require 'spec_helper'
 describe Admin::VideosController do
   include NullDB::RSpec::NullifiedDatabase
 
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
+
   it "exposes a video" do
     actual = controller.send(:video)
     actual.should be_a(Video)

@@ -5,6 +5,10 @@ describe Academy do
 
   subject { Academy.new }
 
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
+
   it "can get and set a name" do
     subject.name = "Vitor Shaolin's Brazilian Jiu Jitsu"
     subject.name.should == "Vitor Shaolin's Brazilian Jiu Jitsu"

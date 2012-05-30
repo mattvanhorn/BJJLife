@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def create
     post.publish!
-    respond_with post, :location => blog_path(post.blog), notice: "Post added!"
+    respond_with post, :location => blog_path(post.blog), :notice => "Post added!"
   end
 
 end

@@ -7,6 +7,10 @@ describe Video do
 
   subject{ video }
 
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
+
   it "sets the thumbnail url when saving a youtube video url" do
     subject.url = "http://www.youtube.com/watch?v=m0fH_8kv7ac"
     subject.save

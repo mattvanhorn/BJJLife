@@ -3,7 +3,11 @@ require 'spec_helper'
 describe Blog do
 
   let(:new_post) { OpenStruct.new }
-  subject { Blog.new.tap{|b|b.post_source = ->{ new_post }} }
+  subject { Blog.new.tap{|b|b.post_source = lambda{ new_post }} }
+
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
 
   it { should have(0).entries }
 
@@ -19,9 +23,9 @@ describe Blog do
 
     it "accepts an attribute hash on behalf of the post maker" do
       post_source = mock('src')
-      post_source.should_receive(:call).with(x: 42, y: 'z').and_return(new_post)
+      post_source.should_receive(:call).with(:x => 42, :y => 'z').and_return(new_post)
       subject.post_source = post_source
-      subject.new_post(x: 42, y: 'z')
+      subject.new_post(:x => 42, :y => 'z')
     end
 
   end

@@ -3,6 +3,11 @@ require 'spec_helper'
 describe AcademyDecorator do
 
   subject { AcademyDecorator.decorate(model) }
+
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
+
   describe "providing an address" do
     let(:model){ mock_model(Academy, :street => 'aaa', :unit => 'bbb', :city => 'ccc', :us_state => 'DD', :postal_code => '12345') }
 

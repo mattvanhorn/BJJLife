@@ -5,8 +5,8 @@ class Blog < ActiveRecord::Base
   has_many :entries, :class_name => 'Post'
 
   def new_post(*args)
-    post_source.call(*args).tap do |p|
-      p.blog = self
+    post_source.call(*args).tap do |post|
+      post.blog = self
     end
   end
 

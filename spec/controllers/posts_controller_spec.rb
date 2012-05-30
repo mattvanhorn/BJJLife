@@ -11,6 +11,10 @@ describe PostsController do
     the_post.stub(:blog => blog)
   end
 
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
+
   it { should expose(:blog).as(Blog.first) }
   it { should expose(:post).as(blog.new_post) }
 

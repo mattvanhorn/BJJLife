@@ -42,7 +42,8 @@ group :test do
   gem 'fabrication'
   gem 'vcr'
   gem 'webmock'
-  gem "cover_me", :require => false
+  gem 'cover_me', :require => false
+  gem 'reek'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

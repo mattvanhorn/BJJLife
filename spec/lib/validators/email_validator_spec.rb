@@ -13,6 +13,10 @@ end
 describe "A record validated with EmailValidator" do
   subject { EmailValidatorSpec::Validatable.new }
 
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
+
   valid_emails = [
     %("Abc\@def"@example.com),
     %("Fred Bloggs"@example.com),

@@ -8,6 +8,10 @@ describe Admin::AcademiesController do
     Academy.stub(:new => mock_model(Academy), :pending => [])
   end
 
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
+
   it { should expose(:academies).as(Academy.pending) }
   it { should expose(:academy).as(Academy.new) }
 

@@ -1,6 +1,6 @@
 class AcademiesController < ApplicationController
 
-  expose(:academies_by_state) { Academy.published.order('us_state, name').group_by{|a|a.us_state} }
+  expose(:academies_by_state) { Academy.published.order('us_state, name').group_by(&:us_state) }
   expose(:academy)
 
   def create
