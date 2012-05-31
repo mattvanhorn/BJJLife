@@ -10,12 +10,47 @@ class ApplicationController < ActionController::Base
 
   before_filter :init_blog
 
+  helper_method :current_user, :user_signed_in?
+
   protected
+
+  def current_user
+    @current_user ||= User.find_by_id(session[:user_id] || cookies.signed['remember_me'])
+    UserDecorator.decorate(@current_user)
+  end
+
+  def sign_in(user)
+    @current_user = user
+    session[:user_id] = user.id
+    cookies.permanent.signed[:remember_me] = user.id
+    flash[:notice] = "Signed in successfully."
+  end
+
+  def sign_out
+    cookies.delete :remember_me
+    session[:user_id] =  @current_user = nil
+    flash[:notice] = "Signed out!"
+  end
 
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
       username == ENV['ADMIN_USERNAME'] && password == ENV['ADMIN_PASSWORD']
     end
+  end
+
+  def authenticate_user!
+    unless user_signed_in?
+      store_location
+      redirect_to sign_in_url, :alert => 'You need to sign in for access to this page.'
+    end
+  end
+
+  def user_signed_in?
+    !!(current_user.model)
+  end
+
+  def store_location(url = nil)
+    session[:return_to] = url || request.url
   end
 
   private

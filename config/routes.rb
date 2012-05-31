@@ -22,6 +22,13 @@ Bjjlife::Application.routes.draw do
   resources :blogs, :only => [:show]
   resources :posts, :only => [:new, :create]
 
+  match "/sign_up", :to => "accounts#new", :as => :sign_up
+  match '/auth/:provider/callback', :to => 'sessions#create'
+
+  resource :account, :only => [:edit, :update, :show]
+
+  match '/sign_in',  to: 'sessions#new',      :as => :sign_in
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -12,6 +12,8 @@ gem 'draper'
 gem 'bourbon'
 gem 'state_machine'
 gem 'responders'
+gem 'omniauth-identity'
+gem 'bcrypt-ruby'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,0 +1,14 @@
+#videos.grid
+  .row
+    %h2 Register
+
+  .main
+    .row
+      = simple_form_for identity, :url => '/auth/identity/register' do |form|
+        = form.input :email, :input_html => {:name => 'email'}
+        = form.input :password,              :label => "Password", :as => 'password', :input_html => {:name => 'password'}
+        = form.input :password_confirmation, :label => "Confirm password",  :as => 'password', :input_html => {:name => 'password_confirmation'}
+        %button{:type => 'submit'} Sign Up
+
+  .sidebar
+    TBD
