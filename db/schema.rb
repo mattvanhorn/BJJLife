@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120601173230) do
+ActiveRecord::Schema.define(:version => 20120601230509) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -69,14 +69,17 @@ ActiveRecord::Schema.define(:version => 20120601173230) do
     t.string   "email"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   add_index "subscriptions", ["email"], :name => "index_subscriptions_on_email", :unique => true
+  add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username",   :limit => 32
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.string   "username",      :limit => 32
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "sign_in_count",               :default => 0, :null => false
   end
 
   create_table "videos", :force => true do |t|

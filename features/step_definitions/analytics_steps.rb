@@ -4,7 +4,7 @@ end
 
 Then /^I should((?: not)?) see a conversion$/ do |negate|
   should_or_not = negate.present? ? :should_not : :should
-  page.body.send(should_or_not, match(/'_trackEvent', "Event", "signup"/))
+  page.body.send(should_or_not, match(/'_trackEvent', "Event", "subscribe"/))
 end
 
 Then /I should see the (original|new) image/ do |version|

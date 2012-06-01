@@ -5,7 +5,7 @@
   .main
     .row
       = simple_form_for current_user, :url => account_path do |form|
-        = form.simple_fields_for :identity_attributes do |fields|
+        = form.fields_for :identity_attributes, current_user.identity do |fields|
           = fields.input :email, :hint => 'This will never be shown to other users'
           = fields.input :password, :as => 'password', :hint => 'Only if you want to change your password'
           = fields.input :password_confirmation, :label => "Confirm Password", :as => 'password', :hint => 'Only if you want to change your password'

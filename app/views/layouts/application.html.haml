@@ -24,6 +24,7 @@
             %li= link_to "Academies", academies_path
             - if Blog.any?
               %li= link_to "Training", blog_path(Blog.first)
+            %li= link_to "Sign Up", sign_up_path
         = yield
 
         %footer

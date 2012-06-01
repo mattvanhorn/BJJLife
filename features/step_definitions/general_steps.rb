@@ -14,6 +14,10 @@ When /^(?:they|I) click on "([^"]*)"$/ do |link_or_button|
   click_on(link_or_button)
 end
 
+When /^I check "([^"]*)"$/ do |checkbox|
+  check(checkbox)
+end
+
 When "I accept the confirmation dialog" do
   unless page.driver.browser.is_a? Capybara::RackTest::Browser
     page.driver.browser.switch_to.alert.accept

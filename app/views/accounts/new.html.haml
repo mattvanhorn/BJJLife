@@ -8,7 +8,14 @@
         = form.input :email, :input_html => {:name => 'email'}
         = form.input :password,              :label => "Password", :as => 'password', :input_html => {:name => 'password'}
         = form.input :password_confirmation, :label => "Confirm password",  :as => 'password', :input_html => {:name => 'password_confirmation'}
-        %button{:type => 'submit'} Sign Up
+        = form.input :opt_in, :input_html => {:name => 'opt_in'}, :label => false, :as => :boolean do
+          = check_box_tag :opt_in
+          = label_tag :opt_in, "subscribe for announcements"
+        = form.submit 'Sign Up', :class => 'btn'
 
   .sidebar
-    TBD
+    NOTE:
+    %p
+      So, there's not much point in having an account <b><i>yet</i></b> - but pretty soon,
+      you'll be able to post your own videos and articles, rate stuff that other
+      people post, and generally help to build a great Brazilian Jiu Jitsu site.

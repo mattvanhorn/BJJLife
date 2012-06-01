@@ -21,8 +21,13 @@ class ApplicationController < ActionController::Base
 
   def sign_in(user)
     @current_user = user
-    session[:user_id] = user.id
-    cookies.permanent.signed[:remember_me] = user.id
+    cookies.permanent.signed[:remember_me] = session[:user_id] = user.id
+    user.sign_in!
+    if user.first_sign_in?
+      analytical.event :sign_up, :id => user.id
+      analytical.event :subscribe, :email => user.subscribed_email if user.subscription
+    end
+    analytical.event :sign_in, :id => user.id
     flash[:notice] = "Signed in successfully."
   end
 

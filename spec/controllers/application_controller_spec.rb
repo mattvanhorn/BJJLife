@@ -12,7 +12,7 @@ describe ApplicationController do
       end
     end
 
-    let(:user){ mock_model(User, :id => 42) }
+    let(:user){ mock_model(User, :id => 42).as_null_object }
 
     before(:each) do
       User.stub(:find => user)
