@@ -40,4 +40,9 @@ describe User do
     subject.subscribed_email.should == 'foo@bar.com'
   end
 
+  it "knows the email address for its identity" do
+    subject.identity = mock_model(Identity, :email => 'foo@bar.com').as_null_object
+    subject.identity_email.should == 'foo@bar.com'
+  end
+
 end

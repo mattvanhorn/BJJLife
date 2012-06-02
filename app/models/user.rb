@@ -29,4 +29,8 @@ class User < ActiveRecord::Base
   def subscribed_email
     subscription.try(:email)
   end
+
+  def identity_email
+    identity.try(:email)
+  end
 end
