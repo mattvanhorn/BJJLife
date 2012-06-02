@@ -40,6 +40,7 @@ end
 group :development do
   gem 'pickler'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+  gem 'thin'
 end
 
 group :test do

@@ -5,7 +5,6 @@ namespace :cover_me do
     require 'cover_me'
     CoverMe.complete!
   end
-
 end
 
 task :test do
@@ -15,3 +14,12 @@ end
 task :spec do
   Rake::Task['cover_me:report'].invoke
 end
+
+task :cucumber do
+  Rake::Task['cover_me:report'].invoke
+end
+
+task :all do
+  Rake::Task['cover_me:report'].invoke
+end
+
