@@ -20,21 +20,16 @@ class ApplicationController < ActionController::Base
   end
 
   def sign_in(user)
-    @current_user = user
-    cookies.permanent.signed[:remember_me] = session[:user_id] = user.id
-    user.sign_in!
-    if user.first_sign_in?
-      analytical.event :sign_up, :id => user.id
-      analytical.event :subscribe, :email => user.subscribed_email if user.subscription
-    end
-    analytical.event :sign_in, :id => user.id
-    flash[:notice] = "Signed in successfully."
+    @current_user = user.sign_in!
+    cookies.permanent.signed[:remember_me] = session[:user_id] = @current_user.id
+    track_sign_in
+    flash[:notice] = I18n.t('successfully_signed_in')
   end
 
   def sign_out
     cookies.delete :remember_me
     session[:user_id] =  @current_user = nil
-    flash[:notice] = "Signed out!"
+    flash[:notice] = I18n.t('signed_out')
   end
 
   def authenticate
@@ -46,7 +41,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     unless user_signed_in?
       store_location
-      redirect_to sign_in_url, :alert => 'You need to sign in for access to this page.'
+      redirect_to sign_in_url, :alert => I18n.t('need_sign_in')
     end
   end
 
@@ -56,6 +51,22 @@ class ApplicationController < ActionController::Base
 
   def store_location(url = nil)
     session[:return_to] = url || request.url
+  end
+
+  def track_sign_in
+    return unless user_signed_in?
+    track_sign_up if current_user.first_sign_in?
+    analytical.event :sign_in, :id => current_user.id
+  end
+
+  def track_sign_up
+    return unless user_signed_in? && current_user.first_sign_in?
+    analytical.event :sign_up, :id => current_user.id
+    track_subscription(current_user.subscribed_email) unless (current_user.had_existing_subscription? || current_user.opted_out?)
+  end
+
+  def track_subscription(email)
+    analytical.event :subscribe, :email => email
   end
 
   private

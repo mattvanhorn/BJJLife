@@ -45,4 +45,14 @@ describe User do
     subject.identity_email.should == 'foo@bar.com'
   end
 
+  it "can have a pre-existing subscription" do
+    subscription = mock_model(Subscription, :created_at => 1.week.ago, :persisted? => true).as_null_object
+    subject.subscription = subscription
+    subject.had_existing_subscription?.should be_true
+  end
+
+  it "can opt out of a subscription" do
+    subject.subscription = nil
+    subject.should be_opted_out
+  end
 end
