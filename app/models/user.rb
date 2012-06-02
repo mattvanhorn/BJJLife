@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   def sign_in!
     self.sign_in_count = sign_in_count + 1
     save!
+    self
   end
 
   def first_sign_in?
@@ -28,5 +29,17 @@ class User < ActiveRecord::Base
 
   def subscribed_email
     subscription.try(:email)
+  end
+
+  def identity_email
+    identity.try(:email)
+  end
+
+  def had_existing_subscription?
+    subscription && subscription.persisted? && (subscription.created_at < (self.created_at || Time.now))
+  end
+
+  def opted_out?
+    subscription.nil?
   end
 end

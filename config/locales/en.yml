@@ -3,12 +3,15 @@
 
 en:
   site_name: "Living BJJ"
+  add_academy_link: 'Add my academy'
+  successfully_signed_in: 'Signed in successfully.'
+  signed_out: 'Signed out!'
+  need_sign_in: 'You need to sign in for access to this page.'
+
   helpers:
     submit:
       subscription:
         create: "Sign Up"
-
-  add_academy_link: 'Add my academy'
 
   activerecord:
     errors:
