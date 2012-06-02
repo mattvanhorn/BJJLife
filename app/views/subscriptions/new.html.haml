@@ -14,8 +14,9 @@
           = link_to "Cid Costa Neto", 'http://commons.wikimedia.org/wiki/File:Campeonato_Brasileiro_Interclubes_de_Jiu-Jitsu_2009.jpg'
 
   .main
-    .row
-      = render 'signup_form'
+    - unless (user_signed_in? && current_user.subscription)
+      .row
+        = render 'signup_form'
 
     .row
       = render 'video_previews'
