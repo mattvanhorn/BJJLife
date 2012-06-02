@@ -40,6 +40,10 @@ Then /^(?:they|I) (should|should not) see "([^"]*)"$/ do |should_or_not, content
   page.send should_or_not, have_content(content)
 end
 
+Then /^(?:they|I) (should|should not) see (.*) message$/ do |should_or_not, content|
+  page.send should_or_not, have_content(I18n.t(message_for(content)))
+end
+
 Then /^show me the page$/ do
   save_and_open_page
 end
@@ -49,5 +53,9 @@ Then /^I should see a blog entry titled "(.*?)" and linked to "(.*?)"$/ do |titl
 end
 
 Then /"(.*)" should appear before "(.*)"/ do |first_example, second_example|
-   page.body.should =~ /#{first_example}.*#{second_example}/m
- end
+  page.body.should =~ /#{first_example}.*#{second_example}/m
+end
+
+Then "I am not signed in" do
+  visit sign_out_path
+end
