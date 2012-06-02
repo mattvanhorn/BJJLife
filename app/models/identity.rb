@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: identities
+#
+#  id              :integer         not null, primary key
+#  user_id         :integer
+#  email           :string(255)
+#  password_digest :string(255)
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#
+
 class Identity < OmniAuth::Identity::Models::ActiveRecord
   attr_accessor :opt_in
   attr_accessible  :email, :password, :password_confirmation, :opt_in

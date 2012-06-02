@@ -30,12 +30,16 @@ end
 group :development, :test do
   gem 'cucumber-rails', :require => false
   gem 'launchy'
-  gem 'pickler'
   gem 'rspec-rails'
   gem 'travis-cli'
   gem 'tddium'
   gem 'reek'
   gem 'flog'
+end
+
+group :development do
+  gem 'pickler'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
 
 group :test do
