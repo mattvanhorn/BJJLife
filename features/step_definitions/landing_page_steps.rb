@@ -18,7 +18,9 @@ end
 
 When /^I sign up for the list as "([^"]*)"$/ do |email|
   fill_in I18n.t('simple_form.labels.defaults.email'), :with => email
-  click_on I18n.t('helpers.submit.subscription.create')
+  within selector_for("the signup form") do
+    click_on I18n.t('helpers.submit.subscription.create')
+  end
 end
 
 Given /^the email "([^"]*)" is on the announcement list$/ do |email|

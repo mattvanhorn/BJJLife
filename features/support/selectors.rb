@@ -7,6 +7,8 @@ module HtmlSelectorsHelper
       "html > body"
     when /the signup form/
       "#new_subscription.simple_form"
+    when /the new account form/
+      "#new_account .simple_form"
     when /the video (\d+) element/
       "#video_#{$1}"
     when "the header logo"

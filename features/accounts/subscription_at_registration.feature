@@ -11,7 +11,7 @@ Feature: Subscription at registration
       And I fill in "Email" with "alice@example.com"
       And I fill in "Password" with "password"
       And I fill in "Confirm password" with "password"
-      And I click on "Sign Up"
+      And I click on "Sign Up" within the new account form
      Then there should not be a subscription for "alice@example.com"
 
   Scenario: Opt-out (by default)
@@ -22,7 +22,7 @@ Feature: Subscription at registration
       And I fill in "Password" with "password"
       And I fill in "Confirm password" with "password"
       And I check "subscribe for announcements"
-      And I click on "Sign Up"
+      And I click on "Sign Up" within the new account form
      Then there should be a subscription for "alice@example.com"
 
 
