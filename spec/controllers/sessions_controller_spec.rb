@@ -22,6 +22,17 @@ describe SessionsController do
         post :create
         response.should redirect_to(edit_account_path)
       end
+
+      it "tracks a new subscription" do
+        user.stub(:subscribed_email => 'foo@bar.com',
+                  :first_sign_in? => true,
+                  :had_existing_subscription? => false,
+                  :opted_out? => false)
+        controller.analytical.should_receive(:event).with(:sign_up, {:id=>42}).ordered
+        controller.analytical.should_receive(:event).with(:subscribe, :email => 'foo@bar.com').ordered
+        controller.analytical.should_receive(:event).with(:sign_in, {:id=>42}).ordered
+        post :create
+      end
     end
   end
 end
