@@ -41,7 +41,7 @@ Then /^(?:they|I) (should|should not) see "([^"]*)"$/ do |should_or_not, content
 end
 
 Then /^(?:they|I) (should|should not) see (.*) message$/ do |should_or_not, content|
-  page.send should_or_not, have_content(I18n.t(message_for(content)))
+  page.send should_or_not, have_content(strip_tags(I18n.t(message_for(content))))
 end
 
 Then /^show me the page$/ do

@@ -11,6 +11,10 @@ module I18nMessagesHelper
       'sign_in.email_and_password_missing'
     when /the invalid credentials/
       'sign_in.invalid_credentials'
+    when "the thank you"
+      'subscriptions.thanks.message_html'
+    when "the explanatory"
+      'landing_page.explanation_html'
     else
       raise "Can't find mapping from \"#{desc}\" to a message key.\n" +
         "Now, go and add a mapping in #{__FILE__}"

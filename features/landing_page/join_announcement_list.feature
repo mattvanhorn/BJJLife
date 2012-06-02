@@ -7,14 +7,14 @@ Feature: Join announcement list
   Scenario: Reading about the site
     When I am on the landing page for option a
     Then I should see the name of the site
-     And I should see an explanatory message
+     And I should see the explanatory message
 
   Scenario: Signing up
     Given I am on the landing page
      When I sign up for the list as "alice@example.com"
      Then I am on the subscription thank you page
       And I should see the name of the site
-      And I should see a thank you message
+      And I should see the thank you message
 
   Scenario: Blank email
     Given I am on the landing page
