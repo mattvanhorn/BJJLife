@@ -8,6 +8,12 @@ en:
   signed_out: 'Signed out!'
   need_sign_in: 'You need to sign in for access to this page.'
 
+  sign_in:
+    invalid_credentials: 'Your email address or password is incorrect'
+    email_and_password_missing: 'How do you expect me to sign you in with no credentials?'
+    email_missing: 'You must provide an email address'
+    password_missing: 'You must provide a password'
+
   helpers:
     submit:
       subscription:

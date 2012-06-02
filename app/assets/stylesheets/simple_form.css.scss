@@ -28,11 +28,11 @@ label.collection_radio_buttons {
 
 .field_with_errors,
 .errors_on_base {
-  background-color: #ff3333;
+  background-color: $error-red;
 }
 .errors_on_base {
-  margin-bottom: 5px;
-  padding: 5px 20px;
+  margin: auto grid-width(1) 20px;
+  padding: 10px $gw-gutter;
 }
 .simple_form .error {
   display: inline;
