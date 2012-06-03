@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   analytical :modules => [:console, :google, :mixpanel], :use_session_store => true, :disable_if => lambda{|controller| controller.class.ancestors.include?(Admin)}
 
-  before_filter :init_blog
+  before_filter :init_blog, :store_location
 
   helper_method :current_user, :user_signed_in?
 
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   def sign_in(user)
     @current_user = user.sign_in!
     cookies.permanent.signed[:remember_me] = session[:user_id] = @current_user.id
-    track_sign_in
+    do_tracking
     flash[:notice] = I18n.t('successfully_signed_in')
   end
 
@@ -53,20 +53,35 @@ class ApplicationController < ActionController::Base
     session[:return_to] = url || request.url
   end
 
+  def stored_location
+    destination = session[:return_to]
+    session[:return_to] = nil
+    destination
+  end
+
+  def do_tracking
+    track_sign_in
+    track_sign_up
+    track_subscription
+  end
+
   def track_sign_in
     return unless user_signed_in?
-    track_sign_up if current_user.first_sign_in?
     analytical.event :sign_in, :id => current_user.id
   end
 
   def track_sign_up
-    return unless user_signed_in? && current_user.first_sign_in?
+    return unless sign_up?
     analytical.event :sign_up, :id => current_user.id
-    track_subscription(current_user.subscribed_email) unless (current_user.had_existing_subscription? || current_user.opted_out?)
   end
 
-  def track_subscription(email)
-    analytical.event :subscribe, :email => email
+  def track_subscription
+    return unless sign_up?
+    analytical.event :subscribe, :email => current_user.subscribed_email if current_user.has_new_subscription?
+  end
+
+  def sign_up?
+    user_signed_in? && current_user.first_sign_in?
   end
 
   private
@@ -74,4 +89,6 @@ class ApplicationController < ActionController::Base
   def init_blog
     @blog = Blog.new(:title => "Training")
   end
+
+
 end

@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
     identity.try(:email)
   end
 
+  def has_new_subscription?
+    !(opted_out? || had_existing_subscription?)
+  end
+
   def had_existing_subscription?
     subscription && subscription.persisted? && (subscription.created_at < (self.created_at || Time.now))
   end

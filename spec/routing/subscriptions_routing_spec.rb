@@ -1,13 +1,6 @@
 require 'spec_helper'
 
 describe "subscriptions routing" do
-  it "routes the landing page" do
-    { :get => "/landing" }.
-      should route_to(
-        :controller => "subscriptions",
-        :action => "new"
-      )
-  end
 
   it "routes to the create method" do
     { :post => "/subscriptions" }.

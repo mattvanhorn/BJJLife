@@ -28,9 +28,10 @@ describe SessionsController do
                   :first_sign_in? => true,
                   :had_existing_subscription? => false,
                   :opted_out? => false)
+
+        controller.analytical.should_receive(:event).with(:sign_in, {:id=>42}).ordered
         controller.analytical.should_receive(:event).with(:sign_up, {:id=>42}).ordered
         controller.analytical.should_receive(:event).with(:subscribe, :email => 'foo@bar.com').ordered
-        controller.analytical.should_receive(:event).with(:sign_in, {:id=>42}).ordered
         post :create
       end
     end

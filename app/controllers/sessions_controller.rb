@@ -1,6 +1,7 @@
 require 'omni_authenticator'
 
 class SessionsController < ApplicationController
+  skip_before_filter :store_location
 
   def create
     user = OmniAuthenticator.new(auth_hash).find_user
@@ -27,7 +28,7 @@ class SessionsController < ApplicationController
     if user.first_sign_in?
       edit_account_path
     else
-      root_path
+      stored_location || root_path
     end
   end
 end

@@ -51,6 +51,13 @@ describe User do
     subject.had_existing_subscription?.should be_true
   end
 
+  it "can have a new subscription" do
+    subject.created_at = 2.seconds.ago
+    subscription = mock_model(Subscription, :created_at => 1.second.ago, :persisted? => true).as_null_object
+    subject.subscription = subscription
+    subject.has_new_subscription?.should be_true
+  end
+
   it "can opt out of a subscription" do
     subject.subscription = nil
     subject.should be_opted_out
