@@ -1,7 +1,9 @@
-%article
+%article[post]
   %header
     %h3= link_to post.title, post.url
 
   %p= post.description
   %footer
-    %p.credit posted by #{post.contributor}
+    %p
+      %span.credit posted by #{post.contributor}
+      %span.comments= link_to pluralize(post.comments.size, 'comment'), post_path(post)

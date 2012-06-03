@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
 
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:show]
 
   expose(:blog){ Blog.first }
-  expose(:post){ blog.new_post((params[:post]||{}).merge(:user_id => current_user.id)) }
+  expose(:post){ PostDecorator.decorate(find_post) }
+  expose(:comment){ find_post.new_comment }
 
   def new
     # just render
@@ -12,5 +13,25 @@ class PostsController < ApplicationController
   def create
     post.publish!
     respond_with post, :location => blog_path(post.blog), :notice => "Post added!"
+  end
+
+  def show
+    # just render
+  end
+
+  private
+
+  def find_post
+    if post_id
+      # show
+      Post.find(post_id)
+    else
+      # new, create
+      blog.new_post((params[:post]||{}).merge(:user_id => current_user.id))
+    end
+  end
+
+  def post_id
+    params[:id] || params[:post_id]
   end
 end

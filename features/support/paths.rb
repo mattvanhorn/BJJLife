@@ -19,6 +19,10 @@ module NavigationHelpers
 
     when /the training tips page/
       Blog.any? ? blog_path(Blog.last) : "/blogs/1"
+
+    when "the post page for the first post"
+      post_path Post.order(:created_at).last
+
     else
       begin
         page_name =~ /the (.*) page/

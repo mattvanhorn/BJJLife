@@ -20,10 +20,15 @@
 require 'spec_helper'
 
 describe Post do
-  subject { Post.new }
+  let(:new_comment) { OpenStruct.new }
+  subject { Post.new.tap{|p|p.comment_source = lambda{ new_comment }} }
 
   it "should not reek" do
     File.open(__FILE__).should_not reek
+  end
+
+  it "starts with no comments" do
+    subject.comments.should be_empty
   end
 
   describe "#publish" do
@@ -36,6 +41,15 @@ describe Post do
     it "adds the post to the blog" do
       blog.should_receive(:add_entry).and_return [subject]
       subject.publish!
+    end
+  end
+
+  describe "#new_comment" do
+    it "returns a new post" do
+      subject.new_comment.should == new_comment
+    end
+    it "sets the post's blog reference to itself" do
+      subject.new_comment.post.should == subject
     end
   end
 end

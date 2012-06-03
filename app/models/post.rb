@@ -18,14 +18,27 @@
 #
 
 class Post < ActiveRecord::Base
-
+  attr_writer :comment_source
   attr_accessible :title, :url, :description, :user_id
 
   belongs_to :blog
   belongs_to :user
+  has_many :comments
 
   def publish!
     blog.add_entry(self)
   end
 
+  def new_comment(*args)
+    comment_source.call(*args).tap do |comment|
+      comment.post = self
+    end
+  end
+
+  private
+
+  def comment_source
+    @comment_source ||= Comment.public_method(:new)
+  end
 end
+

@@ -4,4 +4,8 @@ class PostDecorator < Draper::Base
   def contributor
     post.user.try(:username) || 'anonymous'
   end
+
+  def haml_object_ref
+    'post'
+  end
 end

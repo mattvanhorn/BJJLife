@@ -25,6 +25,8 @@ module HtmlSelectorsHelper
       "ul.academies li"
     when /a blog entry/
       "article header h3"
+    when "the first post listed"
+      "article.post:first-child"
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"

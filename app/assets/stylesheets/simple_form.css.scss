@@ -70,3 +70,8 @@ label.collection_check_boxes {
 input.btn {
   @include button(shiny, #00A859);
 }
+
+.text textarea {
+  height: 100px;
+  width: grid-width(3);
+}

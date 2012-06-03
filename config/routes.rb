@@ -19,7 +19,9 @@ Bjjlife::Application.routes.draw do
   resources :videos, :only => [:index]
   resources :academies, :only => [:index, :new, :create]
   resources :blogs, :only => [:show]
-  resources :posts, :only => [:new, :create]
+  resources :posts, :only => [:new, :create, :show] do
+    resources :comments, :only => [:new, :create]
+  end
 
   match "/sign_up", :to => "accounts#new", :as => :sign_up
   match '/auth/:provider/callback', :to => 'sessions#create'

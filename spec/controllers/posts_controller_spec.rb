@@ -45,5 +45,18 @@ describe PostsController do
       response.should redirect_to(blog_path(blog))
     end
   end
+
+  describe "show" do
+    it "does not require sign in" do
+      controller.stub(:user_signed_in? => false)
+      get :show
+      response.should be_success
+    end
+
+    it "renders the show template" do
+      get :show
+      response.should render_template(:show)
+    end
+  end
 end
 
