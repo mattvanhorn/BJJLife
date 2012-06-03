@@ -49,3 +49,16 @@ Feature: Sign in
       And I click on "Sign In" within the form
      Then I should be on the sign in page
       And I should see the invalid credentials message
+
+  Scenario: Redirecting back to page
+   Given the following blog:
+      | title | Training Tips |
+     And I am on the training tips page
+    When I visit the sign in page
+     And I fill in "Email" with "alice@example.com"
+     And I fill in "Password" with "password"
+     And I click on "Sign In" within the form
+    Then I should be on the training tips page
+
+
+

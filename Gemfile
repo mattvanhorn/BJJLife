@@ -14,6 +14,7 @@ gem 'state_machine'
 gem 'responders'
 gem 'omniauth-identity'
 gem 'bcrypt-ruby'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,7 +41,6 @@ end
 group :development do
   gem 'pickler'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
-  gem 'thin'
 end
 
 group :test do
