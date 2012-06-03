@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603042956) do
+ActiveRecord::Schema.define(:version => 20120603134610) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20120603042956) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "identities", ["email"], :name => "index_identities_on_email", :unique => true
   add_index "identities", ["user_id"], :name => "index_identities_on_user_id"
 
   create_table "players", :force => true do |t|

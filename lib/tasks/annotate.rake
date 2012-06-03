@@ -2,7 +2,7 @@
   task :migrate do
     unless Rails.env.production?
       require "annotate/annotate_models"
-      AnnotateModels.do_annotations(:position_in_class => 'before', :position_in_fixture => 'before')
+      AnnotateModels.do_annotations(:position_in_class => 'before', :position_in_fixture => 'before', :show_indexes => true)
     end
   end
 
@@ -11,7 +11,7 @@
       task t do
         unless Rails.env.production?
           require "annotate/annotate_models"
-          AnnotateModels.do_annotations(:position_in_class => 'before', :position_in_fixture => 'before')
+          AnnotateModels.do_annotations(:position_in_class => 'before', :position_in_fixture => 'before', :show_indexes => true)
         end
       end
     end

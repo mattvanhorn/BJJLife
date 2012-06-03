@@ -11,6 +11,7 @@
 #
 # Indexes
 #
+#  index_identities_on_email    (email) UNIQUE
 #  index_identities_on_user_id  (user_id)
 #
 
