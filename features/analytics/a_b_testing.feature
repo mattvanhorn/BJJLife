@@ -5,7 +5,7 @@ Feature: A/B Testing
   I want to A/B test different text
 
   Scenario: Default
-  When I go to the landing page for option a
+  When I go to the home page for option a
   Then I should see the original image
-  When I go to the landing page for option b
+  When I go to the home page for option b
   Then I should see the new image

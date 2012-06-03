@@ -8,14 +8,14 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /the home\s?page/
+    when /the home\s?page$/
       '/'
 
     when /the subscription thank you page/
       thanks_subscriptions_path
 
-    when /the landing page for option (a|b)/
-      landing_path(:image => $1)
+    when /the home page for option (a|b)/
+      root_path(:image => $1)
 
     when /the training tips page/
       Blog.any? ? blog_path(Blog.last) : "/blogs/1"
