@@ -6,4 +6,13 @@
 
 article {
   margin-bottom: 20px;
+  p {
+    margin-bottom: 5px;
+  }
+  footer {
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+  }
 }

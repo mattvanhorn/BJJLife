@@ -9,6 +9,10 @@
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #
+# Indexes
+#
+#  index_identities_on_user_id  (user_id)
+#
 
 class Identity < OmniAuth::Identity::Models::ActiveRecord
   attr_accessor :opt_in

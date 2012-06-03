@@ -1,4 +1,7 @@
 %article
   %header
     %h3= link_to post.title, post.url
+
   %p= post.description
+  %footer
+    %p.credit posted by #{post.contributor}
