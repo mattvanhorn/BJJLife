@@ -15,24 +15,15 @@ require 'active_record'
 require 'open-uri'
 require 'cgi'
 require 'json'
-
+require 'moderatable'
 
 class Video < ActiveRecord::Base
+  include Moderatable
+
   attr_accessible :name, :url
 
   before_create :set_thumbnail_url
 
-  scope :pending,   where(:state => 'pending')
-  scope :published, where(:state => 'published')
-
-  state_machine :initial => :pending do
-    state :pending
-    state :published
-
-    event :publish do
-      transition :pending => :published
-    end
-  end
 
   private
 

@@ -17,8 +17,11 @@
 #  updated_at   :datetime        not null
 #  state        :string(255)     default("pending")
 #
+require 'moderatable'
 
 class Academy < ActiveRecord::Base
+  include Moderatable
+
   attr_accessible :name, :instructor, :street, :unit, :city, :us_state, :postal_code, :email, :phone_number, :website
 
   validates_with LocationValidator
@@ -27,18 +30,7 @@ class Academy < ActiveRecord::Base
   validates :email, :length => (3..254), :email => true, :allow_blank => true
   validates :us_state, :length => {:is => 2}, :allow_blank => true
 
-  scope :pending,   where(:state => 'pending')
-  scope :published, where(:state => 'published')
   scope :ordered_by_state, published.order('us_state, name')
-
-  state_machine :initial => :pending do
-    state :pending
-    state :published
-
-    event :publish do
-      transition :pending => :published
-    end
-  end
 
   def self.by_state
     Academy.ordered_by_state.group_by(&:us_state).to_a.each do |state_group|
