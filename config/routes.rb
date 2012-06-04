@@ -16,7 +16,12 @@ Bjjlife::Application.routes.draw do
     end
   end
 
-  resources :videos, :only => [:index, :new, :create]
+  resources :videos, :only => [:index, :new, :create] do
+    member do
+      put 'upvote'
+      put 'downvote'
+    end
+  end
   resources :academies, :only => [:index, :new, :create]
   resources :blogs, :only => [:show]
   resources :posts, :only => [:new, :create, :show] do

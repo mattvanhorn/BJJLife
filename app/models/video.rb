@@ -9,6 +9,8 @@
 #  updated_at    :datetime        not null
 #  thumbnail_url :string(255)
 #  state         :string(255)     default("pending")
+#  up_votes      :integer         default(0), not null
+#  down_votes    :integer         default(0), not null
 #
 
 require 'active_record'
@@ -16,9 +18,12 @@ require 'open-uri'
 require 'cgi'
 require 'json'
 require 'moderatable'
+require 'confidence_interval'
 
 class Video < ActiveRecord::Base
   include Moderatable
+  include ConfidenceInterval
+  make_voteable
 
   attr_accessible :name, :url
 

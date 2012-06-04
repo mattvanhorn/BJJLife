@@ -19,10 +19,10 @@ describe VideosController do
     let(:video){ mock_model(Video)}
     let(:videos){ double('arel')}
     before(:each) do
-      Video.stub(:all => videos, :new => video)
+      Video.stub(:by_rating => videos, :new => video)
     end
 
-    it { should expose(:videos).as(Video.all) }
+    it { should expose(:videos).as(Video.by_rating) }
     it { should expose(:video).as(Video.new)  }
   end
 
@@ -64,6 +64,30 @@ describe VideosController do
         post :create, :video => valid_params
         response.should redirect_to(videos_url)
       end
+    end
+  end
+
+  describe "#upvote" do
+    before(:each) do
+      controller.stub(:current_user => current_user)
+      Video.stub(:find => video)
+    end
+
+    it "upvotes the video" do
+      current_user.should_receive(:up_vote!).with(video)
+      put :upvote
+    end
+  end
+
+  describe "#downvote" do
+    before(:each) do
+      controller.stub(:current_user => current_user)
+      Video.stub(:find => video)
+    end
+
+    it "downvotes the video" do
+      current_user.should_receive(:down_vote!).with(video)
+      put :downvote
     end
   end
 end

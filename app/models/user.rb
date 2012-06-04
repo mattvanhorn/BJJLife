@@ -7,9 +7,13 @@
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
 #  sign_in_count :integer         default(0), not null
+#  up_votes      :integer         default(0), not null
+#  down_votes    :integer         default(0), not null
 #
 
 class User < ActiveRecord::Base
+  make_voter
+
   attr_accessible :identity_attributes, :username
 
   has_one :identity

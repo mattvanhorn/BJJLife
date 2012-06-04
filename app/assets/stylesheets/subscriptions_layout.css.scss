@@ -61,16 +61,30 @@
       @include clearfix;
       width: 204px;
       border: 1px solid #333;
-      margin-left: $gw-gutter;
+      height: 140px;
+      margin: 0 0 10px 10px;
+      padding: 5px;
+      list-style-type: none;
       float: left;
       text-align: center;
-
-      a {
-        display: block;
-        margin: 10px 10px;
+      .icon-thumbs-up,
+      .icon-thumbs-down {
+        font-size: 12px;
+        width: 40px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 35px;
+        &:before, &:after {
+          font-size: 18px;
+          margin-left: 4px;
+          margin-right: 4px;
+        }
       }
-      a:link {
-        text-decoration: none;
+      .icon-thumbs-up {
+        float: right;
+      }
+      .icon-thumbs-down {
+        float: left;
       }
     }
   }

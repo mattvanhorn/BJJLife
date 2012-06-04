@@ -15,6 +15,7 @@ gem 'responders'
 gem 'omniauth-identity'
 gem 'bcrypt-ruby'
 gem 'thin'
+gem 'make_voteable'
 
 # Gems used only for assets and not required
 # in production environments by default.

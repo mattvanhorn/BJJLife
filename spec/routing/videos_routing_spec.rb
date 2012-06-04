@@ -8,7 +8,7 @@ describe "videos routing" do
         :action => "index"
       )
   end
-  
+
   it "routes the new video page" do
     { :get => "/videos/new" }.
       should route_to(
@@ -24,6 +24,25 @@ describe "videos routing" do
         :action => "create"
       )
   end
+
+  it "routes to the upvote method" do
+    { :put => "/videos/1/upvote" }.
+      should route_to(
+        :controller => "videos",
+        :action => "upvote",
+        :id => '1'
+      )
+  end
+
+  it "routes to the downvote method" do
+    { :put => "/videos/1/downvote" }.
+      should route_to(
+        :controller => "videos",
+        :action => "downvote",
+        :id => '1'
+      )
+  end
+
 end
 
 describe "videos admin routing" do
