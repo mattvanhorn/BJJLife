@@ -16,7 +16,7 @@ Bjjlife::Application.routes.draw do
     end
   end
 
-  resources :videos, :only => [:index]
+  resources :videos, :only => [:index, :new, :create]
   resources :academies, :only => [:index, :new, :create]
   resources :blogs, :only => [:show]
   resources :posts, :only => [:new, :create, :show] do

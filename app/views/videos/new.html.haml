@@ -1,0 +1,17 @@
+#videos.grid
+  .row
+    %h2 Add A Video
+
+  .main
+    .row
+      - video.errors[:base].each do |msg|
+        .errors_on_base= msg
+
+      = simple_form_for video do |form|
+        = form.input :name
+        = form.input :url
+
+        = form.button :submit
+
+  .sidebar
+    = link_to "Back to the Videos", videos_path

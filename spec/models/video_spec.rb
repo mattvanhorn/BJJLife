@@ -8,6 +8,7 @@
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
 #  thumbnail_url :string(255)
+#  state         :string(255)     default("pending")
 #
 
 require 'spec_helper'
@@ -36,6 +37,26 @@ describe Video do
       subject.thumbnail_url.should == "http://b.vimeocdn.com/ts/126/328/126328224_200.jpg"
     end
   end
+  
+  it { should_not be_published }
 
+  it { should be_pending }
+
+  describe "being published" do
+    before(:each) do
+      subject.name = "Vitor Shaolin's Brazilian Jiu Jitsu"
+      subject.url = 'http://www.example.com'
+    end
+
+    it "is still pending after being saved" do
+      subject.save!
+      subject.should be_pending
+    end
+
+    it "can be published" do
+      subject.publish!
+      subject.should be_published
+    end
+  end
 
 end

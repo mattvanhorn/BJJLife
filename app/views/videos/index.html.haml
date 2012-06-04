@@ -4,6 +4,8 @@
 
   .main
     .row
+      - if flash[:notice]
+        .notice= flash[:notice]
       %ul
         = render videos
 

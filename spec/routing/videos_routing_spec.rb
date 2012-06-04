@@ -8,6 +8,22 @@ describe "videos routing" do
         :action => "index"
       )
   end
+  
+  it "routes the new video page" do
+    { :get => "/videos/new" }.
+      should route_to(
+        :controller => "videos",
+        :action => "new"
+      )
+  end
+
+  it "routes to the create method" do
+    { :post => "/videos" }.
+      should route_to(
+        :controller => "videos",
+        :action => "create"
+      )
+  end
 end
 
 describe "videos admin routing" do

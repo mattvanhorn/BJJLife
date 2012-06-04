@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   def create
     post.publish!
-    analytical.event 'publish', :blog=>:post.blog_name
+    analytical.event 'publish', :blog => post.blog_name
     respond_with post, :location => blog_path(post.blog), :notice => "Post added!"
   end
 

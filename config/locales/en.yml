@@ -36,6 +36,11 @@ en:
         notice: Your entry is awaiting moderation. Please check back in a little while.
         alert: There were some errors in that entry
 
+    videos:
+      create:
+        notice: Your entry is awaiting moderation. Please check back in a little while.
+        alert: There were some errors in that entry
+
   subscriptions:
     new:
       header:

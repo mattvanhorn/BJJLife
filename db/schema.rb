@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603185940) do
+ActiveRecord::Schema.define(:version => 20120604015927) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -99,9 +99,10 @@ ActiveRecord::Schema.define(:version => 20120603185940) do
   create_table "videos", :force => true do |t|
     t.string   "name"
     t.string   "url"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "thumbnail_url"
+    t.string   "state",         :default => "pending"
   end
 
 end

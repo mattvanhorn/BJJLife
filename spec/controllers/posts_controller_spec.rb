@@ -10,7 +10,7 @@ describe PostsController do
   before(:each) do
     controller.stub(:current_user => current_user)
     Blog.stub(:first => blog)
-    the_post.stub(:blog => blog)
+    the_post.stub(:blog => blog, :blog_name => 'Training')
   end
 
   it "should not reek" do
@@ -31,7 +31,7 @@ describe PostsController do
   describe "#create" do
     it "requires sign in" do
       controller.stub(:user_signed_in? => false)
-      get :new
+      post :create
       response.should redirect_to(sign_in_path)
     end
 
@@ -47,14 +47,22 @@ describe PostsController do
   end
 
   describe "show" do
+    before(:each) do
+      Post.stub(:find => the_post)
+    end
     it "does not require sign in" do
       controller.stub(:user_signed_in? => false)
-      get :show
+      get :show, :id => '42'
       response.should be_success
     end
 
+    it "finds the post" do
+      Post.should_receive(:find).with('42').and_return(the_post)
+      get :show, :id => '42'
+    end
+
     it "renders the show template" do
-      get :show
+      get :show, :id => '42'
       response.should render_template(:show)
     end
   end

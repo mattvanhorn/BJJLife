@@ -36,4 +36,23 @@ describe SessionsController do
       end
     end
   end
+  
+  describe "#destroy" do
+    let(:user){ mock_model(User, :model => true) }
+    before(:each) do
+      controller.stub(:current_user => user)
+    end
+    it "signs out the user" do
+      get :destroy
+      session[:user_id].should == nil
+    end
+    it "tracks the event" do
+      controller.analytical.should_receive(:event).with(:sign_out, :id => user.id)
+      get :destroy
+    end
+    it "redirects to the account page" do
+      get :destroy
+      response.should redirect_to(root_path)
+    end
+  end
 end

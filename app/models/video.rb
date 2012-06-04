@@ -8,6 +8,7 @@
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
 #  thumbnail_url :string(255)
+#  state         :string(255)     default("pending")
 #
 
 require 'active_record'
@@ -15,10 +16,23 @@ require 'open-uri'
 require 'cgi'
 require 'json'
 
+
 class Video < ActiveRecord::Base
   attr_accessible :name, :url
 
   before_create :set_thumbnail_url
+
+  scope :pending,   where(:state => 'pending')
+  scope :published, where(:state => 'published')
+
+  state_machine :initial => :pending do
+    state :pending
+    state :published
+
+    event :publish do
+      transition :pending => :published
+    end
+  end
 
   private
 
