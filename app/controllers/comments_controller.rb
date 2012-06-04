@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
 
   def create
     comment.save!
+    analytical.event 'comment', :post_id=>:post.id, :post=>:post.title
     redirect_to post_path(comment.post)
   end
 

@@ -10,7 +10,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    sign_out
+    if user_signed_in?
+      analytical.event :sign_out, :id => current_user.id
+      sign_out
+    end
     redirect_to root_url
   end
 
