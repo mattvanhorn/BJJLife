@@ -15,7 +15,7 @@
 
     = raw analytical.body_prepend_javascript
     - if user_signed_in?
-      - analytical.identify( current_user.id, :email => current_user.identity_email)
+      - analytical.identify( current_user.id, :email => current_user.identity_email, :name => current_user.identity_email)
     #page
       #content
         %header
