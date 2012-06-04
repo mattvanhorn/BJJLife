@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604015927) do
+ActiveRecord::Schema.define(:version => 20120604152204) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -71,9 +71,11 @@ ActiveRecord::Schema.define(:version => 20120604015927) do
     t.string   "title"
     t.string   "url"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "user_id"
+    t.integer  "up_votes",    :default => 0, :null => false
+    t.integer  "down_votes",  :default => 0, :null => false
   end
 
   add_index "posts", ["blog_id"], :name => "index_posts_on_blog_id"
@@ -94,6 +96,8 @@ ActiveRecord::Schema.define(:version => 20120604015927) do
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.integer  "sign_in_count",               :default => 0, :null => false
+    t.integer  "up_votes",                    :default => 0, :null => false
+    t.integer  "down_votes",                  :default => 0, :null => false
   end
 
   create_table "videos", :force => true do |t|
@@ -103,6 +107,22 @@ ActiveRecord::Schema.define(:version => 20120604015927) do
     t.datetime "updated_at",                           :null => false
     t.string   "thumbnail_url"
     t.string   "state",         :default => "pending"
+    t.integer  "up_votes",      :default => 0,         :null => false
+    t.integer  "down_votes",    :default => 0,         :null => false
   end
+
+  create_table "votings", :force => true do |t|
+    t.string   "voteable_type"
+    t.integer  "voteable_id"
+    t.string   "voter_type"
+    t.integer  "voter_id"
+    t.boolean  "up_vote",       :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "votings", ["voteable_type", "voteable_id", "voter_type", "voter_id"], :name => "unique_voters", :unique => true
+  add_index "votings", ["voteable_type", "voteable_id"], :name => "index_votings_on_voteable_type_and_voteable_id"
+  add_index "votings", ["voter_type", "voter_id"], :name => "index_votings_on_voter_type_and_voter_id"
 
 end
