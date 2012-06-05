@@ -26,6 +26,9 @@
 # Ignore TDDium files
 .tddium*
 
-# Igrnore coverage reports from cover_me
+# Ignore coverage reports from cover_me
 coverage.data
 /coverage
+
+# Ignore reports from rails_best_practices
+/quality
