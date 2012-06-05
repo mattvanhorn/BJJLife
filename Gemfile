@@ -37,6 +37,7 @@ group :development, :test do
   gem 'tddium'
   gem 'reek'
   gem 'flog'
+  gem 'rails_best_practices'
 end
 
 group :development do
