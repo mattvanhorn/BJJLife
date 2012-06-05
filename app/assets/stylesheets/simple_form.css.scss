@@ -75,3 +75,16 @@ input.btn {
   height: 100px;
   width: grid-width(3);
 }
+
+fieldset {
+  padding-top: 40px;
+  background: tint($default-bg, 10%);
+  border: none;
+  legend {
+    position: relative;
+    top: 20px;
+    font-family: ChunkFiveRegular;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+}
