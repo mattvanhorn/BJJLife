@@ -11,6 +11,9 @@ module NavigationHelpers
     when /the home\s?page$/
       '/'
 
+    when "my account page"
+      account_path
+
     when /the subscription thank you page/
       thanks_subscriptions_path
 

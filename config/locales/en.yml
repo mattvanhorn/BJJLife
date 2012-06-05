@@ -25,6 +25,17 @@ en:
         no_location: 'You must provide both city and state, or a postal code'
         no_contact_method: 'You must provide at least one contact method (phone, email, or website)'
 
+    models:
+      user: User
+    attributes:
+      user:
+        username: "Nickname"
+        teacher: "Teacher"
+        location: "Location"
+        rank: "Rank"
+
+
+
   flash:
     admin:
       academies:

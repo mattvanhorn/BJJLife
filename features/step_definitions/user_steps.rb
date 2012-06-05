@@ -17,3 +17,11 @@ Given /^I am signed in as "(.*?)" with a password of "(.*?)"$/ do |email, passwo
   step('I fill in "Password" with "' + password + '"')
   step('I click on "Sign In" within the form')
 end
+
+When /^I register as "(.*?)" using the password "(.*?)"$/ do |email, password|
+  step("I visit the sign up page")
+  step('I fill in "Email" with "' + email + '"')
+  step('I fill in "Password" with "' + password + '"')
+  step('I fill in "Confirm password" with "' + password + '"')
+  step('I click on "Sign Up" within the form')
+end

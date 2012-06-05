@@ -17,4 +17,12 @@ describe "accounts routing" do
         :provider => "identity"
       )
   end
+
+  it "routes the account page" do
+    { :get => "/account" }.
+      should route_to(
+        :controller => "accounts",
+        :action => "show"
+      )
+  end
 end

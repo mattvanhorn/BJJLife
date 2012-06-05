@@ -3,6 +3,10 @@ class AccountsController < ApplicationController
 
   expose(:identity){ (current_user.identity if user_signed_in?) || Identity.new }
 
+  def show
+    # just render
+  end
+
   def new
     # just render
   end
@@ -13,6 +17,6 @@ class AccountsController < ApplicationController
 
   def update
     current_user.update_attributes(params[:user])
-    respond_with current_user, :location => root_url
+    respond_with current_user, :location => account_url
   end
 end

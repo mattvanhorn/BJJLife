@@ -10,6 +10,11 @@ When /^(?:they|I) fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
 
+
+When /^I fill in the (.*) field with "(.*?)"$/ do |name, value|
+  fill_in(I18n.t(message_for(name)), :with => value)
+end
+
 When /^(?:they|I) click on "([^"]*)"$/ do |link_or_button|
   click_on(link_or_button)
 end

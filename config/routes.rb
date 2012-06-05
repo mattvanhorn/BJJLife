@@ -31,7 +31,7 @@ Bjjlife::Application.routes.draw do
   match "/sign_up", :to => "accounts#new", :as => :sign_up
   match '/auth/:provider/callback', :to => 'sessions#create'
 
-  resource :account, :only => [:edit, :update]
+  resource :account, :only => [:edit, :update, :show]
 
 
   match "/auth/identity" => "sessions#new"

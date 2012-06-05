@@ -9,6 +9,9 @@
 #  sign_in_count :integer         default(0), not null
 #  up_votes      :integer         default(0), not null
 #  down_votes    :integer         default(0), not null
+#  location      :string(255)
+#  teacher       :string(255)
+#  rank          :string(255)
 #
 
 require 'spec_helper'

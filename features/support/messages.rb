@@ -3,6 +3,15 @@
 module I18nMessagesHelper
   def message_for(desc)
     case desc
+    when "nickname"
+      'activerecord.attributes.user.username'
+    when "teacher"
+      'activerecord.attributes.user.teacher'
+    when "location"
+      'activerecord.attributes.user.location'
+    when "rank"
+      'activerecord.attributes.user.rank'
+
     when /the missing password/
       'sign_in.password_missing'
     when /the missing email$/

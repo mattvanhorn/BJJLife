@@ -17,6 +17,7 @@
 #  updated_at   :datetime        not null
 #  state        :string(255)     default("pending")
 #
+
 require 'moderatable'
 
 class Academy < ActiveRecord::Base

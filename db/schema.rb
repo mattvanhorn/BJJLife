@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120604152204) do
+ActiveRecord::Schema.define(:version => 20120605212924) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -98,6 +98,9 @@ ActiveRecord::Schema.define(:version => 20120604152204) do
     t.integer  "sign_in_count",               :default => 0, :null => false
     t.integer  "up_votes",                    :default => 0, :null => false
     t.integer  "down_votes",                  :default => 0, :null => false
+    t.string   "location"
+    t.string   "teacher"
+    t.string   "rank"
   end
 
   create_table "videos", :force => true do |t|

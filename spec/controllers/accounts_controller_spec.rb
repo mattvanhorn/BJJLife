@@ -63,7 +63,7 @@ describe AccountsController do
     end
     it "redirects to the home page" do
       put :update, {'user' => user_params}
-      response.should redirect_to root_url
+      response.should redirect_to account_url
     end
   end
 

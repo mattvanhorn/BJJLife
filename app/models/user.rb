@@ -9,15 +9,21 @@
 #  sign_in_count :integer         default(0), not null
 #  up_votes      :integer         default(0), not null
 #  down_votes    :integer         default(0), not null
+#  location      :string(255)
+#  teacher       :string(255)
+#  rank          :string(255)
 #
 
 class User < ActiveRecord::Base
   make_voter
 
-  attr_accessible :identity_attributes, :username
+  attr_accessible :identity_attributes, :username, :location, :teacher, :rank
 
   has_one :identity
   has_one :subscription
+
+  has_many :posts
+  has_many :comments
 
   accepts_nested_attributes_for :identity, :update_only => true
 

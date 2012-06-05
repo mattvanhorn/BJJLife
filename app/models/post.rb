@@ -18,6 +18,7 @@
 #  index_posts_on_blog_id  (blog_id)
 #  index_posts_on_user_id  (user_id)
 #
+
 require 'confidence_interval'
 
 class Post < ActiveRecord::Base

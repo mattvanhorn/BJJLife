@@ -1,0 +1,19 @@
+#account.grid
+  .row
+    %h2 My Profile
+
+  .main
+    .row
+      %h3= current_user.username
+      %p.stats
+        #{pluralize(current_user.sign_in_count, 'visit')}
+        #{pluralize(current_user.posts.size, 'posts').gsub('0','No')} |
+        #{pluralize(current_user.comments.size, 'comments').gsub('0','No')} |
+        Last signed in:
+        %abbr.timeago{:title => current_user.updated_at.getutc.iso8601}= current_user.updated_at
+      %p.teacher Teacher: #{current_user.teacher}
+      %p.teacher Rank: #{current_user.rank}
+      %p.location #{current_user.location}
+
+  .sidebar
+    TBD

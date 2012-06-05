@@ -1,7 +1,11 @@
 When /^(?:they|I) should be on (.+)$/ do |page_name|
   location = URI.parse(current_url).path
   expected = path_to(page_name)
-  location.should match(expected)
+  if expected.is_a? Regexp
+    expected.should match(location)
+  else
+    location.should == expected
+  end
 end
 
 When /^(?:they|I) (?:visit|am on|are on|go to) (.+)$/ do |page_name|

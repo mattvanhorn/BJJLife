@@ -12,9 +12,9 @@ Feature: User registration
       And I fill in "Confirm password" with "password"
       And I click on "Sign Up" within the new account form
      Then I should be on the edit account page
-     When I fill in "Username" with "alice"
+     When I fill in the nickname field with "Alice K"
       And I click on "Update Account"
-     Then I should be on the home page
-      And I should see "Hi alice,"
+     Then I should be on my account page
+      And I should see "Alice K"
 
 

@@ -19,4 +19,5 @@ Feature: Profile page
      And I should see "1 visit"
      And I should see "No posts"
      And I should see "No comments"
-     And I should see "Last signed in: Today"
+     # - this needs js...
+     # And I should see "Last signed in: less than a minute ago"
