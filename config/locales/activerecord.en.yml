@@ -1,0 +1,51 @@
+en:
+  activerecord:
+    models:
+      academy: Academy
+      blog: Blog
+      comment: Comment
+      identity: Identity
+      post: Post
+      subscription: Subscription
+      user: User
+      video: Video
+
+    attributes:
+      academy:
+        name: Name
+        instructor: Instructor
+        street: Street Address
+        unit: Suite/Floor
+        city: City
+        us_state: State
+        postal_code: ZIP Code
+        website: Website URL
+        email: Email
+        phone_number: Phone
+      blog:
+        title: Title
+      comment:
+        body: Body
+      identity:
+        email: Email
+        password: Password
+        password_confirmation: Confirm Password
+      post:
+        title: Title
+        url: URL
+      subscription:
+        email: Email
+      user:
+        username: Nickname
+        location: Location
+        teacher: Teacher
+        rank: Rank
+      video:
+        name: Name
+        url: URL
+
+    errors:
+      messages:
+        no_location: 'You must provide both city and state, or a postal code'
+        no_contact_method: 'You must provide at least one contact method (phone, email, or website)'
+

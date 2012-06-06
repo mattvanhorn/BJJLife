@@ -5,6 +5,10 @@ describe AccountsController do
   let(:new_identity){ mock_model(Identity) }
   let(:user){ mock_model(User, :identity => existing_identity, :model => lambda{self}) }
 
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
+
   describe "#new" do
     before :each do
       subject.stub(:user_signed_in => false)
@@ -65,10 +69,6 @@ describe AccountsController do
       put :update, {'user' => user_params}
       response.should redirect_to account_url
     end
-  end
-
-  it "should not reek" do
-    File.open(__FILE__).should_not reek
   end
 
 end

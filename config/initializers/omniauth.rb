@@ -1,10 +1,10 @@
 class OmniAuth::Strategies::Identity
   def callback_phase
     unless identity
-      return fail!('sign_in.email_and_password_missing') if (request['auth_key'].blank? && request['password'].blank?)
-      return fail!('sign_in.email_missing') if request['auth_key'].blank?
-      return fail!('sign_in.password_missing') if request['password'].blank?
-      return fail!('sign_in.invalid_credentials')
+      return fail!('omniauth.email_and_password_missing') if (request['auth_key'].blank? && request['password'].blank?)
+      return fail!('omniauth.email_missing') if request['auth_key'].blank?
+      return fail!('omniauth.password_missing') if request['password'].blank?
+      return fail!('omniauth.invalid_credentials')
     end
     super
   end

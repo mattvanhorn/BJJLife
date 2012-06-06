@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe AcademiesController do
 
-
   it "should not reek" do
     File.open(__FILE__).should_not reek
   end

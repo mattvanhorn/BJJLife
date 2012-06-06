@@ -1,0 +1,9 @@
+en:
+  academies:
+    index:
+      add_academy_link: Add my academy
+
+  admin:
+    academies:
+      index:
+        publish: Publish!

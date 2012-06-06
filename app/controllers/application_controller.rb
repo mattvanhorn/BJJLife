@@ -23,13 +23,11 @@ class ApplicationController < ActionController::Base
     @current_user = user.sign_in!
     cookies.permanent.signed[:remember_me] = session[:user_id] = @current_user.id
     do_tracking
-    flash[:notice] = I18n.t('successfully_signed_in')
   end
 
   def sign_out
     cookies.delete :remember_me
     session[:user_id] =  @current_user = nil
-    flash[:notice] = I18n.t('signed_out')
   end
 
   def authenticate
@@ -41,7 +39,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     unless user_signed_in?
       store_location
-      redirect_to sign_in_url, :alert => I18n.t('need_sign_in')
+      redirect_to sign_in_url, :alert => I18n.t('omniauth.need_sign_in')
     end
   end
 

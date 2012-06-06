@@ -15,3 +15,12 @@ en:
       message_html: |
         Thanks for signing up.
         As soon as there is something more to see, I will let you know.
+
+    new:
+      header:
+        new_stuff: Just Released
+        upcoming: Upcoming
+
+    new_stuff:
+      academy_guide_link: 'Academy Guide'
+      training_link: Training Info

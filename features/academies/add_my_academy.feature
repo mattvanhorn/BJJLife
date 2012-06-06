@@ -10,16 +10,16 @@ Feature: Add my academy
    When I follow the add academy link
    Then I should be on the new academy page
    When I fill out the form with:
-    | Name         | Vitor Shaolin's Brazilian Jiu Jitsu |
-    | Instructor   | Vitor Shaolin                       |
-    | Street       | 780 8th Ave                         |
-    | Unit         | 3rd floor                           |
-    | City         | New York                            |
-    | State        | NY                                  |
-    | ZIP Code     | 10036                               |
-    | Email        | tkd@4blackbelt.com                  |
-    | Phone        | (212) 957-4045                      |
-    | Website      | http://bjjnewyorkcity.com/          |
+    | Name        | Vitor Shaolin's Brazilian Jiu Jitsu |
+    | Instructor  | Vitor Shaolin                       |
+    | Street      | 780 8th Ave                         |
+    | Suite/Floor | 3rd floor                           |
+    | City        | New York                            |
+    | State       | NY                                  |
+    | ZIP Code    | 10036                               |
+    | Email       | tkd@4blackbelt.com                  |
+    | Phone       | (212) 957-4045                      |
+    | Website     | http://bjjnewyorkcity.com/          |
    And I click on "Create Academy"
   Then I should be on the academies page
    And I should see "Your entry is awaiting moderation"

@@ -17,10 +17,13 @@ module HtmlSelectorsHelper
       "#video_#{$1}"
     when "the header logo"
       "header h1"
+
     when "the academy guide link"
       I18n.t('subscriptions.new_stuff.academy_guide_link')
+
     when "the add academy link"
-      I18n.t('add_academy_link')
+      I18n.t('academies.index.add_academy_link')
+
     when /([A-Z]{2})/
       ".us_state.#{$1.downcase}"
     when "academy listing"

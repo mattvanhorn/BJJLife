@@ -1,4 +1,9 @@
 en:
+  helpers:
+    submit:
+      subscription:
+        create: "Sign Up"
+
   simple_form:
     "yes": 'Yes'
     "no": 'No'

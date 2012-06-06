@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       analytical.event :sign_out, :id => current_user.id
       sign_out
     end
-    redirect_to root_url
+    redirect_to root_url, :notice => I18n.t('flash.sessions.destroy.notice')
   end
 
   def failure

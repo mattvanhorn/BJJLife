@@ -1,0 +1,44 @@
+en:
+  flash:
+    admin:
+      academies:
+        publish:
+          notice: "Published!"
+      subscriptions:
+      videos:
+
+    academies:
+      create:
+        notice: Your entry is awaiting moderation. Please check back in a little while.
+        alert: There were some errors in that entry.
+
+    accounts:
+      update:
+        notice: Your profile has been updated.
+        alert: There were some errors preventing that update.
+
+    blogs:
+
+    comments:
+      create:
+        notice: Thanks for your comment.
+
+    posts:
+      create:
+        notice: "Thanks for posting, I need all the help I can get."
+
+    sessions:
+      create:
+        notice: You are now signed in.
+      destroy:
+        notice: You are now signed out.
+
+    subscriptions:
+      create:
+        notice: You are now on the announcements list.
+        alert: A problem prevented you from being added to the list.
+
+    videos:
+      create:
+        notice: Your entry is awaiting moderation. Please check back in a little while.
+        alert: There were some errors in that entry

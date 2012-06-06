@@ -12,6 +12,10 @@ describe CommentsController do
     Comment.stub(:new => comment)
   end
 
+  it "should not reek" do
+    File.open(__FILE__).should_not reek
+  end
+
   it { should expose(:comment).as(Comment.new) }
 
   describe "#create" do

@@ -1,0 +1,9 @@
+en:
+  posts:
+    new:
+      guidelines_html: |
+        <h4>Guidelines</h4>
+        <p>Please keep to the topic, and please don't shill for companies or
+        products that you are connected with. I will be adding a section for
+        that type of post in the near future.</p>
+        <p>Until then, anything that smells like blatant advertising will be removed.</p>
