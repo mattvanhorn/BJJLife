@@ -60,5 +60,14 @@ Feature: Sign in
      And I click on "Sign In" within the form
     Then I should be on the training tips page
 
+  Scenario: Sign Out
+     When I visit the sign in page
+      And I fill in "Email" with "alice@example.com"
+      And I fill in "Password" with "password"
+      And I click on "Sign In" within the form
+     Then I should be on the home page
+     When I visit the sign out page
+     Then I should be on the home page
+      And I should not see "Hi alice,"
 
 

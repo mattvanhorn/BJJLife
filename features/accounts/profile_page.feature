@@ -21,3 +21,23 @@ Feature: Profile page
      And I should see "No comments"
      # - this needs js...
      # And I should see "Last signed in: less than a minute ago"
+
+  Scenario: Visit my profile
+    Given the following user:
+    | username      | Alice K                 |
+    | sign_in_count | 2                       |
+    | teacher       | Vitor 'Shaolin' Ribeiro |
+    | rank          | Blue belt               |
+    | location      | New York                |
+    And the following identity:
+    | email    | alice@example.com |
+    | password | password          |
+    And that identity belongs to that user
+    And I am signed in as "alice@example.com" with a password of "password"
+    When I visit the home page
+     And I click on "My Profile" within the navigation
+    Then I should be on my account page
+    And I should see "3 visits"
+
+
+

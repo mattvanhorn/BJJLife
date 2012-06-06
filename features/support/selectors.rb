@@ -5,8 +5,10 @@ module HtmlSelectorsHelper
     case scope
     when /the body/
       "html > body"
-    when /the form/
+    when "the form"
       "form"
+    when "the navigation"
+      'ul.navigation'
     when /the signup form/
       "#new_subscription.simple_form"
     when /the new account form/

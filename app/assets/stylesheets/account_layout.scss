@@ -1,0 +1,15 @@
+#account.grid
+  p.stats{
+    span.visits,
+    span.posts,
+    span.comments {
+      display: inline-block;
+    }
+    span.visits { margin: 0 10px 0 0;}
+    span.posts { margin: 0 10px 0 10px;}
+    span.comments { margin: 0 0 0 10px;}
+  }
+/*  p abbr.timeago {}
+  p.teacher {}
+  p.teacher {}
+  p.location{}*/
