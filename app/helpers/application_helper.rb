@@ -63,8 +63,8 @@ module ApplicationHelper
   def standard_header(replacement_text=nil, &additional_content)
     capture_haml do
       haml_tag :div, :class => "row header" do
-        replacement_text.presence || haml_tag( :h2, t('.header'))
-        yield if block_given?
+        content = (replacement_text.presence || t('.header')) << ( yield if block_given? ).to_s
+        haml_tag( :h2, content)
       end
     end
   end
