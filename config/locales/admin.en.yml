@@ -1,0 +1,14 @@
+en:
+  admin:
+    home_link: Back To Admin Home
+    home:
+      index:
+        header: Administration Home
+    subscriptions:
+      index:
+        header: Subscriptions
+    videos:
+      index:
+        header: Videos
+      new:
+        header: Add Video

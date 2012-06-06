@@ -1,3 +1,10 @@
-#subscriptions
-- subscriptions.each do |subscription|
-  %p[subscription]= subscription.email
+#admin.grid
+  = standard_header
+
+  .main
+    .row
+      - subscriptions.each do |subscription|
+        %p[subscription]= subscription.email
+
+  .sidebar
+    %p= link_to t('admin.home_link'), admin_path
