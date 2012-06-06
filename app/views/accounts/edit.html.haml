@@ -1,25 +1,23 @@
 #videos.grid
-  .row
-    %h2 Account
+  = standard_header
 
   .main
     .row
       = simple_form_for current_user, :url => account_path do |form|
         %fieldset
-          %legend Profile Details
+          %legend= t('.legend.profile_details')
           = form.input :username, :hint => 'This is what will show up under the things you post'
           = form.input :location
           = form.input :teacher
           = form.input :rank
 
         %fieldset
-          %legend Account Identity
+          %legend= t('.legend.account_identity')
           = form.fields_for :identity_attributes, current_user.identity do |fields|
             = fields.input :email, :hint => 'This will never be shown to other users'
             = fields.input :password, :as => 'password', :hint => 'Only if you want to change your password'
             = fields.input :password_confirmation, :label => "Confirm Password", :as => 'password', :hint => 'Only if you want to change your password'
 
-        %button{:type => 'submit'} Update Account
-
+        = form.button :submit
   .sidebar
     TBD

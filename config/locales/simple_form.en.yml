@@ -3,6 +3,8 @@ en:
     submit:
       subscription:
         create: "Sign Up"
+      user:
+        update: Update Account
 
   simple_form:
     "yes": 'Yes'

@@ -1,8 +1,11 @@
 en:
   academies:
     index:
+      header: Academies
       add_academy_link: Add my academy
-
+    new:
+      header: Add an Academy
+      back_to_guide: Back to the Academy Guide
   admin:
     academies:
       index:

@@ -1,8 +1,6 @@
 #academies.grid
-  .row.header
-    %h2
-      Academies
-      = link_to t('.add_academy_link'), new_academy_path
+  = standard_header do
+    = link_to t('.add_academy_link'), new_academy_path
 
   .main
     .row

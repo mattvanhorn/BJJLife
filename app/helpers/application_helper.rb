@@ -59,4 +59,14 @@ module ApplicationHelper
       "VI" => "US Virgin Islanda"
     }[abbr.to_s.upcase] || abbr
   end
+
+  def standard_header(replacement_text=nil, &additional_content)
+    capture_haml do
+      haml_tag :div, :class => "row header" do
+        replacement_text.presence || haml_tag( :h2, t('.header'))
+        yield if block_given?
+      end
+    end
+  end
+
 end

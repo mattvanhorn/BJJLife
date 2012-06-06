@@ -1,0 +1,13 @@
+en:
+  accounts:
+    edit:
+      header: Edit My Profile
+      legend:
+        profile_details: Profile Details
+        account_identity: Account Identity
+
+    new:
+      header: Sign Up
+
+    show:
+      header: My Profile

@@ -1,6 +1,5 @@
 #academies.grid
-  .row
-    %h2 Add an Academy
+  = standard_header
 
   .main
     .row
@@ -21,4 +20,4 @@
         = form.button :submit
 
   .sidebar
-    = link_to "Back to the Academy Guide", academies_path
+    = link_to t('.back_to_guide'), academies_path

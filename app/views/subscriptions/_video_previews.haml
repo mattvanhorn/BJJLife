@@ -1,6 +1,6 @@
 #video-previews
-  %h3= link_to "Videos", videos_path
+  %h3= link_to t('.header'), videos_path
   %ul
     = render :partial => 'videos/video', :collection => videos
 
-  = link_to "more videos here...", videos_path, :class => 'see-more'
+  = link_to t('.more_videos'), videos_path, :class => 'see-more'
