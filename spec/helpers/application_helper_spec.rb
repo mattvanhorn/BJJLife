@@ -38,7 +38,8 @@ describe ApplicationHelper do
     end
 
     it "works with a block" do
-      helper.standard_header('foo'){'bar'}.should == "<div class='row header'>\n  <h2>foobar</h2>\n</div>\n"
+      helper.standard_header('foo'){ helper.haml_tag(:p, 'bar') }.should ==
+      "<div class='row header'>\n  <h2>foo</h2>\n  <p>bar</p>\n  \n</div>\n"
     end
   end
 end

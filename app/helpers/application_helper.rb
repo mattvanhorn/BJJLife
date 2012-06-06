@@ -61,12 +61,16 @@ module ApplicationHelper
   end
 
   def standard_header(replacement_text=nil, &additional_content)
+    header_text = (replacement_text.presence || t('.header'))
+    extra = capture_haml(&additional_content) if block_given?
     capture_haml do
       haml_tag :div, :class => "row header" do
-        content = (replacement_text.presence || t('.header')) << ( yield if block_given? ).to_s
-        haml_tag( :h2, content)
+        haml_tag( :h2, "#{header_text}".html_safe)
+        haml_concat extra.html_safe unless extra.blank?
       end
     end
+
+
   end
 
 end

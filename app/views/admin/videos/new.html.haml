@@ -1,5 +1,12 @@
-.admin
-  = simple_form_for [:admin, video] do |form|
-    = form.input :name
-    = form.input :url
-    = form.submit :class => 'button'
+#admin.grid
+  = standard_header
+
+  .main
+    .row
+      = simple_form_for [:admin, video] do |form|
+        = form.input :name
+        = form.input :url
+        = form.button :submit
+
+  .sidebar
+    %p= link_to t('admin.home_link'), admin_path

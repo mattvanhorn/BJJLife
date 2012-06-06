@@ -1,4 +1,11 @@
-#academies
-  %p #{pluralize(academies.size, 'academy')} awaiting moderation.
-  %ul.academies
-    = render academies
+#admin.grid
+  = standard_header
+
+  .main
+    .row
+      %p #{pluralize(academies.size, 'academy')} awaiting moderation.
+      %ul.academies
+        = render academies
+  .sidebar
+    %p= link_to t('admin.home_link'), admin_path
+

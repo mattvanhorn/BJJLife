@@ -1,6 +1,5 @@
 #academies.grid
-  = standard_header do
-    = link_to t('.add_academy_link'), new_academy_path
+  = standard_header
 
   .main
     .row
@@ -9,7 +8,8 @@
       = render academies_by_state
 
   .sidebar
-    Jump to state:
+    = link_to t('.add_academy_link'), new_academy_path, :class => 'btn'
+    %p= t('.jump_to_state')
     %ul
       - academies_by_state.map(&:first).each do |state|
         %li= link_to full_us_state_name(state), "##{state}"
