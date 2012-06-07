@@ -18,11 +18,3 @@ Feature: Moderate Academy Listings
     When I click on "Publish"
      And I go to the academies page
     Then I should see 1 academy listing
-
-
-
-
-
-
-
-
