@@ -6,7 +6,7 @@ describe Admin::SubscriptionsController do
   end
 
   it "should not reek" do
-    File.open(__FILE__).should_not reek
+    get_source_file(__FILE__).should_not reek
   end
 
   it { should expose(:subscriptions).as(Subscription.all)}

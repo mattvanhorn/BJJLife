@@ -16,7 +16,7 @@ describe Blog do
   subject { Blog.new.tap{|b|b.post_source = lambda{ new_post }} }
 
   it "should not reek" do
-    File.open(__FILE__).should_not reek
+    get_source_file(__FILE__).should_not reek
   end
 
   it { should have(0).entries }

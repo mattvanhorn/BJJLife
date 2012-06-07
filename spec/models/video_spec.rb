@@ -23,7 +23,7 @@ describe Video do
   subject{ video }
 
   it "should not reek" do
-    File.open(__FILE__).should_not reek
+    get_source_file(__FILE__).should_not reek
   end
 
   it "sets the thumbnail url when saving a youtube video url" do

@@ -50,7 +50,8 @@ class User < ActiveRecord::Base
   end
 
   def had_existing_subscription?
-    subscription && subscription.persisted? && (subscription.created_at < (self.created_at || Time.now))
+    sub = self.subscription
+    sub && sub.persisted? && (sub.created_at < (self.created_at || Time.now))
   end
 
   def opted_out?

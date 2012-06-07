@@ -4,7 +4,7 @@ describe Admin::VideosController do
   include NullDB::RSpec::NullifiedDatabase
 
   it "should not reek" do
-    File.open(__FILE__).should_not reek
+    get_source_file(__FILE__).should_not reek
   end
 
   it "exposes a video" do

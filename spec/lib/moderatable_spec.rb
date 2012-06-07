@@ -1,4 +1,6 @@
+require 'reek/spec'
 require_relative '../../lib/moderatable'
+require_relative '../support/reek_helper'
 
 class MyModeratable
   attr_accessor :state
@@ -8,7 +10,14 @@ class MyModeratable
 end
 
 describe Moderatable do
+  include Reek::Spec
+  include ReekHelper
+
   subject { MyModeratable.new }
+
+  it "should not reek" do
+    get_source_file(__FILE__).should_not reek
+  end
 
   it "responds to pending?" do
     subject.should be_pending

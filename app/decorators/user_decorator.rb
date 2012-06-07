@@ -3,7 +3,7 @@ class UserDecorator < Draper::Base
 
   def greeting
     return unless user
-    name = user.username.presence || 'there'
+    name = username.presence || 'there'
     h.content_tag(:p, "Hi #{name},")
   end
 end

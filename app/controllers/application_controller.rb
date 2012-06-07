@@ -52,8 +52,7 @@ class ApplicationController < ActionController::Base
   end
 
   def stored_location
-    destination = session[:return_to]
-    session[:return_to] = nil
+    destination, session[:return_to] = session[:return_to], nil
     destination
   end
 

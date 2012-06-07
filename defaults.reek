@@ -43,7 +43,9 @@ ClassVariable:
   exclude: *id001
   enabled: true
 BooleanParameter:
-  exclude: *id001
+  exclude:
+    - 'respond_to?'
+
   enabled: true
 IrresponsibleModule:
   exclude: *id001
@@ -61,7 +63,10 @@ UncommunicativeModuleName:
 NestedIterators:
   ignore_iterators: []
 
-  exclude: []
+  exclude:
+    - Academy#self.by_state
+    - ApplicationHelper#standard_header
+    - Moderatable#self.included
 
   enabled: true
   max_allowed_nesting: 1
@@ -69,18 +74,28 @@ LongMethod:
   max_statements: 5
   exclude:
   - initialize
+  - self.included
   enabled: true
 Duplication:
-  allow_calls: []
+  allow_calls: [auth_credentials]
 
   exclude:
     - AcademiesController
+    - AccountsController
+    - Admin::AcademiesController
+    - Admin::HomeController
+    - Admin::SubscriptionsController
+    - Admin::VideosController
+    - ApplicationController
     - BlogsController
+    - CommentsController
     - PostsController
+    - SessionsController
     - SubscriptionsController
     - VideosController
     - AcademyDecorator#contact
     - AcademyDecorator#address
+    - Identity#process_opt_in
 
   enabled: true
   max_calls: 1
@@ -118,7 +133,7 @@ DataClump:
   max_copies: 2
   min_clump_size: 2
 ControlCouple:
-  exclude: *id001
+  exclude: []
   enabled: true
 LongYieldList:
   max_params: 3

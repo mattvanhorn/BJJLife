@@ -24,4 +24,5 @@ RSpec.configure do |specs|
   specs.infer_base_class_for_anonymous_controllers = false
 
   specs.include(Reek::Spec)
+  specs.include(ReekHelper)
 end

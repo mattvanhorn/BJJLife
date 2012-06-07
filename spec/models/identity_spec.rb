@@ -29,6 +29,10 @@ describe Identity do
     let(:user){ mock_model(User) }
     let(:subscription){ mock_model(Subscription) }
 
+    it "should not reek" do
+      get_source_file(__FILE__).should_not reek
+    end
+
     it "creates a subscription if opt in is true" do
       Subscription.should_receive(:find_or_create_by_email).with('alice@example.com')
       Identity.create(:email => 'alice@example.com',

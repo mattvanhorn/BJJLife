@@ -26,7 +26,7 @@ describe Academy do
   subject { Academy.new }
 
   it "should not reek" do
-    File.open(__FILE__).should_not reek
+    get_source_file(__FILE__).should_not reek
   end
 
   it "can get and set a name" do

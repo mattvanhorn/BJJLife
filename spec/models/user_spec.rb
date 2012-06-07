@@ -21,6 +21,10 @@ describe User do
 
   subject { User.new }
 
+  it "should not reek" do
+    get_source_file(__FILE__).should_not reek
+  end
+
   it { should have_one(:identity) }
 
   it "should accept nested attributes for identity" do

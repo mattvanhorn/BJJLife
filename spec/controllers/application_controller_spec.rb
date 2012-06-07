@@ -5,7 +5,7 @@ describe ApplicationController do
   let(:verifier){ ActiveSupport::MessageVerifier.new(secret) }
 
   it "should not reek" do
-    File.open(__FILE__).should_not reek
+    get_source_file(__FILE__).should_not reek
   end
 
   describe "signing in a user" do
