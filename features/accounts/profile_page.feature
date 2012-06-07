@@ -38,6 +38,3 @@ Feature: Profile page
      And I click on "My Profile" within the navigation
     Then I should be on my account page
     And I should see "3 visits"
-
-
-

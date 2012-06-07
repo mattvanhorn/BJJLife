@@ -24,7 +24,3 @@ Feature: Subscription at registration
       And I check "subscribe for announcements"
       And I click on "Sign Up" within the new account form
      Then there should be a subscription for "alice@example.com"
-
-
-
-
