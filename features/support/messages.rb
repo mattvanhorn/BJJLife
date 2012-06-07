@@ -32,7 +32,7 @@ module I18nMessagesHelper
       'subscriptions.thanks.message_html'
 
     when "the explanatory"
-      'landing_page.explanation_html'
+      'subscriptions.new.explanation_html'
 
     else
       raise "Can't find mapping from \"#{desc}\" to a message key.\n" +

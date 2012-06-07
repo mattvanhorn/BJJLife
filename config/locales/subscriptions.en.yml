@@ -1,13 +1,12 @@
 en:
-  landing_page:
-    explanation_html: |
-      <p>I'm currently working on building the best BJJ site ever. If you want
-      to be informed when it launches, please enter your email address
-      here.</p> <p>Don't worry - I won't send you any other email, I hate
-      spam, too.</p> <p>Meanwhile - check out the <a href="/videos">videos</a> and the <a href="/academies">academy guide</a></p>
-
-
   subscriptions:
+    new:
+      explanation_html: |
+        <p>I'm currently working on building the best BJJ site ever. If you want
+        to be informed when it launches, please enter your email address
+        here.</p> <p>Don't worry - I won't send you any other email, I hate
+        spam, too.</p> <p>Meanwhile - check out the <a href="/videos">videos</a> and the <a href="/academies">academy guide</a></p>
+
     thanks:
       header: Thanks!
       message_html: |
