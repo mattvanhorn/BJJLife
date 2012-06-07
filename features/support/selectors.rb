@@ -1,6 +1,9 @@
 # I'm in features/support/selectors.rb
 
 module HtmlSelectorsHelper
+  # Maps a name to a css selector.
+  # Used to decouple the test language from the actual DOM specifics.
+  #
   def selector_for(scope)
     case scope
     when /the body/
