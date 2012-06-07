@@ -38,6 +38,8 @@ Bjjlife::Application.routes.draw do
   match '/sign_in',  to: 'sessions#new',      :as => :sign_in
   match '/sign_out', to: 'sessions#destroy',  :as => :sign_out
 
+  mount RolloutUi::Engine, :at => "/rollout"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

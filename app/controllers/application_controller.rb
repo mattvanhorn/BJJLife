@@ -8,15 +8,23 @@ class ApplicationController < ActionController::Base
 
   analytical :modules => [:console, :google, :mixpanel], :use_session_store => true, :disable_if => lambda{|controller| controller.class.ancestors.include?(Admin)}
 
-  before_filter :init_blog, :store_location
+  before_filter :init_blog, :tag_guest, :store_location
 
-  helper_method :current_user, :user_signed_in?
+  helper_method :current_user, :user_signed_in?, :identifiable_user
 
   protected
 
   def current_user
     @current_user ||= User.find_by_id(session[:user_id] || cookies.signed['remember_me'])
     UserDecorator.decorate(@current_user)
+  end
+
+  def guest_user
+    GuestUser.new(session[:guest_id] || cookies.signed[:guest_id] || tag_guest )
+  end
+
+  def identifiable_user
+    current_user.model || guest_user
   end
 
   def sign_in(user)
@@ -87,5 +95,9 @@ class ApplicationController < ActionController::Base
     @blog = Blog.new(:title => "Training")
   end
 
-
+  def tag_guest
+    unless (user_signed_in? || session[:guest_id] || cookies.signed[:guest_id])
+      session[:guest_id] = cookies.permanent.signed[:guest_id] = UUIDTools::UUID.random_create.to_i
+    end
+  end
 end

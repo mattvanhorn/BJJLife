@@ -16,7 +16,9 @@ gem 'omniauth-identity'
 gem 'bcrypt-ruby'
 gem 'thin'
 gem 'make_voteable'
-
+gem 'rollout'
+gem 'rollout_ui'
+gem 'uuidtools'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
