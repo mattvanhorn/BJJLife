@@ -1,0 +1,53 @@
+--- 
+http_interactions: 
+- request: 
+    method: post
+    uri: https://api.stripe.com/v1/charges
+    body: 
+      encoding: US-ASCII
+      string: amount=1000&currency=usd&card=tok_c26f9dU6RVl8f1&description=alice%40example.com%20--%202012-06-10%2018%3A51%3A56
+    headers: 
+      Accept: 
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding: 
+      - gzip, deflate
+      User-Agent: 
+      - Stripe/v1 RubyBindings/1.7.0
+      Authorization: 
+      - Bearer CA4fzDjIleIw9mM7gSZfCoYVgswuE2eA
+      X-Stripe-Client-User-Agent: 
+      - "{\"bindings_version\":\"1.7.0\",\"lang\":\"ruby\",\"lang_version\":\"1.9.3 p194 (2012-04-20)\",\"platform\":\"x86_64-darwin11.3.0\",\"publisher\":\"stripe\",\"uname\":\"Darwin Ringo-2.local 11.4.0 Darwin Kernel Version 11.4.0: Mon Apr  9 19:32:15 PDT 2012; root:xnu-1699.26.8~1/RELEASE_X86_64 x86_64 i386\"}"
+      Content-Length: 
+      - "113"
+      Content-Type: 
+      - application/x-www-form-urlencoded
+  response: 
+    status: 
+      code: 402
+      message: ...
+    headers: 
+      Server: 
+      - nginx
+      Date: 
+      - Mon, 11 Jun 2012 01:51:58 GMT
+      Content-Type: 
+      - application/json;charset=utf-8
+      Content-Length: 
+      - "152"
+      Connection: 
+      - keep-alive
+    body: 
+      encoding: US-ASCII
+      string: |
+        {
+          "error": {
+            "charge": "ch_WUPKPt02QZlOLR",
+            "code": "card_declined",
+            "message": "Your card was declined.",
+            "type": "card_error"
+          }
+        }
+
+    http_version: 
+  recorded_at: Mon, 11 Jun 2012 01:51:57 GMT
+recorded_with: VCR 2.1.1

@@ -23,29 +23,3 @@ RSpec::Matchers.define :validate_with do |validator|
     "do not expected to validate with #{validator}"
   end
 end
-
-RSpec::Matchers.define :expose do |name|
-  chain :as do |value|
-    @value = value
-  end
-
-  match do |subject|
-    actual = subject.send(name)
-    !actual.nil?
-    if @value
-      @value == actual
-    end
-  end
-
-  description do
-    "expose #{name}"
-  end
-
-  failure_message_for_should do |text|
-    "expected to expose #{name}"
-  end
-
-  failure_message_for_should_not do |text|
-    "not expected to expose #{name}"
-  end
-end

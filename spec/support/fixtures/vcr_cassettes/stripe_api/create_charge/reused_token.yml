@@ -1,0 +1,51 @@
+--- 
+http_interactions: 
+- request: 
+    method: post
+    uri: https://api.stripe.com/v1/charges
+    body: 
+      encoding: US-ASCII
+      string: amount=1000&currency=usd&card=tok_yrkNU9PEHJWNJZ&description=alice%40example.com%20--%202012-06-08%2013%3A59%3A53
+    headers: 
+      Accept: 
+      - "*/*; q=0.5, application/xml"
+      Accept-Encoding: 
+      - gzip, deflate
+      User-Agent: 
+      - Stripe/v1 RubyBindings/1.7.0
+      Authorization: 
+      - Bearer CA4fzDjIleIw9mM7gSZfCoYVgswuE2eA
+      X-Stripe-Client-User-Agent: 
+      - "{\"bindings_version\":\"1.7.0\",\"lang\":\"ruby\",\"lang_version\":\"1.9.3 p194 (2012-04-20)\",\"platform\":\"x86_64-darwin11.3.0\",\"publisher\":\"stripe\",\"uname\":\"Darwin Ringo-2.local 11.4.0 Darwin Kernel Version 11.4.0: Mon Apr  9 19:32:15 PDT 2012; root:xnu-1699.26.8~1/RELEASE_X86_64 x86_64 i386\"}"
+      Content-Length: 
+      - "113"
+      Content-Type: 
+      - application/x-www-form-urlencoded
+  response: 
+    status: 
+      code: 400
+      message: ...
+    headers: 
+      Server: 
+      - nginx
+      Date: 
+      - Fri, 08 Jun 2012 20:59:54 GMT
+      Content-Type: 
+      - application/json;charset=utf-8
+      Content-Length: 
+      - "140"
+      Connection: 
+      - keep-alive
+    body: 
+      encoding: US-ASCII
+      string: |
+        {
+          "error": {
+            "message": "You cannot use a stripe token more than once: tok_yrkNU9PEHJWNJZ",
+            "type": "invalid_request_error"
+          }
+        }
+
+    http_version: 
+  recorded_at: Fri, 08 Jun 2012 20:59:54 GMT
+recorded_with: VCR 2.1.1

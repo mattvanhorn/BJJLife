@@ -2,6 +2,8 @@ require 'omni_authenticator'
 
 class SessionsController < ApplicationController
   skip_before_filter :store_location
+  # It seems we don't have a secret_token available to sign cookie in #failure rack endpoint.
+  skip_before_filter :tag_guest, :only => [:failure]
 
   def create
     user = OmniAuthenticator.new(auth_hash).find_user

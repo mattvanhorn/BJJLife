@@ -8,6 +8,17 @@ describe ApplicationController do
     get_source_file(__FILE__).should_not reek
   end
 
+  describe "#identifiable_user" do
+    subject { controller.send :identifiable_user }
+    context "when user is signed in" do
+      before { controller.stub(:current_user => double('user_decorator', :id => 42)) }
+      its(:id) { should == 42 }
+    end
+    context "when user is not signed in" do
+      before { controller.stub(:current_user => nil) }
+      it { should be_a(GuestUser) }
+    end
+  end
   describe "signing in a user" do
     controller do
       def index
@@ -51,4 +62,5 @@ describe ApplicationController do
       response.cookies['remember_me'].should be_nil
     end
   end
+
 end

@@ -1,0 +1,15 @@
+%h1 Thank you!
+
+%h2 Your purchase is confirmed
+
+%h3 Purchase Summary
+
+= render :partial => 'order_item', :object => @order.item
+
+%p Total: #{@order.amount}
+
+%p You can access the details at:
+
+%p redemption instructions
+
+

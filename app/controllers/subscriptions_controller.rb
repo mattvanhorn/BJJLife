@@ -3,7 +3,7 @@ class SubscriptionsController < ApplicationController
   expose(:videos) { Video.scoped.sample(3) }
 
   def new
-    # just render
+    exhibit_exposed :videos, :subscription
   end
 
   def create
@@ -12,6 +12,7 @@ class SubscriptionsController < ApplicationController
       analytical.event :subscribe, :email => subscription.email
       analytical.identify subscription.email
     end
+    exhibit_exposed :videos, :subscription
     respond_with subscription, :location => thanks_subscriptions_url
   end
 end

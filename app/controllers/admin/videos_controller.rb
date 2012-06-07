@@ -1,21 +1,24 @@
 class Admin::VideosController < ApplicationController
+  expose :videos
   expose :video
 
   def index
-    # just render
+    exhibit_exposed :videos
   end
 
   def new
-    # just render
+    exhibit_exposed :video
   end
 
   def create
     video.save
+    exhibit_exposed :videos, :video
     respond_with :admin, video
   end
 
   def destroy
     video.destroy
+    exhibit_exposed :videos
     respond_with :admin, video
   end
 end

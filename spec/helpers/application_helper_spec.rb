@@ -6,21 +6,6 @@ describe ApplicationHelper do
     get_source_file(__FILE__).should_not reek
   end
 
-  describe "#full_us_state_name" do
-    it "converts known abbreviations" do
-      helper.full_us_state_name('NY').should == 'New York'
-      helper.full_us_state_name('CA').should == 'California'
-    end
-
-    it "handles lowercase abbreviations" do
-      helper.full_us_state_name('ak').should == 'Alaska'
-    end
-
-    it "returns the argument if unknown" do
-      helper.full_us_state_name('Foo').should == 'Foo'
-    end
-  end
-
   describe "#standard_header" do
     before(:each) do
       helper.extend Haml
@@ -42,5 +27,19 @@ describe ApplicationHelper do
       "<div class='row header'>\n  <h2>foo</h2>\n  <p>bar</p>\n  \n</div>\n"
     end
   end
-end
 
+  describe "#stripe_javascript" do
+    before(:each) do
+      helper.controller.stub(:controller_name => 'orders')
+    end
+
+    it "shows up on orders controller views" do
+      helper.stripe_javascript.should == javascript_include_tag("https://js.stripe.com/v1/")
+    end
+    it "doesn't show up on other controller views" do
+      helper.controller.stub(:controller_name => 'foobar')
+      helper.stripe_javascript.should be_nil
+    end
+  end
+
+end

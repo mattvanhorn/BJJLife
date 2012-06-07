@@ -6,25 +6,28 @@ class VideosController < ApplicationController
   expose(:video)
 
   def index
-    # just render
+    exhibit_exposed :videos
   end
 
   def new
-    # just render
+    exhibit_exposed :video
   end
 
   def create
     video.publish!
+    exhibit_exposed :video
     respond_with video
   end
 
   def upvote
     current_user.up_vote! video
+    exhibit_exposed :videos
     respond_with video
   end
 
   def downvote
     current_user.down_vote! video
+    exhibit_exposed :videos
     respond_with video
   end
 end

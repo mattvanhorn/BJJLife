@@ -7,7 +7,7 @@ gem 'haml-rails'
 gem 'simple_form'
 gem 'analytical'
 gem 'split', :require => 'split/dashboard'
-gem 'decent_exposure'
+gem 'decent_exposure', :git => 'git://github.com/voxdolo/decent_exposure.git', :branch => 'master'
 gem 'draper'
 gem 'bourbon'
 gem 'state_machine'
@@ -21,6 +21,10 @@ gem 'rollout_ui'
 gem 'uuidtools'
 gem 'carrierwave'
 gem 'fog'
+gem 'stripe'
+gem 'faker'
+gem 'mini_magick'
+gem 'display_case'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -54,11 +58,12 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem "shoulda-matchers"
-  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb.git'
+  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/nulldb/nulldb.git'
   gem 'fabrication'
   gem 'vcr'
   gem 'webmock'
   gem 'cover_me', :require => false
+  gem 'email_spec'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

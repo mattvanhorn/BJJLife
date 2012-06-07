@@ -1,7 +1,4 @@
-require 'reek/spec'
-require_relative '../support/reek_helper'
-require_relative "../../lib/omni_authenticator"
-require 'ostruct'
+require 'spec_helper'
 
 class Foobar; end
 

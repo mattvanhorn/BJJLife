@@ -1,0 +1,12 @@
+.main
+  .row
+    %h3.name= product.name
+    .product-photo= image_tag(product.photo, :size => '480x284')
+  .row
+
+.sidebar
+  %p.description= simple_format(product.description)
+
+  %p.price= product.price
+  %p.buy
+    = link_to t('.buy_now'), new_product_order_path(product.to_model), :class => 'btn'

@@ -26,6 +26,12 @@ module NavigationHelpers
     when "the post page for the first post"
       post_path Post.order(:created_at).last
 
+    when "the product page for that product"
+      product_path(@product)
+
+    when "the order confirmation page"
+     order_path(Order.last)
+
     else
       begin
         page_name =~ /the (.*) page/

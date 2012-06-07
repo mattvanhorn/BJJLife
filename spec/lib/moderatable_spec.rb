@@ -1,6 +1,4 @@
-require 'reek/spec'
-require_relative '../../lib/moderatable'
-require_relative '../support/reek_helper'
+require 'spec_helper'
 
 class MyModeratable
   attr_accessor :state

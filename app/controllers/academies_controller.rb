@@ -1,17 +1,19 @@
 class AcademiesController < ApplicationController
-  expose(:academies_by_state) { Academy.by_state }
+  expose(:academies_by_state){ Academy.by_state.map{ |academy_group| exhibit(academy_group) } }
   expose(:academy)
 
   def index
-    # just render
+    # render
   end
 
   def new
-    # just render
+    exhibit_exposed :academy
   end
 
   def create
     academy.save
+    exhibit_exposed :academy
     respond_with academy
   end
+
 end

@@ -4,7 +4,7 @@ class Admin::AcademiesController < Admin::BaseController
   expose(:academy)
 
   def index
-    # just render
+    exhibit_exposed :academies
   end
 
   def publish

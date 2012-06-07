@@ -29,7 +29,8 @@
 
 
   .sidebar
-    = current_user.greeting
+    - if user_signed_in?
+      %p= current_user.greeting
     = t('.explanation_html')
 
 

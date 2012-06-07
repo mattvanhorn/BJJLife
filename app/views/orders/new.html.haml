@@ -1,0 +1,60 @@
+- content_for :stripe_js do
+  = stripe_javascript
+
+#orders_new.grid
+  = standard_header
+
+  .main
+    .row
+      = simple_form_for [product.to_model, order.to_model] do |form|
+        - if order.errors.any?
+          .error_messages
+            %h2 #{pluralize(order.errors.count, "error")} prohibited this order from being saved:
+            %ul
+              - order.errors.full_messages.each do |msg|
+                %li= msg
+
+        = form.input :stripe_card_token, :as => :hidden
+        %fieldset
+          %legend Customer Account
+          = form.input :email
+          - unless user_signed_in?
+            = simple_fields_for :identity do |f|
+              %p= t('.password_prompt')
+              = f.input :password
+              = f.input :password_confirmation
+            %p
+              If you have an account, please
+              = link_to "sign in", sign_in_path
+              now.
+        %fieldset
+          %legend Credit Card Details
+          #stripe_error
+            %noscript
+              JavaScript is not enabled and is required for this form.
+              Please enable it in your web browser settings.
+
+          = form.input :bill_first_name
+          = form.input :bill_last_name
+          = form.input( :card_number,  :label_html => {:for => 'card_number'}, :wrapper_html => {:id => 'card_number_wrapper'} ){ text_field_tag :card_number,  nil, :name => nil }
+          = form.input( :card_code,    :label_html => {:for => 'card_code'}, :wrapper_html => {:id => 'card_code_wrapper'}  ){ text_field_tag :card_code,    nil, :name => nil, :size => 4 }
+          = form.input( :cc_exp_month, :label_html => {:for => 'cc_exp_month'}, :wrapper_html => {:id => 'cc_exp_month_wrapper'}){ select_tag :cc_exp_month, options_for_select((1..12).to_a.map{|m| ["#{m} - #{Date::ABBR_MONTHNAMES[m]}", "#{m}"]}), :name => nil }
+          = form.input( :cc_exp_year,  :label_html => {:for => 'cc_exp_year'}, :wrapper_html => {:id => 'cc_exp_year_wrapper' }){ select_tag :cc_exp_year,  options_for_select((Time.now.year..Time.now.year + 10).to_a.map{|y| ["#{y}", "#{y}"]}),   :name => nil }
+
+        %fieldset
+          %legend Billing Address
+          = form.input :bill_street
+          = form.input :bill_unit
+          = form.input :bill_city
+          = form.input :bill_us_state
+          = form.input :bill_postal_code
+
+        = form.button :submit
+
+      %pre= order.errors.to_yaml
+  .sidebar
+    %h4= product.name
+    = image_tag(product.photo.thumb)
+
+    %p= product.price
+

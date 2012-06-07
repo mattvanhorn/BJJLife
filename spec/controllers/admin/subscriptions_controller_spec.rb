@@ -8,6 +8,4 @@ describe Admin::SubscriptionsController do
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end
-
-  it { should expose(:subscriptions).as(Subscription.all)}
 end

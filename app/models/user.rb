@@ -24,8 +24,10 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
+  has_many :orders
 
   accepts_nested_attributes_for :identity, :update_only => true
+  validates_associated :identity, :on => :create
 
   def sign_in!
     self.sign_in_count = sign_in_count + 1
@@ -56,5 +58,9 @@ class User < ActiveRecord::Base
 
   def opted_out?
     subscription.nil?
+  end
+
+  def new_order(*args)
+    orders.build(*args)
   end
 end

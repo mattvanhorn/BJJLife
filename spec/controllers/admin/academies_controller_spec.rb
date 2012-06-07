@@ -4,16 +4,16 @@ describe Admin::AcademiesController do
   include NullDB::RSpec::NullifiedDatabase
   include AuthHelper
 
+  let(:resource){ mock_model(Academy) }
+  let(:collection){ [resource] }
+
   before(:each) do
-    Academy.stub(:new => mock_model(Academy), :pending => [])
+    subject.stub(:academy => resource, :academies => collection )
   end
 
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end
-
-  it { should expose(:academies).as(Academy.pending) }
-  it { should expose(:academy).as(Academy.new) }
 
   describe "#index" do
     it "renders the index template" do

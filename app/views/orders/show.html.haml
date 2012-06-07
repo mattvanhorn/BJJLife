@@ -1,0 +1,14 @@
+#orders_show.grid
+  = standard_header
+
+  .main
+    .row
+      %h3 Purchase Summary
+
+      = render order.item
+
+      %p Total: #{order.amount}
+
+
+  .sidebar
+    TBD

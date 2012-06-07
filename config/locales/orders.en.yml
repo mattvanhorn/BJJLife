@@ -1,0 +1,7 @@
+en:
+  orders:
+    new:
+      header: Check Out
+      password_prompt: Please enter a password for when you come back to see your purchases
+    show:
+      header: Order Confirmation

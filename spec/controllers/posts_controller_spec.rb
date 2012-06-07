@@ -4,8 +4,10 @@ describe PostsController do
   include NullDB::RSpec::NullifiedDatabase
 
   let(:current_user) { double(:id => '123', :model => true) }
-  let(:the_post) { mock_model(Post, :publish! => true) }
-  let(:blog) { mock_model(Blog, :new_post => the_post) }
+  let(:comment) { stub }
+  let(:the_post){ mock_model(Post, :publish! => true, :new_comment => comment) }
+  let(:entries) { double('entries', :new => the_post).as_null_object }
+  let(:blog)    { mock_model(Blog, :new_post => the_post, :entries => entries) }
 
   before(:each) do
     controller.stub(:current_user => current_user)
@@ -16,9 +18,6 @@ describe PostsController do
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end
-
-  it { should expose(:blog).as(Blog.first) }
-  it { should expose(:post).as(blog.new_post) }
 
   describe "#new" do
     it "requires sign in" do
@@ -48,7 +47,7 @@ describe PostsController do
 
   describe "show" do
     before(:each) do
-      Post.stub(:find => the_post)
+      entries.stub(:find => the_post)
     end
     it "does not require sign in" do
       controller.stub(:user_signed_in? => false)
@@ -57,7 +56,7 @@ describe PostsController do
     end
 
     it "finds the post" do
-      Post.should_receive(:find).with('42').and_return(the_post)
+      entries.should_receive(:find).with('42').and_return(the_post)
       get :show, :id => '42'
     end
 

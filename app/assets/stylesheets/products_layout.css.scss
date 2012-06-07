@@ -1,0 +1,9 @@
+#products_show{
+  .product-photo {
+    width: 480px;
+    height: 284px;
+    margin-left: grid-width(1);
+  }
+  @import 'products'
+}
+

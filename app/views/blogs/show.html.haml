@@ -3,6 +3,6 @@
 
   .main
     .row
-      = render PostDecorator.decorate(blog.entries)
+      = render blog.entries
   .sidebar
     = link_to t('.new_post'), new_post_path, :class => 'btn'

@@ -1,0 +1,7 @@
+%span.name #{order_item.product_name}:
+%span.quantity= order_item.quantity
+%span @
+%span.price= order_item.unit_price
+
+%ul
+  = render order_item.redemption_codes

@@ -1,0 +1,8 @@
+%p #{order_item.product_name}: #{order_item.quantity} @ #{order_item.price}
+- if order_item.adjustment
+  %p Adjustment: - #{order_item.adjustment}
+%p Amount: #{order_item.adjusted_subtotal}
+
+%h4= pluralize(order_item.redemption_codes.size, 'Redemption Code')
+%ul
+  = render order_item.redemption_codes

@@ -1,6 +1,6 @@
 class Admin::SubscriptionsController < Admin::BaseController
   expose(:subscriptions){ Subscription.all }
   def index
-    # just render
+    exhibit_exposed :subscriptions
   end
 end

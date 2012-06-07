@@ -119,7 +119,7 @@ describe Academy do
 
     it "provides a partial path for rendering state groups" do
       Academy.should_receive(:ordered_by_state).and_return([subject])
-      Academy.by_state.first.to_partial_path.should == 'state'
+      Academy.by_state.first.to_partial_path.should == 'academy_groups/academy_group'
     end
   end
 end

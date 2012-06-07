@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605212924) do
+ActiveRecord::Schema.define(:version => 20120612193844) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -57,6 +57,54 @@ ActiveRecord::Schema.define(:version => 20120605212924) do
   add_index "identities", ["email"], :name => "index_identities_on_email", :unique => true
   add_index "identities", ["user_id"], :name => "index_identities_on_user_id"
 
+  create_table "order_adjustments", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "amount"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "order_items", :force => true do |t|
+    t.integer  "order_id",                  :null => false
+    t.integer  "product_id",                :null => false
+    t.integer  "quantity",   :default => 1, :null => false
+    t.integer  "unit_price",                :null => false
+    t.integer  "adjustment", :default => 0, :null => false
+    t.integer  "price",                     :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "order_transactions", :force => true do |t|
+    t.integer  "order_id"
+    t.string   "charge_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "state"
+    t.string   "bill_first_name",  :limit => 32
+    t.string   "bill_last_name",   :limit => 32
+    t.string   "bill_street"
+    t.string   "bill_unit"
+    t.string   "bill_city"
+    t.string   "bill_us_state",    :limit => 2
+    t.string   "bill_postal_code", :limit => 10
+    t.string   "email"
+    t.string   "cc_type"
+    t.integer  "cc_exp_month"
+    t.integer  "cc_exp_year"
+    t.string   "cc_last4",         :limit => 4
+    t.string   "cc_fingerprint"
+    t.string   "cc_country"
+    t.string   "currency",         :limit => 3,  :default => "usd", :null => false
+    t.integer  "amount",                                            :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
+  end
+
   create_table "players", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -80,6 +128,21 @@ ActiveRecord::Schema.define(:version => 20120605212924) do
 
   add_index "posts", ["blog_id"], :name => "index_posts_on_blog_id"
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "products", :force => true do |t|
+    t.string   "name"
+    t.integer  "price"
+    t.string   "photo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "redemption_codes", :force => true do |t|
+    t.integer  "order_item_id", :null => false
+    t.string   "token",         :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "subscriptions", :force => true do |t|
     t.string   "email"

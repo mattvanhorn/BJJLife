@@ -15,8 +15,6 @@ describe AccountsController do
       Identity.stub(:new => new_identity)
     end
 
-    it { should expose(:identity).as Identity.new }
-
     it "renders the new account template" do
       get :new
       response.should render_template :new
@@ -34,8 +32,6 @@ describe AccountsController do
       before :each do
         subject.stub(:user_signed_in => true, :current_user => user)
       end
-
-      it { should expose(:identity).as existing_identity }
 
       it "renders the edit account template" do
         get :edit
@@ -56,14 +52,14 @@ describe AccountsController do
   end
 
   describe "#update" do
-    let(:current_user){ mock_model(User, :update_attributes => true, :model => lambda{self}) }
+    let(:current_user){ mock_model(User, :update_attributes => true, :identity => stub ) }
     let(:user_params){ {'username' => 'foobar', 'identity_attributes' => {'email' => 'bob@example.com'}} }
     before(:each) do
       controller.stub(:current_user => current_user)
     end
     it "updates the user & identity" do
       current_user.should_receive(:update_attributes).with(user_params).and_return(true)
-      put :update, {'user' => user_params}
+      put :update, {'user' => user_params }
     end
     it "redirects to the home page" do
       put :update, {'user' => user_params}

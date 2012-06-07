@@ -33,12 +33,16 @@ Bjjlife::Application.routes.draw do
 
   resource :account, :only => [:edit, :update, :show]
 
-
   match "/auth/identity" => "sessions#new"
   match '/sign_in',  to: 'sessions#new',      :as => :sign_in
   match '/sign_out', to: 'sessions#destroy',  :as => :sign_out
 
   mount RolloutUi::Engine, :at => "/rollout"
+
+  resources :products, :only => [:show] do
+    resources :orders, :only => [:new, :create]
+  end
+  resources :orders, :only => [:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

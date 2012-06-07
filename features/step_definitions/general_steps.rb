@@ -6,10 +6,33 @@ Given /^the site is not launched$/ do
   #NO-OP
 end
 
+Then "check product count" do
+  Product.count.should > 0
+end
+
+Given /^there are no ([\w ]+)$/ do |model_name|
+  klasses = case model_name
+  when 'registered users'
+    [User, Identity]
+  else
+    model_name.split(',').map{ |m| m.strip.gsub(/\s+/,'_').singularize.classify.constantize }
+  end
+  klasses.collect{ |model| model.destroy_all }
+end
+
+When /^I enter the following information into the form:$/ do |table|
+  table.rows_hash.each do |name, val|
+    if name.starts_with? 'cc_'
+      select val, :from => name
+    else
+      fill_in name, :with => val
+    end
+  end
+end
+
 When /^(?:they|I) fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
 end
-
 
 When /^I fill in the (.*) field with "(.*?)"$/ do |name, value|
   fill_in(I18n.t(message_for(name)), :with => value)

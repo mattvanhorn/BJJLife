@@ -1,7 +1,8 @@
 class BlogsController < ApplicationController
-  expose(:blog) { Blog.first }
+  expose(:blog){ Blog.first }
 
   def show
-    # just render
+    exhibit_exposed :blog
   end
+
 end

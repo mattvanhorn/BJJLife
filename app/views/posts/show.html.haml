@@ -12,7 +12,7 @@
           %p
             %span.credit posted by #{post.contributor}
 
-      = render CommentDecorator.decorate(post.comments)
+      = render CommentExhibit.exhibit(post.comments, self)
 
     .row
       %hr

@@ -1,6 +1,8 @@
 require "application_responder"
 
 class ApplicationController < ActionController::Base
+  include DisplayCase::ExhibitsHelper
+
   self.responder = ApplicationResponder
   respond_to :html
 
@@ -16,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by_id(session[:user_id] || cookies.signed['remember_me'])
-    UserDecorator.decorate(@current_user)
+    exhibit(@current_user) if @current_user
   end
 
   def guest_user
@@ -24,13 +26,14 @@ class ApplicationController < ActionController::Base
   end
 
   def identifiable_user
-    current_user.model || guest_user
+    current_user || guest_user
   end
 
   def sign_in(user)
     @current_user = user.sign_in!
     cookies.permanent.signed[:remember_me] = session[:user_id] = @current_user.id
     do_tracking
+    @current_user
   end
 
   def sign_out
@@ -52,7 +55,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_signed_in?
-    !!(current_user.model)
+    !!(current_user)
   end
 
   def store_location(url = nil)
@@ -98,6 +101,12 @@ class ApplicationController < ActionController::Base
   def tag_guest
     unless (user_signed_in? || session[:guest_id] || cookies.signed[:guest_id])
       session[:guest_id] = cookies.permanent.signed[:guest_id] = UUIDTools::UUID.random_create.to_i
+    end
+  end
+
+  def exhibit_exposed(*names)
+    names.each do |name|
+      _resources[name] = exhibit(self.send(name))
     end
   end
 end

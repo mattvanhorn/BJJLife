@@ -6,11 +6,11 @@
     %title Living BJJ
 
     = stylesheet_link_tag    "application", :media => "all"
+    = yield :stripe_js
     = javascript_include_tag "application"
     = csrf_meta_tags
-
+    %meta{ :name => "stripe-key", :content => STRIPE_PUBLIC_KEY }
     = raw analytical.head_append_javascript
-
   %body
 
     = raw analytical.body_prepend_javascript

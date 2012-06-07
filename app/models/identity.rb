@@ -20,6 +20,8 @@ class Identity < OmniAuth::Identity::Models::ActiveRecord
   attr_accessible  :email, :password, :password_confirmation, :opt_in
   belongs_to :user
 
+  validates_uniqueness_of :email
+
   after_create :process_opt_in
 
   def self.find_by_uid(uid)

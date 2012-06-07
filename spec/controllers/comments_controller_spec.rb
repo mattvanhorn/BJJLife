@@ -3,7 +3,7 @@ require 'spec_helper'
 describe CommentsController do
   include NullDB::RSpec::NullifiedDatabase
 
-  let(:current_user) { double('decorated_user', :model => true).as_null_object }
+  let(:current_user) { mock_model(User).as_null_object }
   let(:the_post) { mock_model(Post) }
   let(:comment) { mock_model(Comment, :post => the_post, :save! => true).as_null_object }
 
@@ -15,8 +15,6 @@ describe CommentsController do
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end
-
-  it { should expose(:comment).as(Comment.new) }
 
   describe "#create" do
     it "saves the comment" do

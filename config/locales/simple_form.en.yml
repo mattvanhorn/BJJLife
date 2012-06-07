@@ -5,6 +5,8 @@ en:
         create: "Sign Up"
       user:
         update: Update Account
+      order:
+        create: Place Order
 
   simple_form:
     "yes": 'Yes'
@@ -20,9 +22,22 @@ en:
     labels:
       defaults:
         email: Email
+        password_confirmation: Confirm password
         title: Title
         url: URL
         description: Description
+      order:
+        card_number: Credit Card Number
+        card_code: CVV
+        cc_exp_month: Card Expiration Date
+        cc_exp_year: Card Expiration Year
+        bill_first_name: First Name
+        bill_last_name: Last Name
+        bill_street: Street
+        bill_unit: Apt
+        bill_city: City
+        bill_us_state: State
+        bill_postal_code: ZIP Code
     hints:
       post:
         title: Keep it short and descriptive

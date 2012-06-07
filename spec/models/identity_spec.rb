@@ -20,6 +20,13 @@ require 'spec_helper'
 describe Identity do
   include NullDB::RSpec::NullifiedDatabase
 
+  it "should validate the uniqueness of email" do
+    Identity.validators_on(:email).select{|v|v.is_a? (ActiveRecord::Validations::UniquenessValidator)}.should_not be_empty
+    # TEMPORARILY REMOVE INDEX CHECK PENDING FIXES TO NULLDB
+    # Identity.new.should have_db_index(:email).unique(true)
+  end
+
+
   it "is useable by the OmniAuthenticator" do
     Identity.should_receive(:find_by_id).with('42')
     Identity.find_by_uid('42')

@@ -15,6 +15,8 @@
 #  index_comments_on_user_id  (user_id)
 #
 
+require 'spec_helper'
+
 describe Comment do
   it "should not reek" do
     get_source_file(__FILE__).should_not reek

@@ -10,4 +10,5 @@ CarrierWave.configure do |carrierwave|
    }
    carrierwave.fog_directory = ENV['S3_BUCKET']
    carrierwave.fog_public = true
+   carrierwave.fog_host = "https://s3-#{ENV['S3_REGION']}.amazonaws.com/#{ENV['S3_BUCKET']}" if Rails.env.development?
 end

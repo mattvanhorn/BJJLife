@@ -1,19 +1,15 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!
 
-  expose(:post)
-  expose(:comment) { find_comment }
+  expose(:post, :strategy => UserAuthoredStrategy)
+  expose(:comments){ post.comments }
+  expose(:comment, :strategy => UserAuthoredStrategy)
 
   def create
     comment.save!
     analytical.event 'comment', :post_id => post.id, :post => post.title
+    exhibit_exposed :post, :comments, :comment
     redirect_to post_path(comment.post)
-  end
-
-  private
-
-  def find_comment
-    post.new_comment(params[:comment]).tap{|comment| comment.user_id = current_user.id}
   end
 
 end

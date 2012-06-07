@@ -3,48 +3,45 @@ require 'spec_helper'
 describe Admin::VideosController do
   include NullDB::RSpec::NullifiedDatabase
 
+  let(:resource){ mock_model(Video, :save => true) }
+
+  before(:each) do
+    subject.stub(:video => resource)
+  end
+
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end
 
-  it "exposes a video" do
-    actual = controller.send(:video)
-    actual.should be_a(Video)
-    actual.should be_new_record
-  end
-
   describe "create" do
-    let(:video){ mock_model(Video, :save => true) }
+    let(:video){ resource }
 
     it "creates a video" do
-      Video.should_receive(:new).with('name' => 'foo', 'url' => 'bar').and_return(video)
-      post :create, :video => {'name' => 'foo', 'url' => 'bar'}
+      controller.should_receive(:video).and_return(video)
+      post :create
     end
 
     it "saves the video" do
-      Video.stub(:new => video)
       video.should_receive(:save).and_return(true)
-      post :create, :video => {'name' => 'foo', 'url' => 'bar'}
+      post :create
     end
 
     it "redirects to the admin video list" do
-      post :create, :video => {'name' => 'foo', 'url' => 'bar'}
+      post :create
       response.should redirect_to(admin_videos_url)
     end
   end
 
   describe "destroy" do
-    let(:video){ mock_model(Video, :attributes= => true) }
+    let(:video){ resource }
 
     it "destroys a video" do
       video.should_receive(:destroy).and_return(video)
-      Video.stub(:find => video)
       delete :destroy, :id => 42
     end
 
     it "redirects to the admin video list" do
       video.stub(:destroy => video)
-      Video.stub(:find => video)
       delete :destroy, :id => 42
       response.should redirect_to(admin_videos_url)
     end

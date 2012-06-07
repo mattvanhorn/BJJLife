@@ -34,8 +34,15 @@ class Academy < ActiveRecord::Base
   scope :ordered_by_state, published.order('us_state, name')
 
   def self.by_state
-    Academy.ordered_by_state.group_by(&:us_state).to_a.each do |state_group|
-      state_group.define_singleton_method :to_partial_path, lambda{'state'}
-    end
+    Academy.ordered_by_state.group_by(&:us_state).to_a.map{ |group| AcademyGroup.new(group.first, group.last) }
   end
+
+  def address
+    Address.new(street, unit, city, us_state, postal_code).freeze
+  end
+
+  def contact_info
+    ContactInfo.new(email, phone_number, website).freeze
+  end
+
 end
