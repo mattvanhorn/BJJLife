@@ -1,5 +1,6 @@
 en:
-  new:
-    header: Sign In
-    not_registered: Not Registered?
-    sign_up_link: Sign Up Here
+  sessions:
+    new:
+      header: Sign In
+      not_registered: Not Registered?
+      sign_up_link: Sign Up Here
