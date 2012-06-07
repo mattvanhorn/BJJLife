@@ -1,6 +1,9 @@
-# I'm in features/support/selectors.rb
+# I'm in features/support/messages.rb
 
 module I18nMessagesHelper
+  # Maps a name to a message key.
+  # Used to decouple the test language from the actual site text.
+  #
   def message_for(desc)
     case desc
 
