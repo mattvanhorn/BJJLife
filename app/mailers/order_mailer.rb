@@ -1,5 +1,5 @@
 class OrderMailer < ActionMailer::Base
-  default from: "mattvanhorn@gmail.com"
+  default :from => "mattvanhorn@gmail.com"
 
   def confirmation(order)
     @order = order

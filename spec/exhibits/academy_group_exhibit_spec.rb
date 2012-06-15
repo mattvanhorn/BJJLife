@@ -1,8 +1,10 @@
-require 'spec_helper'
+require 'display_case'
+require_relative '../../app/exhibits/academy_group_exhibit'
 
 describe AcademyGroupExhibit do
-  let(:academy_group){ double('group') }
-  let(:exhibit) { AcademyGroupExhibit.new(academy_group, self) }
+  let(:context)  { Object.new }
+  let(:academy_group) { Object.new }
+  let(:exhibit)  { AcademyGroupExhibit.new(academy_group, context) }
 
   describe "#full_us_state_name" do
     it "converts known abbreviations" do

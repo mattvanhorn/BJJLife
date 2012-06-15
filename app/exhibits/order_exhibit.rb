@@ -1,15 +1,16 @@
-class OrderExhibit< DisplayCase::Exhibit
+require_relative '../helpers/exhibit_helper'
+
+class OrderExhibit < DisplayCase::Exhibit
+  include ExhibitHelper
 
   def self.applicable_to?(object)
     object.class.name == 'Order'
   end
 
-  def item
-    exhibit(__getobj__.item)
-  end
+  exhibit_query :item
 
   def amount
-    "$%.2f" % (__getobj__.amount / 100.0)
+    dollarize super
   end
 
 end

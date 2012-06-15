@@ -14,19 +14,8 @@ class Blog < ActiveRecord::Base
 
   has_many :entries, :class_name => 'Post', :order => 'created_at DESC'
 
-  def new_post(*args)
-    post_source.call(*args).tap do |post|
-      post.blog = self
-    end
-  end
-
   def add_entry(entry)
     entries << entry
   end
 
-  private
-
-  def post_source
-    @post_source ||= Post.public_method(:new)
-  end
 end

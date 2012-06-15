@@ -8,6 +8,10 @@
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
 #
+# Indexes
+#
+#  index_redemption_codes_on_order_item_id  (order_item_id)
+#
 
 require 'securerandom'
 require 'active_model/naming'

@@ -7,7 +7,7 @@ describe PostsController do
   let(:comment) { stub }
   let(:the_post){ mock_model(Post, :publish! => true, :new_comment => comment) }
   let(:entries) { double('entries', :new => the_post).as_null_object }
-  let(:blog)    { mock_model(Blog, :new_post => the_post, :entries => entries) }
+  let(:blog)    { mock_model(Blog, :entries => entries) }
 
   before(:each) do
     controller.stub(:current_user => current_user)

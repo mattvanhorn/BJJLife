@@ -1,1 +1,4 @@
-= address.to_html
+= address.street_address
+- if address.street_address && address.city_state_zip
+  %br/
+= address.city_state_zip

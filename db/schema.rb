@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120612193844) do
+ActiveRecord::Schema.define(:version => 20120615055826) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20120612193844) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "order_adjustments", ["order_id"], :name => "index_order_adjustments_on_order_id"
+
   create_table "order_items", :force => true do |t|
     t.integer  "order_id",                  :null => false
     t.integer  "product_id",                :null => false
@@ -75,12 +77,17 @@ ActiveRecord::Schema.define(:version => 20120612193844) do
     t.datetime "updated_at",                :null => false
   end
 
+  add_index "order_items", ["order_id"], :name => "index_order_items_on_order_id"
+  add_index "order_items", ["product_id"], :name => "index_order_items_on_product_id"
+
   create_table "order_transactions", :force => true do |t|
     t.integer  "order_id"
     t.string   "charge_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "order_transactions", ["order_id"], :name => "index_order_transactions_on_order_id"
 
   create_table "orders", :force => true do |t|
     t.integer  "user_id"
@@ -104,6 +111,8 @@ ActiveRecord::Schema.define(:version => 20120612193844) do
     t.datetime "created_at",                                        :null => false
     t.datetime "updated_at",                                        :null => false
   end
+
+  add_index "orders", ["user_id"], :name => "index_orders_on_user_id"
 
   create_table "players", :force => true do |t|
     t.string   "first_name"
@@ -143,6 +152,8 @@ ActiveRecord::Schema.define(:version => 20120612193844) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+
+  add_index "redemption_codes", ["order_item_id"], :name => "index_redemption_codes_on_order_item_id"
 
   create_table "subscriptions", :force => true do |t|
     t.string   "email"

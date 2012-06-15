@@ -13,8 +13,9 @@ class PostsController < ApplicationController
 
   def create
     post.publish!
+    exhibit_exposed :blog, :posts, :post
+
     analytical.event 'publish', :blog => post.blog_name
-    exhibit_exposed :blog, :posts
     respond_with post, :location => blog_path(post.blog), :notice => "Post added!"
   end
 

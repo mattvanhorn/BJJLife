@@ -6,7 +6,7 @@ describe VideosController do
   let(:current_user) { double(:id => '123', :model => true) }
   let(:video) { mock_model(Video, :publish! => true) }
   let(:videos) { [video] }
-  
+
   before(:each) do
     controller.stub(:current_user => current_user)
     controller.stub(:videos => videos)
@@ -60,7 +60,7 @@ describe VideosController do
 
     it "upvotes the video" do
       current_user.should_receive(:up_vote!).with(video)
-      put :upvote
+      put :upvote, :id => 42
     end
   end
 
@@ -71,7 +71,7 @@ describe VideosController do
 
     it "downvotes the video" do
       current_user.should_receive(:down_vote!).with(video)
-      put :downvote
+      put :downvote, :id => 42
     end
   end
 end

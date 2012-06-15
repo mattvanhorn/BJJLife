@@ -22,6 +22,10 @@ class OrdersController < ApplicationController
     respond_with order
   end
 
+  def show
+    exhibit_exposed :product, :order
+  end
+
   protected
 
   def do_registration

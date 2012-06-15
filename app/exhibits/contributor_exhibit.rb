@@ -5,7 +5,7 @@ class ContributorExhibit< DisplayCase::Exhibit
   end
 
   def contributor
-    __getobj__.user.try(:username) || 'anonymous'
+    user.try(:username) || 'anonymous'
   end
 
 end

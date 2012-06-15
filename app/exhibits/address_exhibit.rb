@@ -3,18 +3,12 @@ class AddressExhibit < DisplayCase::Exhibit
     object.class.name == 'Address'
   end
 
-  def to_html
-    [street_address, city_state_zip].deblankify.join('<br/>').html_safe
-  end
-
-  private
-
   def street_address
-    [street, unit].deblankify.clean_join(', ')
+    [street, unit].deblankify.clean_join(', ').presence
   end
 
   def city_state_zip
-    "#{[city, us_state].deblankify.clean_join(', ')} #{postal_code}".strip
+    "#{[city, us_state].deblankify.clean_join(', ')} #{postal_code}".strip.presence
   end
 
 end

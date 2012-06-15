@@ -10,17 +10,17 @@ order =
 
   processCard: ->
     card =
-      name:     $('#bill_first_name').val() + ' ' + $('#bill_last_name')
+      name:     "#{ $('#order_bill_first_name').val() } #{ $('#order_bill_last_name').val() }"
 
       number:   $('#card_number').val()
       cvc:      $('#card_code').val()
       expMonth: $('#cc_exp_month').val()
       expYear:  $('#cc_exp_year').val()
 
-      address_line1:  $('#bill_street').val()
-      address_line2:  $('#bill_unit').val()
-      address_state:  $('#bill_us_state').val()
-      address_zip:    $('#bill_postal_code').val()
+      address_line1:  $('#order_bill_street').val()
+      address_line2:  $('#order_bill_unit').val()
+      address_state:  $('#order_bill_us_state').val()
+      address_zip:    $('#order_bill_postal_code').val()
 
     Stripe.createToken(card, order.handleStripeResponse)
     return false

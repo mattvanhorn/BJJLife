@@ -3,16 +3,21 @@ class ContactInfoExhibit < DisplayCase::Exhibit
     object.class.name == 'ContactInfo'
   end
 
-  def to_html(template)
-    [website_link(template), phone_number, email_link(template)].deblankify.join('<br/>').html_safe
+  def website_link
+    in_view.link_to(website, website) if website
   end
 
-  def website_link(template)
-    template.link_to(website, website) if website
+  def email_link
+    in_view.mail_to(email, email) if email
   end
 
-  def email_link(template)
-    template.mail_to(email, email) if email
+  def phone_link
+    in_view.link_to(phone_number, "tel://#{phone_number}") if phone_number
   end
 
+  private
+
+  def in_view
+    @context.respond_to?(:view_context) ? @context.view_context : @context
+  end
 end

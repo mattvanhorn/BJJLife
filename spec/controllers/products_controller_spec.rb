@@ -10,7 +10,7 @@ describe ProductsController do
   describe "#show" do
     it "exhibits a product" do
       controller.should_receive(:exhibit_exposed).with(:product)
-      get :show
+      get :show, :id => '42'
     end
   end
 

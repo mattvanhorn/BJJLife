@@ -11,30 +11,31 @@ describe SessionsController do
   end
 
   describe "#create" do
+    let(:params){ {:provider => 'identity'} }
     context "when successful" do
       before(:each) do
         OmniAuthenticator.stub(:new => doorman)
       end
 
       it "signs in the user" do
-        post :create
+        post :create, params
         session[:user_id].should == 42
       end
 
       it "sets a flash notice " do
-        post :create
+        post :create, params
         flash[:notice].should == "You are now signed in."
       end
 
       it "redirects to the account page" do
-        post :create
+        post :create, params
         response.should redirect_to(edit_account_path)
       end
 
       it "redirects to a stored location" do
         user.stub(:first_sign_in? => false)
         controller.send(:store_location, '/foo')
-        post :create
+        post :create, params
         response.should redirect_to('/foo')
       end
 
@@ -47,7 +48,7 @@ describe SessionsController do
         controller.analytical.should_receive(:event).with(:sign_in, {:id => 42}).ordered
         controller.analytical.should_receive(:event).with(:sign_up, {:id => 42}).ordered
         controller.analytical.should_receive(:event).with(:subscribe, :email => 'foo@bar.com').ordered
-        post :create
+        post :create, params
       end
     end
 

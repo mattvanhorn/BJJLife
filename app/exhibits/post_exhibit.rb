@@ -4,9 +4,7 @@ class PostExhibit< DisplayCase::Exhibit
     object.class.name == 'Post'
   end
 
-  def comments
-    exhibit(__getobj__.comments)
-  end
+  exhibit_query :comments
 
   def blog_name
     blog.title
@@ -16,3 +14,4 @@ class PostExhibit< DisplayCase::Exhibit
     'post'
   end
 end
+

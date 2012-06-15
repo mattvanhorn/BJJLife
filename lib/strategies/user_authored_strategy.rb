@@ -6,7 +6,7 @@ class UserAuthoredStrategy < DecentExposure::ActiveRecordWithEagerAttributesStra
 
     unless plural?
       if instance.new_record?
-        instance.user ||= current_user.to_model
+        instance.user ||= current_user
       end
     end
     instance

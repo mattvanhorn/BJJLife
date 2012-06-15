@@ -4,12 +4,6 @@ class AcademyExhibit < DisplayCase::Exhibit
     object.class.name == 'Academy'
   end
 
-  def address
-    exhibit(__getobj__.address)
-  end
-
-  def contact_info
-    exhibit(__getobj__.contact_info)
-  end
+  exhibit_query :address, :contact_info
 
 end

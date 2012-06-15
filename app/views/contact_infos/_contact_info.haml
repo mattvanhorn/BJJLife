@@ -1,1 +1,9 @@
-= contact_info.to_html(self)
+= contact_info.website_link
+- if contact_info.website && (contact_info.phone_number || contact_info.email)
+  %br/
+
+= contact_info.phone_link
+- if (contact_info.website || contact_info.phone_number) && contact_info.email
+  %br/
+
+= contact_info.email_link

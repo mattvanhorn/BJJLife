@@ -24,6 +24,10 @@
 #  created_at       :datetime        not null
 #  updated_at       :datetime        not null
 #
+# Indexes
+#
+#  index_orders_on_user_id  (user_id)
+#
 
 class Order < ActiveRecord::Base
   attr_reader :card_number, :card_code
@@ -128,7 +132,7 @@ class Order < ActiveRecord::Base
   private
 
   def record_cc_info(card)
-    return unless card
+    return unless card.present?
     CC_RESULT_FIELDS.each do |field|
       send :"cc_#{field}=", card.send(field)
     end

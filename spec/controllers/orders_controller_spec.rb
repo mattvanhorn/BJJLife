@@ -6,7 +6,6 @@ describe OrdersController do
   let(:order){ mock_model(Order).as_null_object }
   let(:product){ mock_model(Product) }
 
-
   before(:each) do
     Order.stub(:new => order)
     Product.stub(:find_by_id => product)
@@ -21,11 +20,11 @@ describe OrdersController do
     end
     it "pre-populates the email if there is a signed in user" do
       order.should_receive(:email=).with('alice@example.com')
-      get :new
+      get :new, :product_id => 42
     end
 
     it "renders the 'new' template" do
-      get :new
+      get :new, :product_id => 42
       response.should render_template(:new)
     end
   end
@@ -42,7 +41,7 @@ describe OrdersController do
     }
 
     context "with a signed in user" do
-      let(:params){ HashWithIndifferentAccess.new(:order => order_params) }
+      let(:params){ HashWithIndifferentAccess.new(:order => order_params, :product_id => 42) }
 
       before(:each) do
         current_user.stub(:new_order => order)
@@ -68,36 +67,38 @@ describe OrdersController do
     context "with a new user" do
       let(:new_user){ mock_model(User, :new_order => order).as_null_object  }
       let(:identity){ double('identity', :user => new_user).as_null_object }
-      let(:params){ HashWithIndifferentAccess.new(:order => order_params, :identity => identity_params) }
+      let(:params){ HashWithIndifferentAccess.new(:order => order_params, :identity => identity_params, :product_id => 42) }
       before(:each) do
+        # user_signed_in determines whether to register a new user
+        # after that, current_user will be that new user.
         controller.stub( :user_signed_in? => false, :current_user => new_user)
         Identity.stub(:new => identity)
       end
 
       it "adds the product to the order" do
         order.should_receive(:add_item).with(product)
-        post :create, :order => order_params, :identity => identity_params
+        post :create, params
       end
 
       it "registers the user" do
         Identity.should_receive(:new).and_yield(identity)
-        post :create, :order => order_params, :identity => identity_params
+        post :create, params
       end
 
       it "builds the order for the user" do
         new_user.should_receive(:new_order).and_return(order)
-        post :create, :order => order_params, :identity => identity_params
+        post :create, params
       end
 
       it "redirects to the purchase thank you page" do
-        post :create, :order => order_params, :identity => identity_params
+        post :create, params
         response.should redirect_to(order_url(order))
       end
     end
 
     context "when the charge fails for an existing user" do
       let(:order){ double('order', :errors => ['some kind of error']).as_null_object }
-      let(:params){ HashWithIndifferentAccess.new(:order => order_params) }
+      let(:params){ HashWithIndifferentAccess.new(:order => order_params, :product_id => 42) }
 
       before(:each) do
         current_user.stub(:new_order => order)
@@ -106,7 +107,7 @@ describe OrdersController do
 
       it "adds the product to the order" do
         order.should_receive(:add_item).with(product)
-        post :create, :order => order_params, :identity => identity_params
+        post :create, params
       end
 
       it "adds the user to the order" do
@@ -115,7 +116,35 @@ describe OrdersController do
       end
 
       it "renders the checkout form" do
-        post :create, :order => order_params, :identity => identity_params
+        post :create, params
+        response.should be_success
+        response.should render_template 'new'
+      end
+    end
+
+    context "when creating a new user fails" do
+      let(:identity_errors){ {:email => 'is taken', :other => 'something else'} }
+      let(:identity){ double('identity', :user => nil, :errors => identity_errors) }
+      let(:params){ HashWithIndifferentAccess.new(:order => order_params, :identity => identity_params, :product_id => 42) }
+      let(:errors){ {} }
+      before(:each) do
+        errors.stub(:add => true, :empty? => false)
+        identity_errors.stub(:full_message => 'other something else')
+        controller.stub( :user_signed_in? => false, :current_user => nil)
+        order.stub(:paid? => false, :errors => errors, :checkout => false, :attributes => {:email => ''})
+        Identity.stub(:new => identity)
+      end
+
+      it "merges the errors from the identity into the user" do
+        errors.should_receive(:add).with(:email, 'is taken')
+        identity_errors.should_receive(:full_message).with(:other, 'something else').and_return('other something else')
+        errors.should_receive(:add).with(:base, 'other something else')
+        
+        post :create, params
+      end
+
+      it "renders the checkout form" do
+        post :create, params
         response.should be_success
         response.should render_template 'new'
       end
