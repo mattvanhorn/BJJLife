@@ -1,10 +1,9 @@
-require 'display_case'
-require 'ostruct'
-require_relative '../../spec/support/custom_matchers'
+require 'exhibit_spec_helper'
 require_relative '../../app/exhibits/contact_info_exhibit'
 
 describe "ContactInfoExhibit" do
-  class ContactInfo; end
+  stub_class 'ContactInfo'
+  before { ContactInfo.stub(:new => double(:class => ContactInfo)) }
   subject { ContactInfoExhibit }
   it { should apply_to(ContactInfo.new) }
 end

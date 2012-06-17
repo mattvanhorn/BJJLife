@@ -1,11 +1,9 @@
-require 'display_case'
-require 'ostruct'
-require_relative '../../config/initializers/array_extensions'
-require_relative '../../spec/support/custom_matchers'
+require 'exhibit_spec_helper'
 require_relative '../../app/exhibits/address_exhibit'
 
 describe "AddressExhibit" do
-  class Address; end
+  stub_class 'Address'
+  before { Address.stub(:new => double(:class => Address)) }
   subject { AddressExhibit }
   it { should apply_to(Address.new) }
 end

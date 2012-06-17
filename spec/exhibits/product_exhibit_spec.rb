@@ -1,9 +1,8 @@
-require 'display_case'
-require_relative '../../spec/support/custom_matchers'
+require 'exhibit_spec_helper'
 require_relative '../../app/exhibits/product_exhibit'
 
 describe "ProductExhibit" do
-  class Product; end
+  stub_class 'Product'
   subject { ProductExhibit }
   it { should apply_to(Product.new) }
 end

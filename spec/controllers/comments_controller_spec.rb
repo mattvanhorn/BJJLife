@@ -24,7 +24,7 @@ describe CommentsController do
     let(:comment) { OpenStruct.new(:post => the_post, :new_record? => true) }
     let(:comments){ [] }
     let(:the_post){ OpenStruct.new(:comments => comments) }
-    let(:current_user){ OpenStruct.new }
+    let(:current_user){ OpenStruct.new(:to_model => Object.new) }
 
     before(:each) do
       controller.stub(:current_user => current_user)
@@ -43,7 +43,7 @@ describe CommentsController do
     end
 
     it "assigns the user to the post" do
-      comment.should_receive(:user=).with(current_user)
+      comment.should_receive(:user=).with(current_user.to_model)
       post :create, params
     end
 

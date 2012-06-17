@@ -1,10 +1,8 @@
-require 'display_case'
-require 'delegate'
-require_relative '../../spec/support/custom_matchers'
+require 'exhibit_spec_helper'
 require_relative '../../app/exhibits/post_exhibit'
 
 describe "PostExhibit" do
-  class Post; end
+  stub_class 'Post'
   subject { PostExhibit }
   it { should apply_to(Post.new) }
 end

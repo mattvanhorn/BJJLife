@@ -1,10 +1,8 @@
-require 'display_case'
-require 'delegate'
-require_relative '../../spec/support/custom_matchers'
+require 'exhibit_spec_helper'
 require_relative '../../app/exhibits/order_exhibit'
 
 describe "OrderExhibit" do
-  class Order; end
+  stub_class 'Order'
   subject { OrderExhibit }
   it { should apply_to(Order.new) }
 end

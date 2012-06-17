@@ -1,11 +1,8 @@
-require 'display_case'
-require 'delegate'
-require 'ostruct'
-require_relative '../../spec/support/custom_matchers'
+require 'exhibit_spec_helper'
 require_relative '../../app/exhibits/blog_exhibit'
 
 describe "BlogExhibit" do
-  class Blog; end
+  stub_class 'Blog'
   subject { BlogExhibit }
   it { should apply_to(Blog.new) }
 end

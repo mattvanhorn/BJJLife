@@ -1,10 +1,8 @@
-require 'display_case'
-require 'ostruct'
-require_relative '../../spec/support/custom_matchers'
+require 'exhibit_spec_helper'
 require_relative '../../app/exhibits/user_exhibit'
 
 describe "UserExhibit" do
-  class User; end
+  stub_class 'User'
   subject { UserExhibit }
   it { should apply_to(User.new) }
 end

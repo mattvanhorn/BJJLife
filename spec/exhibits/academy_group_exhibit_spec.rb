@@ -1,9 +1,9 @@
-require 'display_case'
-require_relative '../../spec/support/custom_matchers'
+require 'exhibit_spec_helper'
 require_relative '../../app/exhibits/academy_group_exhibit'
 
 describe "AcademyGroupExhibit" do
-  class AcademyGroup; end
+  stub_class 'AcademyGroup'
+  before { AcademyGroup.stub(:new => double(:class => AcademyGroup)) }
   subject { AcademyGroupExhibit }
   it { should apply_to(AcademyGroup.new) }
 end
