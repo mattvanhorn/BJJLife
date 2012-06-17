@@ -16,5 +16,3 @@ Feature: User registration
       And I click on "Update Account"
      Then I should be on my account page
       And I should see "Alice K"
-
-

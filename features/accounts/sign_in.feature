@@ -69,5 +69,3 @@ Feature: Sign in
      When I visit the sign out page
      Then I should be on the home page
       And I should not see "Hi alice,"
-
-

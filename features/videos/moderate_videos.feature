@@ -23,6 +23,3 @@ Feature: Moderate User Posted Videos
     Given I am on the new video page
      When I add a video
      Then I should see "Your entry is awaiting moderation"
-
-
-
