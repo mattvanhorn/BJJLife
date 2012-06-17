@@ -29,6 +29,12 @@ module NavigationHelpers
     when "the product page for that product"
       product_path(@product)
 
+    when "the checkout page"
+      new_product_order_path(Product.last)
+
+    when "the checkout page with errors"
+      "/products/#{Product.last.id}/orders"
+
     when "the order confirmation page"
      order_path(Order.last)
 

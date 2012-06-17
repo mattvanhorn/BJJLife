@@ -7,6 +7,8 @@ module HtmlSelectorsHelper
       "html > body"
     when "the form"
       "form"
+    when /the ([\w][\w ]+) input/
+      ".input.#{$1.gsub(/[^\w]/,'-')}"
     when "the navigation"
       'ul.navigation'
     when /the signup form/

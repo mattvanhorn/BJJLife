@@ -1,5 +1,4 @@
 When /^I place the order$/ do
-  # VCR.use_cassette('stripe_api/create_charge/success') do
-    click_on "Place Order"
-  # end
+  click_on "Place Order"
+  sleep(2) # nasty, but makes the javascript happy.
 end
