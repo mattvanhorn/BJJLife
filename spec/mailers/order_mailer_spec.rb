@@ -24,8 +24,8 @@ describe OrderMailer do
       email.should have_body_text(/abc123/)
     end
 
-    xit "should contain a link to the confirmation link" do
-      email.should have_body_text(/#{confirm_account_url}/)
+    it "should contain a link to the confirmation link" do
+      email.should have_body_text(/orders\/#{order.id}/)
     end
 
 

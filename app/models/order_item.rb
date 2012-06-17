@@ -22,12 +22,12 @@ class OrderItem < ActiveRecord::Base
   belongs_to :order
   belongs_to :product
 
+  validates_presence_of :order_id, :product_id, :quantity, :unit_price, :price
+
   before_validation :set_price
   before_create :generate_redemption_codes
 
-  def product_name
-    product.name if product
-  end
+  delegate :name, :to => :product, :prefix => true, :allow_nil => true
 
   def subtotal
     quantity * unit_price

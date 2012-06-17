@@ -22,7 +22,7 @@ require 'spec_helper'
 
 describe OrderItem do
   include NullDB::RSpec::NullifiedDatabase
-  
+
   let(:order){ mock_model(Order) }
   let(:product){mock_model(Product, :price => 1000, :name => 'Rocketskates')}
   let(:item){ OrderItem.new }
@@ -35,6 +35,21 @@ describe OrderItem do
     item.quantity = 2
     item.unit_price = 1000
     item.adjustment = 200
+  end
+
+  it "should not reek" do
+    get_source_file(__FILE__).should_not reek
+  end
+
+  describe "validations" do
+    before(:each) do
+      item.stub(:set_price) # otherwise the before_validation prevents the error
+    end
+    it { should validate_presence_of(:order_id) }
+    it { should validate_presence_of(:product_id) }
+    it { should validate_presence_of(:quantity) }
+    it { should validate_presence_of(:unit_price) }
+    it { should validate_presence_of(:price) }
   end
 
   its(:product_name){ should == 'Rocketskates' }
@@ -55,13 +70,13 @@ describe OrderItem do
   context "when it is new" do
     it { should have(0).redemption_codes }
   end
-  
+
   context "when it is saved" do
     before do
       item.save
     end
     it { should have(2).redemption_codes }
   end
-  
+
 
 end

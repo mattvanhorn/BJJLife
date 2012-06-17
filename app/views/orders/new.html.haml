@@ -9,7 +9,7 @@
       = simple_form_for [product.to_model, order.to_model] do |form|
         - if order.errors.any?
           .error_messages
-            %h2 #{pluralize(order.errors.count, "error")} prohibited this order from being saved:
+            %h3 #{pluralize(order.errors.count, "error")} prohibited this order from being saved:
             %ul
               - order.errors.full_messages.each do |msg|
                 %li= msg
