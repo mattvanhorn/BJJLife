@@ -6,3 +6,4 @@
     'ADMIN_USERNAME': 'admin'
     'ADMIN_PASSWORD': 'password'
     'STRIPE_PUBLIC_KEY': 'pk_ctIcYyn4o4JmQhGdG9djUzHYoeT3i'
+    'STRIPE_SECRET_KEY': 'CA4fzDjIleIw9mM7gSZfCoYVgswuE2eA'

@@ -1,0 +1,8 @@
+#{order_item.product_name}: #{order_item.quantity} @ #{order_item.price}
+- if order_item.adjustment
+  Adjustment: - #{order_item.adjustment}
+Amount: #{order_item.adjusted_subtotal}
+
+= pluralize(order_item.redemption_codes.size, 'Redemption Code')
+
+= render order_item.redemption_codes
