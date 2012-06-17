@@ -1,5 +1,5 @@
 Split.redis = REDIS
 
 Split::Dashboard.use Rack::Auth::Basic do |username, password|
-  username == ENV['SPLIT_USERNAME'] && password == ENV['SPLIT_PASSWORD']
+  username == ENV['ADMIN_USERNAME'] && password == ENV['ADMIN_PASSWORD']
 end

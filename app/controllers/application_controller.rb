@@ -41,12 +41,6 @@ class ApplicationController < ActionController::Base
     session[:user_id] =  @current_user = nil
   end
 
-  def authenticate
-    authenticate_or_request_with_http_basic do |username, password|
-      username == ENV['ADMIN_USERNAME'] && password == ENV['ADMIN_PASSWORD']
-    end
-  end
-
   def authenticate_user!
     unless user_signed_in?
       store_location
