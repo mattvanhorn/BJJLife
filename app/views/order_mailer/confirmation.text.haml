@@ -4,7 +4,7 @@ Your purchase is confirmed
 
 Purchase Summary
 
-= render :partial => 'order_item', :object => @order.item
+= render :partial => 'order_mailer/order_item', :object => @order.item
 
 Total: #{@order.amount}
 

@@ -4,7 +4,7 @@
 
 %h3 Purchase Summary
 
-= render :partial => 'order_item', :object => @order.item
+= render :partial => 'order_mailer/order_item', :object => @order.item
 
 %p Total: #{@order.amount}
 
