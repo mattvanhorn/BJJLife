@@ -1,4 +1,4 @@
-require 'cover_me'
+require 'cover_me' unless ENV['TDDIUM']
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
