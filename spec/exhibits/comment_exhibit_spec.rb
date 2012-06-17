@@ -1,6 +1,13 @@
 require 'display_case'
 require 'ostruct'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/comment_exhibit'
+
+describe "CommentExhibit" do
+  class Comment; end
+  subject { CommentExhibit }
+  it { should apply_to(Comment.new) }
+end
 
 describe CommentExhibit do
 

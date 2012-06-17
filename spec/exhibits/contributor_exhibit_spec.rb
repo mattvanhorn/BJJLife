@@ -1,6 +1,15 @@
 require 'display_case'
 require 'ostruct'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/contributor_exhibit'
+
+describe "ContributorExhibit" do
+  class Post; end
+  class Comment; end
+  subject { ContributorExhibit }
+  it { should apply_to(Post.new) }
+  it { should apply_to(Comment.new) }
+end
 
 describe ContributorExhibit do
 

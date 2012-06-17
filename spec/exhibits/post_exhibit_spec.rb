@@ -1,6 +1,13 @@
 require 'display_case'
 require 'delegate'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/post_exhibit'
+
+describe "PostExhibit" do
+  class Post; end
+  subject { PostExhibit }
+  it { should apply_to(Post.new) }
+end
 
 describe PostExhibit do
   Delegator.class_eval { include RSpec::Mocks::Methods }

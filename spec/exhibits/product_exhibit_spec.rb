@@ -1,5 +1,12 @@
 require 'display_case'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/product_exhibit'
+
+describe "ProductExhibit" do
+  class Product; end
+  subject { ProductExhibit }
+  it { should apply_to(Product.new) }
+end
 
 describe ProductExhibit do
   let(:context){ Object.new }

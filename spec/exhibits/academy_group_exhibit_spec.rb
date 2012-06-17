@@ -1,5 +1,12 @@
 require 'display_case'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/academy_group_exhibit'
+
+describe "AcademyGroupExhibit" do
+  class AcademyGroup; end
+  subject { AcademyGroupExhibit }
+  it { should apply_to(AcademyGroup.new) }
+end
 
 describe AcademyGroupExhibit do
   let(:context)  { Object.new }

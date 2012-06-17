@@ -1,7 +1,14 @@
 require 'display_case'
 require 'delegate'
 require 'ostruct'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/blog_exhibit'
+
+describe "BlogExhibit" do
+  class Blog; end
+  subject { BlogExhibit }
+  it { should apply_to(Blog.new) }
+end
 
 describe BlogExhibit do
   Delegator.class_eval { include RSpec::Mocks::Methods }

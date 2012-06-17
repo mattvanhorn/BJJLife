@@ -1,11 +1,18 @@
 describe require 'display_case'
 require 'ostruct'
 require 'delegate'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/academy_exhibit'
+
+describe "AcademyExhibit" do
+  class Academy; end
+  subject { AcademyExhibit }
+  it { should apply_to(Academy.new) }
+end
 
 describe AcademyExhibit do
   Delegator.class_eval { include RSpec::Mocks::Methods }
-
+  
   subject        { exhibit }
 
   let(:context) { Object.new }

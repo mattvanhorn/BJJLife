@@ -1,10 +1,17 @@
 require 'display_case'
 require 'delegate'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/order_exhibit'
+
+describe "OrderExhibit" do
+  class Order; end
+  subject { OrderExhibit }
+  it { should apply_to(Order.new) }
+end
 
 describe OrderExhibit do
   Delegator.class_eval { include RSpec::Mocks::Methods }
-  
+
   let(:context) { Object.new }
   let(:order)   { OpenStruct.new(:item => item) }
   let(:item)    { Object.new }

@@ -1,5 +1,12 @@
 require 'display_case'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/order_item_exhibit'
+
+describe "OrderItemExhibit" do
+  class OrderItem; end
+  subject { OrderItemExhibit }
+  it { should apply_to(OrderItem.new) }
+end
 
 describe OrderItemExhibit do
   let(:context){ Object.new }

@@ -1,6 +1,13 @@
 require 'display_case'
 require 'ostruct'
+require_relative '../../spec/support/custom_matchers'
 require_relative '../../app/exhibits/contact_info_exhibit'
+
+describe "ContactInfoExhibit" do
+  class ContactInfo; end
+  subject { ContactInfoExhibit }
+  it { should apply_to(ContactInfo.new) }
+end
 
 describe ContactInfoExhibit do
   let(:context)  { Object.new }
