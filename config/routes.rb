@@ -40,7 +40,7 @@ Bjjlife::Application.routes.draw do
 
   mount RolloutUi::Engine, :at => "/rollout"
 
-  resources :products, :only => [:show] do
+  resources :products, :only => [:index, :show] do
     resources :orders, :only => [:new, :create]
   end
   resources :orders, :only => [:show]
