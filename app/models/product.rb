@@ -11,6 +11,8 @@
 #
 
 class Product < ActiveRecord::Base
+  attr_accessible :name, :price, :photo, :photo_cache
+
   mount_uploader :photo, ProductPhotoUploader
 
   def description

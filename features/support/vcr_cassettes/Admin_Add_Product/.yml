@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://dev.livingbjj.com.s3-us-west-1.amazonaws.com/uploads%2Fproduct%2Fphoto%2F2%2Fsloth.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        IzxGaWxlOjB4MDA3ZjljMDZkMTBhNDg+
+    headers:
+      Content-Length:
+      - '32397'
+      Content-Type:
+      - !binary |-
+        aW1hZ2UvanBlZw==
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Mon, 18 Jun 2012 20:51:20 +0000
+      Authorization:
+      - AWS AKIAIH7I5AUWXHC4P2IA:NdsbHt/dec8KJmO6bUXs/c/2/zE=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - Om0NOgDniaj97tTpDjCQ5HAx6Keswt/hE++1Xjc13H7LAaXTgiMY0LaL9bh2ihDK
+      X-Amz-Request-Id:
+      - CF980AC2072FDE8D
+      Date:
+      - Mon, 18 Jun 2012 20:51:22 GMT
+      Etag:
+      - ! '"6608300f8bb84575b1a64aed4c0550b6"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Mon, 18 Jun 2012 20:51:21 GMT
+- request:
+    method: put
+    uri: https://dev.livingbjj.com.s3-us-west-1.amazonaws.com/uploads%2Fproduct%2Fphoto%2F2%2Fthumb_sloth.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        IzxGaWxlOjB4MDA3ZjljMDZmZjNmYTg+
+    headers:
+      Content-Length:
+      - '36705'
+      Content-Type:
+      - !binary |-
+        aW1hZ2UvanBlZw==
+      X-Amz-Acl:
+      - public-read
+      Date:
+      - Mon, 18 Jun 2012 20:51:21 +0000
+      Authorization:
+      - AWS AKIAIH7I5AUWXHC4P2IA:1lnV00nqHY1+6X0NJGC+eEVEx9s=
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      X-Amz-Id-2:
+      - 7hGK5rsJ7XmCEyf0wQwwPLGvdNgQHSSw+fMDSOs5LwmRDaOgpai53jJn7OHMH1fF
+      X-Amz-Request-Id:
+      - 87D136AD681C875E
+      Date:
+      - Mon, 18 Jun 2012 20:51:22 GMT
+      Etag:
+      - ! '"048544d2c51fac35da09c6cdd18bac9b"'
+      Content-Length:
+      - '0'
+      Server:
+      - AmazonS3
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Mon, 18 Jun 2012 20:51:21 GMT
+recorded_with: VCR 2.1.1

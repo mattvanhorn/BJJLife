@@ -1,0 +1,16 @@
+#admin.grid
+  = standard_header
+
+  .main
+    .row
+      = simple_form_for [:admin, product], :html => {:multipart => true} do |form|
+        = form.hidden_field :photo_cache
+        = form.input :name
+        = form.input :price
+        = image_tag(product.photo.thumb_url) if product.photo?
+        = form.input :photo, :as => :file
+        = form.button :submit
+
+  .sidebar
+    %p= link_to t('admin.home_link'), admin_path
+

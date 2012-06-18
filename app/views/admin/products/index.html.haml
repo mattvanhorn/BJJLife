@@ -1,0 +1,16 @@
+#admin.grid
+  = standard_header
+
+  .main
+    .row
+      %table#products
+        %thead
+          %tr
+            %th Name
+            %th Price
+            %th Photo
+            %th
+          = render products
+  .sidebar
+    %p= link_to t('admin.home_link'), admin_path
+    %p= link_to "Add Product", new_admin_product_path

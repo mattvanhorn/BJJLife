@@ -46,6 +46,11 @@ When /^I check "([^"]*)"$/ do |checkbox|
   check(checkbox)
 end
 
+When /^I attach the image "(.*?)" as "(.*?)"$/ do |filename, locator|
+  path = File.join(::Rails.root, "features", "support", "images", filename)
+  attach_file(locator, path)
+end
+
 When "I accept the confirmation dialog" do
   unless page.driver.browser.is_a? Capybara::RackTest::Browser
     page.driver.browser.switch_to.alert.accept

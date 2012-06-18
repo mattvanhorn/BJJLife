@@ -86,6 +86,7 @@ Duplication:
     - Admin::HomeController
     - Admin::SubscriptionsController
     - Admin::VideosController
+    - Admin::ProductsController
     - ApplicationController
     - BlogsController
     - CommentsController
