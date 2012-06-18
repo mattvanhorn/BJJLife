@@ -3,8 +3,8 @@
 # Table name: videos
 #
 #  id            :integer         not null, primary key
-#  name          :string(255)
-#  url           :string(255)
+#  name          :string(255)     not null
+#  url           :string(255)     not null
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
 #  thumbnail_url :string(255)
@@ -26,6 +26,8 @@ class Video < ActiveRecord::Base
   make_voteable
 
   attr_accessible :name, :url
+
+  validates_presence_of :name, :url
 
   before_create :set_thumbnail_url
 

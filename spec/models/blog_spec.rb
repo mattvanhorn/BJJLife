@@ -3,7 +3,7 @@
 # Table name: blogs
 #
 #  id         :integer         not null, primary key
-#  title      :string(255)
+#  title      :string(255)     not null
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
 #
@@ -18,7 +18,9 @@ describe Blog do
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end
-
+  
+  it { should validate_presence_of(:title) }
+  
   it { should have(0).entries }
 
   describe "#add_entry" do

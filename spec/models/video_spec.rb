@@ -3,8 +3,8 @@
 # Table name: videos
 #
 #  id            :integer         not null, primary key
-#  name          :string(255)
-#  url           :string(255)
+#  name          :string(255)     not null
+#  url           :string(255)     not null
 #  created_at    :datetime        not null
 #  updated_at    :datetime        not null
 #  thumbnail_url :string(255)
@@ -26,6 +26,9 @@ describe Video do
     get_source_file(__FILE__).should_not reek
   end
 
+  it{ should validate_presence_of :name }
+  it{ should validate_presence_of :url }
+
   it "sets the thumbnail url when saving a youtube video url" do
     subject.url = "http://www.youtube.com/watch?v=m0fH_8kv7ac"
     subject.save
@@ -39,7 +42,7 @@ describe Video do
       subject.thumbnail_url.should == "http://b.vimeocdn.com/ts/126/328/126328224_200.jpg"
     end
   end
-  
+
   it { should_not be_published }
 
   it { should be_pending }
