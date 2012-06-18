@@ -1,0 +1,69 @@
+#products_index.grid
+  = standard_header
+
+  .main
+    .row
+      #product_slides_wrap
+        #product_slides_inner
+          #carousel
+
+            - products.each do |product|
+              %div[product]
+                = image_tag product.photo.thumb
+                %em= product.name
+
+              =# product.render_slide(self)
+          #pager
+            %strong Choose a category: &nbsp;
+            = link_to 'test1', '#product_2'
+            = link_to 'test2', '#product_7'
+            = link_to 'test3', '#product_12'
+            = link_to 'test4', '#product_14'
+          %a#prev{:href => '#'}
+          %a#next{:href => '#'}
+
+:javascript
+  $(function() {
+    var _visible = 5;
+    var $pagers = $('#pager a');
+    var _onBefore = function() {
+      $(this).find('img').stop().fadeTo( 300, 1 );
+      $pagers.removeClass( 'selected' );
+    };
+
+    $('#carousel').carouFredSel({
+      items: _visible,
+      width: '700',
+      auto: false,
+      scroll: {
+        duration: 750
+      },
+      prev: {
+        button: '#prev',
+        items: 2,
+        onBefore: _onBefore
+      },
+      next: {
+        button: '#next',
+        items: 2,
+        onBefore: _onBefore
+      },
+    });
+
+    $pagers.click(function( e ) {
+      e.preventDefault();
+
+      var group = $(this).attr( 'href' ).slice( 1 );
+      var slides = $('#carousel div.' + group);
+      var deviation = Math.floor( ( _visible - slides.length ) / 2 );
+      if ( deviation < 0 ) {
+        deviation = 0;
+      }
+
+      $('#carousel').trigger( 'slideTo', [ $('#' + group), -deviation ] );
+      $('#carousel div img').stop().fadeTo( 300, 0.3 );
+      slides.find('img').stop().fadeTo( 300, 1 );
+
+      $(this).addClass( 'selected' );
+  });
+  });

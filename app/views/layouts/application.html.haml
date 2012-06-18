@@ -8,6 +8,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = yield :stripe_js
     = javascript_include_tag "application"
+    = yield :order_form_js
     = csrf_meta_tags
     %meta{ :name => "stripe-key", :content => STRIPE_PUBLIC_KEY }
     = raw analytical.head_append_javascript

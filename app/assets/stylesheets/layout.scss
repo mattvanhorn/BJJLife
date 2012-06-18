@@ -1,6 +1,17 @@
 @import 'colors';
 
 /* --- GENERAL LAYOUT --- */
+html, body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	min-height: 600px;
+	min-width: 960px;
+}
+
 #page {
   margin: 0;
   padding: 0;

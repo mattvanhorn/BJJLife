@@ -1,5 +1,7 @@
 - content_for :stripe_js do
   = stripe_javascript
+- content_for :order_form_js do
+  = order_form_javascript
 
 #orders_new.grid
   = standard_header
@@ -56,4 +58,5 @@
     = image_tag(product.photo.thumb)
 
     %p= product.price
+
 

@@ -12,6 +12,14 @@ module ApplicationHelper
   end
 
   def stripe_javascript
-    javascript_include_tag("https://js.stripe.com/v1/") if controller.controller_name == 'orders'
+    if controller.controller_name == 'orders'
+      javascript_include_tag("https://js.stripe.com/v1/")
+    end
+  end
+
+  def order_form_javascript
+    if controller.controller_name == 'orders'
+      javascript_include_tag("orders")
+    end
   end
 end

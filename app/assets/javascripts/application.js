@@ -12,4 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require jquery.prettyPhoto
+//= require jquery.timeago
+//= require jquery.carouFredSel-5.6.1
