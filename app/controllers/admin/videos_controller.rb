@@ -1,4 +1,4 @@
-class Admin::VideosController < ApplicationController
+class Admin::VideosController < Admin::BaseController
   expose :videos
   expose :video
 
