@@ -4,6 +4,9 @@ Feature: support other video types
   As an administrator
   I want to be able to upload something other than youtube.
 
+  Background:
+    Given I perform HTTP authentication as "admin/password"
+
   @vcr
   Scenario: Vimeo videos
     Given I am on the new admin video page

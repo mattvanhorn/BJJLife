@@ -2,11 +2,13 @@ require 'spec_helper'
 
 describe Admin::VideosController do
   include NullDB::RSpec::NullifiedDatabase
+  include AuthHelper
 
   let(:resource){ mock_model(Video, :save => true) }
 
   before(:each) do
     subject.stub(:video => resource)
+    admin_login
   end
 
   it "should not reek" do

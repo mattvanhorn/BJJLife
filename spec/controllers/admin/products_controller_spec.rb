@@ -2,8 +2,14 @@ require 'spec_helper'
 
 describe Admin::ProductsController do
   include NullDB::RSpec::NullifiedDatabase
+  include AuthHelper
 
   let(:product){ mock_model(Product, :save => true) }
+
+  before(:each) do
+    controller.stub(:product).and_return(product)
+    admin_login
+  end
 
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
@@ -18,7 +24,7 @@ describe Admin::ProductsController do
 
   describe "create" do
     it "makes a product" do
-      controller.should_receive(:product).and_return(product)
+      controller.should_receive(:product).at_least(:once).and_return(product)
       post :create
     end
 

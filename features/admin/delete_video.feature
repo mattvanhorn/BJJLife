@@ -4,6 +4,9 @@ Feature: delete videos
   as an admin
   I want to delete a video
 
+  Background:
+    Given I perform HTTP authentication as "admin/password"
+
   Scenario: Default
     Given the following videos:
     | id   | name                                             | url                                        |

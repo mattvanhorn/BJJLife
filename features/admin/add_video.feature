@@ -4,6 +4,9 @@ Feature: Add video
   As an admin
   I want to add a video
 
+  Background:
+    Given I perform HTTP authentication as "admin/password"
+
   Scenario: Getting to the admin page
     Given I am on the admin videos page
     When I click on "Add Video"
