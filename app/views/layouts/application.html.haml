@@ -35,7 +35,7 @@
               %li= link_to "Sign Up", sign_up_path
 
             - if $rollout.active?(:shopping, identifiable_user)
-              %li= link_to 'Shopping', '/shopping'
+              %li= link_to 'Shopping', products_path
 
         = yield
 
