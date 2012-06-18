@@ -11,4 +11,9 @@ class ProductExhibit < DisplayCase::Exhibit
     dollarize super
   end
 
+  # TODO: refactor into DisplayCase
+  def eql?(other)
+    (self.class == other.class) && (self.to_model == other.to_model)
+  end
+  alias :== eql?
 end

@@ -6,19 +6,22 @@
       #product_slides_wrap
         #product_slides_inner
           #carousel
-
             - products.each do |product|
               %div[product]
                 = image_tag product.photo.thumb
-                %em= product.name
+                %em= link_to product.name, product_path(product)
+                %br/
+                %strong= product.price
+                %br/
+                = link_to "buy now", new_product_order_path(product)
 
-              =# product.render_slide(self)
-          #pager
-            %strong Choose a category: &nbsp;
-            = link_to 'test1', '#product_2'
-            = link_to 'test2', '#product_7'
-            = link_to 'test3', '#product_12'
-            = link_to 'test4', '#product_14'
+          - if false
+            #pager
+              %strong Choose a category: &nbsp;
+              = link_to 'test1', '#product_2'
+              = link_to 'test2', '#product_7'
+              = link_to 'test3', '#product_12'
+              = link_to 'test4', '#product_14'
           %a#prev{:href => '#'}
           %a#next{:href => '#'}
 

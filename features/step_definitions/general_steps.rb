@@ -76,6 +76,20 @@ Then /^show me the page$/ do
   save_and_open_page
 end
 
+Then /^I should see a link to the product detail page for the product named "(.*?)"$/ do |product_name|
+  product = Product.find_by_name(product_name)
+  page.should have_selector("a[href='#{product_path(product)}']")
+end
+
+Then /^I should see a link to buy the product named "(.*?)"$/ do |product_name|
+  product = Product.find_by_name(product_name)
+  page.should have_selector("a[href='#{new_product_order_path(product)}']")
+end
+
+Then /I should see a link to "([^"\s]*)"/ do |href|
+  page.should have_selector("a[href='#{href}']")
+end
+
 Then /^I should see a blog entry titled "(.*?)" and linked to "(.*?)"$/ do |title, url|
   page.should have_selector("#{selector_for("a blog entry")} a[href='#{url}']", :text => title)
 end
