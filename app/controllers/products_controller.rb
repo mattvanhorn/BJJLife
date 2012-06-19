@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  #before_filter :work_in_progress
+  before_filter :work_in_progress
 
   expose :products
   expose :product
