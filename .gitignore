@@ -32,3 +32,6 @@ coverage.data
 
 # Ignore reports from rails_best_practices
 /quality
+
+# Ignore locally uploaded files from testing
+/public/carrierwave
