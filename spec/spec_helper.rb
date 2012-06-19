@@ -25,4 +25,7 @@ RSpec.configure do |specs|
 
   specs.include(Reek::Spec)
   specs.include(ReekHelper)
+
+  specs.before(:each){ $rollout.stub(:active? => true) }
 end
+

@@ -1,4 +1,5 @@
-$rollout = Rollout.new(REDIS)
+$ns = Redis::Namespace.new(Rails.env, :redis => REDIS)
+$rollout = Rollout.new($ns)
 RolloutUi.wrap($rollout)
 
 RolloutUi::Server.use Rack::Auth::Basic do |username, password|
@@ -10,3 +11,4 @@ Rails.application.config.to_prepare do
     skip_before_filter :init_blog, :tag_guest, :store_location
   end
 end
+
