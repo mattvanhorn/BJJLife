@@ -1,2 +1,4 @@
 require 'cucumber/rspec/doubles'
-$rollout.stub(:active? => true)
+Before do
+  $rollout.stub(:active? => true)
+end
