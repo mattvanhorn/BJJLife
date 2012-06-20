@@ -211,3 +211,7 @@ end
 # end
 
 Blog.find_or_create_by_title('Training')
+
+Category.find_or_create_by_name('Seminars')
+Category.find_or_create_by_name('Classes')
+Category.find_or_create_by_name('Private Lessons')
