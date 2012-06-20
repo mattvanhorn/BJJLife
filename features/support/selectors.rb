@@ -37,6 +37,8 @@ module HtmlSelectorsHelper
       "article header h3"
     when "the first post listed"
       "article.post:first-child"
+    when "the category selector"
+      '#pager'
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"

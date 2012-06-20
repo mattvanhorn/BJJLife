@@ -7,7 +7,7 @@
         #product_slides_inner
           #carousel
             - products.each do |product|
-              %div[product]{:class => product.category}
+              %div[product]{:class => product.category_class}
                 = image_tag product.photo.thumb
                 %em= link_to product.name, product_path(product)
                 %br/

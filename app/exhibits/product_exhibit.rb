@@ -3,6 +3,8 @@ require_relative '../helpers/exhibit_helper'
 class ProductExhibit < DisplayCase::Exhibit
   include ExhibitHelper
 
+  exhibit_query :category
+
   def self.applicable_to?(object)
     object.class.name == 'Product'
   end
@@ -13,6 +15,10 @@ class ProductExhibit < DisplayCase::Exhibit
 
   def thumbnail
     deliver_image(photo.thumb)
+  end
+
+  def category_class
+    category.to_css_class
   end
 
   # TODO: refactor into DisplayCase
