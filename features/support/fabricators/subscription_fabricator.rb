@@ -1,3 +1,3 @@
 Fabricator(:subscription) do
-  email { 'alice@example.com' }
+  email 'alice@example.com'
 end

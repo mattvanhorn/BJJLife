@@ -1,3 +1,3 @@
 Fabricator(:user) do
-  username { 'alice' }
+  username 'alice'
 end

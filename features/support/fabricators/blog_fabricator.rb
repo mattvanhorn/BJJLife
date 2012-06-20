@@ -1,3 +1,3 @@
 Fabricator(:blog) do
-  title { 'Training' }
+  title 'Training'
 end
