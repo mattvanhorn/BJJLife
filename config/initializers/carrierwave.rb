@@ -1,5 +1,5 @@
 CarrierWave.configure do |carrierwave|
-  carrierwave.cache_dir = 'tmp'
+  carrierwave.cache_dir = "#{Rails.root}/tmp/carrierwave"
 
   if Rails.env.test? or Rails.env.cucumber?
     carrierwave.storage = :file
