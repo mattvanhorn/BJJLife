@@ -1,5 +1,6 @@
 %tr[product]
   %td= product.name
+  %td= product.category
   %td= product.price
   %td= product.thumbnail
-  %td n/a
+  %td= link_to "Edit Product", edit_admin_product_path(product), :class => 'btn'

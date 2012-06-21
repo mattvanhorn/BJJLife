@@ -22,6 +22,8 @@
 require 'spec_helper'
 
 describe Post do
+  include NullDB::RSpec::NullifiedDatabase
+
   let(:new_comment) { OpenStruct.new }
   subject { Post.new.tap{|p|p.comment_source = lambda{ new_comment }} }
 

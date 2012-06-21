@@ -10,6 +10,8 @@ Feature: Product Listing
     | 1  | foo  | 1000  | sloth.jpg |
     | 2  | bar  | 1500  | sloth.jpg |
     | 3  | baz  | 2000  | sloth.jpg |
+    And 1 category
+    And those products belong to that category
 
   Scenario: View a product
     When I go to the products page

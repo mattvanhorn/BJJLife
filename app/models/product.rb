@@ -23,10 +23,12 @@ class Product < ActiveRecord::Base
 
   mount_uploader :photo, ProductPhotoUploader
 
-  scope :categorized, includes(:category).where('category_id IS NOT NULL').order('categories.name')
+  validates :name,
+            :price,  :presence => true
 
-  def self.categories
-    Category.joins(:products).uniq.order(:name)
-  end
+  validates :price, :numericality => {:only_integer =>  true}
+
+  scope :categorized, includes(:category).where('category_id IS NOT NULL').order('categories.name, products.name')
+
 end
 

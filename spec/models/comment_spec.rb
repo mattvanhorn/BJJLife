@@ -18,6 +18,8 @@
 require 'spec_helper'
 
 describe Comment do
+  include NullDB::RSpec::NullifiedDatabase
+
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end

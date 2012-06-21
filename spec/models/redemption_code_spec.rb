@@ -16,6 +16,8 @@
 require 'spec_helper'
 
 describe RedemptionCode do
+  include NullDB::RSpec::NullifiedDatabase
+
   let(:redemption_code){ RedemptionCode.new() }
 
   it "sets a token at init" do

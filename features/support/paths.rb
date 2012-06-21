@@ -29,6 +29,9 @@ module NavigationHelpers
     when "the product page for that product"
       product_path(@product)
 
+    when /the edit admin product page for product (\d+)/
+      edit_admin_product_path($1)
+
     when "the checkout page"
       new_product_order_path(Product.last)
 

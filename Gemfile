@@ -58,7 +58,7 @@ group :test do
   gem 'database_cleaner'
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem "shoulda-matchers"
-  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/nulldb/nulldb.git'
+  gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb.git'
   gem 'fabrication'
   gem 'vcr'
   gem 'webmock'

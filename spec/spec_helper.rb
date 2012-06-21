@@ -29,3 +29,6 @@ RSpec.configure do |specs|
   specs.before(:each){ $rollout.stub(:active? => true) }
 end
 
+Fabrication.configure do |config|
+  config.fabricator_path = ["features/support/fabricators", "spec/fabricators"]
+end

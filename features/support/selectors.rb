@@ -18,8 +18,8 @@ module HtmlSelectorsHelper
       "#new_subscription.simple_form"
     when /the new account form/
       "#new_account .simple_form"
-    when /the video (\d+) element/
-      "#video_#{$1}"
+    when /the ([\w]+) (\d+) element/
+      "##{$1}_#{$2}"
     when "the header logo"
       "header h1"
 

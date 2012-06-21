@@ -30,16 +30,19 @@ describe Product do
     product.name.should == 'Foo Bar'
   end
 
+  it { should validate_presence_of(:name) }
+
   it "can read and write a price" do
     product.price = 1000
     product.price.should == 1000
   end
 
-  it "can save and display photos" do
-    product.photo = File.open(File.join(Rails.root, 'spec', 'support','images','sloth.jpg'))
-    product.id = 1234
-    product.save
-    product.photo_url.should == '/carrierwave/product/photo/1234/sloth.jpg'
+  it { should validate_presence_of(:price) }
+
+  it { should validate_numericality_of(:price) }
+
+  it "has an uploader mounted on photo" do
+    Product.uploaders[:photo].to_s.should == 'ProductPhotoUploader'
   end
 
   it "has a category" do

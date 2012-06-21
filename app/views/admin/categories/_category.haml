@@ -1,0 +1,3 @@
+%tr[category]
+  %td= category.name
+  %td= link_to "Destroy", admin_category_path(category), :method => :delete, :data => { :confirm => 'Are you sure?' }

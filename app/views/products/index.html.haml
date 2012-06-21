@@ -17,15 +17,15 @@
 
           #pager
             %strong Choose a category: &nbsp;
-            - Product.categories.each do |category|
-              = link_to category.name, "product_#{products.detect{|p|p.category == category}.id}"
+            - categories_in_use.each do |category|
+              = link_to category.name, category.to_css_class
 
           %a#prev{:href => '#'}
           %a#next{:href => '#'}
 
 :javascript
   $(function() {
-    var _visible = 5;
+    var _visible = 4;
     var $pagers = $('#pager a');
     var _onBefore = function() {
       $(this).find('img').stop().fadeTo( 300, 1 );
@@ -54,7 +54,7 @@
     $pagers.click(function( e ) {
       e.preventDefault();
 
-      var group = $(this).attr( 'href' ).slice( 1 );
+      var group = $(this).attr( 'href' );
       var slides = $('#carousel div.' + group);
       var deviation = Math.floor( ( _visible - slides.length ) / 2 );
       if ( deviation < 0 ) {

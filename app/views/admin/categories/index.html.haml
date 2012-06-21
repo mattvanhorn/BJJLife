@@ -1,0 +1,14 @@
+#admin.grid
+  = standard_header
+
+  .main
+    .row
+      %table#categories
+        %thead
+          %tr
+            %th Name
+            %th
+          = render categories
+  .sidebar
+    %p= link_to t('admin.home_link'), admin_path
+    %p= link_to "Add Category", new_admin_category_path

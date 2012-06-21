@@ -1,0 +1,11 @@
+#admin.grid
+  = standard_header
+
+  .main
+    .row
+      = simple_form_for [:admin, category] do |form|
+        = form.input :name
+        = form.button :submit
+
+  .sidebar
+    %p= link_to t('admin.home_link'), admin_path

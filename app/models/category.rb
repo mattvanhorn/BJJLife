@@ -14,7 +14,10 @@
 
 class Category < ActiveRecord::Base
   attr_accessible :name
+  has_many :products
 
   validates :name, :presence => true, :uniqueness => true
-  has_many :products
+
+  scope :in_use, joins(:products).uniq.order(:name)
+
 end

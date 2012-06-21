@@ -5,10 +5,13 @@ Feature: Make a purchase
   I want to buy a product
 
   Background:
-    Given the following product:
+    Given the following category:
+    | name | frobnitzes |
+    And the following product:
     | name  | foobar    |
     | price | 1000      |
     | photo | sloth.jpg |
+    And that product belongs to that category
     And there are no orders
 
   Scenario: View a product

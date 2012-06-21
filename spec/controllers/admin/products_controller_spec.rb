@@ -38,4 +38,28 @@ describe Admin::ProductsController do
       response.should redirect_to(admin_products_url)
     end
   end
+
+  describe "edit" do
+    it "exposes a product" do
+      controller.should_receive(:product).and_return(product)
+      get :edit, :id => '42'
+    end
+  end
+
+  describe "update" do
+    it "updates a product" do
+      controller.should_receive(:product).at_least(:once).and_return(product)
+      put :update, :id => '42'
+    end
+
+    it "saves the product" do
+      product.should_receive(:save).and_return(true)
+      put :update, :id => '42'
+    end
+
+    it "redirects to the admin product list" do
+      put :update, :id => '42'
+      response.should redirect_to(admin_products_url)
+    end
+  end
 end

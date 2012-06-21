@@ -19,4 +19,14 @@ describe ProductExhibit do
       exhibit.price.should == '$10.00'
     end
   end
+
+  describe "#category_class" do
+    let(:category){ OpenStruct.new(:to_css_class => 'foo') }
+    it "delegates to the category" do
+      stub_module 'Rails' # DisplayCase has an unfortunate dependency on Rails.logger
+      Rails.stub(:logger).and_return(stub.as_null_object)
+      product.category = category
+      exhibit.category_class.should == 'foo'
+    end
+  end
 end

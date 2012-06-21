@@ -14,7 +14,9 @@ Bjjlife::Application.routes.draw do
         put 'publish'
       end
     end
-    resources :products, :only => [:index, :new, :create]
+    resources :products, :only => [:index, :new, :create, :edit, :update]
+    resources :categories, :only => [:index, :new, :create, :destroy]
+
   end
 
   resources :videos, :only => [:index, :new, :create] do

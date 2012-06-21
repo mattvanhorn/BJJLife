@@ -11,6 +11,7 @@
 require 'spec_helper'
 
 describe Blog do
+  include NullDB::RSpec::NullifiedDatabase
 
   let(:new_post) { OpenStruct.new }
   subject { Blog.new.tap{|b|b.post_source = lambda{ new_post }} }
@@ -18,9 +19,9 @@ describe Blog do
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end
-  
+
   it { should validate_presence_of(:title) }
-  
+
   it { should have(0).entries }
 
   describe "#add_entry" do

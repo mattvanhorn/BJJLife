@@ -15,4 +15,14 @@ class Admin::ProductsController < Admin::BaseController
     exhibit_exposed :products, :product
     respond_with :admin, product
   end
+
+  def edit
+    exhibit_exposed :product
+  end
+
+  def update
+    product.save
+    exhibit_exposed :products, :product
+    respond_with :admin, product
+  end
 end

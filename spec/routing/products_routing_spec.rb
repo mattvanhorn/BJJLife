@@ -44,4 +44,22 @@ describe "products admin routing" do
         :action => "create"
       )
   end
+
+  it "routes the edit product page" do
+    { :get => "/admin/products/42/edit" }.
+      should route_to(
+        :controller => "admin/products",
+        :action => "edit",
+        :id => '42'
+      )
+  end
+
+  it "routes to the update method" do
+    { :put => "/admin/products/42" }.
+      should route_to(
+        :controller => "admin/products",
+        :action => "update",
+        :id => '42'
+      )
+  end
 end

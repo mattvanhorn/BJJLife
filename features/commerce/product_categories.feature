@@ -1,4 +1,4 @@
-@http://www.pivotaltracker.com/story/new
+@http://www.pivotaltracker.com/story/31487351
 Feature: Product categories
   In order to quickly navigate to the products I'm interested in
   As a user

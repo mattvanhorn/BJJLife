@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
   before_filter :work_in_progress
 
-  expose :products
+  expose(:products) { Product.categorized }
+  expose(:categories_in_use) { Category.in_use }
   expose :product
 
   def index
-    exhibit_exposed :products
+    exhibit_exposed :products, :categories_in_use
   end
 
   def show

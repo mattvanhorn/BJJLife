@@ -1,0 +1,9 @@
+= simple_form_for [:admin, product], :html => {:multipart => true} do |form|
+  = form.hidden_field :photo_cache
+  = form.input :name
+  = form.association :category
+  = form.input :price
+  = form.input :photo, :as => :file
+  %label (Current Photo)
+  = product.thumbnail if product.photo
+  = form.button :submit

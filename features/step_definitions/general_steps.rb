@@ -46,6 +46,10 @@ When /^I check "([^"]*)"$/ do |checkbox|
   check(checkbox)
 end
 
+When /^(?:|I )select "([^"]*)" from "([^"]*)"$/ do |value, field|
+  select(value, :from => field)
+end
+
 When /^I attach the image "(.*?)" as "(.*?)"$/ do |filename, locator|
   path = File.join(::Rails.root, "features", "support", "images", filename)
   attach_file(locator, path)
