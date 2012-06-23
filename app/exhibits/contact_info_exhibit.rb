@@ -1,4 +1,4 @@
-class ContactInfoExhibit < DisplayCase::Exhibit
+class ContactInfoExhibit < BaseExhibit
   def self.applicable_to?(object)
     object.class.name == 'ContactInfo'
   end
@@ -18,12 +18,5 @@ class ContactInfoExhibit < DisplayCase::Exhibit
   def links(separator = "\n<br/>\n")
     [website_link, phone_link, email_link].deblankify.join(separator).html_safe
   end
-
-  private
-
-  def in_view
-    @context.respond_to?(:view_context) ? @context.view_context : @context
-  end
-
 
 end

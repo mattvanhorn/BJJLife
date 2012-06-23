@@ -12,12 +12,19 @@
 #  location      :string(255)
 #  teacher       :string(255)
 #  rank          :string(255)
+#  market_id     :integer
+#
+# Indexes
+#
+#  index_users_on_market_id  (market_id)
 #
 
 class User < ActiveRecord::Base
   make_voter
 
   attr_accessible :identity_attributes, :username, :location, :teacher, :rank
+
+  belongs_to :market
 
   has_one :identity
   has_one :subscription

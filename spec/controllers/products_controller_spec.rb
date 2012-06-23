@@ -5,13 +5,13 @@ describe ProductsController do
   let(:product){ Object.new }
 
   before(:each) do
-    Product.stub(:categorized).and_return(products)
+    Product.stub(:categorized_for).and_return(products)
     products.stub(:find).and_return(product)
   end
 
   describe "#index" do
     it "exposes the products" do
-      Product.should_receive(:categorized).and_return(products)
+      Product.should_receive(:categorized_for).and_return(products)
       controller.products.should equal(products)
     end
 

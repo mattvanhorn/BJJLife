@@ -6,4 +6,8 @@ class GuestUser
   def id
     @id
   end
+
+  def market
+    nil
+  end
 end

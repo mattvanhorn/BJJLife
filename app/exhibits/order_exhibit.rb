@@ -1,6 +1,6 @@
 require_relative '../helpers/exhibit_helper'
 
-class OrderExhibit < DisplayCase::Exhibit
+class OrderExhibit < BaseExhibit
   include ExhibitHelper
 
   def self.applicable_to?(object)

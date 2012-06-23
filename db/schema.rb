@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120619233128) do
+ActiveRecord::Schema.define(:version => 20120622174227) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(:version => 20120619233128) do
 
   add_index "identities", ["email"], :name => "index_identities_on_email", :unique => true
   add_index "identities", ["user_id"], :name => "index_identities_on_user_id"
+
+  create_table "markets", :force => true do |t|
+    t.string  "name"
+    t.integer "parent_id"
+    t.integer "lft",                      :null => false
+    t.integer "rgt",                      :null => false
+    t.integer "depth",     :default => 0, :null => false
+  end
+
+  add_index "markets", ["parent_id"], :name => "index_markets_on_parent_id"
 
   create_table "order_adjustments", :force => true do |t|
     t.integer  "order_id"
@@ -154,9 +164,11 @@ ActiveRecord::Schema.define(:version => 20120619233128) do
     t.datetime "updated_at",  :null => false
     t.text     "description"
     t.integer  "category_id"
+    t.integer  "market_id"
   end
 
   add_index "products", ["category_id"], :name => "index_products_on_category_id"
+  add_index "products", ["market_id"], :name => "index_products_on_market_id"
 
   create_table "redemption_codes", :force => true do |t|
     t.integer  "order_item_id", :null => false
@@ -187,7 +199,10 @@ ActiveRecord::Schema.define(:version => 20120619233128) do
     t.string   "location"
     t.string   "teacher"
     t.string   "rank"
+    t.integer  "market_id"
   end
+
+  add_index "users", ["market_id"], :name => "index_users_on_market_id"
 
   create_table "videos", :force => true do |t|
     t.string   "name",                                 :null => false

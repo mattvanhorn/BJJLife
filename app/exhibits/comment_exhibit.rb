@@ -1,4 +1,4 @@
-class CommentExhibit< DisplayCase::Exhibit
+class CommentExhibit< BaseExhibit
 
   def self.applicable_to?(object)
     object.class.name == 'Comment'

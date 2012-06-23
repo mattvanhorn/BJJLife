@@ -10,10 +10,12 @@
 #  updated_at  :datetime        not null
 #  description :text
 #  category_id :integer
+#  market_id   :integer
 #
 # Indexes
 #
 #  index_products_on_category_id  (category_id)
+#  index_products_on_market_id    (market_id)
 #
 
 require 'spec_helper'

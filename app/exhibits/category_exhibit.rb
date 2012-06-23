@@ -1,4 +1,4 @@
-class CategoryExhibit < DisplayCase::Exhibit
+class CategoryExhibit < BaseExhibit
   def self.applicable_to?(object)
     object.class.name == 'Category' || object.nil? || (object.respond_to?(:to_model) && object.to_model.nil?)
   end
@@ -15,9 +15,6 @@ class CategoryExhibit < DisplayCase::Exhibit
     name.gsub(/[^\w]+/, '-').downcase
   end
 
-  def nil?
-    to_model.nil?
-  end
 end
 
 

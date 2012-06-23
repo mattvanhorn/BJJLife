@@ -1,3 +1,3 @@
 Fabricator(:category) do
-  name 'A Category'
+  name { sequence(:category_name) { |i| "category#{i}" } }
 end

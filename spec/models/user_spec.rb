@@ -12,6 +12,11 @@
 #  location      :string(255)
 #  teacher       :string(255)
 #  rank          :string(255)
+#  market_id     :integer
+#
+# Indexes
+#
+#  index_users_on_market_id  (market_id)
 #
 
 require 'spec_helper'

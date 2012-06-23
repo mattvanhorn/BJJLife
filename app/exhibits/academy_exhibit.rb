@@ -1,4 +1,4 @@
-class AcademyExhibit < DisplayCase::Exhibit
+class AcademyExhibit < BaseExhibit
 
   def self.applicable_to?(object)
     object.class.name == 'Academy'

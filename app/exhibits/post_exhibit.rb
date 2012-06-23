@@ -1,4 +1,4 @@
-class PostExhibit< DisplayCase::Exhibit
+class PostExhibit< BaseExhibit
 
   def self.applicable_to?(object)
     object.class.name == 'Post'

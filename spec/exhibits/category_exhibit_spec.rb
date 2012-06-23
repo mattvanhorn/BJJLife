@@ -1,4 +1,5 @@
 require 'exhibit_spec_helper'
+require_relative '../../app/exhibits/base_exhibit'
 require_relative '../../app/exhibits/category_exhibit'
 
 describe "CategoryExhibit" do
