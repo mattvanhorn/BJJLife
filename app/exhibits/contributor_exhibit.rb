@@ -1,4 +1,5 @@
-class ContributorExhibit< BaseExhibit
+class ContributorExhibit < DisplayCase::Exhibit
+  include ExhibitBaseHelper
 
   def self.applicable_to?(object)
     ['Comment', 'Post'].include? object.class.name

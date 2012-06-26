@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120622174227) do
+ActiveRecord::Schema.define(:version => 20120623191304) do
 
   create_table "academies", :force => true do |t|
     t.string   "name",                                             :null => false
@@ -64,6 +64,26 @@ ActiveRecord::Schema.define(:version => 20120622174227) do
 
   add_index "identities", ["email"], :name => "index_identities_on_email", :unique => true
   add_index "identities", ["user_id"], :name => "index_identities_on_user_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "type",                                                         :default => "Location", :null => false
+    t.integer  "locatable_id"
+    t.string   "locatable_type"
+    t.decimal  "lat",                          :precision => 15, :scale => 10
+    t.decimal  "lng",                          :precision => 15, :scale => 10
+    t.string   "ip_address",     :limit => 45
+    t.string   "street"
+    t.string   "unit"
+    t.string   "city"
+    t.string   "us_state",       :limit => 2
+    t.string   "postal_code"
+    t.string   "country"
+    t.datetime "created_at",                                                                           :null => false
+    t.datetime "updated_at",                                                                           :null => false
+  end
+
+  add_index "locations", ["locatable_id", "locatable_type"], :name => "index_locations_on_locatable_id_and_locatable_type"
+  add_index "locations", ["type"], :name => "index_locations_on_type"
 
   create_table "markets", :force => true do |t|
     t.string  "name"
@@ -196,7 +216,6 @@ ActiveRecord::Schema.define(:version => 20120622174227) do
     t.integer  "sign_in_count",               :default => 0, :null => false
     t.integer  "up_votes",                    :default => 0, :null => false
     t.integer  "down_votes",                  :default => 0, :null => false
-    t.string   "location"
     t.string   "teacher"
     t.string   "rank"
     t.integer  "market_id"

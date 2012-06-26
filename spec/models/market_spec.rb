@@ -20,4 +20,16 @@ describe Market do
   let(:market){ Market.new }
   subject { market }
 
+  describe "class" do
+    let(:new_york)  { Market.new(:name => 'New York') }
+    let(:boston)    { Market.new(:name => 'Boston') }
+    before do
+      stub_class 'Location'
+    end
+    it "gets nearby markets" do
+      Location.stub_chain(:where, :near).and_return([double('market', :locatable => new_york),double('market', :locatable => boston)])
+      Market.near(Location.new).should == [new_york, boston]
+    end
+  end
+
 end

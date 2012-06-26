@@ -30,6 +30,13 @@ en:
         email: Email
         password: Password
         password_confirmation: Confirm Password
+      location:
+        street: Street Address
+        unit: Suite/Floor
+        city: City
+        us_state: State
+        postal_code: ZIP Code
+        country: Country
       post:
         title: Title
         url: URL

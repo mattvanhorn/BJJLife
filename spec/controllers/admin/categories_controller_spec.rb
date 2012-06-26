@@ -15,6 +15,20 @@ describe Admin::CategoriesController do
     get_source_file(__FILE__).should_not reek
   end
 
+  describe "#index" do
+    it "exhibits the categories" do
+      controller.should_receive(:exhibit_exposed).with(:categories)
+      get :index
+    end
+  end
+
+  describe "#new" do
+    it "exhibits the category" do
+      controller.should_receive(:exhibit_exposed).with(:category)
+      get :new
+    end
+  end
+
   describe "create" do
     let(:category){ resource }
 
@@ -32,6 +46,11 @@ describe Admin::CategoriesController do
       post :create
       response.should redirect_to(admin_categories_url)
     end
+
+    it "exhibits the categories" do
+      controller.should_receive(:exhibit_exposed).with(:categories, :category)
+      post :create
+    end
   end
 
   describe "destroy" do
@@ -39,6 +58,11 @@ describe Admin::CategoriesController do
 
     it "destroys a category" do
       category.should_receive(:destroy).and_return(category)
+      delete :destroy, :id => 42
+    end
+
+    it "exhibits the categories" do
+      controller.should_receive(:exhibit_exposed).with(:categories)
       delete :destroy, :id => 42
     end
 

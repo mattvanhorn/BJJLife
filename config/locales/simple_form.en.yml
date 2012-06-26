@@ -7,7 +7,8 @@ en:
         update: Update Account
       order:
         create: Place Order
-
+      academy_search:
+        create: Search
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -26,6 +27,7 @@ en:
         title: Title
         url: URL
         description: Description
+        us_state: State
       order:
         card_number: Credit Card Number
         card_code: CVV

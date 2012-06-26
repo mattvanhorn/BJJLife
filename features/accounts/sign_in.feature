@@ -1,4 +1,5 @@
 @http://www.pivotaltracker.com/story/show/30595069
+@vcr
 Feature: Sign in
   In order to get credit for my contributions
   As a user
@@ -13,6 +14,7 @@ Feature: Sign in
     | password | password          |
     And that identity belongs to that user
     And I am not signed in
+
 
   Scenario: Normal
      When I visit the sign in page

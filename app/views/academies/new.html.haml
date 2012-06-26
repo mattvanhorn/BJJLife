@@ -9,11 +9,12 @@
       = simple_form_for academy do |form|
         = form.input :name
         = form.input :instructor
-        = form.input :street
-        = form.input :unit
-        = form.input :city
-        = form.input :us_state
-        = form.input :postal_code
+        = form.fields_for :location_attributes, AcademyLocation.new do |location|
+          = location.input :street
+          = location.input :unit
+          = location.input :city
+          = location.input :us_state
+          = location.input :postal_code
         = form.input :email
         = form.input :phone_number
         = form.input :website

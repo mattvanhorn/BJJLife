@@ -1,4 +1,6 @@
-class CategoryExhibit < BaseExhibit
+class CategoryExhibit < DisplayCase::Exhibit
+  include ExhibitBaseHelper
+
   def self.applicable_to?(object)
     object.class.name == 'Category' || object.nil? || (object.respond_to?(:to_model) && object.to_model.nil?)
   end

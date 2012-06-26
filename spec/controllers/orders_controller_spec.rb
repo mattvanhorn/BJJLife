@@ -9,6 +9,7 @@ describe OrdersController do
   before(:each) do
     Order.stub(:new => order)
     Product.stub(:find_by_id => product)
+    controller.stub(:locate_user => true)
   end
 
   describe "#new" do
@@ -148,6 +149,13 @@ describe OrdersController do
         response.should be_success
         response.should render_template 'new'
       end
+    end
+  end
+  
+  describe "#show" do
+    it "exhibits the product and order" do
+      controller.should_receive(:exhibit_exposed).with(:product, :order)
+      get :show, :id => '42'
     end
   end
 end

@@ -3,6 +3,8 @@
 
   .main
     .row
+      - if market.present?
+        %h3 Showing Products in #{market}
       #product_slides_wrap
         #product_slides_inner
           #carousel

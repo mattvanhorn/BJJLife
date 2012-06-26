@@ -6,6 +6,10 @@ describe SessionsController do
   let(:user){ mock_model(User, :id => 42).as_null_object }
   let(:doorman){ double('omni_authenticator', :find_user => user)}
 
+  before(:each) do
+    controller.stub(:locate_user => true)
+  end
+
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end
@@ -53,6 +57,7 @@ describe SessionsController do
     end
 
     context "when failed" do
+
       it "redirects to the sign in page" do
         get :failure
         response.should redirect_to(sign_in_url)

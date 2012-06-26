@@ -19,7 +19,7 @@ Feature: Make a purchase
     Then I should see "foobar"
     And I should see "$10.00"
 
-  @javascript @vcr
+  @javascript @stripe
   Scenario: Register at checkout
     Given there are no registered users
      When I go to the product page for that product
@@ -45,7 +45,7 @@ Feature: Make a purchase
       And I should see "1 @ $10.00"
       And I should see "Total: $10.00"
 
-  @javascript @vcr
+  @javascript
   Scenario: Sign in at checkout
     Given the following user:
       | username      | alice |
@@ -64,7 +64,7 @@ Feature: Make a purchase
       And I click on "Sign In" within the form
      Then I should be on the checkout page
 
-  @javascript @vcr
+  @javascript @stripe
   Scenario: Purchase a product
     Given I register as "alice@example.com" using the password "seekrit"
      When I go to the product page for that product
@@ -87,7 +87,7 @@ Feature: Make a purchase
       And I should see "1 @ $10.00"
       And I should see "Total: $10.00"
 
-  @javascript @vcr
+  @javascript
   Scenario: Bad Card Info
     Given I register as "alice@example.com" using the password "seekrit"
      When I go to the product page for that product
@@ -103,7 +103,7 @@ Feature: Make a purchase
       Then I should be on the checkout page
       And I should see "Your card number is invalid"
 
-  @javascript @vcr
+  @javascript
   Scenario: Duplicate Email
     Given I register as "alice@example.com" using the password "seekrit"
       And I am not signed in

@@ -1,5 +1,4 @@
 require 'exhibit_spec_helper'
-require_relative '../../app/exhibits/base_exhibit'
 require_relative '../../app/exhibits/category_exhibit'
 
 describe "CategoryExhibit" do
@@ -49,5 +48,10 @@ describe CategoryExhibit do
     end
   end
 
-
+  describe "#to_s" do
+    it "represents the category as its name" do
+      category.name = 'foo'
+      exhibit.to_s.should == 'foo'
+    end
+  end
 end

@@ -7,7 +7,7 @@ Feature: support other video types
   Background:
     Given I perform HTTP authentication as "admin/password"
 
-  @vcr
+  @vimeo
   Scenario: Vimeo videos
     Given I am on the new admin video page
     When I fill in "Name" with "BJJ European Championships 2011"

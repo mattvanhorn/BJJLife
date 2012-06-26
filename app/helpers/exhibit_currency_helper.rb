@@ -1,4 +1,4 @@
-module ExhibitHelper
+module ExhibitCurrencyHelper
 
   def dollarize(cents)
     "$%.2f" % ((cents||0) / 100.0)

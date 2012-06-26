@@ -7,14 +7,14 @@ Feature: Category Administration
   Background:
     Given I perform HTTP authentication as "admin/password"
 
-    Scenario: Adding a category
-      Given there are no categories
-      And I am on the admin categories page
-      And I click on "Add Category"
-      When I fill in "Name" with "Products that belong to the Emperor"
-       And I click on "Create Category"
-      Then I should be on the admin categories page
-       And I should see "Products that belong to the Emperor"
+  Scenario: Adding a category
+    Given there are no categories
+    And I am on the admin categories page
+    And I click on "Add Category"
+    When I fill in "Name" with "Products that belong to the Emperor"
+     And I click on "Create Category"
+    Then I should be on the admin categories page
+     And I should see "Products that belong to the Emperor"
 
   Scenario: Delete a category
     Given the following categories:

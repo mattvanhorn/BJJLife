@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+source 'http://gems.rubyforge.org/'
+source 'http://gems.github.com'
 
 gem 'rails'
 gem 'pg'
@@ -26,6 +28,8 @@ gem 'faker'
 gem 'mini_magick'
 gem 'display_case'
 gem 'awesome_nested_set'
+gem 'geocoder'
+gem 'elecnix-ruby-geonames'
 
 # Gems used only for assets and not required
 # in production environments by default.

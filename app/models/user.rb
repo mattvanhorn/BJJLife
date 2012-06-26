@@ -9,7 +9,6 @@
 #  sign_in_count :integer         default(0), not null
 #  up_votes      :integer         default(0), not null
 #  down_votes    :integer         default(0), not null
-#  location      :string(255)
 #  teacher       :string(255)
 #  rank          :string(255)
 #  market_id     :integer
@@ -22,18 +21,20 @@
 class User < ActiveRecord::Base
   make_voter
 
-  attr_accessible :identity_attributes, :username, :location, :teacher, :rank
+  attr_accessible :identity_attributes, :username, :location_attributes, :teacher, :rank
 
   belongs_to :market
 
   has_one :identity
   has_one :subscription
+  has_one :location, :as => :locatable
 
   has_many :posts
   has_many :comments
   has_many :orders
 
   accepts_nested_attributes_for :identity, :update_only => true
+  accepts_nested_attributes_for :location, :update_only => true
   validates_associated :identity, :on => :create
 
   def sign_in!
@@ -69,5 +70,18 @@ class User < ActiveRecord::Base
 
   def new_order(*args)
     orders.build(*args)
+  end
+
+  def nearest_market(radius = NEARBY_DISTANCE, options = {})
+    Market.near(location, radius, options).first
+  end
+
+  def located?
+    location.try(:geocoded?)
+  end
+
+  def set_location(result_obj)
+    self.location ||= build_location
+    location.update_attributes(Location.attributes_from_gecoder_result(result_obj))
   end
 end

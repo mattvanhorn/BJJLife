@@ -1,7 +1,8 @@
-require_relative '../helpers/exhibit_helper'
+require_relative '../helpers/exhibit_currency_helper'
 
-class OrderItemExhibit < BaseExhibit
-  include ExhibitHelper
+class OrderItemExhibit < DisplayCase::Exhibit
+  include ExhibitCurrencyHelper
+  include ExhibitBaseHelper
 
   def self.applicable_to?(object)
     object.class.name == 'OrderItem'

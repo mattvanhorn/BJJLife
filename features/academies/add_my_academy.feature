@@ -4,6 +4,7 @@ Feature: Add my academy
   As a bjj instructor
   I want to add my academy to the list
 
+  @geocode_academy
   Scenario:
   Given I am on the academies page
     And I should not see "Vitor Shaolin's Brazilian Jiu Jitsu"

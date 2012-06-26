@@ -1,0 +1,116 @@
+--- 
+http_interactions: 
+- request: 
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=780%208th%20Ave,%20New%20York,%20NY,%2010036&language=en&sensor=false
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      Accept-Encoding: 
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Ruby
+  response: 
+    status: 
+      code: 200
+      message: OK
+    headers: 
+      Content-Type: 
+      - application/json; charset=UTF-8
+      Date: 
+      - Tue, 26 Jun 2012 18:49:49 GMT
+      Expires: 
+      - Wed, 27 Jun 2012 18:49:49 GMT
+      Cache-Control: 
+      - public, max-age=86400
+      Server: 
+      - mafe
+      X-Xss-Protection: 
+      - 1; mode=block
+      X-Frame-Options: 
+      - SAMEORIGIN
+      Transfer-Encoding: 
+      - chunked
+    body: 
+      encoding: US-ASCII
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "780",
+                       "short_name" : "780",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "8th Ave",
+                       "short_name" : "8th Ave",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Theater District - Times Square",
+                       "short_name" : "Theater District - Times Square",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Manhattan",
+                       "short_name" : "Manhattan",
+                       "types" : [ "sublocality", "political" ]
+                    },
+                    {
+                       "long_name" : "New York",
+                       "short_name" : "New York",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "New York",
+                       "short_name" : "New York",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "New York",
+                       "short_name" : "NY",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "10036",
+                       "short_name" : "10036",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "780 8th Ave, New York, NY 10036, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 40.7608130,
+                       "lng" : -73.9870030
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 40.76216198029149,
+                          "lng" : -73.98565401970849
+                       },
+                       "southwest" : {
+                          "lat" : 40.75946401970850,
+                          "lng" : -73.98835198029150
+                       }
+                    }
+                 },
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+
+    http_version: 
+  recorded_at: Tue, 26 Jun 2012 18:49:49 GMT
+recorded_with: VCR 2.1.1

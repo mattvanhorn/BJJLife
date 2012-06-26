@@ -124,7 +124,7 @@ UncommunicativeVariableName:
   - !ruby/regexp /[0-9]$/
   - !ruby/regexp /[A-Z]/
 SimulatedPolymorphism:
-  exclude: []
+  exclude: [ApplicationController]
 
   enabled: true
   max_ifs: 2

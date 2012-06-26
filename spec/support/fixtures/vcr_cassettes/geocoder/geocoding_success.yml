@@ -1,0 +1,116 @@
+--- 
+http_interactions: 
+- request: 
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=350%205th%20Avenue,%20New%20York,%20NY,%2010001&language=en&sensor=false
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      Accept-Encoding: 
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Ruby
+  response: 
+    status: 
+      code: 200
+      message: OK
+    headers: 
+      Content-Type: 
+      - application/json; charset=UTF-8
+      Date: 
+      - Sun, 24 Jun 2012 22:15:18 GMT
+      Expires: 
+      - Mon, 25 Jun 2012 22:15:18 GMT
+      Cache-Control: 
+      - public, max-age=86400
+      Server: 
+      - mafe
+      X-Xss-Protection: 
+      - 1; mode=block
+      X-Frame-Options: 
+      - SAMEORIGIN
+      Transfer-Encoding: 
+      - chunked
+    body: 
+      encoding: US-ASCII
+      string: |
+        {
+           "results" : [
+              {
+                 "address_components" : [
+                    {
+                       "long_name" : "350",
+                       "short_name" : "350",
+                       "types" : [ "street_number" ]
+                    },
+                    {
+                       "long_name" : "5th Ave",
+                       "short_name" : "5th Ave",
+                       "types" : [ "route" ]
+                    },
+                    {
+                       "long_name" : "Korea Town",
+                       "short_name" : "Korea Town",
+                       "types" : [ "neighborhood", "political" ]
+                    },
+                    {
+                       "long_name" : "Manhattan",
+                       "short_name" : "Manhattan",
+                       "types" : [ "sublocality", "political" ]
+                    },
+                    {
+                       "long_name" : "New York",
+                       "short_name" : "New York",
+                       "types" : [ "locality", "political" ]
+                    },
+                    {
+                       "long_name" : "New York",
+                       "short_name" : "New York",
+                       "types" : [ "administrative_area_level_2", "political" ]
+                    },
+                    {
+                       "long_name" : "New York",
+                       "short_name" : "NY",
+                       "types" : [ "administrative_area_level_1", "political" ]
+                    },
+                    {
+                       "long_name" : "United States",
+                       "short_name" : "US",
+                       "types" : [ "country", "political" ]
+                    },
+                    {
+                       "long_name" : "10001",
+                       "short_name" : "10001",
+                       "types" : [ "postal_code" ]
+                    }
+                 ],
+                 "formatted_address" : "350 5th Ave, New York, NY 10001, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 40.74826580000001,
+                       "lng" : -73.98531079999999
+                    },
+                    "location_type" : "ROOFTOP",
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 40.74961478029151,
+                          "lng" : -73.98396181970848
+                       },
+                       "southwest" : {
+                          "lat" : 40.74691681970851,
+                          "lng" : -73.98665978029149
+                       }
+                    }
+                 },
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+
+    http_version: 
+  recorded_at: Sun, 24 Jun 2012 22:15:18 GMT
+recorded_with: VCR 2.1.1

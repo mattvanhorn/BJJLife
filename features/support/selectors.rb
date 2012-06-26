@@ -39,6 +39,9 @@ module HtmlSelectorsHelper
       "article.post:first-child"
     when "the category selector"
       '#pager'
+
+    when 'the nearest academies'
+      '.nearest ul.academies'
     else
       raise "Can't find mapping from \"#{scope}\" to a selector.\n" +
         "Now, go and add a mapping in #{__FILE__}"

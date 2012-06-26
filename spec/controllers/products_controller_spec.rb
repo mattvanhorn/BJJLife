@@ -5,6 +5,7 @@ describe ProductsController do
   let(:product){ Object.new }
 
   before(:each) do
+    controller.stub(:locate_user => true)
     Product.stub(:categorized_for).and_return(products)
     products.stub(:find).and_return(product)
   end
@@ -15,8 +16,8 @@ describe ProductsController do
       controller.products.should equal(products)
     end
 
-    it "exhibits all the products and categories" do
-      controller.should_receive(:exhibit_exposed).with(:products, :categories_in_use)
+    it "exhibits the market and all the products and categories" do
+      controller.should_receive(:exhibit_exposed).with(:products, :categories_in_use, :market)
       get :index
     end
   end

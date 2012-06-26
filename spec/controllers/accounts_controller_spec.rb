@@ -5,6 +5,10 @@ describe AccountsController do
   let(:new_identity){ mock_model(Identity) }
   let(:user){ mock_model(User, :identity => existing_identity, :model => lambda{self}) }
 
+  before(:each) do
+    controller.stub(:locate_user => true)
+  end
+
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end

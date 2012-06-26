@@ -32,6 +32,8 @@ GIT
 
 GEM
   remote: https://rubygems.org/
+  remote: http://gems.rubyforge.org/
+  remote: http://gems.github.com/
   specs:
     actionmailer (3.2.6)
       actionpack (= 3.2.6)
@@ -105,6 +107,7 @@ GEM
     draper (0.14.0)
       actionpack (~> 3.2)
       activesupport (~> 3.2)
+    elecnix-ruby-geonames (0.2.6)
     email_spec (1.2.1)
       mail (~> 2.2)
       rspec (~> 2.0)
@@ -131,6 +134,7 @@ GEM
       nokogiri (~> 1.5.0)
       ruby-hmac
     formatador (0.2.3)
+    geocoder (1.1.2)
     gherkin (2.11.0)
       json (>= 1.4.6)
     haml (3.1.5)
@@ -335,11 +339,13 @@ DEPENDENCIES
   decent_exposure!
   display_case
   draper
+  elecnix-ruby-geonames
   email_spec
   fabrication
   faker
   flog
   fog
+  geocoder
   haml-rails
   jquery-rails
   launchy

@@ -23,26 +23,31 @@ require 'moderatable'
 class Academy < ActiveRecord::Base
   include Moderatable
 
-  attr_accessible :name, :instructor, :street, :unit, :city, :us_state, :postal_code, :email, :phone_number, :website
+  attr_accessible :name, :instructor, :location_attributes, :email, :phone_number, :website
 
-  validates_with LocationValidator
+  has_one :location, :as => :locatable, :class_name => 'AcademyLocation'
+
+  accepts_nested_attributes_for :location, :update_only => true
+
   validates_with ContactMethodValidator
   validates_presence_of :name
+  validates_associated :location, :on => :create
   validates :email, :length => (3..254), :email => true, :allow_blank => true
-  validates :us_state, :length => {:is => 2}, :allow_blank => true
 
-  scope :ordered_by_state, published.order('us_state, name')
+  delegate :address, :street, :unit, :city, :us_state, :postal_code, :to => :location
+
+  scope :ordered_by_state, joins(:location).published.order('locations.us_state, name')
 
   def self.by_state
     Academy.ordered_by_state.group_by(&:us_state).to_a.map{ |group| AcademyGroup.new(group.first, group.last) }
-  end
-
-  def address
-    Address.new(street, unit, city, us_state, postal_code).freeze
   end
 
   def contact_info
     ContactInfo.new(email, phone_number, website).freeze
   end
 
+  def self.near(origin, radius = NEARBY_DISTANCE, options = {})
+    return [] if origin.blank?
+    AcademyLocation.near(origin, radius, options).map(&:locatable)
+  end
 end

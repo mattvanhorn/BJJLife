@@ -10,7 +10,7 @@ describe PostsController do
   let(:blog)    { mock_model(Blog, :entries => entries) }
 
   before(:each) do
-    controller.stub(:current_user => current_user)
+    controller.stub(:current_user => current_user, :locate_user => true)
     Blog.stub(:first => blog)
     the_post.stub(:blog => blog, :blog_name => 'Training')
   end
@@ -24,6 +24,11 @@ describe PostsController do
       controller.stub(:user_signed_in? => false)
       get :new
       response.should redirect_to(sign_in_path)
+    end
+
+    it "exhibits the blog and post" do
+      controller.should_receive(:exhibit_exposed).with(:blog, :post)
+      get :new
     end
   end
 
@@ -43,6 +48,11 @@ describe PostsController do
       post :create
       response.should redirect_to(blog_path(blog))
     end
+
+    it "exhibits the blog and posts/post" do
+      controller.should_receive(:exhibit_exposed).with(:blog, :posts, :post)
+      post :create
+    end
   end
 
   describe "show" do
@@ -57,6 +67,11 @@ describe PostsController do
 
     it "finds the post" do
       entries.should_receive(:find).with('42').and_return(the_post)
+      get :show, :id => '42'
+    end
+
+    it "exhibits the blog, post and comment" do
+      controller.should_receive(:exhibit_exposed).with(:blog, :post, :comment)
       get :show, :id => '42'
     end
 

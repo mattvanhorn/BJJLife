@@ -8,7 +8,7 @@ describe VideosController do
   let(:videos) { [video] }
 
   before(:each) do
-    controller.stub(:current_user => current_user)
+    controller.stub(:current_user => current_user, :locate_user => true)
     controller.stub(:videos => videos)
     controller.stub(:video => video)
   end

@@ -7,10 +7,12 @@
         %fieldset
           %legend= t('.legend.profile_details')
           = form.input :username, :hint => 'This is what will show up under the things you post'
-          = form.input :location
           = form.input :teacher
           = form.input :rank
-
+          = form.fields_for :location_attributes, current_user.location do |fields|
+            = fields.input :city
+            = fields.input :us_state
+            = fields.input :postal_code
         %fieldset
           %legend= t('.legend.account_identity')
           = form.fields_for :identity_attributes, current_user.identity do |fields|

@@ -28,7 +28,6 @@ Feature: Profile page
     | sign_in_count | 2                       |
     | teacher       | Vitor 'Shaolin' Ribeiro |
     | rank          | Blue belt               |
-    | location      | New York                |
     And the following identity:
     | email    | alice@example.com |
     | password | password          |

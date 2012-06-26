@@ -1,8 +1,4 @@
-class BaseExhibit < DisplayCase::Exhibit
-
-  def self.applicable_to?(object)
-    false
-  end
+module ExhibitBaseHelper
 
   def eql?(other)
     if other.respond_to?(:to_model)

@@ -45,4 +45,13 @@ describe AddressExhibit do
     address.postal_code = '11666'
     exhibit.city_state_zip.should == '11666'
   end
+
+  it "has a string representation" do
+    address.stub( :street      => '350 5th Avenue',
+                  :unit        => '600th Floor',
+                  :city        => 'New York',
+                  :us_state    => 'NY',
+                  :postal_code => '10001')
+    exhibit.to_s.should == "350 5th Avenue, 600th Floor, New York, NY 10001"
+  end
 end

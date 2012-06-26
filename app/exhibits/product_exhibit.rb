@@ -1,7 +1,8 @@
-require_relative '../helpers/exhibit_helper'
+require_relative '../helpers/exhibit_currency_helper'
 
-class ProductExhibit < BaseExhibit
-  include ExhibitHelper
+class ProductExhibit < DisplayCase::Exhibit
+  include ExhibitBaseHelper
+  include ExhibitCurrencyHelper
 
   exhibit_query :category
 

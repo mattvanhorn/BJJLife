@@ -1,10 +1,15 @@
-class MarketExhibit < BaseExhibit
+class MarketExhibit < DisplayCase::Exhibit
+  include ExhibitBaseHelper
 
   def self.applicable_to?(object)
     object.class.name == 'Market'
   end
 
-  def as_option
-    ("&nbsp;" * depth) + name
+  def to_s
+    name
   end
+
+  # def as_option
+  #   ("&nbsp;" * depth) + name
+  # end
 end

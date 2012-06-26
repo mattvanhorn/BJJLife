@@ -19,6 +19,7 @@ describe ApplicationController do
       it { should be_a(GuestUser) }
     end
   end
+
   describe "signing in a user" do
     controller do
       def index
@@ -63,4 +64,33 @@ describe ApplicationController do
     end
   end
 
+  describe "locating users" do
+    controller do
+      def index
+        render :nothing => true
+      end
+    end
+
+    let(:current_user){ double('user', :located? => false) }
+    let(:request_location){ Object.new }
+
+    before(:each) do
+      Rails.application.config.stub(:locate_users => true)
+      request.stub(:location => request_location)
+    end
+
+    it "sets current user's location" do
+      controller.stub(:user_signed_in? => true, :current_user => current_user)
+      current_user.should_receive(:set_location).with(request_location)
+      get :index
+    end
+
+    it "sets guest user's location" do
+      controller.stub(:user_signed_in? => false)
+      Location.should_receive(:attributes_from_gecoder_result).with(request_location).and_return({:foo => 'bar'})
+      get :index
+      verifier.verify(response.cookies['location']).should == "--- \n:foo: bar\n"
+    end
+
+  end
 end

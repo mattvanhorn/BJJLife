@@ -8,8 +8,9 @@ describe SubscriptionsController do
   before(:each) do
     Subscription.stub(:new).and_return(subscription)
     Video.stub_chain(:scoped, :sample).and_return(videos)
+    controller.stub(:locate_user => true)
   end
-
+  
   it "should not reek" do
     get_source_file(__FILE__).should_not reek
   end

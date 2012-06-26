@@ -1,4 +1,5 @@
 class Admin::BaseController < ApplicationController
+  skip_before_filter :locate_user
   before_filter :authenticate
 
   protected

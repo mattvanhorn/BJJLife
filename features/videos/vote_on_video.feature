@@ -5,8 +5,6 @@ Feature: Vote on video
   I want to upvote and downvote videos
 
   Background:
-
-
    Given the following identity:
        | email    | alice@example.com |
        | password | seekrit           |
@@ -38,7 +36,6 @@ Feature: Vote on video
     Then "good video" should appear before "better video"
     When I click on "like" within the video 2 element
     Then "better video" should appear before "good video"
-
 
   Scenario: Downvoting
   Given the following videos:

@@ -1,4 +1,5 @@
-class AcademyGroupExhibit < BaseExhibit
+class AcademyGroupExhibit < DisplayCase::Exhibit
+  include ExhibitBaseHelper
 
   def self.applicable_to?(object)
     object.class.name == 'AcademyGroup'

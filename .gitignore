@@ -35,3 +35,9 @@ coverage.data
 
 # Ignore locally uploaded files from testing
 /public/carrierwave
+
+# Ignore RVM
+.rvmrc
+
+# Ignore CTags
+.tags

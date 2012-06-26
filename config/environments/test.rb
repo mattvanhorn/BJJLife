@@ -36,4 +36,7 @@ Bjjlife::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.action_mailer.default_url_options = { :host =>  ENV['TDDIUM'] ? "localhost:#{53891+ENV.fetch('TDDIUM_TID', 0).to_i}" : 'example.com' }
+
+  config.locate_users = false
+
 end

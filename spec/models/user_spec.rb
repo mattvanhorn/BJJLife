@@ -9,7 +9,6 @@
 #  sign_in_count :integer         default(0), not null
 #  up_votes      :integer         default(0), not null
 #  down_votes    :integer         default(0), not null
-#  location      :string(255)
 #  teacher       :string(255)
 #  rank          :string(255)
 #  market_id     :integer
@@ -82,5 +81,43 @@ describe User do
   it "can opt out of a subscription" do
     user.subscription = nil
     user.should be_opted_out
+  end
+
+  it "has a nearest market" do
+    new_york = Object.new
+    stub_class 'Market'
+    Market.should_receive(:near).with(user.location, 100, {}).and_return([new_york])
+    user.nearest_market.should == new_york
+  end
+
+  it "makes itself an order" do
+    user.orders.should_receive(:build).with({})
+    user.new_order({})
+  end
+
+  it "sets a location" do
+    location = mock_model(Location).as_null_object
+    request_location = Object.new
+    user.should_receive(:build_location).and_return(location)
+    Location.should_receive(:attributes_from_gecoder_result).with(request_location).and_return({:foo => 'bar'})
+    location.should_receive(:update_attributes).with( {:foo => 'bar'} )
+    user.set_location(request_location)
+  end
+
+  it "knows if it is geocoded" do
+    location = mock_model(Location, :geocoded? => true).as_null_object
+    user.location = location
+    user.should be_located
+  end
+  
+  it "knows if it is not geocoded" do
+    location = mock_model(Location, :geocoded? => false).as_null_object
+    user.location = location
+    user.should_not be_located
+  end
+  
+  it "cannot be located without a location" do
+    user.location.should be_nil
+    user.should_not be_located
   end
 end

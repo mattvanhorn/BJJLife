@@ -47,6 +47,7 @@ Bjjlife::Application.routes.draw do
     resources :orders, :only => [:new, :create]
   end
   resources :orders, :only => [:show]
+  match 'academies/search' => 'academies#search', :as => :academy_searches
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

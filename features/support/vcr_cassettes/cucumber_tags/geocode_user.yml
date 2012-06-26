@@ -1,0 +1,40 @@
+--- 
+http_interactions: 
+- request: 
+    method: get
+    uri: http://freegeoip.net/json/173.247.202.228
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      Accept-Encoding: 
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept: 
+      - "*/*"
+      User-Agent: 
+      - Ruby
+  response: 
+    status: 
+      code: 200
+      message: OK
+    headers: 
+      Server: 
+      - nginx/0.7.67
+      Date: 
+      - Tue, 26 Jun 2012 18:56:21 GMT
+      Content-Type: 
+      - application/json
+      Connection: 
+      - keep-alive
+      Access-Control-Allow-Origin: 
+      - "*"
+      Etag: 
+      - "\"e77a510f58c94df72dfd3a59ae56478d4825df94\""
+      Content-Length: 
+      - "243"
+    body: 
+      encoding: US-ASCII
+      string: "{\"city\": \"San Francisco\", \"region_code\": \"CA\", \"region_name\": \"California\", \"metrocode\": \"807\", \"zipcode\": \"94111\", \"longitude\": \"-122.398\", \"latitude\": \"37.7989\", \"country_code\": \"US\", \"ip\": \"173.247.202.228\", \"country_name\": \"United States\"}"
+    http_version: 
+  recorded_at: Tue, 26 Jun 2012 18:54:19 GMT
+recorded_with: VCR 2.1.1

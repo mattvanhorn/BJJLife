@@ -1,4 +1,6 @@
-class AddressExhibit < BaseExhibit
+class AddressExhibit < DisplayCase::Exhibit
+  include ExhibitBaseHelper
+
   def self.applicable_to?(object)
     object.class.name == 'Address'
   end
@@ -11,4 +13,7 @@ class AddressExhibit < BaseExhibit
     "#{[city, us_state].deblankify.clean_join(', ')} #{postal_code}".strip.presence
   end
 
+  def to_s
+    [street_address, city_state_zip].compact.join(', ')
+  end
 end

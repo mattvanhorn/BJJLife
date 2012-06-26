@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   analytical :modules => [:console, :google, :mixpanel], :use_session_store => true, :disable_if => lambda{|controller| controller.class.ancestors.include?(Admin)}
 
-  before_filter :init_blog, :tag_guest, :store_location
+  before_filter :init_blog, :tag_guest, :store_location, :locate_user
 
   helper_method :current_user, :user_signed_in?, :identifiable_user
 
@@ -22,7 +22,13 @@ class ApplicationController < ActionController::Base
   end
 
   def guest_user
-    GuestUser.new(session[:guest_id] || cookies.signed[:guest_id] || tag_guest )
+    GuestUser.new(session[:guest_id] || cookies.signed[:guest_id] || tag_guest ).tap do |guest|
+      cookie_loc = read_signed_yaml_cookie(:location)
+      unless cookie_loc.blank?
+        guest.location = Location.new(:lat => cookie_loc[:lat], :lng => cookie_loc[:lng])
+        guest.market = Market.near(guest.location).first
+      end
+    end
   end
 
   def identifiable_user
@@ -98,9 +104,27 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def locate_user
+    return unless Rails.application.config.locate_users
+    if user_signed_in?
+      current_user.set_location(request.location) unless current_user.located?
+
+    elsif cookies.signed[:location].blank?
+      loc_hash = Location.attributes_from_gecoder_result(request.location)
+      cookies.signed[:location] = loc_hash.to_yaml
+    end
+  end
+
   def exhibit_exposed(*names)
     names.each do |name|
       _resources[name] = exhibit(self.send(name))
+    end
+  end
+
+  def read_signed_yaml_cookie(name)
+    yaml_str = cookies.signed[name]
+    unless yaml_str.blank?
+      ::YAML.load(yaml_str)
     end
   end
 end

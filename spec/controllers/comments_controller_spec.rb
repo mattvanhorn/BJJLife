@@ -27,7 +27,7 @@ describe CommentsController do
     let(:current_user){ OpenStruct.new(:to_model => Object.new) }
 
     before(:each) do
-      controller.stub(:current_user => current_user)
+      controller.stub(:current_user => current_user, :locate_user => true)
       comments.stub(:new => comment)
       Post.stub(:find => the_post)
     end
