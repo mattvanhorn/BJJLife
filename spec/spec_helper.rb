@@ -1,4 +1,11 @@
-require 'cover_me' unless ENV['TDDIUM']
+unless ENV['TDDIUM']
+  require 'simplecov'
+  SimpleCov.start 'rails' do
+    add_group "Exhibits", "app/exhibits"
+    add_group "Uploaders", "app/uploaders"
+    add_group "Mailers", "app/mailers"
+  end
+end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'

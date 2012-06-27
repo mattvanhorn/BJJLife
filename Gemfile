@@ -67,7 +67,7 @@ group :test do
   gem 'fabrication'
   gem 'vcr'
   gem 'webmock'
-  gem 'cover_me', :require => false
+  gem 'simplecov', :require => false
   gem 'email_spec'
 end
 # To use ActiveModel has_secure_password

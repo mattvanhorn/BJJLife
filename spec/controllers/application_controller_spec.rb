@@ -89,7 +89,7 @@ describe ApplicationController do
       controller.stub(:user_signed_in? => false)
       Location.should_receive(:attributes_from_gecoder_result).with(request_location).and_return({:foo => 'bar'})
       get :index
-      verifier.verify(response.cookies['location']).should == "--- \n:foo: bar\n"
+      verifier.verify(response.cookies['location']).should == "---\n:foo: bar\n"
     end
 
   end
