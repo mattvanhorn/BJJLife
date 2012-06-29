@@ -33,7 +33,7 @@ class Product < ActiveRecord::Base
 
   scope :categorized, includes(:category).where('category_id IS NOT NULL').order('categories.name, products.name')
   scope :in_market, lambda{ |market| market ? where(:market_id => market.id) : scoped }
-  
+
   def Product.categorized_for(market)
     categorized.in_market(market)
   end

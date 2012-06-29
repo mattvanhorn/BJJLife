@@ -1,6 +1,6 @@
 class UserExhibit < DisplayCase::Exhibit
   include ExhibitBaseHelper
-  
+
   def self.applicable_to?(object)
     object.class.name == 'User'
   end
