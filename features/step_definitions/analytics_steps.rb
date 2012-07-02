@@ -8,6 +8,6 @@ Then /^I should((?: not)?) see a conversion$/ do |negate|
 end
 
 Then /I should see the (original|new) image/ do |version|
-  filename = "#{version == 'new' ? 'bjjmats.png' : 'bjjmatch.png'}"
+  filename = "#{version == 'new' ? 'bjjmats.jpg' : 'bjjmatch.jpg'}"
   page.should have_selector("img[src='/assets/#{filename}']")
 end

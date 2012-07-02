@@ -3,12 +3,12 @@
     - ab_test("image", "a", "b") do |version|
       - case version
       - when 'a'
-        = image_tag "bjjmatch.png", :size => "940x167"
+        = image_tag "bjjmatch.jpg", :size => "940x167"
         - content_for :photo_credits do
           main photo by:
           = link_to "Emerson Ricardo Zamprogno", 'http://www.fotopedia.com/items/ezamprogno-yzhx6zlsz6I/slideshow'
       - when 'b'
-        = image_tag "bjjmats.png", :size => "940x167"
+        = image_tag "bjjmats.jpg", :size => "940x167"
         - content_for :photo_credits do
           main photo by:
           = link_to "Cid Costa Neto", 'http://commons.wikimedia.org/wiki/File:Campeonato_Brasileiro_Interclubes_de_Jiu-Jitsu_2009.jpg'
