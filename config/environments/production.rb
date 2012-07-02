@@ -20,6 +20,8 @@ Bjjlife::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  config.asset_host = 'dil4h16glbwkq.cloudfront.net'
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
