@@ -1,0 +1,3 @@
+class OrderTransaction
+
+end
