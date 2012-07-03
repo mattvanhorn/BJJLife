@@ -21,11 +21,12 @@
     .row
       = render 'video_previews'
 
-    .row
-      = render 'new_stuff'
-      = render 'upcoming'
-    .row
-      = render 'contribute'
+    - cache(:static) do
+      .row
+        = render 'new_stuff'
+        = render 'upcoming'
+      .row
+        = render 'contribute'
 
 
   .sidebar

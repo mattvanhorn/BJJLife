@@ -31,6 +31,7 @@ gem 'awesome_nested_set'
 gem 'geocoder'
 gem 'elecnix-ruby-geonames'
 gem 'newrelic_rpm'
+gem 'dalli'
 
 # Gems used only for assets and not required
 # in production environments by default.

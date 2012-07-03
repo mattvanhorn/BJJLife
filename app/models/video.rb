@@ -35,6 +35,7 @@ class Video < ActiveRecord::Base
   private
 
   def set_thumbnail_url
+    self.thumbnail_url = 'missing_video_thumb.png'
     self.thumbnail_url = youtube_thumb if youtube?
     self.thumbnail_url = vimeo_thumb if vimeo?
   end
