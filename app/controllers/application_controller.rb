@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   analytical :modules => [:console, :google, :mixpanel], :use_session_store => true, :disable_if => lambda{|controller| controller.class.ancestors.include?(Admin)}
 
-  before_filter :init_blog, :tag_guest, :store_location, :locate_user
+  before_filter :tag_guest, :store_location, :locate_user
 
   helper_method :current_user, :user_signed_in?, :identifiable_user
 
@@ -93,10 +93,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def init_blog
-    @blog = Blog.new(:title => "Training")
-  end
 
   def tag_guest
     unless (user_signed_in? || session[:guest_id] || cookies.signed[:guest_id])
