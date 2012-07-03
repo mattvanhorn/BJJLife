@@ -168,6 +168,7 @@ GEM
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.5.2)
+    newrelic_rpm (3.4.0.1)
     nokogiri (1.5.3)
     omniauth (1.1.0)
       hashie (~> 1.2)
@@ -348,6 +349,7 @@ DEPENDENCIES
   launchy
   make_voteable
   mini_magick
+  newrelic_rpm
   omniauth-identity
   pg
   pickler
