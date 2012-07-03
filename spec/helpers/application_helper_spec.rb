@@ -34,7 +34,7 @@ describe ApplicationHelper do
     end
 
     it "shows up on orders controller views" do
-      helper.stripe_javascript.should == javascript_include_tag("https://js.stripe.com/v1/")
+      helper.stripe_javascript.should == javascript_include_tag("https://js.stripe.com/v1/", :defer => 'defer')
     end
     it "doesn't show up on other controller views" do
       helper.controller.stub(:controller_name => 'foobar')
@@ -47,7 +47,7 @@ describe ApplicationHelper do
       helper.controller.stub(:controller_name => 'orders')
       helper.order_form_javascript.should_not be_blank
     end
-    
+
     it "is blank on other controllers" do
       helper.controller.stub(:controller_name => 'something_else')
       helper.order_form_javascript.should be_blank
