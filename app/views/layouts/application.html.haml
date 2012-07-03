@@ -50,7 +50,7 @@
             = link_to image_tag("http://mixpanel.com/site_media/images/partner/badge_blue.png", :alt => "Real Time Web Analytics"), "http://mixpanel.com/f/partner"
 
     = yield :stripe_js
-    = javascript_include_tag "application"
+    = javascript_include_tag "application", :defer => "defer"
     = yield :order_form_js
     :javascript
       $(document).ready(function(){

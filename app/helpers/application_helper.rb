@@ -13,13 +13,13 @@ module ApplicationHelper
 
   def stripe_javascript
     if controller.controller_name == 'orders'
-      javascript_include_tag("https://js.stripe.com/v1/")
+      javascript_include_tag("https://js.stripe.com/v1/", :defer => 'defer')
     end
   end
 
   def order_form_javascript
     if controller.controller_name == 'orders'
-      javascript_include_tag("orders")
+      javascript_include_tag("orders", :defer => 'defer')
     end
   end
 end
