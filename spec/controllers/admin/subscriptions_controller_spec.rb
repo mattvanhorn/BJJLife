@@ -4,11 +4,15 @@ describe Admin::SubscriptionsController do
   include NullDB::RSpec::NullifiedDatabase
   include AuthHelper
 
-  before(:each) do
-    Subscription.stub(:all => [double('sub')])
-  end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
+  describe "GET #index" do
+    subject { get :index }
+
+    before(:each) do
+      Subscription.stub(:all => [double('sub')])
+      admin_login
+    end
+
+    it { should render_template("index") }
   end
 end

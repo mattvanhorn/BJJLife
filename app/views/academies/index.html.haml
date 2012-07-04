@@ -11,14 +11,6 @@
         = form.input :location, :hint => 'Address, City/State or ZIP code'
         = form.button :submit
 
-    - if search_results.any?
-      .row
-        .search-results
-          %h4= t('.search_results')
-          %a{:name => 'search_results'}
-          %ul.academies
-            = render search_results
-
     - if nearest_academies.any?
       .row
         .nearest

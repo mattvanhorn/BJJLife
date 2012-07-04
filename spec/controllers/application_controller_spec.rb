@@ -4,9 +4,6 @@ describe ApplicationController do
   let(:secret){ Bjjlife::Application.config.secret_token }
   let(:verifier){ ActiveSupport::MessageVerifier.new(secret) }
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "#identifiable_user" do
     subject { controller.send :identifiable_user }
@@ -69,6 +66,9 @@ describe ApplicationController do
       def index
         render :nothing => true
       end
+      def test_guest_user
+        guest_user
+      end
     end
 
     let(:current_user){ double('user', :located? => false) }
@@ -85,12 +85,42 @@ describe ApplicationController do
       get :index
     end
 
-    it "sets guest user's location" do
+    it "sets guest user's location in a cookie" do
       controller.stub(:user_signed_in? => false)
       Location.should_receive(:attributes_from_gecoder_result).with(request_location).and_return({:foo => 'bar'})
       get :index
       verifier.verify(response.cookies['location']).should == "---\n:foo: bar\n"
     end
+  end
 
+  describe "guest_users" do
+    let(:location){ mock_model(Location) }
+    let(:market)  { mock_model(Market) }
+    let(:coords)  { {:lat => 42.0, :lng => -69.0} }
+
+    controller do
+      def get_guest_user
+        guest_user
+      end
+    end
+
+    before(:each) do
+      request.cookies['guest_id'] = verifier.generate(123)
+      request.cookies['location'] = verifier.generate(coords.to_yaml)
+      Location.stub(:new).and_return(location)
+      Market.stub(:near).and_return([market])
+    end
+
+    it "sets a guest user's location" do
+      Location.should_receive(:new).with(:lat => 42.0, :lng => -69.0).and_return(location)
+      guest_user = controller.get_guest_user
+      guest_user.location.should == location
+    end
+
+    it "sets a guest user's market" do
+      Market.should_receive(:near).with(location).and_return([market])
+      guest_user = controller.get_guest_user
+      guest_user.market.should == market
+    end
   end
 end

@@ -3,8 +3,6 @@ require 'spec_helper'
 class Foobar; end
 
 describe OmniAuthenticator do
-  include Reek::Spec
-  include ReekHelper
 
   let(:auth){ {'provider' => 'foobar', 'uid' => '42'} }
   let(:new_user){ OpenStruct.new }
@@ -15,10 +13,6 @@ describe OmniAuthenticator do
 
   before :each do
     Foobar.stub(:find_by_uid => foobar)
-  end
-
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
   end
 
   it "finds the appropriate way to authenticate" do

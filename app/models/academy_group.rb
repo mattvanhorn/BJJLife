@@ -1,3 +1,6 @@
+require "active_model/naming"
+require "active_model/conversion"
+
 class AcademyGroup
   extend ActiveModel::Naming
   include ActiveModel::Conversion

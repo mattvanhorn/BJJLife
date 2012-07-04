@@ -1,11 +1,11 @@
 class AcademiesController < ApplicationController
-  expose(:academies_by_state) { Academy.by_state.map{ |academy_group| exhibit(academy_group) } }
+  expose(:academies_by_state) { Academy.by_state }
   expose(:nearest_academies)  { Academy.near(identifiable_user.location, NEARBY_DISTANCE)||[] }
-  expose(:search_results)     { Academy.near(query_location, NEARBY_DISTANCE) }
+  expose(:search_results)     { Academy.near(query_location, NEARBY_DISTANCE)||[] }
   expose(:academy)
 
   def index
-    exhibit_exposed :nearest_academies, :search_results
+    exhibit_exposed :nearest_academies, :academies_by_state
   end
 
   def new
@@ -19,7 +19,7 @@ class AcademiesController < ApplicationController
   end
 
   def search
-    exhibit_exposed :nearest_academies, :search_results
+    exhibit_exposed :search_results, :academies_by_state
   end
 
   private

@@ -5,7 +5,10 @@ class AcademyGroupExhibit < DisplayCase::Exhibit
     object.class.name == 'AcademyGroup'
   end
 
+  exhibit_query :academies
+
   def full_us_state_name
+    state_abbr = us_state.to_s
     {
       "AL" => "Alabama",
       "AK" => "Alaska",
@@ -63,10 +66,7 @@ class AcademyGroupExhibit < DisplayCase::Exhibit
       "MP" => "Northern Mariana Islands",
       "PR" => "Puerto Rico",
       "VI" => "US Virgin Islanda"
-    }[us_state.to_s.upcase] || us_state
+    }[state_abbr.upcase] || state_abbr
   end
 
-  def academies
-    exhibit(__getobj__.academies)
-  end
 end

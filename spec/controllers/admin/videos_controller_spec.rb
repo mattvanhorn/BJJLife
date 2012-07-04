@@ -11,9 +11,6 @@ describe Admin::VideosController do
     admin_login
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "create" do
     let(:video){ resource }

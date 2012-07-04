@@ -6,19 +6,55 @@ class ContactInfoExhibit < DisplayCase::Exhibit
   end
 
   def website_link
-    in_view.link_to(website, website) if website
+    WebsiteLink.new(website).render(in_view)
   end
 
   def email_link
-    in_view.mail_to(email, email) if email
+    EmailLink.new(email).render(in_view)
   end
 
   def phone_link
-    in_view.link_to(phone_number, "tel://#{phone_number}") if phone_number
+    PhoneLink.new(phone_number).render(in_view)
   end
 
   def links(separator = "\n<br/>\n")
     [website_link, phone_link, email_link].deblankify.join(separator).html_safe
+  end
+
+  private
+
+  class WebsiteLink
+    attr_reader :name, :url
+
+    def initialize(name)
+      @name = name
+      @url = name
+    end
+
+    def link_type
+      :link_to
+    end
+
+    def render(context)
+      context.send(link_type, name, url) unless blank?
+    end
+
+    def blank?
+      name.blank?
+    end
+  end
+
+  class PhoneLink < WebsiteLink
+    def initialize(name)
+      @name = name
+      @url  = "tel://#{name}"
+    end
+  end
+
+  class EmailLink < WebsiteLink
+    def link_type
+      :mail_to
+    end
   end
 
 end

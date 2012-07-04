@@ -10,15 +10,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    identity = do_registration unless user_signed_in?
-
-    order.add_item(product)
-    order.checkout
-
-    merge_errors(order, identity) unless order.paid?
-
+    do_checkout
     exhibit_exposed :product, :order
-
     respond_with order
   end
 
@@ -28,6 +21,13 @@ class OrdersController < ApplicationController
 
   protected
 
+  def do_checkout
+    identity = do_registration unless user_signed_in?
+    order.add_item(product)
+    order.checkout
+    order.merge_identity_errors(identity.errors) unless order.paid?
+  end
+
   def do_registration
     sign_in_params = params[:identity].merge(:email => params[:order][:email], :opt_in => true)
     Identity.new(sign_in_params) do |identity|
@@ -35,21 +35,4 @@ class OrdersController < ApplicationController
     end
   end
 
-  private
-
-  def merge_errors(*models)
-    receiver = models.shift
-
-    models.map(&:errors).each do |m_errors|
-      common_keys = m_errors.keys.map(&:to_sym) & receiver.attributes.keys.map(&:to_sym)
-      m_errors.each do |key, msg|
-        unless common_keys.include?(key)
-          msg = m_errors.full_message(key, msg)
-          key = :base
-        end
-        receiver.errors.add(key, msg)
-      end
-    end
-
-  end
 end

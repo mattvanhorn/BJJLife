@@ -13,9 +13,6 @@ describe VideosController do
     controller.stub(:video => video)
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "#new" do
     it "requires sign in" do

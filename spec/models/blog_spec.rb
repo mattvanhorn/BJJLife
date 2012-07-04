@@ -16,9 +16,6 @@ describe Blog do
   let(:new_post) { OpenStruct.new }
   subject { Blog.new.tap{|b|b.post_source = lambda{ new_post }} }
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   it { should validate_presence_of(:title) }
 

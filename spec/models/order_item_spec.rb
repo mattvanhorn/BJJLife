@@ -37,9 +37,6 @@ describe OrderItem do
     item.adjustment = 200
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "validations" do
     before(:each) do

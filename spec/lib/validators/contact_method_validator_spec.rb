@@ -17,9 +17,6 @@ describe "A record validated with ContactMethodValidator" do
     subject.stub(:website => nil, :phone_number => nil, :email => nil)
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   it "is not valid without some minimal location info" do
     subject.should have(1).error_on(:base)

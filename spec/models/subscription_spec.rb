@@ -23,9 +23,6 @@ describe Subscription do
 
   subject{ subscription }
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   it "should validate the uniqueness of email" do
     subscription.class.validators_on(:email).select{|v|v.is_a? (ActiveRecord::Validations::UniquenessValidator)}.should_not be_empty

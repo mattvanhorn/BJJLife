@@ -13,9 +13,6 @@ end
 describe "A record validated with LocationValidator" do
   subject { LocationValidatorSpec::Validatable.new }
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   before(:each) do
     subject.stub(:city => nil, :us_state => nil, :postal_code => nil)

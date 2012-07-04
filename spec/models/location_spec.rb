@@ -36,9 +36,6 @@ describe Location do
                           :us_state    => 'NY',
                           :postal_code => '10001'} }
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   it "can translate from a geocoder result" do
     gc_result = OpenStruct.new( :city         => 'foo',

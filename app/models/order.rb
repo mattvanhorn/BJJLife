@@ -84,7 +84,9 @@ class Order < ActiveRecord::Base
   end
 
   def process_payment
-    record_cc_info(create_charge) && cleanup
+    card = create_charge
+    record_cc_info(card) if card
+    cleanup
   end
 
   def create_charge
@@ -97,26 +99,10 @@ class Order < ActiveRecord::Base
         :description => "#{email} -- #{Time.now.to_s(:db)}"
       ).card
     rescue Stripe::CardError => e
-      Rails.logger.error("STRIPE CREATE CHARGE FAILED WITH CARD ERROR: #{e.message}")
-      case e.code
-        when "invalid_number", "incorrect_number"
-          errors.add(:card_number, e.message)
+      add_stripe_error(e, 'STRIPE CREATE CHARGE FAILED WITH CARD ERROR')
 
-        when "invalid_expiry_month"
-          errors.add(:cc_exp_month, e.message)
-
-        when "invalid_expiry_year"
-          errors.add(:cc_exp_year, e.message)
-
-        when "invalid_cvc", "incorrect_cvc"
-          errors.add(:card_code, e.message)
-
-        else
-          errors.add(:base, e.message)
-      end
     rescue Stripe::InvalidRequestError, Stripe::APIError => e
-      Rails.logger.error("STRIPE CREATE CHARGE FAILED: #{e.message}")
-      errors.add(:base, e.message)
+      add_stripe_error(e, 'STRIPE CREATE CHARGE FAILED')
     end
     cleanup and return false
   end
@@ -129,17 +115,56 @@ class Order < ActiveRecord::Base
     OrderMailer.confirmation(self).deliver
   end
 
+  def merge_identity_errors(i_errors)
+    i_errors.each do |key, msg|
+      unless common_keys(i_errors).include?(key)
+        msg = i_errors.full_message(key, msg)
+        key = :base
+      end
+      errors.add(key, msg)
+    end
+  end
+
   private
 
+  def common_keys(error_hash)
+    error_hash.keys.map(&:to_sym) & attributes.keys.map(&:to_sym)
+  end
+
+  def add_stripe_error(error, log_prefix)
+    msg = error.message
+    Rails.logger.error("#{log_prefix}: #{msg}")
+    errors.add(stripe_error_key(error), msg)
+  end
+
+  def stripe_error_key(error)
+    return :base unless error.respond_to? :code
+    case error.code
+      when "invalid_number", "incorrect_number"
+        :card_number
+
+      when "invalid_expiry_month"
+        :cc_exp_month
+
+      when "invalid_expiry_year"
+        :cc_exp_year
+
+      when "invalid_cvc", "incorrect_cvc"
+        :card_code
+
+      else
+        :base
+    end
+  end
+
   def record_cc_info(card)
-    return unless card.present?
     CC_RESULT_FIELDS.each do |field|
       send :"cc_#{field}=", card.send(field)
     end
-
   end
 
   def cleanup
     self.stripe_card_token = nil
   end
+
 end

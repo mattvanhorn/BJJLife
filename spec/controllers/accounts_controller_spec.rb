@@ -9,9 +9,6 @@ describe AccountsController do
     controller.stub(:locate_user => true)
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "#new" do
     before :each do

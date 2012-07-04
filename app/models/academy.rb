@@ -37,12 +37,20 @@ class Academy < ActiveRecord::Base
     Academy.ordered_by_state.group_by(&:us_state).to_a.map{ |group| AcademyGroup.new(group.first, group.last) }
   end
 
-  def contact_info
-    ContactInfo.new(email, phone_number, website).freeze
-  end
-
   def self.near(origin, radius = NEARBY_DISTANCE, options = {})
     return [] if origin.blank?
-    AcademyLocation.near(origin, radius, options).map(&:locatable)
+    AcademyLocation.near(origin, radius, options).map(&:locatable).compact
+  end
+
+  def contact_info
+    @contact_info ||= ContactInfo.new(email, phone_number, website)
+  end
+
+  def contact_info=(contact_info)
+    @contact_info = contact_info
+
+    self[:email]        = contact_info.email
+    self[:phone_number] = contact_info.phone_number
+    self[:website]      = contact_info.website
   end
 end

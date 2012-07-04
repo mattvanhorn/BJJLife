@@ -22,9 +22,6 @@ describe Video do
 
   subject{ video }
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   it{ should validate_presence_of :name }
   it{ should validate_presence_of :url }

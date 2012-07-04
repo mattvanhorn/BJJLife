@@ -27,9 +27,6 @@ describe Post do
   let(:new_comment) { OpenStruct.new }
   subject { Post.new.tap{|p|p.comment_source = lambda{ new_comment }} }
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   it "starts with no comments" do
     subject.comments.should be_empty

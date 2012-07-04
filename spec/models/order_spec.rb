@@ -77,12 +77,12 @@ describe Order do
       the_order.should_receive(:build_item).and_return(item)
       the_order.add_item(product)
     end
-    
+
     it "updates its amount" do
       the_order.should_receive(:amount=).with(1000)
       the_order.add_item(product)
     end
-    
+
     it "sets the quantity" do
       item.should_receive(:quantity=).with(1)
       the_order.add_item(product)
@@ -97,7 +97,6 @@ describe Order do
       item.should_receive(:unit_price=).with(1000)
       the_order.add_item(product)
     end
-
   end
 
   describe "#create_charge" do
@@ -249,6 +248,22 @@ describe Order do
       it "has errors" do
         the_order.errors[:base].should include("Invalid token id: bad_token")
       end
+    end
+  end
+
+  describe "merging errors from an identity" do
+    let(:identity_errors){ {:email => 'is taken', :other => 'something else'} }
+    let(:errors){ {} }
+
+    before(:each) do
+      identity_errors.stub(:full_message => 'other something else')
+    end
+
+    it "merges the errors from the identity into the order" do
+      identity_errors.should_receive(:full_message).with(:other, 'something else').and_return('other something else')
+      the_order.merge_identity_errors(identity_errors)
+      the_order.errors[:email].should == ['is taken']
+      the_order.errors[:base].should  == ['other something else']
     end
 
   end

@@ -52,4 +52,11 @@ describe Product do
     product.category = category
     product.category.should equal(category)
   end
+
+  describe "class" do
+    subject { Product }
+    it "has a  " do
+
+    end
+  end
 end

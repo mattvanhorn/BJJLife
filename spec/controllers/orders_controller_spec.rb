@@ -130,17 +130,13 @@ describe OrdersController do
       let(:errors){ {} }
       before(:each) do
         errors.stub(:add => true, :empty? => false)
-        identity_errors.stub(:full_message => 'other something else')
         controller.stub( :user_signed_in? => false, :current_user => nil)
-        order.stub(:paid? => false, :errors => errors, :checkout => false, :attributes => {:email => ''})
+        order.stub(:paid? => false, :errors => errors, :checkout => false)
         Identity.stub(:new => identity)
       end
 
       it "merges the errors from the identity into the user" do
-        errors.should_receive(:add).with(:email, 'is taken')
-        identity_errors.should_receive(:full_message).with(:other, 'something else').and_return('other something else')
-        errors.should_receive(:add).with(:base, 'other something else')
-        
+        order.should_receive(:merge_identity_errors).with(identity_errors)
         post :create, params
       end
 
@@ -151,7 +147,7 @@ describe OrdersController do
       end
     end
   end
-  
+
   describe "#show" do
     it "exhibits the product and order" do
       controller.should_receive(:exhibit_exposed).with(:product, :order)

@@ -10,9 +10,6 @@ describe SessionsController do
     controller.stub(:locate_user => true)
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "#create" do
     let(:params){ {:provider => 'identity'} }

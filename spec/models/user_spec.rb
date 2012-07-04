@@ -26,9 +26,6 @@ describe User do
   let(:user){ User.new }
   subject { user }
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   it { should have_one(:identity) }
 
@@ -109,13 +106,13 @@ describe User do
     user.location = location
     user.should be_located
   end
-  
+
   it "knows if it is not geocoded" do
     location = mock_model(Location, :geocoded? => false).as_null_object
     user.location = location
     user.should_not be_located
   end
-  
+
   it "cannot be located without a location" do
     user.location.should be_nil
     user.should_not be_located

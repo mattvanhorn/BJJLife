@@ -4,21 +4,6 @@ require 'ostruct'
 describe CommentsController do
   include NullDB::RSpec::NullifiedDatabase
 
-  # let(:current_user){ mock_model(User).as_null_object }
-  # let(:comments)    { [comment] }
-  # let(:the_post)    { mock_model(Post, :comments => comments) }
-  # let(:comment)     { mock_model(Comment, :save! => true) }
-  #
-  # before(:each) do
-  #   controller.stub(:current_user => current_user)
-  #   Post.stub(:find => the_post)
-  #   comments.stub(:new => comment)
-  # end
-  #
-  # it "should not reek" do
-  #   get_source_file(__FILE__).should_not reek
-  # end
-
   describe "#create" do
     let(:params)  { HashWithIndifferentAccess.new({:post_id => '42'}) }
     let(:comment) { OpenStruct.new(:post => the_post, :new_record? => true) }

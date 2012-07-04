@@ -11,9 +11,6 @@ describe Admin::CategoriesController do
     admin_login
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "#index" do
     it "exhibits the categories" do

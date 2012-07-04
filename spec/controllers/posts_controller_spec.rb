@@ -15,9 +15,6 @@ describe PostsController do
     the_post.stub(:blog => blog, :blog_name => 'Training')
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "#new" do
     it "requires sign in" do

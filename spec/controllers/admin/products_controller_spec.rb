@@ -11,8 +11,19 @@ describe Admin::ProductsController do
     admin_login
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
+
+  describe "GET #index" do
+    let(:products){ [product] }
+
+    it "exposes products" do
+      Product.should_receive(:scoped).and_return(products)
+      controller.products.should equal(products)
+    end
+
+    it "exhibits products" do
+      controller.should_receive(:exhibit_exposed).with(:products)
+      get :index
+    end
   end
 
   describe "new" do

@@ -8,9 +8,12 @@ describe "ProductExhibit" do
 end
 
 describe ProductExhibit do
-  let(:context){ Object.new }
-  let(:product){ OpenStruct.new }
-  let(:exhibit){ ProductExhibit.new(product, context) }
+  Delegator.class_eval { include RSpec::Mocks::Methods }
+
+  let(:context) { Object.new }
+  let(:category){ Object.new }
+  let(:product) { OpenStruct.new(:category => category, :photo => OpenStruct.new(:thumb => 'thumb')) }
+  let(:exhibit) { ProductExhibit.new(product, context) }
 
   describe "#price" do
     it "formats the unit price with dollar sign and 2 decimals" do
@@ -21,12 +24,18 @@ describe ProductExhibit do
   end
 
   describe "#category_class" do
-    let(:category){ OpenStruct.new(:to_css_class => 'foo') }
+    let(:exhibited_category){ OpenStruct.new(:to_css_class => 'foo') }
+
     it "delegates to the category" do
-      stub_module 'Rails' # DisplayCase has an unfortunate dependency on Rails.logger
-      Rails.stub(:logger).and_return(stub.as_null_object)
-      product.category = category
+      exhibit.should_receive(:exhibit).with(category).and_return(exhibited_category)
       exhibit.category_class.should == 'foo'
+    end
+  end
+
+  describe "#thumbnail" do
+    it "should emit a thumbnail image tag" do
+      context.should_receive(:image_tag).with('thumb').and_return('<img src="thumb"/>')
+      exhibit.thumbnail.should == '<img src="thumb"/>'
     end
   end
 end

@@ -3,15 +3,30 @@ require_relative '../../app/exhibits/academy_group_exhibit'
 
 describe "AcademyGroupExhibit" do
   stub_class 'AcademyGroup'
-  before { AcademyGroup.stub(:new => double(:class => AcademyGroup)) }
+
   subject { AcademyGroupExhibit }
-  it { should apply_to(AcademyGroup.new) }
+
+  it { should apply_to(AcademyGroup.new('NY', [])) }
 end
 
 describe AcademyGroupExhibit do
-  let(:context)  { Object.new }
-  let(:academy_group) { Object.new }
+  Delegator.class_eval { include RSpec::Mocks::Methods }
+
+  subject        { exhibit }
+
+  let(:context)       { Object.new }
+  let(:academy_group) { OpenStruct.new(:academies => academies) }
+  let(:academies)     { Object.new }
+
   let(:exhibit)  { AcademyGroupExhibit.new(academy_group, context) }
+
+  describe "academies" do
+    it 'exhibits its academies' do
+      exhibited_academies = Object.new
+      exhibit.should_receive(:exhibit).with(academies).and_return(exhibited_academies)
+      exhibit.academies.should equal(exhibited_academies)
+    end
+  end
 
   describe "#full_us_state_name" do
     it "converts known abbreviations" do

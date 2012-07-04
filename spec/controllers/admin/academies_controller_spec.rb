@@ -11,9 +11,6 @@ describe Admin::AcademiesController do
     subject.stub(:academy => resource, :academies => collection )
   end
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "#index" do
     it "renders the index template" do

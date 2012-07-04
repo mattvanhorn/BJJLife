@@ -38,6 +38,7 @@ FeatureEnvy:
   - ApplicationHelper#full_us_state_name
   - ContactMethodValidator#validate
   - LocationValidator#validate
+  - Order#stripe_error_key
   enabled: true
 ClassVariable:
   exclude: *id001
@@ -77,7 +78,7 @@ LongMethod:
   - self.included
   enabled: true
 Duplication:
-  allow_calls: [auth_credentials]
+  allow_calls: [auth_credentials, params, errors, logger]
 
   exclude:
     - AcademiesController
@@ -88,16 +89,21 @@ Duplication:
     - Admin::VideosController
     - Admin::ProductsController
     - Admin::CategoriesController
+    - AcademiesController
+    - AccountsController
     - ApplicationController
     - BlogsController
     - CommentsController
+    - OrdersController
     - PostsController
+    - ProductsController
     - SessionsController
     - SubscriptionsController
     - VideosController
     - AcademyDecorator#contact
     - AcademyDecorator#address
     - Identity#process_opt_in
+    - ProductPhotoUploader#store_dir
 
   enabled: true
   max_calls: 1
@@ -105,8 +111,11 @@ UtilityFunction:
   max_helper_calls: 1
   exclude:
   - ApplicationHelper
+  - ExhibitBaseHelper
+  - ExhibitCurrencyHelper
   - ContactMethodValidator#validate
   - LocationValidator#validate
+  - Order#stripe_error_key
 
   enabled: true
 Attribute:
@@ -114,7 +123,7 @@ Attribute:
 
   enabled: false
 UncommunicativeVariableName:
-  accept: []
+  accept: [e]
 
   exclude: []
 

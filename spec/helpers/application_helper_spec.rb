@@ -2,9 +2,6 @@ require 'spec_helper'
 
 describe ApplicationHelper do
 
-  it "should not reek" do
-    get_source_file(__FILE__).should_not reek
-  end
 
   describe "#standard_header" do
     before(:each) do

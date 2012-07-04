@@ -21,14 +21,15 @@ describe ProductPhotoUploader do
 
   its(:store_dir){ should == 'carrierwave/product/photo/1234' }
   its(:extension_white_list){ should == %w(jpg jpeg gif png)}
+  its(:default_url){ should == '/assets/fallback/default.png' }
 
   context 'the thumb version' do
-    it "should scale down a landscape image to be exactly 220 by 136 pixels" do
-      uploader.thumb.should have_dimensions(220, 136)
-      # more example matchers:
-      # uploader.small.should be_no_larger_than(220, 220)
-      # uploader.should have_permissions(0755)
-    end
+    subject { uploader.thumb }
+    it { should have_dimensions(220, 136) }
+    its(:default_url){ should == '/assets/fallback/thumb_default.png'}
+    # more example matchers:
+    # uploader.small.should be_no_larger_than(220, 220)
+    # uploader.should have_permissions(0755)
   end
 end
 
