@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "scopes", :slow => true do
+describe "scopes", :db => true do
 
   describe "for Category" do
     it "finds categories that are assigned to products with .in_use" do

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Market constants", :slow => true do
+describe "Market constants", :db => true do
   let(:national)    { Market.create(:name => 'National') }
   let(:new_york)    { Market.create(:name => 'New York') }
   let(:los_angeles) { Market.create(:name => 'Los Angeles') }
