@@ -80,13 +80,6 @@ describe User do
     user.should be_opted_out
   end
 
-  it "has a nearest market" do
-    new_york = Object.new
-    stub_class 'Market'
-    Market.should_receive(:near).with(user.location, 100, {}).and_return([new_york])
-    user.nearest_market.should == new_york
-  end
-
   it "makes itself an order" do
     user.orders.should_receive(:build).with({})
     user.new_order({})

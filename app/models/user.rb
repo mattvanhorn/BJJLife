@@ -72,10 +72,6 @@ class User < ActiveRecord::Base
     orders.build(*args)
   end
 
-  def nearest_market(radius = NEARBY_DISTANCE, options = {})
-    Market.near(location, radius, options).first
-  end
-
   def located?
     location.try(:geocoded?)
   end
