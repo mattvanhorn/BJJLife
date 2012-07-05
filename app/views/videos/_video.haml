@@ -1,7 +1,7 @@
 - cache(video) do
   %li[video]
     = link_to " hate", downvote_video_path(video), :method => :put, :class => 'icon-thumbs-down'
-    = link_to "like ",   upvote_video_path(video),   :method => :put, :class => 'icon-thumbs-up'
+    = link_to "like ",   upvote_video_path(video), :method => :put, :class => 'icon-thumbs-up'
     = link_to video.url, :rel => "popupVideo" do
       = image_tag video.thumbnail_url, :size => '120x90', :alt => video.name, :title => video.name
     %a{:href => video.url, :rel => "popupVideo"}
