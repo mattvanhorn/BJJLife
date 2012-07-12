@@ -1,1 +1,4 @@
-Forcing a Heroku redeploy
+{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/mattvanhorn/BJJLife]
+
+I am developing this project openly, in order to share what I think are good practices with other Rails developers.
+As such, please consider it open source, and I will work on getting a proper license page up soon.
