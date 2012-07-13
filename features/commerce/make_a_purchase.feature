@@ -101,7 +101,7 @@ Feature: Make a purchase
       | cc_exp_year        | 2020    |
       And I place the order
       Then I should be on the checkout page
-      And I should see "Your card number is invalid"
+      And I should see "This card number looks invalid"
 
   @javascript
   Scenario: Duplicate Email

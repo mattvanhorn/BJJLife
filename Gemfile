@@ -16,7 +16,7 @@ gem 'state_machine'
 gem 'responders'
 gem 'omniauth-identity'
 gem 'bcrypt-ruby'
-gem 'thin'
+gem 'unicorn'
 gem 'make_voteable'
 gem 'rollout'
 gem 'rollout_ui'
@@ -32,6 +32,7 @@ gem 'geocoder'
 gem 'elecnix-ruby-geonames'
 gem 'newrelic_rpm'
 gem 'dalli'
+gem 'foreman'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -77,12 +78,6 @@ end
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
