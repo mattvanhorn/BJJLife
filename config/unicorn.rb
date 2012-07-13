@@ -1,2 +1,2 @@
-worker_processes 2 # amount of unicorn workers to spin up
+worker_processes 4 # amount of unicorn workers to spin up
 timeout 30
