@@ -1,0 +1,95 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=Rua%20Marques%20de%20Abrante,%2088,%20Rio%20de%20Janeiro,%20RJ,%2022230-061,%20Brazil&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: !binary |-
+        T0s=
+    headers:
+      !binary "Q29udGVudC1UeXBl":
+      - !binary |-
+        YXBwbGljYXRpb24vanNvbjsgY2hhcnNldD1VVEYtOA==
+      !binary "RGF0ZQ==":
+      - !binary |-
+        U2F0LCAwOCBEZWMgMjAxMiAxOTozNjoxMCBHTVQ=
+      !binary "RXhwaXJlcw==":
+      - !binary |-
+        U3VuLCAwOSBEZWMgMjAxMiAxOTozNjoxMCBHTVQ=
+      !binary "Q2FjaGUtQ29udHJvbA==":
+      - !binary |-
+        cHVibGljLCBtYXgtYWdlPTg2NDAw
+      !binary "U2VydmVy":
+      - !binary |-
+        bWFmZQ==
+      !binary "WC1Yc3MtUHJvdGVjdGlvbg==":
+      - !binary |-
+        MTsgbW9kZT1ibG9jaw==
+      !binary "WC1GcmFtZS1PcHRpb25z":
+      - !binary |-
+        U0FNRU9SSUdJTg==
+      !binary "VHJhbnNmZXItRW5jb2Rpbmc=":
+      - !binary |-
+        Y2h1bmtlZA==
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        ewogICAicmVzdWx0cyIgOiBbCiAgICAgIHsKICAgICAgICAgImFkZHJlc3Nf
+        Y29tcG9uZW50cyIgOiBbCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAg
+        ImxvbmdfbmFtZSIgOiAiODgiLAogICAgICAgICAgICAgICAic2hvcnRfbmFt
+        ZSIgOiAiODgiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAic3RyZWV0
+        X251bWJlciIgXQogICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAg
+        ICAgICAgICAgICJsb25nX25hbWUiIDogIlIuIE1hcnF1w6pzIGRlIEFicmFu
+        dGVzIiwKICAgICAgICAgICAgICAgInNob3J0X25hbWUiIDogIlIuIE1hcnF1
+        w6pzIGRlIEFicmFudGVzIiwKICAgICAgICAgICAgICAgInR5cGVzIiA6IFsg
+        InJvdXRlIiBdCiAgICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAg
+        ICAgICAgICAgImxvbmdfbmFtZSIgOiAiRmxhbWVuZ28iLAogICAgICAgICAg
+        ICAgICAic2hvcnRfbmFtZSIgOiAiRmxhbWVuZ28iLAogICAgICAgICAgICAg
+        ICAidHlwZXMiIDogWyAic3VibG9jYWxpdHkiLCAicG9saXRpY2FsIiBdCiAg
+        ICAgICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxv
+        bmdfbmFtZSIgOiAiUmlvIGRlIEphbmVpcm8iLAogICAgICAgICAgICAgICAi
+        c2hvcnRfbmFtZSIgOiAiUmlvIGRlIEphbmVpcm8iLAogICAgICAgICAgICAg
+        ICAidHlwZXMiIDogWyAibG9jYWxpdHkiLCAicG9saXRpY2FsIiBdCiAgICAg
+        ICAgICAgIH0sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgImxvbmdf
+        bmFtZSIgOiAiUmlvIGRlIEphbmVpcm8iLAogICAgICAgICAgICAgICAic2hv
+        cnRfbmFtZSIgOiAiUkoiLAogICAgICAgICAgICAgICAidHlwZXMiIDogWyAi
+        YWRtaW5pc3RyYXRpdmVfYXJlYV9sZXZlbF8xIiwgInBvbGl0aWNhbCIgXQog
+        ICAgICAgICAgICB9LAogICAgICAgICAgICB7CiAgICAgICAgICAgICAgICJs
+        b25nX25hbWUiIDogIkJyYXppbCIsCiAgICAgICAgICAgICAgICJzaG9ydF9u
+        YW1lIiA6ICJCUiIsCiAgICAgICAgICAgICAgICJ0eXBlcyIgOiBbICJjb3Vu
+        dHJ5IiwgInBvbGl0aWNhbCIgXQogICAgICAgICAgICB9LAogICAgICAgICAg
+        ICB7CiAgICAgICAgICAgICAgICJsb25nX25hbWUiIDogIjIyMjMwLTA2MSIs
+        CiAgICAgICAgICAgICAgICJzaG9ydF9uYW1lIiA6ICIyMjIzMC0wNjEiLAog
+        ICAgICAgICAgICAgICAidHlwZXMiIDogWyAicG9zdGFsX2NvZGUiIF0KICAg
+        ICAgICAgICAgfQogICAgICAgICBdLAogICAgICAgICAiZm9ybWF0dGVkX2Fk
+        ZHJlc3MiIDogIlIuIE1hcnF1w6pzIGRlIEFicmFudGVzLCA4OCAtIEZsYW1l
+        bmdvLCBSaW8gZGUgSmFuZWlybywgMjIyMzAtMDYxLCBCcmF6aWwiLAogICAg
+        ICAgICAiZ2VvbWV0cnkiIDogewogICAgICAgICAgICAibG9jYXRpb24iIDog
+        ewogICAgICAgICAgICAgICAibGF0IiA6IC0yMi45MzYzMjQ5MCwKICAgICAg
+        ICAgICAgICAgImxuZyIgOiAtNDMuMTc3Mzk4MzAKICAgICAgICAgICAgfSwK
+        ICAgICAgICAgICAgImxvY2F0aW9uX3R5cGUiIDogIlJPT0ZUT1AiLAogICAg
+        ICAgICAgICAidmlld3BvcnQiIDogewogICAgICAgICAgICAgICAibm9ydGhl
+        YXN0IiA6IHsKICAgICAgICAgICAgICAgICAgImxhdCIgOiAtMjIuOTM0OTc1
+        OTE5NzA4NTAsCiAgICAgICAgICAgICAgICAgICJsbmciIDogLTQzLjE3NjA0
+        OTMxOTcwODUwCiAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICJz
+        b3V0aHdlc3QiIDogewogICAgICAgICAgICAgICAgICAibGF0IiA6IC0yMi45
+        Mzc2NzM4ODAyOTE1MCwKICAgICAgICAgICAgICAgICAgImxuZyIgOiAtNDMu
+        MTc4NzQ3MjgwMjkxNTAKICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9
+        CiAgICAgICAgIH0sCiAgICAgICAgICJwYXJ0aWFsX21hdGNoIiA6IHRydWUs
+        CiAgICAgICAgICJ0eXBlcyIgOiBbICJzdHJlZXRfYWRkcmVzcyIgXQogICAg
+        ICB9CiAgIF0sCiAgICJzdGF0dXMiIDogIk9LIgp9Cg==
+    http_version: 
+  recorded_at: Sat, 08 Dec 2012 19:36:11 GMT
+recorded_with: VCR 2.2.2

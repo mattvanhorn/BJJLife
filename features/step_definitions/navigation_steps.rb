@@ -27,3 +27,5 @@ end
 When /^I follow (the .+ link)$/ do |link|
   click_on(selector_for(link))
 end
+
+

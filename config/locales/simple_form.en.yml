@@ -27,7 +27,7 @@ en:
         title: Title
         url: URL
         description: Description
-        us_state: State
+        us_state: State/Region
       order:
         card_number: Credit Card Number
         card_code: CVV
@@ -38,8 +38,8 @@ en:
         bill_street: Street
         bill_unit: Apt
         bill_city: City
-        bill_us_state: State
-        bill_postal_code: ZIP Code
+        bill_us_state: State/Region
+        bill_postal_code: Postal Code
     hints:
       post:
         title: Keep it short and descriptive

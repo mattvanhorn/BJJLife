@@ -38,7 +38,7 @@ Feature: Make a purchase
       | Apt                | 42                    |
       | City               | Gotham                |
       | State              | NY                    |
-      | ZIP Code           | 12345                 |
+      | Postal Code           | 12345                 |
       And I place the order
      Then I should be on the order confirmation page
       And I should see "foobar"
@@ -80,7 +80,7 @@ Feature: Make a purchase
       | Apt                | 42                    |
       | City               | Gotham                |
       | State              | NY                    |
-      | ZIP Code           | 12345                 |
+      | Postal Code           | 12345                 |
       And I place the order
      Then I should be on the order confirmation page
       And I should see "foobar"
@@ -123,7 +123,7 @@ Feature: Make a purchase
       | Apt                | 42                    |
       | City               | Gotham                |
       | State              | NY                    |
-      | ZIP Code           | 12345                 |
+      | Postal Code           | 12345                 |
       And I place the order
      Then I should be on the checkout page with errors
       And I should see "has already been taken" within the email input

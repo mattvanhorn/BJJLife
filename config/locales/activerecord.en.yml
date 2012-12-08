@@ -17,8 +17,8 @@ en:
         street: Street Address
         unit: Suite/Floor
         city: City
-        us_state: State
-        postal_code: ZIP Code
+        us_state: State/Region
+        postal_code: Postal Code
         website: Website URL
         email: Email
         phone_number: Phone
@@ -34,8 +34,8 @@ en:
         street: Street Address
         unit: Suite/Floor
         city: City
-        us_state: State
-        postal_code: ZIP Code
+        us_state: State/Region
+        postal_code: Postal Code
         country: Country
       post:
         title: Title
