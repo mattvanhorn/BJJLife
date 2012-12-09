@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   expose(:subscription)
-  expose(:videos) { Video.scoped.sample(3) }
+  expose(:videos) { Video.order('random()').limit(3) }
 
   def new
     # exhibit_exposed :videos, :subscription

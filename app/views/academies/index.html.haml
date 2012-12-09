@@ -20,7 +20,8 @@
             = render nearest_academies
 
     .row
-      = render academies_by_state
+      - cache(academies_by_state) do
+        = render academies_by_state
 
   .sidebar
     = link_to t('.add_academy_link'), new_academy_path, :class => 'btn'

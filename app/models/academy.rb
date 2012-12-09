@@ -31,7 +31,7 @@ class Academy < ActiveRecord::Base
 
   delegate :address, :street, :unit, :city, :us_state, :postal_code, :to => :location
 
-  scope :ordered_by_state, joins(:location).published.order('locations.us_state, name')
+  scope :ordered_by_state, joins(:location).includes(:location).published.order('locations.us_state, name')
 
   def self.by_state
     Academy.ordered_by_state.group_by(&:us_state).to_a.map{ |group| AcademyGroup.new(group.first, group.last) }

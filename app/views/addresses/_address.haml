@@ -1,4 +1,5 @@
-= address.street_address
-- if address.street_address && address.city_state_zip
-  %br/
-= address.city_state_zip
+- cache(address) do
+  = address.street_address
+  - if address.street_address && address.city_state_zip
+    %br/
+  = address.city_state_zip
