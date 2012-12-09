@@ -15,4 +15,12 @@ class AcademyGroup
   def us_state
     @grouping
   end
+
+  def persisted?
+    academies.all? &:persisted?
+  end
+
+  def to_key
+    (academies.collect(&:cache_key) << us_state).hash
+  end
 end
