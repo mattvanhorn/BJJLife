@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 source 'http://gems.rubyforge.org/'
 source 'http://gems.github.com'
 
-gem 'rails'
+gem 'rails', '~> 3.2.11'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
