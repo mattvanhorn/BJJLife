@@ -1,11 +1,16 @@
-namespace :tddium do
-  def cmd(c)
-    system c
-  end
+def cmd(c)
+  system c
+end
 
+namespace :tddium do
   desc "post_build_hook"
   task :post_build_hook do
-    cmd "git reset --hard HEAD" or fail "could not reset git workspace"
+    # This build hook should only run after CI builds.
+    #
+    # There are other cases where we'd want to run something after every build,
+    # or only after manual builds.
+    return unless ENV["TDDIUM_MODE"] == "ci"
+    return unless ENV["TDDIUM_BUILD_STATUS"] == "passed"
 
     dir = File.expand_path("~/.heroku/")
     heroku_email = ENV["HEROKU_EMAIL"]
@@ -14,9 +19,9 @@ namespace :tddium do
     app_name = ENV["HEROKU_APP_NAME"]
     push_target = "git@heroku.com:#{app_name}.git"
 
-    fail "invalid current branch" unless current_branch
+    abort "invalid current branch" unless current_branch
 
-    FileUtils.mkdir_p(dir) or fail "Could not create #{dir}"
+    FileUtils.mkdir_p(dir) or abort "Could not create #{dir}"
 
     puts "Writing Heroku Credentials"
     File.open(File.join(dir, "credentials"), "w") do |f|
@@ -24,10 +29,21 @@ namespace :tddium do
       f.write("\n")
     end
 
+    File.open(File.expand_path("~/.netrc"), "a+") do |f|
+      ['api', 'code'].each do |host|
+        f.puts "machine #{host}.heroku.com"
+        f.puts "  login #{heroku_email}"
+        f.puts "  password #{heroku_api_key}"
+      end
+    end
+
     puts "Pushing to Heroku: #{push_target}..."
-    cmd "git push #{push_target} #{current_branch}:master --force" or fail "could not push to #{push_target}"
+    cmd "git push #{push_target} HEAD:master --force" or abort "could not push to #{push_target}"
 
     puts "Running Heroku Migrations..."
-    cmd "heroku run rake db:migrate --trace --app #{app_name}" or fail "failed to run migrations"
+    cmd "heroku run rake db:migrate --app #{app_name}" or abort "aborted migrations"
+
+    puts "Restarting Heroku..."
+    cmd "bundle exec heroku restart --app #{app_name}" or abort "aborted heroku restart"
   end
 end
