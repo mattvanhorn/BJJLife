@@ -50,6 +50,7 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git', :branch => 'master'
   gem 'launchy'
+  gem 'rspec'
   gem 'rspec-rails'
   gem 'tddium'
   gem 'reek'
