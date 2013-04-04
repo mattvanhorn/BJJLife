@@ -91,6 +91,13 @@ describe Academy do
       Academy.should_receive(:ordered_by_state).and_return([subject])
       Academy.by_state.first.to_partial_path.should == 'academy_groups/academy_group'
     end
+
+    it "handles non-us academies" do
+      location1 = stub_model(AcademyLocation, :us_state => nil, :country => 'Brazil')
+      a1 = Academy.new.tap{|a|a.location = location1}
+      Academy.should_receive(:ordered_by_country).and_return([a1])
+      Academy.by_country.first.region.should == 'Brazil'
+    end
   end
 
   describe ".near" do

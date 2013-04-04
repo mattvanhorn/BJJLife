@@ -22,11 +22,16 @@
     .row
       - cache(academies_by_state) do
         = render academies_by_state
+      - cache(academies_by_country) do
+        = render academies_by_country
 
   .sidebar
     = link_to t('.add_academy_link'), new_academy_path, :class => 'btn'
-    %p= t('.jump_to_state')
+    %p= t('academies.jump_to_state')
     %ul
-      %li= link_to 'Nearest', "#nearest"
+      %li= link_to 'Nearest', "#nearest" if nearest_academies.any?
       - academies_by_state.each do |group|
         %li= link_to group.full_us_state_name, "##{group.us_state}"
+      %li <br/>
+      - academies_by_country.each do |group|
+        %li= link_to group.country, "##{group.country}"

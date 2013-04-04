@@ -12,9 +12,11 @@ class AcademyGroup
     @academies = academies
   end
 
-  def us_state
+  def region
     @grouping
   end
+  alias :us_state :region
+  alias :country  :region
 
   def persisted?
     academies.all? &:persisted?

@@ -10,6 +10,10 @@ describe AcademyGroup do
     subject.us_state.should == 'NY'
   end
 
+  it "has a region" do
+    subject.region.should == 'NY'
+  end
+
   it "has a group of academies" do
     subject.academies.should equal(academies)
   end

@@ -1,9 +1,9 @@
 en:
   academies:
+    jump_to_state: "Jump to state/country:"
     index:
       header: Academies
       add_academy_link: Add my academy
-      jump_to_state: "Jump to state:"
       nearest_academies: "Nearest Academies"
     search:
       header: Academies

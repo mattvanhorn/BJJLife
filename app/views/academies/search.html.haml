@@ -24,7 +24,7 @@
 
   .sidebar
     = link_to t('.add_academy_link'), new_academy_path, :class => 'btn'
-    %p= t('.jump_to_state')
+    %p= t('academies.jump_to_state')
     %ul
       - academies_by_state.each do |group|
         %li= link_to group.full_us_state_name, "#{academies_path}##{group.us_state}"

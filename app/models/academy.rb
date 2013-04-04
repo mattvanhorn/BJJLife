@@ -29,12 +29,17 @@ class Academy < ActiveRecord::Base
   validates_associated :location, :on => :create
   validates :email, :length => (3..254), :email => true, :allow_blank => true
 
-  delegate :address, :street, :unit, :city, :us_state, :postal_code, :to => :location
+  delegate :address, :street, :unit, :city, :us_state, :region, :country, :postal_code, :to => :location
 
-  scope :ordered_by_state, joins(:location).includes(:location).published.order('locations.us_state, name')
+  scope :ordered_by_state, joins(:location).where('locations.country IS NULL').includes(:location).published.order('locations.us_state, name')
+  scope :ordered_by_country, joins(:location).where('locations.country IS NOT NULL').includes(:location).published.order('locations.country, name')
+
+  def self.by_country
+    Academy.ordered_by_country.group_by(&:country).to_a.map{ |group| AcademyGroup.new(group.first, group.last) }
+  end
 
   def self.by_state
-    Academy.ordered_by_state.group_by(&:us_state).to_a.map{ |group| AcademyGroup.new(group.first, group.last) }
+    Academy.ordered_by_state.group_by(&:region).to_a.map{ |group| AcademyGroup.new(group.first, group.last) }
   end
 
   def self.near(origin, radius = NEARBY_DISTANCE, options = {})

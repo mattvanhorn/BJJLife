@@ -61,4 +61,9 @@ class Location < ActiveRecord::Base
   def needs_geocoding?
     address.present? && address_changed? && (persisted? || [lat,lng].compact.size < 2)
   end
+
+  def region
+    us_state || country
+  end
+
 end
