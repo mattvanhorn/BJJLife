@@ -49,4 +49,11 @@ describe AcademyGroupExhibit do
       exhibit.full_us_state_name.should == 'Foo'
     end
   end
+
+  describe "#us_state" do
+    it "should always return a string" do
+      academy_group.stub(:us_state => nil)
+      exhibit.us_state.should == ''
+    end
+  end
 end
