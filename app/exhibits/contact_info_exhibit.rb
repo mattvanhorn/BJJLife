@@ -1,7 +1,7 @@
 class ContactInfoExhibit < DisplayCase::Exhibit
   include ExhibitBaseHelper
 
-  def self.applicable_to?(object)
+  def self.applicable_to?(object, context)
     object.class.name == 'ContactInfo'
   end
 

@@ -20,7 +20,7 @@ class AcademyGroup
     academies.all? &:persisted?
   end
 
-  def to_key
+  def cache_key
     (academies.collect(&:cache_key) << us_state).hash
   end
 end

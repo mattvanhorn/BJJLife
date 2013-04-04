@@ -2,13 +2,13 @@ source 'https://rubygems.org'
 source 'http://gems.rubyforge.org/'
 source 'http://gems.github.com'
 
-gem 'rails', '~> 3.2.11'
+gem 'rails', '~> 3.2.13'
 gem 'pg'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'analytical'
-gem 'split', :require => 'split/dashboard'
+gem 'split'
 gem 'decent_exposure', :git => 'git://github.com/voxdolo/decent_exposure.git', :branch => 'master'
 gem 'draper'
 gem 'bourbon'
@@ -48,13 +48,14 @@ end
 
 group :development, :test do
   gem 'cucumber-rails', :require => false
+  gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git', :branch => 'master'
   gem 'launchy'
   gem 'rspec-rails'
-  gem 'travis-cli'
   gem 'tddium'
   gem 'reek'
   gem 'flog'
   gem 'rails_best_practices', :require => false
+  gem 'simplecov', :require => false
 end
 
 group :development do
@@ -69,8 +70,7 @@ group :test do
   gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb.git'
   gem 'fabrication'
   gem 'vcr'
-  gem 'webmock'
-  gem 'simplecov', :require => false
+  gem 'webmock', '>= 1.8.0', '< 1.10'
   gem 'email_spec'
 end
 # To use ActiveModel has_secure_password

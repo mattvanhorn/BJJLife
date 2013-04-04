@@ -1,3 +1,6 @@
+require 'split/dashboard'
+include Split::Helper
+
 Split.redis = REDIS
 
 Split::Dashboard.use Rack::Auth::Basic do |username, password|

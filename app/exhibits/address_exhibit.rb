@@ -1,7 +1,7 @@
-class AddressExhibit < DisplayCase::Exhibit
+class AddressExhibit < DisplayCase::BasicExhibit
   include ExhibitBaseHelper
 
-  def self.applicable_to?(object)
+  def self.applicable_to?(object, context)
     object.class.name == 'Address'
   end
 

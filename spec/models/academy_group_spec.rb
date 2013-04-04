@@ -26,7 +26,7 @@ describe AcademyGroup do
 
   it "has a cache key dependent on the academies and the state" do
     academies = [stub(:cache_key => '123')]
-    AcademyGroup.new('NY', academies).to_key.should == ['123','NY'].hash
+    AcademyGroup.new('NY', academies).cache_key.should == ['123','NY'].hash
   end
 
 end

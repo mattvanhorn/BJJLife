@@ -6,7 +6,7 @@ class ProductExhibit < DisplayCase::Exhibit
 
   exhibit_query :category
 
-  def self.applicable_to?(object)
+  def self.applicable_to?(object, context)
     object.class.name == 'Product'
   end
 
