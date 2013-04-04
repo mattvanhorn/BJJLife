@@ -87,6 +87,7 @@ class Order < ActiveRecord::Base
     card = create_charge
     record_cc_info(card) if card
     cleanup
+    return false if errors.any?
   end
 
   def create_charge

@@ -26,7 +26,7 @@ end
 
 RSpec::Matchers.define :apply_to do |instance|
   match do |subject|
-    subject.applicable_to? instance
+    subject.applicable_to? instance, nil
   end
 
   description do

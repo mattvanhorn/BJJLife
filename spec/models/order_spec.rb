@@ -36,7 +36,7 @@ describe Order do
 
   let(:item){ mock_model(OrderItem, :adjusted_subtotal => 1000).as_null_object }
   let(:product){ mock_model(Product, :price => 1000) }
-  let(:user){ mock_model(User, :id => '1234') }
+  let(:user){ mock_model(User, :id => '1234', :identity_email => 'alice@example.com') }
   let(:the_order){ Order.new{|o|o.user = user} }
 
   subject { the_order }

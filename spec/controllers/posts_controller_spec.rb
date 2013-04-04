@@ -12,7 +12,7 @@ describe PostsController do
   before(:each) do
     controller.stub(:current_user => current_user, :locate_user => true)
     Blog.stub(:first => blog)
-    the_post.stub(:blog => blog, :blog_name => 'Training')
+    the_post.stub(:blog => blog, :blog_name => 'Training', :attributes= => true)
   end
 
 

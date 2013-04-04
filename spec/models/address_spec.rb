@@ -11,6 +11,8 @@ describe Address do
 
   subject { address }
 
-  pending
+  it "works" do
+    true
+  end
 end
 

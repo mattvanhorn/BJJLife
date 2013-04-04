@@ -6,7 +6,7 @@ class CategoryExhibit < DisplayCase::Exhibit
   end
 
   def name
-    "#{super unless to_model.nil?}"
+    "#{super if to_model}"
   end
 
   def to_s

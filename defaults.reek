@@ -152,3 +152,12 @@ LongYieldList:
 
   enabled: true
 
+UnusedParameters:
+  exclude:
+  - #applicable_to?
+
+NilCheck:
+  exclude:
+  - ExhibitBaseHelper#nil?
+  - User#opted_out?
+  - CategoryExhibit#self.applicable_to?

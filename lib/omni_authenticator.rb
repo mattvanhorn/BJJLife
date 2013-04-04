@@ -35,7 +35,7 @@ class OmniAuthenticator
     end
 
     def match?
-      !@target.nil?
+      !!(@target)
     end
   end
 
