@@ -33,6 +33,10 @@ Bjjlife::Application.routes.draw do
     resources :comments, :only => [:create]
   end
 
+  resource :journal, :only => [:new, :show, :create] do
+    resources :entries, :controller => :journal_entries, :only => [:new, :create, :show]
+  end
+
   match "/sign_up", :to => "accounts#new", :as => :sign_up
   match '/auth/:provider/callback', :to => 'sessions#create'
   match 'auth/fail', :to => 'sessions#failure'

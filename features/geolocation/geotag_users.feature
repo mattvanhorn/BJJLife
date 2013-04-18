@@ -1,4 +1,4 @@
-@http://www.pivotaltracker.com/story/new
+@http://www.pivotaltracker.com/story/show/48366221
 Feature: Geotag users
   In order to see products near me
   As a user

@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      journal: Journal
+
+    attributes:
+      journal:
+        name: Name
+
+  journals:
+    show:
+      header: My Journal
+    new:
+      header: Make A Journal

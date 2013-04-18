@@ -1,4 +1,4 @@
-@http://www.pivotaltracker.com/story/new
+@http://www.pivotaltracker.com/story/show/48366217
 Feature: Find nearest academy
   In order to start training BJJ
   As a user

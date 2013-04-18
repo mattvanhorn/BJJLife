@@ -35,6 +35,9 @@
             - if $rollout.active?(:shopping, identifiable_user)
               %li= link_to 'Shopping', products_path
 
+            - if $rollout.active?(:journals, identifiable_user)
+              %li= link_to 'Journal', journal_path
+
         = yield
 
         %footer

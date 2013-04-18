@@ -60,6 +60,7 @@ group :development, :test do
   gem 'flog'
   gem 'rails_best_practices', :require => false
   gem 'simplecov', :require => false
+  gem 'faker'
 end
 
 group :development do

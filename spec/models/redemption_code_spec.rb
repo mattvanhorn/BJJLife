@@ -28,6 +28,9 @@ describe RedemptionCode do
     redemption_code.to_s.should == redemption_code.token
   end
 
+  # TODO - this is a stupid test
+  # better idea here:
+  # http://stackoverflow.com/questions/11901209/how-to-test-uniqueness-of-coupon-promo-codes
   it "generates unique tokens" do
     actual = []
     1000.times do

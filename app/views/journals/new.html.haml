@@ -1,0 +1,12 @@
+#journals.grid
+  = standard_header
+
+  .main
+    .row
+      - journal.errors[:base].each do |msg|
+        .errors_on_base= msg
+
+      = simple_form_for journal, :url => journal_path do |form|
+        = form.input :name
+        = form.button :submit
+

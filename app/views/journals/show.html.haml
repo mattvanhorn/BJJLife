@@ -1,0 +1,7 @@
+#journals.grid
+  = standard_header(journal.name)
+
+  .main
+    .row
+      - journal.entries.each do |entry|
+        = entry.render(self)

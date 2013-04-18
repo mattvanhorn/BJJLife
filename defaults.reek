@@ -95,6 +95,7 @@ Duplication:
     - ApplicationController
     - BlogsController
     - CommentsController
+    - JournalsController
     - OrdersController
     - PostsController
     - ProductsController
@@ -106,6 +107,7 @@ Duplication:
     - Identity#process_opt_in
     - ProductPhotoUploader#store_dir
     - AcademyValidator#validate
+    - JournalEntriesController
 
   enabled: true
   max_calls: 1

@@ -1,0 +1,13 @@
+#journal_entries.grid
+  = standard_header
+
+  .main
+    .row
+      - journal_entry.errors[:base].each do |msg|
+        .errors_on_base= msg
+
+      = simple_form_for journal_entry, :url => journal_entries_path do |form|
+        = form.input :title
+        = form.input :body
+        = form.button :submit
+

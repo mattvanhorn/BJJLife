@@ -110,4 +110,14 @@ describe User do
     user.location.should be_nil
     user.should_not be_located
   end
+
+  it "has no journals when new" do
+    user.journals.should be_empty
+  end
+
+  it "has a journal" do
+    journal = mock_model(Journal)
+    user.journals = [journal]
+    user.journal.should == journal
+  end
 end

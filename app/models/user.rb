@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :orders
+  has_many :journals
 
   accepts_nested_attributes_for :identity, :update_only => true
   accepts_nested_attributes_for :location, :update_only => true
@@ -80,5 +81,9 @@ class User < ActiveRecord::Base
 
       self.location ||= build_location
       location.update_attributes(Location.attributes_from_gecoder_result(result_obj))
+  end
+
+  def journal
+    journals.first
   end
 end
