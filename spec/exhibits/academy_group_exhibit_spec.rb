@@ -31,6 +31,28 @@ describe AcademyGroupExhibit do
     end
   end
 
+  describe "rendering" do
+    it "renders the right partial" do
+      context.should_receive(:render).with(hash_including(partial: 'academy_groups/academy_group'))
+      exhibit.render(context)
+    end
+    it "passes itself to the partial" do
+      context.should_receive(:render).with(hash_including(locals: {academy_group: exhibit}))
+      exhibit.render(context)
+    end
+  end
+
+  describe "rendering as a navigation link" do
+    it "renders the right partial" do
+      context.should_receive(:render).with(hash_including(partial: 'academy_groups/academy_group_link'))
+      exhibit.render_as_link(context)
+    end
+    it "passes itself to the partial" do
+      context.should_receive(:render).with(hash_including(locals: {academy_group: exhibit}))
+      exhibit.render_as_link(context)
+    end
+  end
+
   describe "#full_us_state_name" do
     it "converts known abbreviations" do
       academy_group.stub(:us_state => 'NY')

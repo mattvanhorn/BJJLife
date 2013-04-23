@@ -32,4 +32,15 @@ describe AcademyExhibit do
     exhibit.contact_info.should equal(exhibited_contact)
   end
 
+  describe "rendering" do
+    it "should render the right partial" do
+      context.should_receive(:render).with(hash_including(partial: 'academies/academy'))
+      exhibit.render_as_list_item(context)
+    end
+    it "should pass itself to the partial" do
+      context.should_receive(:render).with(hash_including(locals: {academy: exhibit}))
+      exhibit.render_as_list_item(context)
+    end
+  end
+
 end

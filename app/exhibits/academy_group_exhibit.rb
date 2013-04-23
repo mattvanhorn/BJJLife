@@ -5,6 +5,14 @@ class AcademyGroupExhibit < DisplayCase::Exhibit
     object.class.name == 'AcademyGroup'
   end
 
+  def render(template)
+    template.render(partial: 'academy_groups/academy_group', locals: {academy_group: self})
+  end
+
+  def render_as_link(template)
+    template.render(partial: 'academy_groups/academy_group_link', locals: {academy_group: self})
+  end
+
   exhibit_query :academies
 
   def full_us_state_name

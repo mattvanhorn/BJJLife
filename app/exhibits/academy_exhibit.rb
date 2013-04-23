@@ -5,6 +5,10 @@ class AcademyExhibit < DisplayCase::Exhibit
     object.class.name == 'Academy'
   end
 
+  def render_as_list_item(template)
+    template.render(partial: 'academies/academy', locals: {academy: self})
+  end
+
   exhibit_query :address, :location, :contact_info
 
 end
