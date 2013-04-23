@@ -1,4 +1,4 @@
-require 'spec_helper.rb'
+require_relative "../../app/models/academy_group"
 
 describe AcademyGroup do
 

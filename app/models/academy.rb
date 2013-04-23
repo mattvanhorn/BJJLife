@@ -34,14 +34,6 @@ class Academy < ActiveRecord::Base
   scope :ordered_by_state, joins(:location).where('locations.country IS NULL').includes(:location).published.order('locations.us_state, name')
   scope :ordered_by_country, joins(:location).where('locations.country IS NOT NULL').includes(:location).published.order('locations.country, name')
 
-  def self.by_country
-    Academy.ordered_by_country.group_by(&:country).to_a.map{ |group| AcademyGroup.new(group.first, group.last) }
-  end
-
-  def self.by_state
-    Academy.ordered_by_state.group_by(&:region).to_a.map{ |group| AcademyGroup.new(group.first, group.last) }
-  end
-
   def self.near(origin, radius = NEARBY_DISTANCE, options = {})
     return [] if origin.blank?
     AcademyLocation.near(origin, radius, options).map(&:locatable).compact

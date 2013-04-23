@@ -12,6 +12,18 @@ class AcademyGroup
     @academies = academies
   end
 
+  def self.create_from(academies)
+    academies.group_by(&:region).map{ |(region, academies)| new(region, academies) }
+  end
+
+  def self.by_country
+    create_from Academy.ordered_by_country
+  end
+
+  def self.by_state
+    create_from Academy.ordered_by_state
+  end
+
   def region
     @grouping
   end

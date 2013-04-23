@@ -1,6 +1,6 @@
 class AcademiesController < ApplicationController
-  expose(:academies_by_state)   { Academy.by_state }
-  expose(:academies_by_country) { Academy.by_country }
+  expose(:academies_by_state)   { AcademyGroup.by_state }
+  expose(:academies_by_country) { AcademyGroup.by_country }
   expose(:nearest_academies)  { Academy.near(identifiable_user.location, NEARBY_DISTANCE)||[] }
   expose(:search_results)     { Academy.near(query_location, NEARBY_DISTANCE)||[] }
   expose(:academy)
