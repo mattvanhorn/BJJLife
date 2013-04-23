@@ -63,6 +63,17 @@ describe Location do
     address.postal_code.should == location.postal_code
   end
 
+  it "uses the US state as region" do
+    location = Location.new(address_attribs)
+    location.region.should == location.us_state
+  end
+
+  it "uses the country as region when there is no US state" do
+    address_attribs.delete(:us_state)
+    location = Location.new(address_attribs.merge(:country => 'Brazil'))
+    location.region.should == 'Brazil'
+  end
+
   describe "geocoding from an IP address" do
     it "generates a string for geolocation" do
       location = Location.new(:ip_address => '127.0.0.1')
