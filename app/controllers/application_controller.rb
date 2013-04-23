@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
-  analytical :modules => [:console, :google, :mixpanel], :use_session_store => true, :disable_if => lambda{|controller| controller.class.ancestors.include?(Admin)}
+  analytical  :modules => [:console, :google, :mixpanel],
+              :use_session_store => true,
+              :disable_if => lambda{|controller| controller.class.ancestors.include?(Admin)}
 
   before_filter :tag_guest, :store_location, :locate_user
 
@@ -23,11 +25,9 @@ class ApplicationController < ActionController::Base
 
   def guest_user
     GuestUser.new(session[:guest_id] || cookies.signed[:guest_id] || tag_guest ).tap do |guest|
-      cookie_loc = read_signed_yaml_cookie(:location)
-      unless cookie_loc.blank?
-        guest.location = Location.new(:lat => cookie_loc[:lat], :lng => cookie_loc[:lng])
-        guest.market = Market.near(guest.location).first
-      end
+      locator = Geolocator.new(cookies)
+      guest.location = locator.location
+      guest.market   = locator.market
     end
   end
 
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   def sign_in(user)
     @current_user = user.sign_in!
     cookies.permanent.signed[:remember_me] = session[:user_id] = @current_user.id
-    do_tracking
+    TrackAnalytics.new(@current_user, analytical).do_tracking
     @current_user
   end
 
@@ -67,31 +67,6 @@ class ApplicationController < ActionController::Base
     destination
   end
 
-  def do_tracking
-    track_sign_in
-    track_sign_up
-    track_subscription
-  end
-
-  def track_sign_in
-    return unless user_signed_in?
-    analytical.event :sign_in, :id => current_user.id
-  end
-
-  def track_sign_up
-    return unless sign_up?
-    analytical.event :sign_up, :id => current_user.id
-  end
-
-  def track_subscription
-    return unless sign_up?
-    analytical.event :subscribe, :email => current_user.subscribed_email if current_user.has_new_subscription?
-  end
-
-  def sign_up?
-    user_signed_in? && current_user.first_sign_in?
-  end
-
   private
 
   def tag_guest
@@ -117,10 +92,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def read_signed_yaml_cookie(name)
-    yaml_str = cookies.signed[name]
-    unless yaml_str.blank?
-      ::YAML.load(yaml_str)
-    end
-  end
 end
