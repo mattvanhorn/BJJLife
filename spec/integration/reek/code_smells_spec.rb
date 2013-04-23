@@ -1,4 +1,4 @@
-require "spec_helper"
+require "support/reek_helper"
 
 describe 'source code quality', :reek => true do
   Dir['lib/**/*.rb'].each do |path|

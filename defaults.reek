@@ -78,7 +78,7 @@ LongMethod:
   - self.included
   enabled: true
 Duplication:
-  allow_calls: [auth_credentials, params, errors, logger]
+  allow_calls: [auth_credentials, params, errors, logger, current_user]
 
   exclude:
     - AcademiesController

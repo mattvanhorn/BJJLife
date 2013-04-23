@@ -13,12 +13,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require 'nulldb_rspec'
-require 'reek/spec'
 require 'shoulda-matchers'
-
-# Requires supporting ruby files with custom matchers and macros, etc,
-# in spec/support/ and its subdirectories.
-Dir[Rails.root.join("spec/support/**/*.rb")].sort.each {|f| require f}
 
 RSpec.configure do |specs|
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
@@ -31,12 +26,11 @@ RSpec.configure do |specs|
   # rspec-rails.
   specs.infer_base_class_for_anonymous_controllers = false
 
-  specs.include(Reek::Spec)
-  specs.include(ReekHelper)
-
   specs.before(:each){ $rollout.stub(:active? => true) }
 end
 
-Fabrication.configure do |config|
-  config.fabricator_path = ["features/support/fabricators", "spec/fabricators"]
-end
+require 'support/auth_helper'
+require 'support/custom_matchers'
+require 'support/constant_stubbing'
+require 'support/vcr_setup'
+require 'support/fabrication'
