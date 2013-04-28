@@ -3,3 +3,15 @@ Fabricator(:identity) do
   password 'password'
   password_confirmation { |attrs| "#{attrs[:password]}" }
 end
+
+Fabricator(:identity_with_user, from: :identity) do
+  transient :sign_in_count
+  user { |attrs| Fabricate(:user_with_profile, sign_in_count: attrs[:sign_in_count]||0) }
+end
+
+Fabricator(:identity_with_user_in_market, from: :identity) do
+  transient :market
+  transient :sign_in_count
+  user { |attrs| Fabricate(:user_with_profile, sign_in_count: attrs[:sign_in_count]||0,
+                                               market:        attrs[:market]) }
+end

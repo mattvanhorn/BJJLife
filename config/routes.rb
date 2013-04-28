@@ -16,7 +16,6 @@ Bjjlife::Application.routes.draw do
     end
     resources :products, :only => [:index, :new, :create, :edit, :update]
     resources :categories, :only => [:index, :new, :create, :destroy]
-
   end
 
   resources :videos, :only => [:index, :new, :create] do

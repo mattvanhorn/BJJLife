@@ -8,32 +8,19 @@ Feature: Profile page
     Given there are no registered users
     When I register as "alice@example.com" using the password "password"
     Then I should be on the edit account page
-    When I fill in the nickname field with "Alice K"
-     And I fill in the teacher field with "Vitor 'Shaolin' Ribeiro"
-     And I fill in the rank field with "Blue belt"
-     And I click on "Update Account"
+
+    When I update my profile
     Then I should be on my account page
-     And I should see "Rank: Blue belt"
-     And I should see "Teacher: Vitor 'Shaolin' Ribeiro"
-     And I should see "Alice K"
-     And I should see "1 visit"
+     And I should see my profile details
      And I should see "No posts"
      And I should see "No comments"
-     # - this needs js...
-     # And I should see "Last signed in: less than a minute ago"
 
   Scenario: Visit my profile
-    Given the following user:
-    | username      | Alice K                 |
-    | sign_in_count | 2                       |
-    | teacher       | Vitor 'Shaolin' Ribeiro |
-    | rank          | Blue belt               |
-    And the following identity:
-    | email    | alice@example.com |
-    | password | password          |
-    And that identity belongs to that user
-    And I am signed in as "alice@example.com" with a password of "password"
-    When I visit the home page
-     And I click on "My Profile" within the navigation
-    Then I should be on my account page
-    And I should see "3 visits"
+    Given I am signed in as a user
+     When I navigate to "My Profile"
+     Then I should be on my account page
+
+  Scenario: Previous visits
+    Given I am signed in as a user with 2 previous visits
+     When I visit my account page
+     Then I should see "3 visits"

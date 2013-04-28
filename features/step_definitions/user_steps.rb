@@ -40,3 +40,12 @@ Given /^a signed-in user with the username "(.*?)" and an identity of "(.*?)" an
       And that identity is signed in
   ~
 end
+
+Given /a returning user/ do
+  @identity = Fabricate(:identity_with_user, :sign_in_count => 2).reload
+  @user = @identity.user
+end
+
+
+
+

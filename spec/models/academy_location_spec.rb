@@ -24,7 +24,15 @@
 #  index_locations_on_type                             (type)
 #
 
-require 'spec_helper'
+require 'support/active_record'
+require 'support/geocoder'
+require 'support/custom_matchers'
+require 'shoulda-matchers'
+
+require_relative "../../lib/validators/location_validator"
+require_relative "../../app/models/address"
+require_relative "../../app/models/location"
+require_relative "../../app/models/academy_location"
 
 describe AcademyLocation do
   include NullDB::RSpec::NullifiedDatabase
@@ -33,10 +41,8 @@ describe AcademyLocation do
     Geocoder.stub(:search => [])
   end
 
-  subject { AcademyLocation.new }
+  it { should validate_with(LocationValidator) }
 
-
-  it { should validate_with LocationValidator }
   it { should ensure_length_of(:us_state).is_equal_to(2) }
 
 end

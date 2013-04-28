@@ -2,12 +2,12 @@
 #
 # Table name: markets
 #
-#  id        :integer         not null, primary key
+#  id        :integer          not null, primary key
 #  name      :string(255)
 #  parent_id :integer
-#  lft       :integer         not null
-#  rgt       :integer         not null
-#  depth     :integer         default(0), not null
+#  lft       :integer          not null
+#  rgt       :integer          not null
+#  depth     :integer          default(0), not null
 #
 # Indexes
 #

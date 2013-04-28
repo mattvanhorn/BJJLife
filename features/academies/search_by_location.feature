@@ -17,15 +17,13 @@ Feature: Search by location
   @geocode_search_sf
   Scenario: Find by zip code
     Given I am on the academies page
-    When I fill in "Location" with "94133"
-     And I click on "Search"
-    Then I should see "Ralph Gracie"
-     And I should not see "Shaolin"
+     When I search for academies near 94133
+     Then I should see "Ralph Gracie"
+      And I should not see "Shaolin"
 
   @geocode_search_ny
   Scenario: Find by city and state
     Given I am on the academies page
-     When I fill in "Location" with "New York, NY"
-      And I click on "Search"
+     When I search for academies near New York, NY
      Then I should see "Shaolin"
       And I should not see "Ralph Gracie"

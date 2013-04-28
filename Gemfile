@@ -49,6 +49,7 @@ end
 group :development, :test do
   gem 'cucumber-rails', :require => false
   gem 'capybara-webkit', :git => 'git://github.com/thoughtbot/capybara-webkit.git', :branch => 'master'
+  gem 'fabrication'
   gem 'launchy'
   gem 'rspec'
   gem 'rspec-rails'
@@ -71,10 +72,10 @@ group :test do
   gem 'capybara', :git => 'git://github.com/jnicklas/capybara.git'
   gem 'shoulda-matchers'
   gem 'activerecord-nulldb-adapter', :git => 'git://github.com/mattvanhorn/nulldb.git'
-  gem 'fabrication'
   gem 'vcr'
   gem 'webmock', '>= 1.8.0', '< 1.10'
   gem 'email_spec'
+  gem 'site_prism', :git => 'git://github.com/mattvanhorn/site_prism.git'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

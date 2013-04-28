@@ -1,16 +1,9 @@
-Then "I should see the name of the site" do
-  page.should have_content(I18n.t('site_name'))
-end
-
 Then /^I should see the "([^"]*)" form$/ do |form_name|
   page.should have_selector(selector_for("the #{form_name} form"))
 end
 
 When /^I sign up for the list as "([^"]*)"$/ do |email|
-  fill_in I18n.t('simple_form.labels.defaults.email'), :with => email
-  within selector_for("the signup form") do
-    click_on I18n.t('helpers.submit.subscription.create')
-  end
+  Site.home_page.do_subscribe(email)
 end
 
 Given /^the email "([^"]*)" is on the announcement list$/ do |email|

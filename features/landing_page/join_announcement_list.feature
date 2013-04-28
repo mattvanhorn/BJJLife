@@ -5,14 +5,14 @@ Feature: Join announcement list
   I want to sign up for announcements
 
   Scenario: Reading about the site
-    When I am on the home page for option a
+    When I am on the home page
     Then I should see the name of the site
-     And I should see the explanatory message
+     And I should see the explanation message
 
   Scenario: Signing up
     Given I am on the home page
      When I sign up for the list as "alice@example.com"
-     Then I am on the subscription thank you page
+     Then I should be on the subscription thank you page
       And I should see the name of the site
       And I should see the thank you message
 

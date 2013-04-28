@@ -6,68 +6,37 @@ Feature: Sign in
   I want to sign in
 
   Background:
-    Given the following user:
-    | username      | alice |
-    | sign_in_count | 2     |
-    And the following identity:
-    | email    | alice@example.com |
-    | password | password          |
-    And that identity belongs to that user
-    And I am not signed in
-
+    Given I am not signed in
 
   Scenario: Normal
-     When I visit the sign in page
-      And I fill in "Email" with "alice@example.com"
-      And I fill in "Password" with "password"
-      And I click on "Sign In" within the form
-     Then I should be on the home page
-      And I should see "Hi alice,"
+     When I sign in successfully
+     Then I should see a personalized greeting on the home page
 
   Scenario: No password
-     When I visit the sign in page
-      And I fill in "Email" with "alice@example.com"
-      And I click on "Sign In" within the form
-     Then I should be on the sign in page
-      And I should see the missing password message
+     When I sign in without a password
+     Then I should see the missing password message on the sign in page
 
   Scenario: No email
-     When I visit the sign in page
-      And I fill in "Password" with "password"
-      And I click on "Sign In" within the form
-     Then I should be on the sign in page
-      And I should see the missing email message
+     When I sign in without an email
+     Then I should see the missing email message on the sign in page
 
   Scenario: blank form
-     When I visit the sign in page
-      And I click on "Sign In" within the form
-     Then I should be on the sign in page
-      And I should see the missing email and password message
+     When I sign in without any credentials
+     Then I should see the missing email and password message on the sign in page
 
   Scenario: Invalid credentials
-     When I visit the sign in page
-      And I fill in "Email" with "wrong@example.com"
-      And I fill in "Password" with "alsowrong"
-      And I click on "Sign In" within the form
-     Then I should be on the sign in page
-      And I should see the invalid credentials message
+     When I sign in with bad credentials
+     Then I should see the invalid credentials message on the sign in page
 
   Scenario: Redirecting back to page
    Given the following blog:
       | title | Training Tips |
      And I am on the training tips page
-    When I visit the sign in page
-     And I fill in "Email" with "alice@example.com"
-     And I fill in "Password" with "password"
-     And I click on "Sign In" within the form
+    When I sign in successfully
     Then I should be on the training tips page
 
   Scenario: Sign Out
-     When I visit the sign in page
-      And I fill in "Email" with "alice@example.com"
-      And I fill in "Password" with "password"
-      And I click on "Sign In" within the form
+    Given I sign in successfully
+     When I sign out
      Then I should be on the home page
-     When I visit the sign out page
-     Then I should be on the home page
-      And I should not see "Hi alice,"
+      But I should not see a personalized greeting on the home page

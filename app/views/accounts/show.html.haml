@@ -3,7 +3,7 @@
 
   .main
     .row
-      %h3= current_user.username
+      %h3.nickname= current_user.username
       %p.stats
         %span.visits #{pluralize(current_user.sign_in_count, 'visit')}
         %span.posts #{pluralize(current_user.posts.size, 'posts').gsub('0','No')}
@@ -12,7 +12,7 @@
         Last signed in:
         %abbr.timeago{:title => current_user.updated_at.getutc.iso8601}= current_user.updated_at
       %p.teacher Teacher: #{current_user.teacher}
-      %p.teacher Rank: #{current_user.rank}
+      %p.rank Rank: #{current_user.rank}
       %p.location #{current_user.location}
 
   .sidebar

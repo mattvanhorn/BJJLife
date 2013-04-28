@@ -6,13 +6,6 @@ Feature: User registration
 
   Scenario: Registration
     Given there are no registered users
-     When I visit the sign up page
-      And I fill in "Email" with "alice@example.com"
-      And I fill in "Password" with "password"
-      And I fill in "Confirm password" with "password"
-      And I click on "Sign Up" within the new account form
-     Then I should be on the edit account page
-     When I fill in the nickname field with "Alice K"
-      And I click on "Update Account"
-     Then I should be on my account page
-      And I should see "Alice K"
+     When I register as "alice@example.com" using the password "password"
+      And I visit the home page
+     Then I should see "Sign Out"

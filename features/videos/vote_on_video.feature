@@ -5,16 +5,7 @@ Feature: Vote on video
   I want to upvote and downvote videos
 
   Background:
-   Given the following identity:
-       | email    | alice@example.com |
-       | password | seekrit           |
-
-     And the following user:
-       | username      | alicek |
-       | sign_in_count | 2      |
-
-     And that identity belongs to that user
-     And I am signed in as "alice@example.com" with a password of "seekrit"
+   Given I am signed in as a user with 2 previous visits
 
   Scenario: Videos ranked by 95% confidence interval of lower bound of positive votes
    Given the following videos:
@@ -25,7 +16,7 @@ Feature: Vote on video
      | 4  | new video  | http://www.youtube.com/example?v=4 | 0        | 0          |
     When I visit the videos page
     Then "best video" should appear before "good video"
-    And "good video" should appear before "bad video"
+     And "good video" should appear before "bad video"
 
   Scenario: Upvoting
   Given the following videos:
@@ -34,7 +25,7 @@ Feature: Vote on video
     | 2  | better video | http://www.youtube.com/example?v=2 | 11       | 10         |
     When I visit the videos page
     Then "good video" should appear before "better video"
-    When I click on "like" within the video 2 element
+    When I like the video "better video"
     Then "better video" should appear before "good video"
 
   Scenario: Downvoting
@@ -44,5 +35,5 @@ Feature: Vote on video
     | 2  | worse video | http://www.youtube.com/example?v=2 | 10       | 11         |
     When I visit the videos page
     Then "worse video" should appear before "bad video"
-    When I click on "hate" within the video 2 element
+    When I hate the video "worse video"
     Then "bad video" should appear before "worse video"

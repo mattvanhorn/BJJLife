@@ -1,16 +1,30 @@
-When /^(?:they|I) should be on (.+)$/ do |page_name|
-  location = URI.parse(current_url).path
-  expected = path_to(page_name)
-  if expected.is_a? Regexp
-    expected.should match(location)
-  else
-    location.should == expected
-  end
+# When /^(?:they|I) should be on (.+)$/ do |page_name|
+#   location = URI.parse(current_url).path
+#   expected = path_to(page_name)
+#   if expected.is_a? Regexp
+#     expected.should match(location)
+#   else
+#     location.should == expected
+#   end
+# end
+
+# When /^(?:they|I) (?:visit|am on|are on|go to) (.+)$/ do |page_name|
+#   visit path_to(page_name)
+# end
+
+Then /^I should be on (?:the|my) (.* page)$/ do |page_name|
+  get_page(page_name).should be_displayed
 end
 
-When /^(?:they|I) (?:visit|am on|are on|go to) (.+)$/ do |page_name|
-  visit path_to(page_name)
+Then(/^I should be on the post page for the first post$/) do
+  page = Site.post_page
+  page.current_url.should include "/posts/#{Blog.first.entries.first.id}"
 end
+
+When /^(?:they|I) (?:visit|am on|are on|go to) (?:the|my) (.* page)$/ do |page_name|
+  get_page(page_name).load
+end
+
 
 When /^I perform HTTP authentication as "([^\"]*)\/([^\"]*)"$/ do |name, password|
   if page.driver.respond_to?(:basic_auth)

@@ -4,18 +4,9 @@ Feature: Add video
   As an admin
   I want to add a video
 
-  Background:
-    Given I perform HTTP authentication as "admin/password"
-
-  Scenario: Getting to the admin page
-    Given I am on the admin videos page
-    When I click on "Add Video"
-    Then I should be on the new admin video page
-
   Scenario: Adding a youtube video
-    Given I am on the new admin video page
-    When I fill in "Name" with "Mitsuyo Maeda: The Origin of BJJ"
-    And I fill in "URL" with "m0fH_8kv7ac"
-    And I click on "Create Video"
-   Then I should be on the admin videos page
-    And I should see "Mitsuyo Maeda: The Origin of BJJ"
+  Given I perform HTTP authentication as "admin/password"
+    And I visit the new video admin page
+    And I add a video
+   Then I should be on the videos admin page
+    And I should see the video I added

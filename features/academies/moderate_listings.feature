@@ -13,8 +13,8 @@ Feature: Moderate Academy Listings
    Given I am on the new academy page
     When I add an academy
      And I perform HTTP authentication as "admin/password"
-     And I go to the admin academies page
+     And I go to the academies admin page
     Then I should see "1 academy awaiting moderation"
-    When I click on "Publish"
+    When I publish the academy listing
      And I go to the academies page
     Then I should see 1 academy listing

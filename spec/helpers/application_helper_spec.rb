@@ -50,4 +50,20 @@ describe ApplicationHelper do
       helper.order_form_javascript.should be_blank
     end
   end
+
+  describe "#products_page_javascript" do
+    it "has content on the products controller index action" do
+      helper.controller.stub(:controller_name => 'products', :action_name => 'index')
+      helper.products_page_javascript.should_not be_blank
+    end
+
+    it "is blank on other controllers" do
+      helper.controller.stub(:controller_name => 'academies', :action_name => 'index')
+      helper.products_page_javascript.should be_blank
+    end
+    it "is blank on other actions" do
+      helper.controller.stub(:controller_name => 'products', :action_name => 'show')
+      helper.products_page_javascript.should be_blank
+    end
+  end
 end

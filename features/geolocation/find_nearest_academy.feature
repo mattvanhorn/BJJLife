@@ -19,4 +19,4 @@ Feature: Find nearest academy
     Given geocoding users is enabled
       And the request ip address is "173.247.202.228"
      When I go to the academies page
-     Then I should see "Ralph Gracie" within the nearest academies
+     Then I should see "Ralph Gracie" listed in the nearest academies

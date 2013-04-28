@@ -22,4 +22,11 @@ module ApplicationHelper
       javascript_include_tag("orders", :defer => 'defer')
     end
   end
+
+  def products_page_javascript
+    if controller.controller_name == 'products' && controller.action_name == 'index'
+      javascript_include_tag("products", :defer => 'defer')
+    end
+  end
+
 end

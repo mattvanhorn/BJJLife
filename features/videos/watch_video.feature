@@ -13,6 +13,6 @@ Feature: Watch videos
 
   Scenario: List Videos
     When I am on the videos page
-    Then I should see a video item for "Kron Gracie vs Vitor Estima World Jiu Jitsu Expo" linked to "http://www.youtube.com/watch?v=uHq5YjQBWNg"
-    Then I should see a video item for "Jeff Glover vs Caio Terra World Jiu Jitsu Expo" linked to "http://www.youtube.com/watch?v=Z7eixxm5CLI"
-    Then I should see a video item for "Kyra Gracie vs Alexis Davis World Jiu Jitsu expo" linked to "http://www.youtube.com/watch?v=BzYwGrR4_kg"
+    Then I should see all the videos
+
+
