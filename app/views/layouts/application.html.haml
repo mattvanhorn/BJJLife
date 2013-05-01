@@ -54,7 +54,4 @@
     = javascript_include_tag "application", :defer => "defer"
     = yield :products_js
     = yield :order_form_js
-    = javascript_include_tag("videos", :defer => 'defer')
-    = javascript_include_tag("analytic_events", :defer => 'defer')
-    = javascript_include_tag("time_ago", :defer => 'defer')
     = raw analytical.body_append_javascript
