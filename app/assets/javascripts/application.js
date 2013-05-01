@@ -14,4 +14,8 @@
 //= require jquery_ujs
 //= require jquery.prettyPhoto
 //= require jquery.timeago
+//= require products
+//= require time_ago
+//= require videos
+//= require analytic_events
 //= require jquery.carouFredSel-5.6.1
