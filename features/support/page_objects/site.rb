@@ -1,4 +1,8 @@
 class Site
+  def self.navigation
+    home_page.navigation
+  end
+
   def self.current_page
     @current_page
   end

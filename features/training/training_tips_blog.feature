@@ -14,8 +14,4 @@ Feature: List training tips blog entries
       | Another blog post | http://www.example.com/article/2 | this is also a great article |
 
      When I go to the training tips page
-
-     Then I should see a blog entry titled "A blog post" and linked to "http://www.example.com/article/1"
-      And I should see "this is a great article"
-      And I should see a blog entry titled "Another blog post" and linked to "http://www.example.com/article/2"
-      And I should see "this is also a great article"
+     Then I should see all the posts

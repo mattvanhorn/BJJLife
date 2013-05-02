@@ -6,7 +6,7 @@ Feature: Profile page
 
   Scenario: First visit
     Given there are no registered users
-    When I register as "alice@example.com" using the password "password"
+    When I sign up
     Then I should be on the edit account page
 
     When I update my profile

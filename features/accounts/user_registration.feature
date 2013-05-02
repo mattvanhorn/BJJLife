@@ -6,6 +6,6 @@ Feature: User registration
 
   Scenario: Registration
     Given there are no registered users
-     When I register as "alice@example.com" using the password "password"
+     When I sign up
       And I visit the home page
      Then I should see "Sign Out"

@@ -17,9 +17,6 @@ Feature: Post comments
       And I am on the training tips page
 
   Scenario: Enter a comment
-    When I click on "0 comments" within the first post listed
-    Then I should be on the post page for the first post
-    When I fill in "comment_body" with "yadda yadda"
-    And I click on "Create Comment"
-    Then I should be on the post page for the first post
-    And I should see "yadda yadda"
+    When I add a comment to the first post
+    Then I should be on the post page for that comment
+     And I should see that comment

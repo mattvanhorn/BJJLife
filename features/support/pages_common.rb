@@ -11,6 +11,10 @@ module CommonPageBehavior
       set_url_matcher %r(#{url})
     end
   end
+
+  def find_by_name(collection, method, name)
+    send(collection).detect{ |element| (method ? element.send(method) : element).has_text? name}
+  end
 end
 
 module IndexPageBehavior

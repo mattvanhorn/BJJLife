@@ -1,61 +1,49 @@
-When /^I update my profile$/ do
-  profile = Site.edit_account_page
-  profile.should be_displayed
-  profile.nickname_field.set "Alice K"
-  profile.teacher_field.set "Vitor 'Shaolin' Ribeiro"
-  profile.rank_field.set "Blue belt"
-  profile.update_btn.click
-end
-
-When /^I navigate to "(.*?)"$/ do |link_text|
-  page = Site.home_page
-  page.load
-  element = link_text.gsub(/\s+/,'_').downcase
-  page.navigation.send(element).click
-end
-
-Then /^I should see my profile details$/ do
-  expected_profile = User.last
-  profile = Site.account_page
-  profile.nickname.text.should  =~ %r(#{expected_profile.username})
-  profile.teacher.text.should   =~ %r(#{expected_profile.teacher})
-  profile.rank.text.should      =~ %r(#{expected_profile.rank})
-end
-
-Given /^I am signed in as a user$/ do
-  identity = Fabricate(:identity_with_user, password: 'password')
+Given /I am signed in as a user(?: with (\d+) previous visits?)?/ do |num_visits|
+  opts = {password: 'password', sign_in_count: num_visits.try(:to_i)}
+  identity = Fabricate(:identity_with_user, opts).reload
   Site.sign_in_page.go.sign_in_with(identity.email, 'password')
 end
 
-Given /I am signed in as a user with (\d+) previous visits?/ do |num_visits|
-  identity = Fabricate(:identity_with_user, sign_in_count: num_visits.to_i, password: 'password')
-  Site.sign_in_page.go.sign_in_with(identity.email, 'password')
+# NOTE: for when you need a returning user, but not necessarily signed in
+Given /a returning user/ do
+  @identity = Fabricate(:identity_with_user, sign_in_count: 2).reload
+  @user = @identity.user
 end
 
 Given /I am not signed in|I sign out/ do
   visit sign_out_path
 end
 
-When /I sign in successfully/ do
-  identity = Fabricate(:identity_with_user, sign_in_count: 2, password: 'password')
-  Site.sign_in_page.go.sign_in_with(identity.email, 'password')
+When /^I update my profile$/ do
+  Site.edit_account_page.update_profile
 end
 
-When /I sign in without (a password|an email|any credentials)/ do |missing|
-  user = Fabricate(:identity_with_user, sign_in_count: 2)
-  page = Site.sign_in_page
-  if missing == 'any credentials'
-    page.go.sign_in_with('', '')
-  else
-    email = 'alice@example.com' unless missing == 'an email'
-    password = 'password' unless missing == 'a password'
-    page.go.sign_in_with(email, password)
+{ 'successfully'            => ['alice@example.com','password'],
+  'without a password'      => ['alice@example.com',''],
+  'without an email'        => ['','password'],
+  'without any credentials' => ['',''],
+  'with bad credentials'    => ['wrong@example.com','wrong_password']
+}.each_pair do |that_way, credentials|
+  When "I sign in #{that_way}" do
+    user = Fabricate(:identity_with_user, sign_in_count: 2, password: 'password', email: 'alice@example.com')
+    Site.sign_in_page.go.sign_in_with(*credentials)
   end
 end
 
-When /I sign in with bad credentials/ do
-  user = Fabricate(:identity_with_user, sign_in_count: 2)
-  Site.sign_in_page.go.sign_in_with('wrong@example.com', 'wrong_password')
+When /^I sign up (without opting|and opt) in to a subscription$/ do |action|
+  action = (action == 'and opt') ? 'in' : 'out'
+  Site.sign_up_page.send("sign_up_and_opt_#{action}")
+end
+
+When /^I sign up$/ do
+  Site.sign_up_page.go.sign_up
+end
+
+Then /^I should see my profile details$/ do
+  expected = User.last
+  %w(username teacher rank).each do |attr|
+    Site.account_page.send(attr).should have_text(expected.send(attr))
+  end
 end
 
 Then /I (should|should not) see a personalized greeting on the home page/ do |should_or_not|
@@ -63,24 +51,15 @@ Then /I (should|should not) see a personalized greeting on the home page/ do |sh
   page.send should_or_not, have_text("Hi #{User.last.username},")
 end
 
-Then(/^I should see the missing (password|email|email and password) message on the sign in page$/) do |missing|
-  page = Site.sign_in_page
-  page.should be_displayed
-  page.should have_text(I18n.t("omniauth.#{missing.gsub(/\s+/,'_')}_missing"))
+def humanize(txt)
+  txt.to_s.gsub(/[^A-Za-z0-9]+/,' ')
 end
-
-Then(/^I should see the invalid credentials message on the sign in page$/) do
-  page = Site.sign_in_page
-  page.should be_displayed
-  page.should have_text(I18n.t("omniauth.invalid_credentials"))
-end
-
-When /^I sign up without opting in to a subscription$/ do
-  Site.sign_up_page.sign_up_and_opt_out
-end
-
-When /^I sign up and opt in to a subscription$/ do
-  Site.sign_up_page.sign_up_and_opt_in
+%w(missing_email missing_password missing_email_and_password invalid_credentials).each do |msg|
+  Then "I should see the #{humanize(msg)} message on the sign in page" do
+    page = Site.sign_in_page
+    page.should be_displayed
+    page.should send("have_#{msg}_msg")
+  end
 end
 
 Then /^I (should|should not) be subscribed$/ do |should_or_not|
