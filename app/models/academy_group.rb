@@ -17,11 +17,11 @@ class AcademyGroup
   end
 
   def self.by_country
-    create_from Academy.ordered_by_country
+    create_from Academy.published.ordered_by_country
   end
 
   def self.by_state
-    create_from Academy.ordered_by_state
+    create_from Academy.published.ordered_by_state
   end
 
   def region

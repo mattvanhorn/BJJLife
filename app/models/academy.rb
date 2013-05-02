@@ -17,6 +17,7 @@ require 'moderatable'
 
 class Academy < ActiveRecord::Base
   include Moderatable
+  include Locatable
 
   attr_accessible :name, :instructor, :location_attributes, :email, :phone_number, :website
 
@@ -26,13 +27,7 @@ class Academy < ActiveRecord::Base
 
   validates_with ContactMethodValidator
   validates_presence_of :name
-  validates_associated :location, :on => :create
   validates :email, :length => (3..254), :email => true, :allow_blank => true
-
-  delegate :address, :street, :unit, :city, :us_state, :region, :country, :postal_code, :to => :location
-
-  scope :ordered_by_state, joins(:location).where('locations.country IS NULL').includes(:location).published.order('locations.us_state, name')
-  scope :ordered_by_country, joins(:location).where('locations.country IS NOT NULL').includes(:location).published.order('locations.country, name')
 
   def self.near(origin, radius = NEARBY_DISTANCE, options = {})
     return [] if origin.blank?
