@@ -25,7 +25,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'stripe'
 gem 'faker'
-gem 'mini_magick'
+gem 'mini_magick', '>= 3.5.0'
 gem 'display_case'
 gem 'awesome_nested_set'
 gem 'geocoder'
@@ -55,6 +55,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'tddium'
   gem 'reek'
+  gem 'ruby_parser', '>= 3.1.3'
   gem 'flog'
   gem 'rails_best_practices', :require => false
   gem 'simplecov', :require => false
