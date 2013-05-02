@@ -1,4 +1,5 @@
-{<img src="https://codeclimate.com/badge.png" />}[https://codeclimate.com/github/mattvanhorn/BJJLife]
+{<img src="https://codeclimate.com/github/mattvanhorn/BJJLife.png" />}[https://codeclimate.com/github/mattvanhorn/BJJLife]
+{<img src="https://gemnasium.com/mattvanhorn/BJJLife.png" alt="Dependency Status" />}[https://gemnasium.com/mattvanhorn/BJJLife]
 
 I am developing this project openly, in order to share what I think are good practices with other Rails developers.
 
