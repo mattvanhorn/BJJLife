@@ -4,7 +4,6 @@ describe ApplicationController do
   let(:secret){ Bjjlife::Application.config.secret_token }
   let(:verifier){ ActiveSupport::MessageVerifier.new(secret) }
 
-
   describe "#identifiable_user" do
     subject { controller.send :identifiable_user }
     context "when user is signed in" do
@@ -81,7 +80,7 @@ describe ApplicationController do
 
     it "sets current user's location" do
       controller.stub(:user_signed_in? => true, :current_user => current_user)
-      current_user.should_receive(:set_location).with(request_location)
+      current_user.should_receive(:set_location).with(request_location).and_return(true)
       get :index
     end
 

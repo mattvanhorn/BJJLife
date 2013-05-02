@@ -77,7 +77,8 @@ class User < ActiveRecord::Base
   end
 
   def set_location(result_obj)
-    self.location ||= build_location
-    location.update_attributes(Location.attributes_from_gecoder_result(result_obj))
+
+      self.location ||= build_location
+      location.update_attributes(Location.attributes_from_gecoder_result(result_obj))
   end
 end

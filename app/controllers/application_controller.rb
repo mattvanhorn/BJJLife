@@ -76,19 +76,24 @@ class ApplicationController < ActionController::Base
   end
 
   def locate_user
-    return unless Rails.application.config.locate_users
-    if user_signed_in?
-      current_user.set_location(request.location) unless current_user.located?
-
-    elsif cookies.signed[:location].blank?
-      loc_hash = Location.attributes_from_gecoder_result(request.location)
-      cookies.signed[:location] = loc_hash.to_yaml
-    end
+    Rails.application.config.locate_users && (set_user_location || set_browser_location)
   end
 
   def exhibit_exposed(*names)
     names.each do |name|
       _resources[name] = exhibit(self.send(name))
+    end
+  end
+
+  def set_user_location
+    if user_signed_in?
+      current_user.located? || current_user.set_location(request.location)
+    end
+  end
+
+  def set_browser_location
+    if cookies.signed[:location].blank?
+      cookies.signed[:location] = Location.attributes_from_gecoder_result(request.location).to_yaml
     end
   end
 
