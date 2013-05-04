@@ -4,23 +4,23 @@ worker_processes (rails_env == 'production' ? 4 : 1) # amount of unicorn workers
 timeout 30
 preload_app true
 
- before_fork do |server, worker|
+before_fork do |server, worker|
 
-   Signal.trap 'TERM' do
-     puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
-     Process.kill 'QUIT', Process.pid
-   end
+  Signal.trap 'TERM' do
+    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
+    Process.kill 'QUIT', Process.pid
+  end
 
-   defined?(ActiveRecord::Base) and
-     ActiveRecord::Base.connection.disconnect!
- end
+  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
 
- after_fork do |server, worker|
+end
 
-   Signal.trap 'TERM' do
-     puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
-   end
+after_fork do |server, worker|
 
-   defined?(ActiveRecord::Base) and
-     ActiveRecord::Base.establish_connection
- en
+  Signal.trap 'TERM' do
+    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
+  end
+
+  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+
+end
