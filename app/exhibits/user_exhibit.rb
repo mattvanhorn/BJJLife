@@ -14,4 +14,5 @@ class UserExhibit < DisplayCase::Exhibit
     identity.email
   end
 
+  exhibit_query :location
 end

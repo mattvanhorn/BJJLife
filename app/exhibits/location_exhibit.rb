@@ -2,7 +2,11 @@ class LocationExhibit < DisplayCase::Exhibit
   include ExhibitBaseHelper
 
   def self.applicable_to?(object, context)
-    object_is_any_of?(object, Location, AcademyLocation)
+    [Location, AcademyLocation].include? object.class
+  end
+
+  def to_s
+    "#{city}, #{region || country}"
   end
 
   exhibit_query :address
