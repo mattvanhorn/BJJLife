@@ -8,22 +8,6 @@ describe "academies routing" do
         :action => "index"
       )
   end
-
-  it "routes the new academy page" do
-    { :get => "/academies/new" }.
-      should route_to(
-        :controller => "academies",
-        :action => "new"
-      )
-  end
-
-  it "routes the create academy action" do
-    { :post => "/academies" }.
-      should route_to(
-        :controller => "academies",
-        :action => "create"
-      )
-  end
 end
 
 describe "academies admin routing" do
@@ -40,6 +24,23 @@ describe "academies admin routing" do
         :controller => "admin/academies",
         :action => "publish",
         :id => '123'
+      )
+  end
+end
+
+describe "academy listing routing" do
+  it "routes the form page" do
+    { :get => "/academies/new" }.
+      should route_to(
+        :controller => "academy_listings",
+        :action => "new"
+      )
+  end
+  it "routes the create action" do
+    { :post => "/academies" }.
+      should route_to(
+        :controller => "academy_listings",
+        :action => "create"
       )
   end
 end

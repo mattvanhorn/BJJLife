@@ -51,15 +51,17 @@ describe Academy do
     end
   end
 
-  it { should validate_presence_of(:name) }
+  it { should validate_with AcademyValidator }
 
-  it{ should ensure_length_of(:email).is_at_least(3).is_at_most(254) }
+  # it { should validate_presence_of(:name) }
 
-  it "validates the format of email" do
-    subject.class.validators_on(:email).select{|v|v.is_a? (EmailValidator)}.should_not be_empty
-  end
+  # it{ should ensure_length_of(:email).is_at_least(3).is_at_most(254) }
 
-  it { should validate_with ContactMethodValidator }
+  # it "validates the format of email" do
+  #   subject.class.validators_on(:email).select{|v|v.is_a? (EmailValidator)}.should_not be_empty
+  # end
+
+  # it { should validate_with ContactMethodValidator }
 
   it { should_not be_published }
 

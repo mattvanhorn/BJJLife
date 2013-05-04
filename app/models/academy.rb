@@ -23,11 +23,7 @@ class Academy < ActiveRecord::Base
 
   has_one :location, :as => :locatable, :class_name => 'AcademyLocation'
 
-  accepts_nested_attributes_for :location, :update_only => true
-
-  validates_with ContactMethodValidator
-  validates_presence_of :name
-  validates :email, :length => (3..254), :email => true, :allow_blank => true
+  validates_with AcademyValidator
 
   def self.near(origin, radius = NEARBY_DISTANCE, options = {})
     return [] if origin.blank?

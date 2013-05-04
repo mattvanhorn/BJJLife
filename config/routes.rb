@@ -24,7 +24,10 @@ Bjjlife::Application.routes.draw do
       put 'downvote'
     end
   end
-  resources :academies, :only => [:index, :new, :create]
+  resources :academies, :only => [:index]
+  resources :academy_listings, :only => [:create], :path => '/academies'
+  get '/academies/new', :to => 'academy_listings#new', :as => :new_academy
+
   resources :blogs, :only => [:show]
   resources :posts, :only => [:new, :create, :show] do
     resources :comments, :only => [:create]

@@ -1,4 +1,13 @@
 en:
+  activemodel:
+    errors:
+      models:
+        academy_listing:
+          attributes:
+            base:
+              no_location: 'You must provide both city and state, or a postal code'
+              no_contact_method: 'You must provide at least one contact method (phone, email, or website)'
+
   activerecord:
     models:
       academy: Academy

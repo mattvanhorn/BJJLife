@@ -1,0 +1,24 @@
+#academies.grid
+  = standard_header
+
+  .main
+    .row
+      - academy_listing.errors[:base].each do |msg|
+        .errors_on_base= msg
+
+      = simple_form_for academy_listing do |form|
+        = form.input :name
+        = form.input :instructor
+        = form.input :street
+        = form.input :unit
+        = form.input :city
+        = form.input :us_state
+        = form.input :postal_code
+        = form.input :country, :as => :string
+        = form.input :email
+        = form.input :phone_number
+        = form.input :website
+        = form.button :submit
+
+  .sidebar
+    = link_to t('.back_to_guide'), academies_path

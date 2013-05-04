@@ -19,12 +19,14 @@ describe "A record validated with LocationValidator" do
   end
 
   it "is not valid without some minimal location info" do
+    subject.should_not be_valid
     subject.should have(1).error_on(:base)
     subject.errors[:base].first.should == "You must provide both city and state, or a postal code"
   end
 
   it "is not valid with empty strings" do
     subject.stub(:city => '', :us_state => ' ', :postal_code => '')
+    subject.should_not be_valid
     subject.should have(1).error_on(:base)
   end
 
@@ -40,11 +42,13 @@ describe "A record validated with LocationValidator" do
 
   it "is not valid with just a city" do
     subject.stub(:city => 'New York')
+    subject.should_not be_valid
     subject.should have(1).error_on(:base)
   end
 
   it "is not valid with just a state" do
     subject.stub(:us_state => 'NY')
+    subject.should_not be_valid
     subject.should have(1).error_on(:base)
   end
 end

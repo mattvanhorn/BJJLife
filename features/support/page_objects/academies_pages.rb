@@ -35,17 +35,17 @@ class NewAcademyPage < SitePrism::Page
   include CommonPageBehavior
   init_url_and_matcher(Rails.application.routes.url_helpers.new_academy_path)
 
-  element :name_field,        "input[name='academy[name]']"
-  element :instructor_field,  "input[name='academy[instructor]']"
-  element :street_field,      "input[name='academy[location_attributes][street]']"
-  element :unit_field,        "input[name='academy[location_attributes][unit]']"
-  element :city_field,        "input[name='academy[location_attributes][city]']"
-  element :us_state_field,    "input[name='academy[location_attributes][us_state]']"
-  element :postal_code_field, "input[name='academy[location_attributes][postal_code]']"
-  element :country_field,     "input[name='academy[location_attributes][country]']"
-  element :email_field,       "input[name='academy[email]']"
-  element :phone_number_field,"input[name='academy[phone_number]']"
-  element :website_field,     "input[name='academy[website]']"
+  element :name_field,        "input[name='academy_listing[name]']"
+  element :instructor_field,  "input[name='academy_listing[instructor]']"
+  element :street_field,      "input[name='academy_listing[street]']"
+  element :unit_field,        "input[name='academy_listing[unit]']"
+  element :city_field,        "input[name='academy_listing[city]']"
+  element :us_state_field,    "input[name='academy_listing[us_state]']"
+  element :postal_code_field, "input[name='academy_listing[postal_code]']"
+  element :country_field,     "input[name='academy_listing[country]']"
+  element :email_field,       "input[name='academy_listing[email]']"
+  element :phone_number_field,"input[name='academy_listing[phone_number]']"
+  element :website_field,     "input[name='academy_listing[website]']"
   element :create_academy_btn,"input[name='commit']"
 
   def add_us_academy

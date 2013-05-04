@@ -3,20 +3,9 @@ class AcademiesController < ApplicationController
   expose(:academies_by_country) { AcademyGroup.by_country }
   expose(:nearest_academies)  { Academy.near(identifiable_user.location, NEARBY_DISTANCE)||[] }
   expose(:search_results)     { Academy.near(query_location, NEARBY_DISTANCE)||[] }
-  expose(:academy)
 
   def index
     exhibit_exposed :nearest_academies, :academies_by_state, :academies_by_country
-  end
-
-  def new
-    exhibit_exposed :academy
-  end
-
-  def create
-    academy.save
-    exhibit_exposed :academy
-    respond_with academy
   end
 
   def search

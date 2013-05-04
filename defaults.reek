@@ -90,6 +90,7 @@ Duplication:
     - Admin::ProductsController
     - Admin::CategoriesController
     - AcademiesController
+    - AcademyListingsController
     - AccountsController
     - ApplicationController
     - BlogsController
@@ -104,6 +105,7 @@ Duplication:
     - AcademyDecorator#address
     - Identity#process_opt_in
     - ProductPhotoUploader#store_dir
+    - AcademyValidator#validate
 
   enabled: true
   max_calls: 1
