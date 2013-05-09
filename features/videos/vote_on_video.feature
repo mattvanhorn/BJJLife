@@ -5,7 +5,8 @@ Feature: Vote on video
   I want to upvote and downvote videos
 
   Background:
-   Given I am signed in as a user with 2 previous visits
+   Given a user: Bobby
+     And I am signed in as Bobby
 
   Scenario: Videos ranked by 95% confidence interval of lower bound of positive votes
    Given the following videos:

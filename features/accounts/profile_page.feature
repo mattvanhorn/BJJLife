@@ -4,8 +4,12 @@ Feature: Profile page
   As a user
   I want to update my profile
 
+  # Cast:
+  # Alice, a new user
+  # Bobby, a returning user with 2 previous visits
+  #
   Scenario: First visit
-    Given there are no registered users
+   Given I am playing the role: Alice
     When I sign up
     Then I should be on the edit account page
 
@@ -16,11 +20,13 @@ Feature: Profile page
      And I should see "No comments"
 
   Scenario: Visit my profile
-    Given I am signed in as a user
+    Given a user: Alice
+      And I am signed in as Alice
      When I navigate to "My Profile"
      Then I should be on my account page
 
   Scenario: Previous visits
-    Given I am signed in as a user with 2 previous visits
+    Given a user: Bobby
+      And I am signed in as Bobby
      When I visit my account page
      Then I should see "3 visits"

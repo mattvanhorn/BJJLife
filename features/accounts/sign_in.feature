@@ -5,8 +5,13 @@ Feature: Sign in
   As a user
   I want to sign in
 
+  # Cast:
+  # Bobby, a returning user with 2 previous visits
+  #
   Background:
-    Given I am not signed in
+    Given a user: Bobby
+      And I am playing the role: Bobby
+      And I am not signed in
 
   Scenario: Normal
      When I sign in successfully

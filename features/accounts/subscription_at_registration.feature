@@ -4,9 +4,11 @@ Feature: Subscription at registration
   As a user
   I want to manage my subscription status at registration time
 
+  # Cast:
+  # Alice, a new user
+  #
   Background:
-    Given there are no registered users
-      And there are no subscriptions
+    Given I am playing the role: Alice
 
   Scenario: Opt-out (by default)
      When I sign up without opting in to a subscription

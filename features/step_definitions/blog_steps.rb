@@ -3,7 +3,7 @@ When "I create a new post" do
 end
 
 When "I add a comment to the first post" do
-  Site.training_tips_page.go.posts.first.comment_link.click
+  Site.training_tips_page.posts.first.comment_link.click
   page = Site.post_page
   page.should be_displayed
   page.comment_field.set "yadda yadda"
@@ -14,7 +14,7 @@ Then "I should see the post I created" do
   expected = Post.last
   page = Site.post_page.go(:post_id => expected.id)
   page.title.should have_text(expected.title)
-  page.contributor.should have_text(expected.user.username)
+  page.contributor.should have_text(@me.username)
 end
 
 Then "I should see all the posts" do

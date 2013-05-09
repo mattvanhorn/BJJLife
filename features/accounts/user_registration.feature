@@ -4,8 +4,11 @@ Feature: User registration
   As a user
   I want to register my identity
 
+  # Cast:
+  # Alice, a new user
+  #
   Scenario: Registration
-    Given there are no registered users
+    Given I am playing the role: Alice
      When I sign up
       And I visit the home page
      Then I should see "Sign Out"

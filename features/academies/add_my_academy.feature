@@ -6,8 +6,7 @@ Feature: Add my academy
 
   @geocode_academy
   Scenario: US Address
-  Given there are no academies
-    And I am on the new academy page
+  Given I am on the new academy page
    When I add an academy in the US
    Then I should be on the academies page
     And I should see "Your entry is awaiting moderation"
@@ -19,8 +18,7 @@ Feature: Add my academy
 
   @geocode_academy_br
   Scenario: Brazil Address
-  Given there are no academies
-    And I am on the new academy page
+  Given I am on the new academy page
    When I add an academy outside the US
    Then I should be on the academies page
     And I should see "Your entry is awaiting moderation"

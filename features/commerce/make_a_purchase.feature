@@ -4,6 +4,10 @@ Feature: Make a purchase
   As a site user
   I want to buy a product
 
+  # Cast:
+  # Alice, a new user
+  # Bobby, a returning user with 2 previous visits
+  #
   Background:
     Given the following category:
     | name | frobnitzes |
@@ -12,15 +16,16 @@ Feature: Make a purchase
     | price | 1000      |
     | photo | sloth.jpg |
     And that product belongs to that category
-    And there are no orders
+    And a user: Bobby
 
   Scenario: View a product
+   Given I am playing the role: Alice
     When I go to the product page for that product
     Then I should see the product details
 
   @javascript @stripe
   Scenario: Register at checkout
-    Given there are no registered users
+    Given I am playing the role: Alice
      When I buy that product
       And I enter my registration info
       And I enter my credit card info
@@ -30,15 +35,15 @@ Feature: Make a purchase
 
   @javascript
   Scenario: Sign in at checkout
-    Given a returning user
+    Given I am playing the role: Bobby
       And I am not signed in
      When I buy that product
-      And I sign in as that user
+      And I sign in
      Then I should be on the checkout page
 
   @javascript @stripe
   Scenario: Purchase a product
-    Given I am signed in as a user with 2 previous visits
+    Given I am signed in as Bobby
      When I buy that product
       And I enter my credit card info
       And I enter my address info
@@ -47,7 +52,7 @@ Feature: Make a purchase
 
   @javascript
   Scenario: Bad Card Info
-    Given I am signed in as a user with 2 previous visits
+    Given I am signed in as Bobby
      When I buy that product
       And I enter bad credit card info
       And I place the order
@@ -56,8 +61,7 @@ Feature: Make a purchase
 
   @javascript
   Scenario: Duplicate Email
-    Given a returning user
-      And I am not signed in
+    Given I am not signed in
      When I buy that product
       And I try to register with an email that is already used
       And I enter my credit card info

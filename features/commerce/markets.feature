@@ -4,22 +4,28 @@ Feature: Markets
   As an admin
   I want to assign products to markets
 
+  # Cast:
+  # Alice, a user with no market
+  # Carol, a user in the product market
+  # David, a user in a different market
+  #
   Background:
     Given a product with a market and category
+      And the users: Alice, Carol and David
 
   Scenario: Products in user's market are visible
-   Given a signed-in user in that market
-    When they go to the products page
-    Then they should see that product
+   Given I am signed in as Carol
+    When I go to the products page
+    Then I should see that product
 
   Scenario: Products not in user's market are hidden
-    Given a signed-in user in a different market
-     When they go to the products page
-     Then they should not see that product
+    Given I am signed in as David
+     When I go to the products page
+     Then I should not see that product
 
   Scenario: users in unknown markets see everything
-    Given a signed-in user with no market
-    When they go to the products page
-    Then they should see that product
+    Given I am signed in as Alice
+     When I go to the products page
+     Then I should see that product
 
 

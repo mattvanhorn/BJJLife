@@ -8,8 +8,7 @@ Feature: Category Administration
     Given I perform HTTP authentication as "admin/password"
 
   Scenario: Adding a category
-    Given there are no categories
-     When I add a category
+    When I add a category
     Then I should be on the categories admin page
      And I should see the category I added
 

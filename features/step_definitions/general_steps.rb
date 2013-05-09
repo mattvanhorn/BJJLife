@@ -2,16 +2,6 @@ Transform /^(should|should not)$/ do |should_or_not|
   should_or_not.gsub(' ', '_').to_sym
 end
 
-Given /^there are no ([\w ]+)$/ do |model_name|
-  klasses = case model_name
-  when 'registered users'
-    [User, Identity]
-  else
-    [model_name.strip.gsub(/\s+/,'_').singularize.classify.constantize]
-  end
-  klasses.collect{ |model| model.destroy_all }
-end
-
 Then /^(?:they|I) (should|should not) see "([^"]*)"$/ do |should_or_not, content|
   page.send should_or_not, have_content(content)
 end

@@ -4,6 +4,9 @@ Feature: Post comments
   As a user
   I want to comment on the post
 
+  # Cast:
+  # Bobby, a returning user with 2 previous visits
+  #
   Background:
     Given the following blog:
       | title | Training Tips |
@@ -12,8 +15,8 @@ Feature: Post comments
       | title             | url                              | description                  |
       | A blog post       | http://www.example.com/article/1 | this is a great article      |
       | Another blog post | http://www.example.com/article/2 | this is also a great article |
-
-      And I am signed in as a user with 2 previous visits
+      And a user: Bobby
+      And I am signed in as Bobby
       And I am on the training tips page
 
   Scenario: Enter a comment
