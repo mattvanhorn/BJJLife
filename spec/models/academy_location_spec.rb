@@ -29,6 +29,7 @@ require 'support/geocoder'
 require 'support/custom_matchers'
 require 'shoulda-matchers'
 
+require_relative "../../lib/validators/custom_validator"
 require_relative "../../lib/validators/location_validator"
 require_relative "../../app/models/address"
 require_relative "../../app/models/location"
