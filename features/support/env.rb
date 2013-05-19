@@ -2,8 +2,9 @@ unless ENV['TDDIUM']
   require 'simplecov'
   SimpleCov.start 'rails' do
     add_group "Exhibits", "app/exhibits"
-    add_group "Uploaders", "app/uploaders"
+    add_group "Presenters", "app/presenters"
     add_group "Mailers", "app/mailers"
+    add_group "Uploaders", "app/uploaders"
   end
 end
 

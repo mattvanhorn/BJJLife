@@ -53,16 +53,6 @@ describe Academy do
 
   it { should validate_with AcademyValidator }
 
-  # it { should validate_presence_of(:name) }
-
-  # it{ should ensure_length_of(:email).is_at_least(3).is_at_most(254) }
-
-  # it "validates the format of email" do
-  #   subject.class.validators_on(:email).select{|v|v.is_a? (EmailValidator)}.should_not be_empty
-  # end
-
-  # it { should validate_with ContactMethodValidator }
-
   it { should_not be_published }
 
   it { should be_pending }
@@ -89,11 +79,19 @@ describe Academy do
     it "should find no academies without a geocoded location" do
       Academy.near(nil).should == []
     end
+    it "finds nearby academy locations" do
+      expected = Academy.new
+      result = [stub_model(AcademyLocation, :locatable_id => 23)]
+      Academy.stub(:where => [expected])
+      AcademyLocation.should_receive(:near).with([40,-70],100,{}).and_return(result)
+      Academy.near([40,-70])
+    end
     it "finds academies near a geocoded location" do
       expected = Academy.new
-      result = [stub_model(AcademyLocation, :locatable => expected)]
-      AcademyLocation.should_receive(:near).with([40,-70],100,{}).and_return(result)
-      Academy.near([40,-70]).should == [expected]
+      result = [stub_model(AcademyLocation, :locatable_id => 23)]
+      AcademyLocation.stub(:near => result)
+      Academy.should_receive(:where).with(:id => [23]).and_return([expected])
+      Academy.near([40,-70])
     end
   end
 end

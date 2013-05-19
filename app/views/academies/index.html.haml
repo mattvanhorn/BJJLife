@@ -11,33 +11,31 @@
         = form.input :location, :hint => 'Address, City/State or ZIP code'
         = form.button :submit
 
-    - if nearest_academies.any?
+    - if academies.nearest.any?
       .row
-        .nearest
-          %h4= t('.nearest_academies').upcase
-          %a{:name => 'nearest'}
-          %ul.academies
-            - nearest_academies.each do |academy|
-              = academy.render_as_list_item(self)
+        - academies.nearest.each do |group|
+          = group.render(self)
 
     .row
-      - cache(academies_by_state) do
-        - academies_by_state.each do |group|
-          = group.render(self)
+      - cache(academies.by_state) do
+        - academies.by_state.each do |group|
+          = group.render(self, 'us_state')
 
-      - cache(academies_by_country) do
-        - academies_by_country.each do |group|
-          = group.render(self)
+      - cache(academies.by_country) do
+        - academies.by_country.each do |group|
+          = group.render(self, 'country')
 
   .sidebar
     = link_to t('.add_academy_link'), new_academy_path, :class => 'btn'
     %p= t('academies.jump_to_state')
     %ul
-      %li= link_to 'Nearest', "#nearest" if nearest_academies.any?
-      - academies_by_state.each do |group|
+      %li= link_to 'Nearest', "#nearest" if academies.nearest.any?
+
+      - academies.by_state.each do |group|
         = group.render_as_link(self)
 
       %li <br/>
-      - academies_by_country.each do |group|
+
+      - academies.by_country.each do |group|
         = group.render_as_link(self)
 

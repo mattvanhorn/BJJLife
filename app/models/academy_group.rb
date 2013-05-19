@@ -5,36 +5,19 @@ class AcademyGroup
   extend ActiveModel::Naming
   include ActiveModel::Conversion
 
-  attr_reader :academies
+  attr_reader :academies, :label, :anchor
 
-  def initialize(grouping, academies)
-    @grouping = grouping
+  def initialize(label, anchor, academies)
+    @label = label
+    @anchor = anchor.downcase.gsub(/\W+/,'-')
     @academies = academies
   end
-
-  def self.create_from(academies)
-    academies.group_by(&:region).map{ |(region, academies)| new(region, academies) }
-  end
-
-  def self.by_country
-    create_from Academy.published.ordered_by_country
-  end
-
-  def self.by_state
-    create_from Academy.published.ordered_by_state
-  end
-
-  def region
-    @grouping
-  end
-  alias :us_state :region
-  alias :country  :region
 
   def persisted?
     academies.all? &:persisted?
   end
 
   def cache_key
-    (academies.collect(&:cache_key) << us_state).hash
+    (academies.collect(&:cache_key) << label << anchor).hash
   end
 end

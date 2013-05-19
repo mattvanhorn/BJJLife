@@ -17,7 +17,11 @@ module ExhibitBaseHelper
   private
 
   def in_view
-    @context.respond_to?(:view_context) ? @context.view_context : @context
+    ctx = context
+    ctx.view_context
+  rescue
+    ctx
+    # context.respond_to?(:view_context) ? context.view_context : context
   end
 
 end

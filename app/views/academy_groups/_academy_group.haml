@@ -1,5 +1,5 @@
-.us_state{ :class => academy_group.us_state.downcase }
-  %a{ :name => academy_group.us_state }
-  %h4= academy_group.full_us_state_name.upcase
+.academy_group{ :class => [academy_group.anchor, css] }
+  %a{ :name => academy_group.anchor }
+  %h4= academy_group.label.upcase
   %ul.academies
     = render academy_group.academies

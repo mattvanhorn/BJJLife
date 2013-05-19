@@ -6,7 +6,7 @@ class Geolocator
 
   def location
     unless @cookie_loc.blank?
-      Location.new(:lat => @cookie_loc[:lat], :lng => @cookie_loc[:lng])
+      Location.new(@cookie_loc)
     end
   end
 

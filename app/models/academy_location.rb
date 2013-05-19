@@ -25,7 +25,7 @@
 #
 
 class AcademyLocation < Location
-  belongs_to :academy
+  belongs_to :academy, :foreign_key => "locatable_id", :class_name => "Academy"
   validates_with LocationValidator
   validates :us_state, :length => {:is => 2}, :allow_blank => true
 

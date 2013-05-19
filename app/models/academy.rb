@@ -25,9 +25,9 @@ class Academy < ActiveRecord::Base
 
   validates_with AcademyValidator
 
-  def self.near(origin, radius = NEARBY_DISTANCE, options = {})
-    return [] if origin.blank?
-    AcademyLocation.near(origin, radius, options).map(&:locatable).compact
+  def self.near(coords, radius = NEARBY_DISTANCE, options = {})
+    return [] if coords.blank?
+    where(:id => AcademyLocation.near(coords, radius, options).map(&:locatable_id))
   end
 
   def contact_info

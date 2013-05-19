@@ -37,7 +37,7 @@ describe AcademyGroupExhibit do
       exhibit.render(context)
     end
     it "passes itself to the partial" do
-      context.should_receive(:render).with(hash_including(locals: {academy_group: exhibit}))
+      context.should_receive(:render).with(hash_including(locals: {academy_group: exhibit, css: ''}))
       exhibit.render(context)
     end
   end
@@ -50,32 +50,6 @@ describe AcademyGroupExhibit do
     it "passes itself to the partial" do
       context.should_receive(:render).with(hash_including(locals: {academy_group: exhibit}))
       exhibit.render_as_link(context)
-    end
-  end
-
-  describe "#full_us_state_name" do
-    it "converts known abbreviations" do
-      academy_group.stub(:us_state => 'NY')
-      exhibit.full_us_state_name.should == 'New York'
-      academy_group.stub(:us_state => 'CA')
-      exhibit.full_us_state_name.should == 'California'
-    end
-
-    it "handles lowercase abbreviations" do
-      academy_group.stub(:us_state => 'ak')
-      exhibit.full_us_state_name.should == 'Alaska'
-    end
-
-    it "returns the argument if unknown" do
-      academy_group.stub(:us_state => 'Foo')
-      exhibit.full_us_state_name.should == 'Foo'
-    end
-  end
-
-  describe "#us_state" do
-    it "should always return a string" do
-      academy_group.stub(:us_state => nil)
-      exhibit.us_state.should == ''
     end
   end
 end

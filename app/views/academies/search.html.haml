@@ -15,9 +15,10 @@
       .search-results
         %h4= t('.search_results')
         %a{:name => 'search_results'}
-        - if search_results.any?
+        - if academies.nearest.any?
           %ul.academies
-            = render search_results
+            - academies.nearest.each do |group|
+              = group.render(self)
         - else
           No results
 
@@ -26,5 +27,5 @@
     = link_to t('.add_academy_link'), new_academy_path, :class => 'btn'
     %p= t('academies.jump_to_state')
     %ul
-      - academies_by_state.each do |group|
-        %li= link_to group.full_us_state_name, "#{academies_path}##{group.us_state}"
+      - academies.by_state.each do |group|
+        %li= link_to group.label, "#{academies_path}##{group.anchor}"
