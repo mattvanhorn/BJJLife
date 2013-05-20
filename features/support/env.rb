@@ -75,3 +75,5 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+# Cached results in Redis cause headaches
+Geocoder::Lookup.get(Geocoder.config.lookup).cache.expire(:all)

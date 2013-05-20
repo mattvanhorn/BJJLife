@@ -2,6 +2,38 @@
 http_interactions:
 - request:
     method: get
+    uri: http://freegeoip.net/json/173.247.202.228
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '234'
+      Date:
+      - Mon, 20 May 2013 20:41:06 GMT
+    body:
+      encoding: US-ASCII
+      string: ! '{"ip":"173.247.202.228","country_code":"US","country_name":"United
+        States","region_code":"CA","region_name":"California","city":"San Francisco","zipcode":"","latitude":37.7749,"longitude":-122.4194,"metro_code":"807","areacode":"415"}'
+    http_version: 
+  recorded_at: Mon, 20 May 2013 20:41:06 GMT
+- request:
+    method: get
     uri: http://maps.googleapis.com/maps/api/geocode/json?address=San%20Francisco,%20CA,%20US&language=en&sensor=false
     body:
       encoding: US-ASCII
@@ -21,9 +53,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Mon, 20 May 2013 02:11:26 GMT
+      - Mon, 20 May 2013 20:41:07 GMT
       Expires:
-      - Tue, 21 May 2013 02:11:26 GMT
+      - Tue, 21 May 2013 20:41:07 GMT
       Cache-Control:
       - public, max-age=86400
       Access-Control-Allow-Origin:
@@ -62,5 +94,5 @@ http_interactions:
         \           }\n         },\n         \"postcode_localities\" : [],\n         \"types\"
         : [ \"locality\", \"political\" ]\n      }\n   ],\n   \"status\" : \"OK\"\n}\n"
     http_version: 
-  recorded_at: Mon, 20 May 2013 02:11:27 GMT
+  recorded_at: Mon, 20 May 2013 20:41:07 GMT
 recorded_with: VCR 2.4.0
