@@ -42,12 +42,12 @@ class Location < ActiveRecord::Base
   after_validation :geocode, :if => :needs_geocoding?
 
   def self.attributes_from_gecoder_result(result)
-     {:city         => result.city,
-      :us_state     => result.state_code,
-      :country      => result.country_code,
-      :postal_code  => result.postal_code,
-      :lat          => result.latitude,
-      :lng          => result.longitude }
+      { :city         => result.try(:city),
+        :us_state     => result.try(:state_code),
+        :country      => result.try(:country_code),
+        :postal_code  => result.try(:postal_code),
+        :lat          => result.try(:latitude),
+        :lng          => result.try(:longitude) }
   end
 
   def address_changed?
